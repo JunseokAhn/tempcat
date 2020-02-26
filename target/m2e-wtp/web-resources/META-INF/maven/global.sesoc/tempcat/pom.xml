@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>global.sesoc</groupId>
-	<artifactId>sample</artifactId>
-	<name>sampleSpringMybatis</name>
-	<packaging>war</packaging>
+	<artifactId>tempcat</artifactId>
+	<name>tempcat</name>
+	<packaging>war</packaging>[p]
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.8</java-version>
