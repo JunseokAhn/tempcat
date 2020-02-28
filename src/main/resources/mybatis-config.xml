@@ -5,8 +5,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="global.sesoc.tempcat.vo.VO" alias="VO"/>
+		<typeAlias type="global.sesoc.tempcat.vo.Member" alias="Member"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/mapper.xml" />
+		<mapper resource="mapper/memberMapper.xml" />
 	</mappers>
 </configuration>

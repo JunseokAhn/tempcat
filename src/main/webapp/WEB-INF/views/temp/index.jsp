@@ -17,15 +17,13 @@
 		<!-- Header -->
 		<header id="header">
 			<h1>
-				<a href="index.html">Future Imperfect</a>
+				<a href="index.html">Blog Contents</a>
 			</h1>
 			<nav class="links">
 				<ul>
-					<li><a href="#">Lorem</a></li>
-					<li><a href="#">Ipsum</a></li>
-					<li><a href="#">Feugiat</a></li>
-					<li><a href="#">Tempus</a></li>
-					<li><a href="#">Adipiscing</a></li>
+					<li><a href="#">Intro</a></li>
+
+					<li><a href="#">Board</a></li>
 				</ul>
 			</nav>
 			<nav class="main">
@@ -70,16 +68,17 @@
 						</a></li>
 				</ul>
 			</section>
-
+		
 			<!-- Actions -->
 			<section>
 				<ul class="actions stacked">
-					<li><a href="#" class="button large fit">Log In</a></li>
+					<li><a href="<c:url value="/member/login"/>" class="button large fit">Log In</a></li>
+
 				</ul>
 			</section>
 
 		</section>
-
+		
 		<!-- Main -->
 		<div id="main">
 
