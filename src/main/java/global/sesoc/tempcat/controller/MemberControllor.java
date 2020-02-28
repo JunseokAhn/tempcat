@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.tempcat.dao.DAO;
 import global.sesoc.tempcat.vo.Member;
@@ -18,6 +19,8 @@ public class MemberControllor {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllor.class);
 	boolean res;
+	int intres;
+	String stres;
 	@Autowired
 	private DAO dao;
 
@@ -42,9 +45,23 @@ public class MemberControllor {
 	public String index() {
 		return "temp/index";
 	}
-	
+
 	@GetMapping(value = "signup")
 	public String signup() {
 		return "member/signup";
+	}
+
+	@ResponseBody
+	@PostMapping(value = "signup")
+	public String signup2(Member member) {
+		System.out.println(member);
+		res = dao.checkId(member);
+		if (res) {
+			stres = "이미 아이디가 존재합니다";
+			return stres;
+		}
+		stres = dao.signup(member);
+		logger.debug(stres);
+		return stres;
 	}
 }

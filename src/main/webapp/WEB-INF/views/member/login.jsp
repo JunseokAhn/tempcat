@@ -80,7 +80,7 @@
 		</section>
 	</div>
 	<div style="text-align: center">
-		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 75%; height: 150%">
+		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 75%;">
 			<br>
 			<br>
 			<br>

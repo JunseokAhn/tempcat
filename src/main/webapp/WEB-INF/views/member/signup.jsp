@@ -80,25 +80,100 @@
 		</section>
 	</div>
 	<div style="text-align: center">
-		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 75%;">
+		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 75%; height: 150%;">
 			<br>
 			<br>
 			<br>
-				<form id="signupform" action="login" method="post">
-				아이디 <input>
-				<br>비밀번호 <input>
-				<br>비밀번호 재입력<input >
-				<br>이름 <input >
-				<br>닉네임 <input>
-			
+			<form id="signupform" action="signup" method="post">
+				<div style="position: absolute; text-align: right; margin: 0 auto;">
+					<span>아이디</span>
+					<br>
+					<span>비밀번호</span>
+					<br>
+					<span>비밀번호 재입력</span>
+					<br>
+					<span>이름</span>
+					<br>
+					<span>닉네임</span>
+					<br>
+					<span>이메일</span>
+				</div>
+				<div style="position: static;">
+					<input id="id" name="id" placeholder="ID">
+					<br>
+
+					<input id="pw" name="pw">
+					<br>
+					<input id="pw2">
+					<br>
+					<input id="nam" name="nam">
+					<br>
+					<input id="nickname" name="nickname">
+					<br>
+					<input id="email1">
+					@
+					<input id="email2">
+				</div>
+				<span id="id-check" style="font-size: 75%; color: red;"></span>
+				<span id="pw-check" style="font-size: 75%; color: red;"></span>
+				<input id="signup" type="button" value="SIGN UP">
 			</form>
-			
-			
+
+
 		</div>
 	</div>
 	<script type="text/javascript">
-        $('#signup').on('click', function () {
+        var flag = true;
+        var id, pw, pw2, nam, nickname;
+        
+        $('#id').on('keyup', function () {
+            //유효성검사
+            id = document.getElementById('id')
+            if(id.value.length > 15){
+                $('#id-check').html('아이디는 15자리 이하여야입니다.')
+                flag = false;
+            }
             
+        })
+        $('#id').on('keydown', function () {
+            //유효성검사
+            id = document.getElementById('id')
+            if(id.value.length < 16){
+                $('#id-check').html('');
+                flag = true;
+            }
+            
+        })
+
+        $('#signup').on('click', function () {
+            id = document.getElementById('id');
+            pw = document.getElementById('pw');
+            pw2 = document.getElementById('pw2');
+            //pw2유효성
+            nam = document.getElementById('nam');
+            console.log(nam.value)
+            nickname = document.getElementById('nickname');
+            email1 = document.getElementById('email1').value;
+            email2 = document.getElementById('email2').value;
+            email = email1 + '@' + email2;
+            $.ajax({
+                url : 'signup',
+                data : {
+                    id : id.value,
+                    pw : pw.value,
+                    name : nam.value,
+                    nickname : nickname.value,
+                    email : email
+                },
+                type : 'post',
+                success : function (res) {
+                    location.href = "../index";
+                },
+                error : function (res) {
+                    alert(JSON.stringify(res));
+                }
+            })
+
         })
     </script>
 
