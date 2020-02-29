@@ -1,5 +1,7 @@
 package global.sesoc.tempcat.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import global.sesoc.tempcat.dao.DAO;
+import global.sesoc.tempcat.dao.MemberDao;
 import global.sesoc.tempcat.vo.Member;
 
 @Controller
@@ -22,23 +24,35 @@ public class MemberControllor {
 	int intres;
 	String stres;
 	@Autowired
-	private DAO dao;
+	private MemberDao dao;
 
 	@GetMapping(value = "login")
 	public String login() {
 		return "member/login";
 	}
 
+	@ResponseBody
 	@PostMapping(value = "login")
-	public String login2(String id, String pw) {
+	public String login2(String id, String pw, HttpSession session) {
 		logger.debug("login 정보 아이디: {} 비밀번호 : {}", id, pw);
 
 		Member member = new Member();
 		member.setId(id);
 		member.setPw(pw);
 		res = dao.checkId(member);
-		dao.login(member);
-		return "temp/index";
+		if (!res) {
+			stres = "checkId error";
+			logger.debug(stres);
+			return stres;
+		} else {
+			stres = dao.login(member);
+			if (stres.equals("login success")) {
+				session.setAttribute("id", member.getId());
+				session.setAttribute("nickname", member.getNickname());
+			}
+			logger.debug(stres);
+			return stres;
+		}
 	}
 
 	@GetMapping(value = "index")

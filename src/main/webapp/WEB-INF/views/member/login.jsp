@@ -88,35 +88,62 @@
 				<input id="id" type="text" name="id" placeholder="ID" width="50%">
 				<input id="pw" type="text" name="pw" placeholder="PASSWORD" width="50%">
 				<input id="login" type="button" value="LOG IN">
-				<input id="signup" type="button" value="SIGN UP" onclick="signup()">
+				<input id="signup" type="button" value="SIGN UP" onclick='signup()'>
+				<div id="error" style="font-size: 75%; color: red;"></div>
 			</form>
 		</div>
 	</div>
 	<script type="text/javascript">
-        $('#login').on('click', function () {
-            var flag = true;
-            var id = document.getElementById('id')
-            var pw = document.getElementById('pw')
-            alert('login')
-            //아이디입력했는지
-            if(!id.value.length > 0){
-                alert('아이디를 입력해주세요')
-                id.focus();
-                return false;
-            }
-            //비밀번호입력했는지
-            if(!pw.value.length > 0){
-                alert('비밀번호를 입력해주세요')
-                pw.focus();
-                return false;
-            }
-            document.getElementById('loginform').submit();
-        })
-        
-        function signup(){
-        	location.href='signup'
-        }
-    </script>
+		$('#login').on('click', function() {
+			var flag = true;
+			var id = document.getElementById('id')
+			var pw = document.getElementById('pw')
+
+			//아이디입력했는지
+			if (!id.value.length > 0) {
+				alert('아이디를 입력해주세요')
+				id.focus();
+				return false;
+			}
+			//비밀번호입력했는지
+			if (!pw.value.length > 0) {
+				alert('비밀번호를 입력해주세요')
+				pw.focus();
+				return false;
+			}
+			$.ajax({
+				url : 'login',
+				data : {
+					id : id.value,
+					pw : pw.value
+				},
+				type : 'post',
+				success : function(res) {
+					if (res == 'checkId error') {
+						$('#error').html('존재하지 않는 아이디입니다.')
+						id.focus();
+					}
+					if (res == 'login error') {
+						$('#error').html('비밀번호가 올바르지 않습니다.')
+						pw.focus();
+					}
+					if (res == 'login success') {
+						location.href = '../index'
+					}
+
+				},
+				error : function(res) {
+					alert('알 수 없는 오류발생 : 유형2')
+				}
+			})
+
+		})
+
+		//document.getElementById('loginform').submit();
+		function signup() {
+			location.href = 'signup';
+		}
+	</script>
 
 	<!-- Scripts -->
 

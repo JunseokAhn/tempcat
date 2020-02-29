@@ -10,7 +10,7 @@ import global.sesoc.tempcat.vo.Member;
  * 개인정보 관련 DB처리를 담당
  */
 @Repository
-public class DAO {
+public class MemberDao {
 	@Autowired
 	private SqlSession session;
 	boolean res;
@@ -29,9 +29,18 @@ public class DAO {
 		return true;
 	}
 
-	public void login(Member member) {
+	public String login(Member member) {
 		// TODO Auto-generated method stub
-
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		member = mapper.login(member);
+		
+		if (member == null)
+			stres = "login error";
+		else {
+			stres = "login success";
+			mapper.logindate(member);
+		}
+		return stres;
 	}
 
 	public String signup(Member member) {

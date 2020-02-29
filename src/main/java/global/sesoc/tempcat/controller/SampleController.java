@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import global.sesoc.tempcat.dao.DAO;
+import global.sesoc.tempcat.dao.MemberDao;
 
 @Controller
 public class SampleController {
@@ -16,7 +16,7 @@ public class SampleController {
     private static final Logger logger = LoggerFactory.getLogger(SampleController.class);
 
     @Autowired
-    private DAO dao;
+    private MemberDao memberDao;
 
     @GetMapping(value = "single")
     public String single() {
