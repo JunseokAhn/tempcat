@@ -80,7 +80,7 @@
 		</section>
 	</div>
 	<div style="text-align: center">
-		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 55%; height: 370px; max-width: 850px; min-width: 579px; padding-left: 100px; padding-right: 100px;">
+		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 55%; height: 380px; max-width: 850px; min-width: 579px; padding-left: 100px; padding-right: 100px;">
 			<br>
 			<br>
 			<br>

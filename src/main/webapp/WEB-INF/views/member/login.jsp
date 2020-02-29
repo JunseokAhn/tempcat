@@ -88,7 +88,7 @@
 				<input id="id" type="text" name="id" placeholder="ID" width="50%">
 				<input id="pw" type="text" name="pw" placeholder="PASSWORD" width="50%">
 				<input id="login" type="button" value="LOG IN">
-				<input id="signup" type="button" value="SIGN UP">
+				<input id="signup" type="button" value="SIGN UP" onclick="signup()">
 			</form>
 		</div>
 	</div>
@@ -112,6 +112,10 @@
             }
             document.getElementById('loginform').submit();
         })
+        
+        function signup(){
+        	location.href='signup'
+        }
     </script>
 
 	<!-- Scripts -->

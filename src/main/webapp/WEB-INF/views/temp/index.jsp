@@ -68,17 +68,17 @@
 						</a></li>
 				</ul>
 			</section>
-		
+
 			<!-- Actions -->
 			<section>
 				<ul class="actions stacked">
 					<li><a href="<c:url value="/member/login"/>" class="button large fit">Log In</a></li>
-
+					<li><a href="<c:url value="/member/signup"/>" class="button large fit">Sign Up</a></li>
 				</ul>
 			</section>
 
 		</section>
-		
+
 		<!-- Main -->
 		<div id="main">
 
@@ -511,10 +511,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<img src="<c:url value="/resources/images/logo.jpg"/>" alt="" />
 				</a>
 				<header>
-					<h2>Future Imperfect</h2>
+					<h2>Welcom to Tempcat</h2>
 					<p>
-						Another fine responsive site template by
-						<a href="http://html5up.net">HTML5 UP</a>
+						Multipurpose responsive site created by
+						<a href="https://github.com/JunseokAhn">アンジュンソク</a>
 					</p>
 				</header>
 			</section>
