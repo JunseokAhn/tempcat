@@ -57,7 +57,7 @@ public class MemberControllor {
 		System.out.println(member);
 		res = dao.checkId(member);
 		if (res) {
-			stres = "이미 아이디가 존재합니다";
+			stres = "exist id";
 			return stres;
 		}
 		stres = dao.signup(member);

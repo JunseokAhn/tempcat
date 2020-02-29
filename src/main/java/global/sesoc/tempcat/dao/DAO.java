@@ -41,9 +41,9 @@ public class DAO {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		intres = mapper.signup(member);
 		if (intres > 0)
-			stres = "insert 성공";
+			stres = "insert success";
 		else {
-			stres = "insert 실패";
+			stres = "insert error";
 		}
 		return stres;
 	}
