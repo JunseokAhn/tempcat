@@ -80,12 +80,12 @@
 		</section>
 	</div>
 	<div style="text-align: center">
-		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 75%; height: 150%;">
+		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 55%; height: 370px; max-width: 850px; min-width: 579px; padding-left: 100px; padding-right: 100px;">
 			<br>
 			<br>
 			<br>
 			<form id="signupform" action="signup" method="post">
-				<div style="position: absolute; text-align: right; margin: 0 auto;">
+				<div style="text-align: right; float: left;">
 					<span>아이디</span>
 					<br>
 					<span>비밀번호</span>
@@ -98,10 +98,9 @@
 					<br>
 					<span>이메일</span>
 				</div>
-				<div style="position: static;">
+				<div style="float: right;" align="left">
 					<input id="id" name="id" placeholder="ID">
 					<br>
-
 					<input id="pw" name="pw">
 					<br>
 					<input id="pw2">
@@ -113,10 +112,12 @@
 					<input id="email1">
 					@
 					<input id="email2">
+					<br>
+					<input id="signup" type="button" value="SIGN UP">
 				</div>
 				<span id="id-check" style="font-size: 75%; color: red;"></span>
 				<span id="pw-check" style="font-size: 75%; color: red;"></span>
-				<input id="signup" type="button" value="SIGN UP">
+
 			</form>
 
 
@@ -169,17 +170,19 @@
 				success : function(res) {
 					alert(res)
 					if (res == 'exist id') {
-
+						alert('이미 아이디가 존재합니다.');
+						id.focus();
 					}
 					if (res == 'insert error') {
-
+						alert('알 수 없는 에러 발생, 오류유형 1.');
 					}
 					if (res == 'insert success') {
 						location.href = "../index";
 					}
 				},
 				error : function(res) {
-					alert(JSON.stringify(res));
+					alert('알 수 없는 에러 발생, 오류유형 2.');
+					//alert(JSON.stringify(res));
 				}
 			})
 
