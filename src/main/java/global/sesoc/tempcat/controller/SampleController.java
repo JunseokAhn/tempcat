@@ -16,7 +16,7 @@ public class SampleController {
     private static final Logger logger = LoggerFactory.getLogger(SampleController.class);
 
     @Autowired
-    private MemberDao memberDao;
+    private MemberDao dao;
 
     @GetMapping(value = "single")
     public String single() {

@@ -15,9 +15,11 @@
 			<li><a href="<c:url value="/board/main"/>">BOARD</a></li>
 		</ul>
 	</nav>
-	
-<hr><hr>
 
+	<hr>
+	<hr>
+
+	<a href="<c:url value="index"/>">index</a>
 	<a href="<c:url value="/member/login"/>">LOG IN</a>
 
 

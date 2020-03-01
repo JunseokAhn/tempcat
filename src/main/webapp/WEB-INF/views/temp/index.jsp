@@ -71,10 +71,18 @@
 
 			<!-- Actions -->
 			<section>
-				<ul class="actions stacked">
-					<li><a href="<c:url value="/member/login"/>" class="button large fit">Log In</a></li>
-					<li><a href="<c:url value="/member/signup"/>" class="button large fit">Sign Up</a></li>
-				</ul>
+				<c:if test="${sessionScope.id==null}">
+					<ul class="actions stacked">
+						<li><a href="<c:url value="/member/login"/>" class="button large fit">Log In</a></li>
+						<li><a href="<c:url value="/member/signup"/>" class="button large fit">Sign Up</a></li>
+					</ul>
+				</c:if>
+				<c:if test="${sessionScope.id!=null}">
+					<ul class="actions stacked">
+						<li><a href="<c:url value="/member/logout"/>" class="button large fit">Log Out</a></li>
+						
+					</ul>
+				</c:if>
 			</section>
 
 		</section>

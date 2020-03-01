@@ -87,14 +87,14 @@
 			<form id="loginform" action="login" method="post">
 				<input id="id" type="text" name="id" placeholder="ID" width="50%">
 				<input id="pw" type="text" name="pw" placeholder="PASSWORD" width="50%">
-				<input id="login" type="button" value="LOG IN">
-				<input id="signup" type="button" value="SIGN UP" onclick='signup()'>
+				<input id="loginBT" type="button" value="LOG IN" onclick="login()">
+				<input id="signupBT" type="button" value="SIGN UP" onclick='signup()'>
 				<div id="error" style="font-size: 75%; color: red;"></div>
 			</form>
 		</div>
 	</div>
 	<script type="text/javascript">
-		$('#login').on('click', function() {
+		function login() {
 			var flag = true;
 			var id = document.getElementById('id')
 			var pw = document.getElementById('pw')
@@ -136,8 +136,7 @@
 					alert('알 수 없는 오류발생 : 유형2')
 				}
 			})
-
-		})
+		}
 
 		//document.getElementById('loginform').submit();
 		function signup() {

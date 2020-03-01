@@ -55,6 +55,12 @@ public class MemberControllor {
 		}
 	}
 
+	@GetMapping(value = "logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/member/index";
+	}
+
 	@GetMapping(value = "index")
 	public String index() {
 		return "temp/index";

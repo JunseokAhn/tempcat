@@ -113,7 +113,7 @@
 					@
 					<input id="email2">
 					<br>
-					<input id="signup" type="button" value="SIGN UP">
+					<input id="signupBT" type="button" value="SIGN UP" onclick="signup()">
 				</div>
 				<span id="id-check" style="font-size: 75%; color: red;"></span>
 				<span id="pw-check" style="font-size: 75%; color: red;"></span>
@@ -146,7 +146,7 @@
 
 		})
 
-		$('#signup').on('click', function() {
+		function signup() {
 			id = document.getElementById('id');
 			pw = document.getElementById('pw');
 			pw2 = document.getElementById('pw2');
@@ -185,8 +185,7 @@
 					//alert(JSON.stringify(res));
 				}
 			})
-
-		})
+		}
 	</script>
 
 	<!-- Scripts -->
