@@ -1,5 +1,7 @@
 package global.sesoc.tempcat.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -23,6 +25,9 @@ public class MemberControllor {
 	boolean res;
 	int intres;
 	String stres;
+	HashMap<String, String> map;
+	String nickname;
+
 	@Autowired
 	private MemberDao dao;
 
@@ -45,10 +50,15 @@ public class MemberControllor {
 			logger.debug(stres);
 			return stres;
 		} else {
-			stres = dao.login(member);
+			map = dao.login(member);
+			stres = map.get("stres");
+			nickname = map.get("nickname");
+			id = map.get("id");
+			
 			if (stres.equals("login success")) {
-				session.setAttribute("id", member.getId());
-				session.setAttribute("nickname", member.getNickname());
+				session.setAttribute("id", id);
+				session.setAttribute("nickname", nickname);
+				logger.debug("id : {}, nickname : {}", id, nickname);
 			}
 			logger.debug(stres);
 			return stres;
@@ -83,5 +93,10 @@ public class MemberControllor {
 		stres = dao.signup(member);
 		logger.debug(stres);
 		return stres;
+	}
+
+	@GetMapping(value = "profile")
+	public String profile() {
+		return "member/profile";
 	}
 }

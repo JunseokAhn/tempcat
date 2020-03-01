@@ -79,8 +79,8 @@
 				</c:if>
 				<c:if test="${sessionScope.id!=null}">
 					<ul class="actions stacked">
+						<li><a href="<c:url value="/member/profile"/>" class="button large fit">Profile</a></li>
 						<li><a href="<c:url value="/member/logout"/>" class="button large fit">Log Out</a></li>
-						
 					</ul>
 				</c:if>
 			</section>

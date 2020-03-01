@@ -1,5 +1,7 @@
 package global.sesoc.tempcat.dao;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,18 +31,22 @@ public class MemberDao {
 		return true;
 	}
 
-	public String login(Member member) {
+	public HashMap<String, String> login(Member member) {
 		// TODO Auto-generated method stub
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		member = mapper.login(member);
-		
+		HashMap<String, String> map = new HashMap<>();
+
 		if (member == null)
 			stres = "login error";
 		else {
 			stres = "login success";
 			mapper.logindate(member);
 		}
-		return stres;
+		map.put("stres", stres);
+		map.put("id", member.getId());
+		map.put("nickname", member.getNickname());
+		return map;
 	}
 
 	public String signup(Member member) {
