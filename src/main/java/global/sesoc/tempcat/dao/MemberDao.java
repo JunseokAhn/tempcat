@@ -45,6 +45,7 @@ public class MemberDao {
 		}
 		map.put("stres", stres);
 		map.put("id", member.getId());
+		map.put("name", member.getName());
 		map.put("nickname", member.getNickname());
 		return map;
 	}

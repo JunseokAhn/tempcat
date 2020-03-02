@@ -4,9 +4,9 @@
 <html>
 <head>
 <title>TempCat</title>
-<script src="<c:url value="/resources/js/jquery-3.4.1.js/"/>"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<script src="<c:url value="/resources/js/jquery-3.4.1.js/"/>"></script>
 <link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css"/>" />
 </head>
 <body class="is-preload">
@@ -79,104 +79,97 @@
 
 		</section>
 	</div>
-	<!-- Post -->
-	<article class="post">
-		<header>
-			<div class="title">
-				<h2>
-					<a href="single.html">Magna sed adipiscing</a>
-				</h2>
-				<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
-			</div>
-			<div class="meta">
-				<time class="published" datetime="2015-11-01">November 1, 2015</time>
-				<a href="#" class="author">
-					<span class="name">Jane Doe</span>
-					<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-				</a>
-			</div>
-		</header>
-		<a href="single.html" class="image featured">
-			<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
-		</a>
-		<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-		<footer>
-			<ul class="actions">
-				<li><a href="single.html" class="button large">Continue Reading</a></li>
-			</ul>
-			<ul class="stats">
-				<li><a href="#">General</a></li>
-				<li><a href="#" class="icon solid fa-heart">28</a></li>
-				<li><a href="#" class="icon solid fa-comment">128</a></li>
-			</ul>
-		</footer>
-	</article>
-	<!-- Post -->
-	<article class="post">
-		<header>
-			<div class="title">
-				<h2>
-					<a href="single.html">Magna sed adipiscing</a>
-				</h2>
-				<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
-			</div>
-			<div class="meta">
-				<time class="published" datetime="2015-11-01">November 1, 2015</time>
-				<a href="#" class="author">
-					<span class="name">Jane Doe</span>
-					<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-				</a>
-			</div>
-		</header>
-		<a href="single.html" class="image featured">
-			<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
-		</a>
-		<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-		<footer>
-			<ul class="actions">
-				<li><a href="single.html" class="button large">Continue Reading</a></li>
-			</ul>
-			<ul class="stats">
-				<li><a href="#">General</a></li>
-				<li><a href="#" class="icon solid fa-heart">28</a></li>
-				<li><a href="#" class="icon solid fa-comment">128</a></li>
-			</ul>
-		</footer>
-	</article>
-	<div style="text-align: center; padding-left: 10%;">
-		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 55%; height: 380px; max-width: 850px; min-width: 579px; padding-left: 100px; padding-right: 100px;">
-			<br>
-			<br>
-			<br>
-			<div style="text-align: right; float: left;">
-				<span>Your Profile</span>
+	<div style="position: relative; float: left;">
+		<!-- Post -->
+		<article class="post" style="position: relative; width: 45%; display: inline-block;">
+			<header>
+				<div class="title">
+					<h2>
+						<a href=""> My profile </a>
+						<img id="contextBT" style="width: 4%; min-width: 18px;" src="<c:url value="/resources/images/down.png"/>" onclick="contexting()">
+					</h2>
+					<p id="context"></p>
+				</div>
+				<div class="meta">
+					<time class="published" datetime="2015-11-01">Sign UP - 2020. 03. 01.</time>
+					<a href="#" class="author">
+						<span class="name">${sessionScope.name}</span>
+						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+					</a>
 
-			</div>
-			<div style="float: right;" align="left">
-				<br>
-				<br>
-				<br>
-				<span>Nick Name</span>${sessionScope.nickname}
-			</div>
-		</div>
+				</div>
+			</header>
+			<%-- <a href="single.html" class="image featured">
+				<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
+			</a> --%>
+
+			<footer>
+				<ul class="stats">
+					<li><a href="#">NICK NAME</a></li>
+					<li><a href="#">${sessionScope.nickname}</a></li>
+				</ul>
+			</footer>
+			<span class="name">${sessionScope.nickname}</span>
+			<ul class="actions">
+				<li><a href="single.html" class="button large">Change</a></li>
+			</ul>
+			<footer>
+				<ul class="actions">
+					<li><a href="single.html" class="button large">My Information</a></li>
+				</ul>
+
+			</footer>
+		</article>
+		<!-- Post -->
+		<article class="post" style="position: relative; float: right; width: 45%;">
+			<header>
+				<div class="title">
+					<h2>
+						<a href="single.html">Lately Activity</a>
+					</h2>
+					<p>your lastest 3month activity</p>
+				</div>
+				<div class="meta">
+					<time class="published" datetime="2015-11-01">November 1, 2015</time>
+					<a href="#" class="author">
+						<span class="name">Jane Doe</span>
+						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+					</a>
+				</div>
+			</header>
+			<p>sdafdsa</p>
+			<p>sadfsda</p>
+			<footer>
+				<ul class="actions">
+					<li><a href="single.html" class="button large">View My Posts</a></li>
+					<li><a href="single.html" class="button large">View My Comments</a></li>
+					<li><a href="single.html" class="button large">Continue Reading</a></li>
+				</ul>
+				<ul class="stats">
+					<li><a href="#">General</a></li>
+					<li><a href="#" class="icon solid fa-heart">28</a></li>
+					<li><a href="#" class="icon solid fa-comment">128</a></li>
+				</ul>
+			</footer>
+		</article>
 	</div>
-	<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 55%; height: 380px; max-width: 850px; min-width: 579px; padding-left: 100px; padding-right: 100px;">
-		<br>
-		<br>
-		<br>
-		<div style="text-align: right; float: left;">
-			<span>아이디</span>
-			<br>
-		</div>
-		<div style="float: right;" align="left">
-			<input id="id" name="id" placeholder="ID">
-			<br>
-		</div>
-	</div>
-	</div>
+
 	<script type="text/javascript">
-		
-	</script>
+        function contexting () {
+            $('#context')
+                    .html('비밀번호를 변경하거나 개인정보를 변경할 수 있습니다. 주기적인 비밀번호 변경을 통해 개인정보를 안전하게 보호하세요.');
+            $('#contextBT')
+                    .attr('src', '<c:url value="/resources/images/up.png"/>')
+                    .attr('onclick', 'contexted');
+        }
+        function contexted () {
+            alert(1)
+            $('#context').html('');
+            $('#contextBT')
+                    .attr('src', '<c:url value="/resources/images/down.png"/>')
+                    .attr('onclick', 'contexting');
+        }
+    </script>
 
 	<!-- Scripts -->
 

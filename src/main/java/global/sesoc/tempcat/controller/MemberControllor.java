@@ -30,6 +30,7 @@ public class MemberControllor {
 
 	@Autowired
 	private MemberDao dao;
+	private String name;
 
 	@GetMapping(value = "login")
 	public String login() {
@@ -54,11 +55,12 @@ public class MemberControllor {
 			stres = map.get("stres");
 			nickname = map.get("nickname");
 			id = map.get("id");
-			
+			name = map.get("name");
 			if (stres.equals("login success")) {
 				session.setAttribute("id", id);
 				session.setAttribute("nickname", nickname);
-				logger.debug("id : {}, nickname : {}", id, nickname);
+				session.setAttribute("name", name);
+				logger.debug("id : {}, name : {}, nickname : {}", id, name, nickname);
 			}
 			logger.debug(stres);
 			return stres;
