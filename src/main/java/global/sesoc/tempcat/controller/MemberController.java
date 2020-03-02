@@ -19,9 +19,9 @@ import global.sesoc.tempcat.vo.Member;
 
 @Controller
 @RequestMapping("member")
-public class MemberControllor {
+public class MemberController {
 
-	private static final Logger logger = LoggerFactory.getLogger(MemberControllor.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	boolean res;
 	int intres;
 	String stres;

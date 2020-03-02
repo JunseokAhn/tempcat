@@ -160,14 +160,13 @@
                     .html('비밀번호를 변경하거나 개인정보를 변경할 수 있습니다. 주기적인 비밀번호 변경을 통해 개인정보를 안전하게 보호하세요.');
             $('#contextBT')
                     .attr('src', '<c:url value="/resources/images/up.png"/>')
-                    .attr('onclick', 'contexted');
+                    .attr('onclick', 'contexted()');
         }
         function contexted () {
-            alert(1)
             $('#context').html('');
             $('#contextBT')
                     .attr('src', '<c:url value="/resources/images/down.png"/>')
-                    .attr('onclick', 'contexting');
+                    .attr('onclick', 'contexting()');
         }
     </script>
 

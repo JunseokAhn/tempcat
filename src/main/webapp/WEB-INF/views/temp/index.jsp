@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
-
 <html>
 <head>
 <title>TempCat</title>
@@ -22,8 +21,8 @@
 			<nav class="links">
 				<ul>
 					<li><a href="#">Intro</a></li>
-
-					<li><a href="#">Board</a></li>
+					<li><a href="<c:url value="/board/noticeboardlist"/>">Notice Board</a></li>
+					<li><a href="<c:url value="/board/freeboardlist"/>">Free Board</a></li>
 				</ul>
 			</nav>
 			<nav class="main">
