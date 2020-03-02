@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.tempcat.vo.Member;
+import global.sesoc.tempcat.vo.NoticeBoard;
 
 /**
  * 개인정보 관련 DB처리를 담당

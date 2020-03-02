@@ -4,11 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="global.sesoc.tempcat.vo.VO" alias="VO"/>
-		<typeAlias type="global.sesoc.tempcat.vo.Member" alias="Member"/>
+		<typeAlias type="global.sesoc.tempcat.vo.VO" alias="VO" />
+		<typeAlias type="global.sesoc.tempcat.vo.Member"
+			alias="Member" />
+		<typeAlias type="global.sesoc.tempcat.vo.NoticeBoard"
+			alias="Notice" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/mapper.xml" />
 		<mapper resource="mapper/memberMapper.xml" />
+		<mapper resource="mapper/boardMapper.xml"/>
 	</mappers>
 </configuration>

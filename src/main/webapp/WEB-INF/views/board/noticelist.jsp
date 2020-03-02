@@ -21,8 +21,8 @@
 			<nav class="links">
 				<ul>
 					<li><a href="#">Intro</a></li>
-					<li><a href="<c:url value="/board/noticeboardlist"/>">Notice Board</a></li>
-					<li><a href="<c:url value="/board/freeboardlist"/>">Free Board</a></li>
+					<li><a href="<c:url value="/board/noticelist"/>">Notice Board</a></li>
+					<li><a href="<c:url value="/board/freelist"/>">Free Board</a></li>
 				</ul>
 			</nav>
 			<nav class="main">
@@ -88,14 +88,16 @@
 
 		<!-- Main -->
 		<div id="main">
-			<h2 style="text-align: center;">Notice Board</h2>
-			<c:if test="${sessionScope.id=='1'}">
-				<ul class="actions">
-					<li><a href="noticewrite" class="button large">글쓰기</a></li>
-					<li><a href="#" class="button large">Large</a></li>
-				</ul>
-			</c:if>
-			<h4>Alternate</h4>
+			<div style="margin-top: 50px;">
+				<h2 style="text-align: center;">Notice Board</h2>
+				<div style="position:; margin: 0 auto;">
+					<c:if test="${sessionScope.id=='1'}">
+						<input type="button" class="button large" value="Write" onclick="noticewrite()">
+					</c:if>
+				</div>
+			</div>
+			<hr>
+
 			<div class="table-wrapper">
 				<table class="alt">
 					<thead>
@@ -170,15 +172,17 @@
 					</tbody>
 
 				</table>
+
 				<ul class="actions pagination">
-					<li><a href="" class="disabled button large previous">Previous Page</a></li>
-					<li><a href="#" class="button fit">1</a></li>
-					<li><a href="#" class="button fit">2</a></li>
-					<li><a href="#" class="button fit">3</a></li>
-					<li><a href="#" class="button fit">4</a></li>
-					<li><a href="#" class="button fit">5</a></li>
-					<li><a href="#" class="button large next">Next Page</a></li>
+					<li style="margin-left: 20px;"><a href="" class="disabled button large previous">Previous Page</a></li>
+					<li style="margin-left: 20px;"><a href="#" class="button fit">1</a></li>
+					<li style="margin-left: 20px;"><a href="#" class="button fit">2</a></li>
+					<li style="margin-left: 20px;"><a href="#" class="button fit">3</a></li>
+					<li style="margin-left: 20px;"><a href="#" class="button fit">4</a></li>
+					<li style="margin-left: 20px;"><a href="#" class="button fit">5</a></li>
+					<li style="margin-left: 20px;"><a href="#" class="button large next">Next Page</a></li>
 				</ul>
+
 			</div>
 
 
@@ -408,18 +412,23 @@
 							<span class="label">Email</span>
 						</a></li>
 				</ul>
-				<p class="copyright">
+				<!-- <p class="copyright">
 					&copy; Untitled. Design:
 					<a href="http://html5up.net">HTML5 UP</a>
 					. Images:
 					<a href="http://unsplash.com">Unsplash</a>
 					.
-				</p>
+				</p> -->
 			</section>
 
 		</section>
 
 	</div>
+	<script type="text/javascript">
+        function noticewrite () {
+            location.href = 'noticewrite'
+        }
+    </script>
 
 	<!-- Scripts -->
 	<script src="<c:url value="/resources/assets/js/jquery.min.js"/>"></script>

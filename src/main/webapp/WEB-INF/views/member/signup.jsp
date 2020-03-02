@@ -94,7 +94,9 @@
 			<br>
 			<section>
 				<h3>Sign UP</h3>
+				<hr>
 				<br>
+
 				<form method="post" action="#">
 					<div class="row gtr-uniform">
 						<div class="col-6 col-12-xsmall">
@@ -114,7 +116,7 @@
 						<span id="pw-check" style="font-size: 75%; color: red;"></span>
 
 						<div class="col-6 col-12-xsmall">
-							<input type="text" name="id" id="id" value="" placeholder="E-Mail" />
+							<input type="text" name="email1" id="email1" placeholder="E-Mail" />
 						</div>
 
 						<div class="col-6 col-12-xsmall">
@@ -126,7 +128,7 @@
 								<option value="@sesoc.global">sesoc.global</option>
 							</select>
 						</div>
-						<div class="col-12"></div>
+						
 						<!-- 
 						<div class="col-4 col-12-small">
 							<input type="radio" id="demo-priority-low" name="demo-priority" checked>
@@ -194,7 +196,7 @@
             nickname = document.getElementById('nickname');
             email1 = document.getElementById('email1').value;
             email2 = document.getElementById('email2').value;
-            email = email1 + '@' + email2;
+            email = email1 + ''+ email2;
             $.ajax({
                 url : 'signup',
                 data : {

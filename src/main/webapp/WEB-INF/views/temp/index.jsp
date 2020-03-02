@@ -62,8 +62,8 @@
 							<p>Phasellus sed ultricies mi congue</p>
 						</a></li>
 					<li><a href="#">
-							<h3>Etiam sed consequat</h3>
-							<p>Porta lectus amet ultricies</p>
+							<h3>Send Request</h3>
+							<p>About the site or everything else.</p>
 						</a></li>
 				</ul>
 			</section>
@@ -202,7 +202,7 @@
 						<time class="published" datetime="2015-10-18">October 18, 2015</time>
 						<a href="#" class="author">
 							<span class="name">Jane Doe</span>
-							<img src="images/avatar.jpg" alt="" />
+							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 						</a>
 					</div>
 				</header>
@@ -502,52 +502,52 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 						<div class="row gtr-uniform">
 							<div class="col-12">
 								<span class="image fit">
-									<img src="images/pic02.jpg" alt="" />
+									<img src="<c:url value="/resources/images/pic02.jpg"/>" alt="" />
 								</span>
 							</div>
 							<div class="col-4">
 								<span class="image fit">
-									<img src="images/pic04.jpg" alt="" />
+									<img src="<c:url value="/resources/images/pic04.jpg"/>" alt="" />
 								</span>
 							</div>
 							<div class="col-4">
 								<span class="image fit">
-									<img src="images/pic05.jpg" alt="" />
+									<img src="<c:url value="/resources/images/pic05.jpg"/>" alt="" />
 								</span>
 							</div>
 							<div class="col-4">
 								<span class="image fit">
-									<img src="images/pic06.jpg" alt="" />
+									<img src="<c:url value="/resources/images/pic06.jpg"/>" alt="" />
 								</span>
 							</div>
 							<div class="col-4">
 								<span class="image fit">
-									<img src="images/pic06.jpg" alt="" />
+									<img src="i<c:url value="/resources/mages/pic06.jpg"/>" alt="" />
 								</span>
 							</div>
 							<div class="col-4">
 								<span class="image fit">
-									<img src="images/pic04.jpg" alt="" />
+									<img src="<c:url value="/resources/images/pic04.jpg"/>" alt="" />
 								</span>
 							</div>
 							<div class="col-4">
 								<span class="image fit">
-									<img src="images/pic05.jpg" alt="" />
+									<img src="<c:url value="/resources/images/pic05.jpg"/>" alt="" />
 								</span>
 							</div>
 							<div class="col-4">
 								<span class="image fit">
-									<img src="images/pic05.jpg" alt="" />
+									<img src="<c:url value="/resources/images/pic05.jpg"/>" alt="" />
 								</span>
 							</div>
 							<div class="col-4">
 								<span class="image fit">
-									<img src="images/pic06.jpg" alt="" />
+									<img src="<c:url value="/resources/images/pic06.jpg"/>" alt="" />
 								</span>
 							</div>
 							<div class="col-4">
 								<span class="image fit">
-									<img src="images/pic04.jpg" alt="" />
+									<img src="<c:url value="/resources/images/pic04.jpg"/>" alt="" />
 								</span>
 							</div>
 						</div>
@@ -555,14 +555,14 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 					<h4>Left &amp; Right</h4>
 					<p>
 						<span class="image left">
-							<img src="images/pic07.jpg" alt="" />
+							<img src="<c:url value="/resources/images/pic07.jpg"/>" alt="" />
 						</span>
 						Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac
 						adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.
 					</p>
 					<p>
 						<span class="image right">
-							<img src="images/pic04.jpg" alt="" />
+							<img src="<c:url value="/resources/images/pic04.jpg"/>" alt="" />
 						</span>
 						Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac
 						adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.

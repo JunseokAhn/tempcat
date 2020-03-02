@@ -79,93 +79,49 @@
 			</section>
 
 		</section>
-		<section>
-			<h3>Form</h3>
-			<form method="post" action="#">
-				<div class="row gtr-uniform">
-					<div class="col-6 col-12-xsmall">
-						<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-					</div>
-					<div class="col-6 col-12-xsmall">
-						<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-					</div>
-					<div class="col-12">
-						<select name="demo-category" id="demo-category">
-							<option value="">- Category -</option>
-							<option value="1">Manufacturing</option>
-							<option value="1">Shipping</option>
-							<option value="1">Administration</option>
-							<option value="1">Human Resources</option>
-						</select>
-					</div>
-					<div class="col-4 col-12-small">
-						<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-						<label for="demo-priority-low">Low</label>
-					</div>
-					<div class="col-4 col-12-small">
-						<input type="radio" id="demo-priority-normal" name="demo-priority">
-						<label for="demo-priority-normal">Normal</label>
-					</div>
-					<div class="col-4 col-12-small">
-						<input type="radio" id="demo-priority-high" name="demo-priority">
-						<label for="demo-priority-high">High</label>
-					</div>
-					<div class="col-6 col-12-small">
-						<input type="checkbox" id="demo-copy" name="demo-copy">
-						<label for="demo-copy">Email me a copy</label>
-					</div>
-					<div class="col-6 col-12-small">
-						<input type="checkbox" id="demo-human" name="demo-human" checked>
-						<label for="demo-human">Not a robot</label>
-					</div>
-					<div class="col-12">
-						<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-					</div>
-					<div class="col-12">
-						<ul class="actions">
-							<li><input type="submit" value="Send Message" /></li>
-							<li><input type="reset" value="Reset" /></li>
-						</ul>
-					</div>
-				</div>
-			</form>
-		</section>
 
 		<!-- Post -->
-		<article class="post">
-			<header>
-				<div class="title">
-					<h2 class="col-6 col-12-xsmall">
-						<p style="margin-bottom: 0px;">writing</p>
-						<input type="text" name="title" id="title" value="" placeholder="Title" />
-					</h2>
-				</div>
-				<div class="meta">
-					<time class="published" datetime="2015-11-01">November 1, 2015</time>
-					<a href="#" class="author">
-						<span class="name">${sessionScope.nickname}</span>
-						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-					</a>
-				</div>
-			</header>
-			<div class="col-12">
-				<textarea name="demo-message" id="demo-message" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px;"></textarea>
-			</div>
-			<footer>
-				<ul class="stats">
-					<li><a href="#">General</a></li>
-					<li><a href="#" class="icon solid fa-heart">28</a></li>
-					<li><a href="#" class="icon solid fa-comment">128</a></li>
-				</ul>
-			</footer>
-			<div class="col-12">
-				<ul class="actions">
-					<li><input type="submit" value="Send Message" /></li>
-					<li><input type="reset" value="Reset" /></li>
-				</ul>
-			</div>
-		</article>
+		<form id="sendpost" action="noticewrite" method="post">
+			<article class="post">
 
+				<header>
+					<div class="title">
+						<h2 class="col-6 col-12-xsmall">
+							<p style="margin-bottom: 0px;">writing</p>
+							<input type="text" name="title" id="title" placeholder="Title" />
+						</h2>
+					</div>
+					<div class="meta">
+						<time class="published" datetime="2015-11-01">November 1, 2015</time>
+						<a href="#" class="author">
+							<span class="name">${sessionScope.nickname}</span>
+							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+						</a>
+					</div>
+				</header>
+				<div class="col-12">
+					<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;"></textarea>
+				</div>
+				<footer>
+					<ul class="stats">
+						<li><a href="#">General</a></li>
+						<li><a href="#" class="icon solid fa-heart">28</a></li>
+						<li><a href="#" class="icon solid fa-comment">128</a></li>
+					</ul>
+				</footer>
+				<div class="col-12">
+					<ul class="actions">
+						<li><input type="button" value="Send Post" onclick="sendpost()" /></li>
+						<li><input type="reset" value="Reset" onclick="reset()" /></li>
+						<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+						<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
+						<li><a href="#" class="button icon solid fa-save">Icon</a></li>
+					</ul>
+
+				</div>
+
+			</article>
+		</form>
 	</div>
 
 	<!-- Footer -->
@@ -196,9 +152,37 @@
 		</p>
 	</section>
 	<script type="text/javascript">
+        var title = document.getElementById('title');
+        var contents = document.getElementById('contents');
+        
         function resize (obj) {
             obj.style.height = "1px";
             obj.style.height = ( 12 + obj.scrollHeight ) + "px";
+        }
+        function sendpost () {
+            
+            //제목x 혹은 20자이상, 컨텐츠2000자이상 혹은 내용x
+            if(title.value < 1){
+                alert('제목을 입력하세요')
+                return false;
+            }
+            if(title.value > 20){
+                alert('제목의 최대길이는 20자입니다')
+                return false;
+            }
+            if(contents.value < 1){
+                alert('내용을 입력해주세요')
+                return false;
+            }
+            if(contents.value > 2000){
+                alert('본문은 최대 2000자를 넘지 못합니다.');
+                return false;
+            }
+            $('#sendpost').submit();
+        }
+        function reset () {
+            title.value = '';
+            contents.value = '';
         }
     </script>
 
