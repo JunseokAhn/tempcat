@@ -10,21 +10,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import global.sesoc.tempcat.dao.MemberDao;
 
-@Controller @RequestMapping("board")
+@Controller
+@RequestMapping("board")
 public class BoardController {
 
-    private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
-    @Autowired
-    private MemberDao dao;
+	@Autowired
+	private MemberDao dao;
 
-    @GetMapping(value = "index")
-    public String index() {
-	return "temp/index";
-    }
-    
-    @GetMapping(value = "noticeboardlist")
-    public String noticeBoardList() {
-    	return "board/noticeboardlist";
-    }
+	@GetMapping(value = "index")
+	public String index() {
+		return "temp/index";
+	}
+
+	@GetMapping(value = "noticeboardlist")
+	public String noticeBoardList() {
+		return "board/noticeboardlist";
+	}
+
+	@GetMapping(value = "noticewrite")
+	public String noticeWrite() {
+		return "board/noticewrite";
+	}
 }

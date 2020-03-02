@@ -88,7 +88,13 @@
 
 		<!-- Main -->
 		<div id="main">
-
+			<h2 style="text-align: center;">Notice Board</h2>
+			<c:if test="${sessionScope.id=='1'}">
+				<ul class="actions">
+					<li><a href="noticewrite" class="button large">글쓰기</a></li>
+					<li><a href="#" class="button large">Large</a></li>
+				</ul>
+			</c:if>
 			<h4>Alternate</h4>
 			<div class="table-wrapper">
 				<table class="alt">
@@ -174,6 +180,45 @@
 					<li><a href="#" class="button large next">Next Page</a></li>
 				</ul>
 			</div>
+
+
+			<section>
+				<h3>Buttons</h3>
+				<ul class="actions">
+					<li><a href="#" class="button large">Large</a></li>
+					<li><a href="#" class="button">Default</a></li>
+					<li><a href="#" class="button small">Small</a></li>
+				</ul>
+				<ul class="actions fit">
+					<li><a href="#" class="button fit">Fit</a></li>
+					<li><a href="#" class="button fit">Fit</a></li>
+					<li><a href="#" class="button fit">Fit</a></li>
+				</ul>
+				<ul class="actions fit small">
+					<li><a href="#" class="button fit small">Fit + Small</a></li>
+					<li><a href="#" class="button fit small">Fit + Small</a></li>
+					<li><a href="#" class="button fit small">Fit + Small</a></li>
+				</ul>
+				<ul class="actions">
+					<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+					<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
+					<li><a href="#" class="button icon solid fa-save">Icon</a></li>
+				</ul>
+				<ul class="actions">
+					<li><span class="button disabled">Disabled</span></li>
+					<li><span class="button disabled icon solid fa-download">Disabled</span></li>
+				</ul>
+			</section>
+
+
+
+			<!-- -- -->
+			<!-- Pagination -->
+			<ul class="actions pagination">
+				<li><a href="" class="disabled button large previous">Previous Page</a></li>
+				<li><a href="#" class="button large next">Next Page</a></li>
+			</ul>
+
 		</div>
 
 		<!-- Sidebar -->

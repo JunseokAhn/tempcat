@@ -187,9 +187,9 @@
 					</ul>
 				</footer>
 			</article>
-
+<!-- __ -->
 			<!-- Post -->
-			<!--
+			
 							<article class="post">
 								<header>
 									<div class="title">
@@ -499,8 +499,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								</section>
 
 							</article>
-						-->
-
+						
+<!-- __ -->
 			<!-- Pagination -->
 			<ul class="actions pagination">
 				<li><a href="" class="disabled button large previous">Previous Page</a></li>

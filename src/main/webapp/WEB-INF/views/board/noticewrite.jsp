@@ -79,16 +79,66 @@
 			</section>
 
 		</section>
-
+		<section>
+			<h3>Form</h3>
+			<form method="post" action="#">
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+					</div>
+					<div class="col-12">
+						<select name="demo-category" id="demo-category">
+							<option value="">- Category -</option>
+							<option value="1">Manufacturing</option>
+							<option value="1">Shipping</option>
+							<option value="1">Administration</option>
+							<option value="1">Human Resources</option>
+						</select>
+					</div>
+					<div class="col-4 col-12-small">
+						<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+						<label for="demo-priority-low">Low</label>
+					</div>
+					<div class="col-4 col-12-small">
+						<input type="radio" id="demo-priority-normal" name="demo-priority">
+						<label for="demo-priority-normal">Normal</label>
+					</div>
+					<div class="col-4 col-12-small">
+						<input type="radio" id="demo-priority-high" name="demo-priority">
+						<label for="demo-priority-high">High</label>
+					</div>
+					<div class="col-6 col-12-small">
+						<input type="checkbox" id="demo-copy" name="demo-copy">
+						<label for="demo-copy">Email me a copy</label>
+					</div>
+					<div class="col-6 col-12-small">
+						<input type="checkbox" id="demo-human" name="demo-human" checked>
+						<label for="demo-human">Not a robot</label>
+					</div>
+					<div class="col-12">
+						<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+					</div>
+					<div class="col-12">
+						<ul class="actions">
+							<li><input type="submit" value="Send Message" /></li>
+							<li><input type="reset" value="Reset" /></li>
+						</ul>
+					</div>
+				</div>
+			</form>
+		</section>
 
 		<!-- Post -->
 		<article class="post">
 			<header>
 				<div class="title">
-					<h2>
-						<a href="#">Magna sed adipiscing</a>
+					<h2 class="col-6 col-12-xsmall">
+						<p style="margin-bottom: 0px;">writing</p>
+						<input type="text" name="title" id="title" value="" placeholder="Title" />
 					</h2>
-					<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
 				</div>
 				<div class="meta">
 					<time class="published" datetime="2015-11-01">November 1, 2015</time>
@@ -98,12 +148,9 @@
 					</a>
 				</div>
 			</header>
-			<span class="image featured">
-				<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
-			</span>
-
-			<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-			<p>Nunc quis dui scelerisque, scelerisque urna ut, dapibus orci. Sed vitae condimentum lectus, ut imperdiet quam. Maecenas in justo ut nulla aliquam sodales vel at ligula. Sed blandit diam odio, sed fringilla lectus molestie sit amet. Praesent eu tortor viverra lorem mattis pulvinar feugiat in turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce ullamcorper tellus sit amet mattis dignissim. Phasellus ut metus ligula. Curabitur nec leo turpis. Ut gravida purus quis erat pretium, sed pellentesque massa elementum. Fusce vestibulum porta augue, at mattis justo. Integer sed sapien fringilla, dapibus risus id, faucibus ante. Pellentesque mattis nunc sit amet tortor pellentesque, non placerat neque viverra.</p>
+			<div class="col-12">
+				<textarea name="demo-message" id="demo-message" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px;"></textarea>
+			</div>
 			<footer>
 				<ul class="stats">
 					<li><a href="#">General</a></li>
@@ -111,6 +158,12 @@
 					<li><a href="#" class="icon solid fa-comment">128</a></li>
 				</ul>
 			</footer>
+			<div class="col-12">
+				<ul class="actions">
+					<li><input type="submit" value="Send Message" /></li>
+					<li><input type="reset" value="Reset" /></li>
+				</ul>
+			</div>
 		</article>
 
 	</div>
@@ -142,8 +195,12 @@
 			.
 		</p>
 	</section>
-
-	</div>
+	<script type="text/javascript">
+        function resize (obj) {
+            obj.style.height = "1px";
+            obj.style.height = ( 12 + obj.scrollHeight ) + "px";
+        }
+    </script>
 
 	<!-- Scripts -->
 	<script src="<c:url value="/resources/assets/js/jquery.min.js"/>"></script>
