@@ -24,9 +24,9 @@ public class BoardController {
 		return "temp/index";
 	}
 
-	@GetMapping(value = "noticeboardlist")
+	@GetMapping(value = "noticelist")
 	public String noticeBoardList() {
-		return "board/noticeboardlist";
+		return "board/noticelist";
 	}
 
 	@GetMapping(value = "noticewrite")

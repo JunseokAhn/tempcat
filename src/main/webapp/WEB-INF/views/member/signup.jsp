@@ -12,7 +12,7 @@
 <body class="is-preload">
 
 	<!-- Wrapper -->
-	<div id="wrapper">
+	<div id="wrapper" style="">
 
 		<!-- Header -->
 		<header id="header">
@@ -80,113 +80,139 @@
 		</section>
 	</div>
 	<div style="text-align: center">
-		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 55%; height: 380px; max-width: 850px; min-width: 579px; padding-left: 100px; padding-right: 100px;">
+		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 55%; min-height: 430px; min-width: 579px; padding-left: 100px; padding-right: 100px;">
 			<br>
 			<br>
-			<br>
-			<form id="signupform" action="signup" method="post">
-				<div style="text-align: right; float: left;">
-					<span>아이디</span>
-					<br>
-					<span>비밀번호</span>
-					<br>
-					<span>비밀번호 재입력</span>
-					<br>
-					<span>이름</span>
-					<br>
-					<span>닉네임</span>
-					<br>
-					<span>이메일</span>
-				</div>
-				<div style="float: right;" align="left">
-					<input id="id" name="id" placeholder="ID">
-					<br>
-					<input id="pw" name="pw">
-					<br>
-					<input id="pw2">
-					<br>
-					<input id="nam" name="nam">
-					<br>
-					<input id="nickname" name="nickname">
-					<br>
-					<input id="email1">
-					@
-					<input id="email2">
-					<br>
-					<input id="signupBT" type="button" value="SIGN UP" onclick="signup()">
-				</div>
-				<span id="id-check" style="font-size: 75%; color: red;"></span>
-				<span id="pw-check" style="font-size: 75%; color: red;"></span>
+			<section>
+				<h3>Sign UP</h3>
+				<br>
+				<form method="post" action="#">
+					<div class="row gtr-uniform">
+						<div class="col-6 col-12-xsmall">
+							<input type="text" name="id" id="id" value="" placeholder="ID" />
 
-			</form>
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<input type="password" name="pw" id="pw" placeholder="PASSWORD" />
+							<input type="password" name="pw2" id="pw2" placeholder="PASSWORD2" />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<input type="text" name="id" id="id" value="" placeholder="ID" />
+						</div>
 
+						<div class="col-12">
+
+							<input type="email" name="demo-email" id="pw" value="" placeholder="PASSWORD" />
+							<select name="demo-category" id="email2">
+								<option value="">- Category -</option>
+								<option value="naver.com">naver.com</option>
+								<option value="google.com">google.com</option>
+								<option value="daum.net">daum.net</option>
+								<option value="sesoc.global">sesoc.global</option>
+							</select>
+						</div>
+						<div class="col-4 col-12-small">
+							<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+							<label for="demo-priority-low">Low</label>
+						</div>
+						<div class="col-4 col-12-small">
+							<input type="radio" id="demo-priority-normal" name="demo-priority">
+							<label for="demo-priority-normal">Normal</label>
+						</div>
+						<div class="col-4 col-12-small">
+							<input type="radio" id="demo-priority-high" name="demo-priority">
+							<label for="demo-priority-high">High</label>
+						</div>
+						<div class="col-6 col-12-small">
+							<input type="checkbox" id="demo-copy" name="demo-copy">
+							<label for="demo-copy">Email me a copy</label>
+						</div>
+						<div class="col-6 col-12-small">
+							<input type="checkbox" id="demo-human" name="demo-human" checked>
+							<label for="demo-human">Not a robot</label>
+						</div>
+						<div class="col-12">
+							<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+						</div>
+						<div class="col-12">
+							<ul class="actions">
+								<li><input id="signupBT" type="button" value="sign Up" onclick="signup()" /></li>
+								<li><input type="reset" value="Reset" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</section>
+
+			<span id="id-check" style="font-size: 75%; color: red;"></span>
+			<span id="pw-check" style="font-size: 75%; color: red;"></span>
 
 		</div>
 	</div>
 	<script type="text/javascript">
-		var flag = true;
-		var id, pw, pw2, nam, nickname;
+        var flag = true;
+        var id, pw, pw2, nam, nickname;
+        
+        $('#id').on('keyup', function () {
+            //유효성검사
+            id = document.getElementById('id')
+            if(id.value.length > 15){
+                $('#id-check').html('아이디는 15자리 이하여야입니다.')
+                flag = false;
+            }
+            
+        })
+        $('#id').on('keydown', function () {
+            //유효성검사
+            id = document.getElementById('id')
+            if(id.value.length < 16){
+                $('#id-check').html('');
+                flag = true;
+            }
+            
+        })
 
-		$('#id').on('keyup', function() {
-			//유효성검사
-			id = document.getElementById('id')
-			if (id.value.length > 15) {
-				$('#id-check').html('아이디는 15자리 이하여야입니다.')
-				flag = false;
-			}
-
-		})
-		$('#id').on('keydown', function() {
-			//유효성검사
-			id = document.getElementById('id')
-			if (id.value.length < 16) {
-				$('#id-check').html('');
-				flag = true;
-			}
-
-		})
-
-		function signup() {
-			id = document.getElementById('id');
-			pw = document.getElementById('pw');
-			pw2 = document.getElementById('pw2');
-			//pw2유효성
-			nam = document.getElementById('nam');
-			console.log(nam.value)
-			nickname = document.getElementById('nickname');
-			email1 = document.getElementById('email1').value;
-			email2 = document.getElementById('email2').value;
-			email = email1 + '@' + email2;
-			$.ajax({
-				url : 'signup',
-				data : {
-					id : id.value,
-					pw : pw.value,
-					name : nam.value,
-					nickname : nickname.value,
-					email : email
-				},
-				type : 'post',
-				success : function(res) {
-					alert(res)
-					if (res == 'exist id') {
-						alert('이미 아이디가 존재합니다.');
-						id.focus();
-					}
-					if (res == 'insert error') {
-						alert('알 수 없는 에러 발생, 오류유형 1.');
-					}
-					if (res == 'insert success') {
-						location.href = "../index";
-					}
-				},
-				error : function(res) {
-					alert('알 수 없는 에러 발생, 오류유형 2.');
-					//alert(JSON.stringify(res));
-				}
-			})
-		}
-	</script>
+        function signup () {
+            id = document.getElementById('id');
+            pw = document.getElementById('pw');
+            pw2 = document.getElementById('pw2');
+            //pw2유효성
+            nam = document.getElementById('nam');
+            console.log(nam.value)
+            nickname = document.getElementById('nickname');
+            email1 = document.getElementById('email1').value;
+            email2 = document.getElementById('email2').value;
+            email = email1 + '@' + email2;
+            $.ajax({
+                url : 'signup',
+                data : {
+                    id : id.value,
+                    pw : pw.value,
+                    name : nam.value,
+                    nickname : nickname.value,
+                    email : email
+                },
+                type : 'post',
+                success : function (res) {
+                    alert(res)
+                    if(res == 'exist id'){
+                        alert('이미 아이디가 존재합니다.');
+                        id.focus();
+                    }
+                    if(res == 'insert error'){
+                        alert('알 수 없는 에러 발생, 오류유형 1.');
+                    }
+                    if(res == 'insert success'){
+                        location.href = "../index";
+                    }
+                },
+                error : function (res) {
+                    alert('알 수 없는 에러 발생, 오류유형 2.');
+                    //alert(JSON.stringify(res));
+                }
+            })
+        }
+    </script>
 
 	<!-- Scripts -->
 

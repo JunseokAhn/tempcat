@@ -21,8 +21,8 @@
 			<nav class="links">
 				<ul>
 					<li><a href="#">Intro</a></li>
-					<li><a href="<c:url value="/board/noticeboardlist"/>">Notice Board</a></li>
-					<li><a href="<c:url value="/board/freeboardlist"/>">Free Board</a></li>
+					<li><a href="<c:url value="/board/noticedlist"/>">Notice Board</a></li>
+					<li><a href="<c:url value="/board/freelist"/>">Free Board</a></li>
 				</ul>
 			</nav>
 			<nav class="main">
