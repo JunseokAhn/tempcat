@@ -99,76 +99,26 @@
 			<hr>
 
 			<div class="table-wrapper">
-				<table class="alt">
+				<table class="alt" style="text-align: center;">
 					<thead>
 						<tr>
-							<th>Num</th>
-							<th>Nickname</th>
-							<th>Post</th>
-							<th>Date</th>
+							<th style="width: 2px;">Num</th>
+							<th style="padding-left: 30px; padding-right: 30px; width: 10px;">Nickname</th>
+							<th style="text-align: left;">Title</th>
+							<th style="width: 2px;">Hits</th>
+							<th style="width: 8px;">Date</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Item One</td>
-							<td>Ante turpis integer aliquet porttitor.</td>
-							<td>29.99</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Item Two</td>
-							<td>Vis ac commodo adipiscing arcu aliquet.</td>
-							<td>19.99</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Item Three</td>
-							<td>Morbi faucibus arcu accumsan lorem.</td>
-							<td>29.99</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Item Four</td>
-							<td>Vitae integer tempus condimentum.</td>
-							<td>19.99</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Item Five</td>
-							<td>Ante turpis integer aliquet porttitor.</td>
-							<td>29.99</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Item One</td>
-							<td>Ante turpis integer aliquet porttitor.</td>
-							<td>29.99</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Item Two</td>
-							<td>Vis ac commodo adipiscing arcu aliquet.</td>
-							<td>19.99</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Item Three</td>
-							<td>Morbi faucibus arcu accumsan lorem.</td>
-							<td>29.99</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Item Four</td>
-							<td>Vitae integer tempus condimentum.</td>
-							<td>19.99</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Item Five</td>
-							<td>Ante turpis integer aliquet porttitor.</td>
-							<td>29.99</td>
-						</tr>
+						<c:forEach var="i" items="${requestScope.list }">
+							<tr>
+								<td>${i.noticenum}</td>
+								<td>${i.nickname }</td>
+								<td style="text-align: left;">${i.title }</td>
+								<td>${i.hits }</td>
+								<td>${i.inputdate }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 
 				</table>

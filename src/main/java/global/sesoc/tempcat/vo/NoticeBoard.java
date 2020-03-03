@@ -12,7 +12,8 @@ public class NoticeBoard {
 	private int hits;
 	private String originalfile;
 	private String savedfile;
-
+	private String nickname;
+	
 	public NoticeBoard() {
 	}
 

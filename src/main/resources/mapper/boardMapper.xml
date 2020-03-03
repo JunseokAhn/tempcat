@@ -9,6 +9,20 @@
 		values
 		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents})
 	</insert>
-
-
+	<select id="noticeList" resultType="Notice">
+		select * from tempcat_notice
+	</select>
+	<select id="noticeList2" parameterType="String"
+		resultType="Notice">
+		select noticenum, id, title, contents, to_char(inputdate, 'YY/MM/DD')
+		inputdate,
+		hits, originalfile,
+		savedfile, nickname
+		from tempcat_notice
+		join (select id, nickname from tempcat_member) using(id)
+		<if test="#{_parameter!=null}">
+			where title like '%' || #{_parameter} || '%'
+		</if>
+		order by noticenum desc
+	</select>
 </mapper>
