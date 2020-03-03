@@ -109,12 +109,12 @@
 							<th style="width: 8px;">Date</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="line">
 						<c:forEach var="i" items="${requestScope.list }">
 							<tr>
 								<td>${i.noticenum}</td>
 								<td>${i.nickname }</td>
-								<td style="text-align: left;">${i.title }</td>
+								<td style="text-align: left;"><a href="noticeread?noticenum=${i.noticenum }">${i.title }</a></td>
 								<td>${i.hits }</td>
 								<td>${i.inputdate }</td>
 							</tr>
@@ -124,13 +124,13 @@
 				</table>
 
 				<ul class="actions pagination">
-					<li style="margin-left: 20px;"><a href="" class="disabled button large previous">Previous Page</a></li>
-					<li style="margin-left: 20px;"><a href="#" class="button fit">1</a></li>
-					<li style="margin-left: 20px;"><a href="#" class="button fit">2</a></li>
-					<li style="margin-left: 20px;"><a href="#" class="button fit">3</a></li>
-					<li style="margin-left: 20px;"><a href="#" class="button fit">4</a></li>
-					<li style="margin-left: 20px;"><a href="#" class="button fit">5</a></li>
-					<li style="margin-left: 20px;"><a href="#" class="button large next">Next Page</a></li>
+					<li style="margin-left: 20px;"><input id="previous" type="button" class="disabled button large previous" value="Previous Page" onclick="PreviousPage()"></li>
+					<c:forEach var="i" begin="${nav.startPageGroup }" end="${nav.endPageGroup }">
+						<li style="margin-left: 20px;"><input type="button" class="button fit" value="${i }" onclick="paging(${i})"></li>
+					</c:forEach>
+
+					<li style="margin-left: 20px;"><input id="next" type="button" class="button large next" value="Next Page" onclick="NextPage()"></li>
+
 				</ul>
 
 			</div>
@@ -375,8 +375,31 @@
 
 	</div>
 	<script type="text/javascript">
+        /* if(${nav.currentGroup>0}){
+        	$('#previous').attr('class', 'button large previous')  
+        	
+        }
+        else{
+            $('#previous').attr('class', 'disabled button large previous')  
+        } */
+
         function noticewrite () {
             location.href = 'noticewrite'
+        }
+        function paging (e) {
+            var currentPage = e;
+            alert(e)
+            //커런트페이지를 넘겨주면 그에따라 리스트를 열개 재선정하여 셀렉트를 해와야된다
+            location.href = 'noticelist?currentPage=' + currentPage;
+        }
+
+        function NextPage () {
+            
+            location.href = 'noticelist?currentPage=' + ${nav.currentPage + 5};
+        }
+        function PreviousPage (e) {
+            
+            location.href = 'noticelist?currentPage=' + ${nav.currentPage - 5};
         }
     </script>
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.tempcat.dao.BoardDao;
 import global.sesoc.tempcat.dao.MemberDao;
@@ -40,18 +41,18 @@ public class BoardController {
 	}
 
 	@GetMapping(value = "noticelist")
-	public String noticeBoardList(@RequestParam(defaultValue = "1") int currentPage,
-			@RequestParam(defaultValue = "") String searchText, Model model) {
+	public String noticeBoardList(@RequestParam(defaultValue = "") String searchText,
+			@RequestParam(defaultValue = "1") int currentPage, Model model) {
 
 		// 전체글수랑 현재페이지를 가져와야함.
 		ArrayList<NoticeBoard> list = dao.noticeList();
 		int totalRecordsCount = list.size();
 		PageNavigator nav = new PageNavigator(currentPage, totalRecordsCount);
-		//RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
+		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
 		int startRecord = nav.getStartRecord();
 		int countPerPage = nav.getCountPerPage();
 		list = dao.noticeListPage(searchText, startRecord, countPerPage);
-		//카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
+		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
 		model.addAttribute("nav", nav);
 		model.addAttribute("list", list);
 
