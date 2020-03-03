@@ -79,70 +79,118 @@
 
 		</section>
 	</div>
+
 	<div style="text-align: center">
-		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 75%;">
+		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 55%; min-height: 430px; min-width: 579px; padding-left: 100px; padding-right: 100px; border: solid 1px rgba(160, 160, 160, 0.3);">
 			<br>
 			<br>
-			<br>
-			<form id="loginform" action="login" method="post">
-				<input id="id" type="text" name="id" placeholder="ID" width="50%">
-				<input id="pw" type="text" name="pw" placeholder="PASSWORD" width="50%">
-				<input id="loginBT" type="button" value="LOG IN" onclick="login()">
-				<input id="signupBT" type="button" value="SIGN UP" onclick='signup()'>
-				<div id="error" style="font-size: 75%; color: red;"></div>
-			</form>
+			<section>
+				<h3>Log in</h3>
+				<hr>
+				<br>
+
+				<form id="loginform" method="post" action="login">
+					<div class="row gtr-uniform" style="text-align: left;">
+						<div class="col-6 col-12-xsmall">
+							<input type="text" name="id" id="id" value="" placeholder="ID" />
+						</div>
+
+						<div class="col-6">
+							<input type="email" name="demo-email" id="pw" placeholder="PASSWORD" />
+
+						</div>
+						<span id="pw-check" style="font-size: 75%; color: red;"></span>
+
+						<!-- 
+						<div class="col-4 col-12-small">
+							<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+							<label for="demo-priority-low">Low</label>
+						</div>
+						<div class="col-4 col-12-small">
+							<input type="radio" id="demo-priority-normal" name="demo-priority">
+							<label for="demo-priority-normal">Normal</label>
+						</div>
+						<div class="col-4 col-12-small">
+							<input type="radio" id="demo-priority-high" name="demo-priority">
+							<label for="demo-priority-high">High</label>
+						</div>
+						<div class="col-6 col-12-small">
+							<input type="checkbox" id="demo-copy" name="demo-copy">
+							<label for="demo-copy">Email me a copy</label>
+						</div> -->
+
+
+						<div class="col-6" style="margin-top: 30px;">
+							<ul class="actions" style="min-width: 400px;">
+								<li><input id="loginBT" type="button" class="button large fit" value="Log In" onclick="login()" /></li>
+							</ul>
+
+						</div>
+
+						<ul class="actions" style="display: inline-block; margin-top: 20px;">
+							<li><input type="checkbox" id="robot" name="robot"> <label for="robot">Not a robot</label></li>
+							<li><input type="checkbox" id="save" name="save"> <label for="save">save id</label></li>
+						</ul>
+
+					</div>
+					<hr style="margin-top: 0px;">
+					<div id="error" style="font-size: 75%; color: red; margin-bottom: 72px;"></div>
+				</form>
+			</section>
+
+
 		</div>
 	</div>
 	<script type="text/javascript">
-		function login() {
-			var flag = true;
-			var id = document.getElementById('id')
-			var pw = document.getElementById('pw')
+        function login () {
+            var flag = true;
+            var id = document.getElementById('id')
+            var pw = document.getElementById('pw')
 
-			//아이디입력했는지
-			if (!id.value.length > 0) {
-				alert('아이디를 입력해주세요')
-				id.focus();
-				return false;
-			}
-			//비밀번호입력했는지
-			if (!pw.value.length > 0) {
-				alert('비밀번호를 입력해주세요')
-				pw.focus();
-				return false;
-			}
-			$.ajax({
-				url : 'login',
-				data : {
-					id : id.value,
-					pw : pw.value
-				},
-				type : 'post',
-				success : function(res) {
-					if (res == 'checkId error') {
-						$('#error').html('존재하지 않는 아이디입니다.')
-						id.focus();
-					}
-					if (res == 'login error') {
-						$('#error').html('비밀번호가 올바르지 않습니다.')
-						pw.focus();
-					}
-					if (res == 'login success') {
-						location.href = '../index'
-					}
+            //아이디입력했는지
+            if(!id.value.length > 0){
+                alert('아이디를 입력해주세요')
+                id.focus();
+                return false;
+            }
+            //비밀번호입력했는지
+            if(!pw.value.length > 0){
+                alert('비밀번호를 입력해주세요')
+                pw.focus();
+                return false;
+            }
+            $.ajax({
+                url : 'login',
+                data : {
+                    id : id.value,
+                    pw : pw.value
+                },
+                type : 'post',
+                success : function (res) {
+                    if(res == 'checkId error'){
+                        $('#error').html('존재하지 않는 아이디입니다.')
+                        id.focus();
+                    }
+                    if(res == 'login error'){
+                        $('#error').html('비밀번호가 올바르지 않습니다.')
+                        pw.focus();
+                    }
+                    if(res == 'login success'){
+                        location.href = '../index'
+                    }
+                    
+                },
+                error : function (res) {
+                    alert('알 수 없는 오류발생 : 유형2')
+                }
+            })
+        }
 
-				},
-				error : function(res) {
-					alert('알 수 없는 오류발생 : 유형2')
-				}
-			})
-		}
-
-		//document.getElementById('loginform').submit();
-		function signup() {
-			location.href = 'signup';
-		}
-	</script>
+        //document.getElementById('loginform').submit();
+        function signup () {
+            location.href = 'signup';
+        }
+    </script>
 
 	<!-- Scripts -->
 

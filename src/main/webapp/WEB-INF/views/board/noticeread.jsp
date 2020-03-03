@@ -113,8 +113,7 @@
 			</footer>
 		</article>
 
-	</div>
-
+	</div>	
 	<!-- Footer -->
 	<section id="footer">
 		<ul class="icons">
@@ -141,8 +140,6 @@
 			<a href="http://unsplash.com">Unsplash</a>
 			.
 		</p>
-
-
 
 	</section>
 
