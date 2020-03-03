@@ -35,7 +35,7 @@ create table tempcat_notice(
 	savedfile		varchar2(100),			--첨부파일 저장된 이름
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
---게시판 글 번호에 사용할 시퀀스
+--공지게시판 번호에 사용할 시퀀스
 create sequence tempcat_notice_seq;
 
 --id 1(관리자ID)으로 회원가입후 사용
@@ -52,3 +52,6 @@ create table notice_reply (
 	contents    varchar2(2000),             --코멘트
     foreign key (id) references tempcat_member (id) on delete cascade 
 );
+
+--공지게시판 댓글 시퀀스
+create sequence notice_reply_seq;

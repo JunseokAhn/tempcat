@@ -87,7 +87,6 @@
 			<section>
 				<h3>Log in</h3>
 				<hr>
-				<br>
 
 				<form id="loginform" method="post" action="login">
 					<div class="row gtr-uniform" style="text-align: left;">
@@ -147,6 +146,11 @@
             var id = document.getElementById('id')
             var pw = document.getElementById('pw')
 
+            //체크박스
+            if(!$('#robot').is(':checked')){
+                alert('로봇은 가입할수 없습니다.');
+                return false;
+            }
             //아이디입력했는지
             if(!id.value.length > 0){
                 alert('아이디를 입력해주세요')

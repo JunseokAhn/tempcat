@@ -113,7 +113,48 @@
 			</footer>
 		</article>
 
-	</div>	
+		<!--Reply -->
+		<article class="post">
+			<h2 style="text-align: center;">Reply</h2>
+			<hr>
+			<header>
+				<div class="title">
+					<h2>
+						<a href="#">${requestScope.nBoard.title }</a>
+					</h2>
+					<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+				</div>
+				<div class="meta">
+					<time class="published" datetime="2015-11-01">${requestScope.nBoard.inputdate }</time>
+					<a href="#" class="author">
+						<span class="name">${requestScope.nBoard.nickname}</span>
+						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+					</a>
+				</div>
+			</header>
+			<header>
+				<div class="title">
+					<h2 class="col-6 col-12-xsmall">
+						<p style="margin-bottom: 0px; display: inline-block;">writing</p>
+						<input type="button" class="button small" value="Send Post" onclick="sendpost()" style="float: right;" />
+						<input type="reset" class="button small" value="Reset" onclick="reset()" style="float: right;" />
+						<input type="text" name="title" id="title" placeholder="Title" />
+					</h2>
+				</div>
+				<!-- 버튼이랑 글씨가 커지는건 헤더안이기때문. -->
+				<div class="meta">
+					<time class="published" datetime="2015-11-01">November 1, 2015</time>
+					<a href="#" class="author">
+						<span class="name">${sessionScope.nickname}</span>
+						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+					</a>
+				</div>
+			</header>
+
+		</article>
+
+	</div>
+
 	<!-- Footer -->
 	<section id="footer">
 		<ul class="icons">
@@ -142,7 +183,6 @@
 		</p>
 
 	</section>
-
 	<script type="text/javascript">
 	
         function addHeart () {
@@ -156,6 +196,7 @@
                 type : get
             })
         }
+        
     </script>
 	<!-- Scripts -->
 	<script src="<c:url value="/resources/assets/js/jquery.min.js"/>"></script>
