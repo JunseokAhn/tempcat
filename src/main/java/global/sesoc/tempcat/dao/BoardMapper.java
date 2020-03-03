@@ -14,4 +14,6 @@ public interface BoardMapper {
 
 	ArrayList<NoticeBoard> noticeList2(String searchText, RowBounds rB);
 
+	NoticeBoard noticeRead(String noticenum);
+
 }

@@ -8,6 +8,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css"/>" />
+<script src="<c:url value="/resources/js/jquery-3.4.1.js/"/>"></script>
 </head>
 <body class="single is-preload">
 
@@ -141,10 +142,14 @@
 			<a href="http://unsplash.com">Unsplash</a>
 			.
 		</p>
+
+
+
 	</section>
 
-	</div>
-
+	<script type="text/javascript">
+        alert(${requestScope.nBoard})
+    </script>
 	<!-- Scripts -->
 	<script src="<c:url value="/resources/assets/js/jquery.min.js"/>"></script>
 	<script src="<c:url value="/resources/assets/js/browser.min.js"/>"></script>

@@ -41,4 +41,11 @@ public class BoardDao {
 		return list;
 	}
 
+	public NoticeBoard noticeRead(String noticenum) {
+		// TODO Auto-generated method stub
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		nBoard = mapper.noticeRead(noticenum);
+		return nBoard;
+	}
+
 }

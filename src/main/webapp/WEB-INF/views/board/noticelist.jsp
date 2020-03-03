@@ -394,7 +394,6 @@
         }
         function paging (e) {
             var currentPage = e;
-            alert(e)
             //커런트페이지를 넘겨주면 그에따라 리스트를 열개 재선정하여 셀렉트를 해와야된다
             location.href = 'noticelist?currentPage=' + currentPage;
         }

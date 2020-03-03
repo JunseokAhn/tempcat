@@ -73,4 +73,19 @@ public class BoardController {
 		logger.debug("noticeWrite : " + res);
 		return "board/noticelist";
 	}
+
+	@GetMapping(value = "noticeread")
+	public String noticeRead(String noticenum, Model model) {
+		logger.debug("noiceRead - noticenum : " + noticenum);
+		nBoard = dao.noticeRead(noticenum);
+		logger.debug(nBoard.toString());
+		model.addAttribute("nBoard", nBoard);
+		model.addAttribute("title", nBoard.getTitle());
+		model.addAttribute("contents", nBoard.getContents());
+		model.addAttribute("inputdate", nBoard.getInputdate());
+		model.addAttribute("hits", nBoard.getHits());
+		model.addAttribute("nickname", nBoard.getNickname());
+		
+		return "board/noticeread";
+	}
 }

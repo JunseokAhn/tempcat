@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="global.sesoc.tempcat.dao.BoardMapper">
+
 	<insert id="noticeWrite" parameterType="Notice">
 		insert into
 		tempcat_notice
@@ -9,9 +10,11 @@
 		values
 		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents})
 	</insert>
+
 	<select id="noticeList" resultType="Notice">
 		select * from tempcat_notice
 	</select>
+
 	<select id="noticeList2" parameterType="String"
 		resultType="Notice">
 		select noticenum, id, title, contents, to_char(inputdate, 'YY/MM/DD')
@@ -24,5 +27,13 @@
 			where title like '%' || #{_parameter} || '%'
 		</if>
 		order by noticenum desc
+	</select>
+
+
+	<select id="noticeRead" parameterType="String"
+		resultType="Notice">
+		select * from tempcat_notice join (select id, nickname from
+		tempcat_member) using(id)
+		where noticenum=#{noticenum}
 	</select>
 </mapper>
