@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css"/>" />
+<script src="<c:url value="/resources/js/jquery-3.4.1.js/"/>"></script>
 </head>
 <body class="is-preload">
 
@@ -375,14 +376,19 @@
 
 	</div>
 	<script type="text/javascript">
-        /* if(${nav.currentGroup>0}){
+        if(${nav.currentGroup>0}){
         	$('#previous').attr('class', 'button large previous')  
-        	
-        }
+        	        }
         else{
             $('#previous').attr('class', 'disabled button large previous')  
-        } */
-
+        } 
+        
+        if(${nav.endPageGroup==nav.totalPageCount}){
+        	$('#next').attr('class', 'disabled button large next')  
+        }
+        else{
+            $('#next').attr('class', 'button large next')  
+        } 
         function noticewrite () {
             location.href = 'noticewrite'
         }
