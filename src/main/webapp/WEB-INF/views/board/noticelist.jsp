@@ -10,7 +10,6 @@
 <script src="<c:url value="/resources/js/jquery-3.4.1.js/"/>"></script>
 </head>
 <body class="is-preload">
-
 	<!-- Wrapper -->
 	<div id="wrapper">
 
@@ -63,8 +62,8 @@
 							<p>Phasellus sed ultricies mi congue</p>
 						</a></li>
 					<li><a href="#">
-							<h3>Etiam sed consequat</h3>
-							<p>Porta lectus amet ultricies</p>
+							<h3>Send Request</h3>
+							<p>About the site or everything else.</p>
 						</a></li>
 				</ul>
 			</section>
@@ -89,12 +88,18 @@
 
 		<!-- Main -->
 		<div id="main">
-			<div style="margin-top: 50px;">
-				<h2 style="text-align: center;">Notice Board</h2>
-				<div style="position:; margin: 0 auto;">
+			<div style="margin-top: 50px; text-align: center;">
+				<h2>Notice Board</h2>
+				<div>
 					<c:if test="${sessionScope.id=='1'}">
 						<input type="button" class="button large" value="Write" onclick="noticewrite()">
 					</c:if>
+					<!-- Search -->
+					<section style="width: 30%; float: right;">
+						<form class="search" method="get" action="#">
+							<input type="text" name="query" placeholder="Search" />
+						</form>
+					</section>
 				</div>
 			</div>
 			<hr>
@@ -373,7 +378,6 @@
 			</section>
 
 		</section>
-
 	</div>
 	<script type="text/javascript">
         if(${nav.currentGroup>0}){

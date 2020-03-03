@@ -162,19 +162,19 @@
         function sendpost () {
             
             //제목x 혹은 20자이상, 컨텐츠2000자이상 혹은 내용x
-            if(title.value < 1){
+            if(title.value.length < 1){
                 alert('제목을 입력하세요')
                 return false;
             }
-            if(title.value > 20){
+            if(title.value.length > 20){
                 alert('제목의 최대길이는 20자입니다')
                 return false;
             }
-            if(contents.value < 1){
+            if(contents.value.length < 1){
                 alert('내용을 입력해주세요')
                 return false;
             }
-            if(contents.value > 2000){
+            if(contents.value.length > 2000){
                 alert('본문은 최대 2000자를 넘지 못합니다.');
                 return false;
             }

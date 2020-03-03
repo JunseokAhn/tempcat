@@ -71,7 +71,7 @@ public class BoardController {
 		nBoard = new NoticeBoard(id, title, contents);
 		res = dao.noticeWrite(nBoard);
 		logger.debug("noticeWrite : " + res);
-		return "board/noticelist";
+		return "redirect:/board/noticelist";
 	}
 
 	@GetMapping(value = "noticeread")
