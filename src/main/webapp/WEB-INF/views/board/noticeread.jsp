@@ -107,7 +107,7 @@
 			<footer>
 				<ul class="stats">
 					<li><a href="#">General</a></li>
-					<li><a href="#" class="icon solid fa-heart">${requestScope.nBoard.heart }</a></li>
+					<li><a id="heart" class="icon solid fa-heart" onclick="addHeart()">${requestScope.nBoard.heart }</a></li>
 					<li><a href="#" class="icon solid fa-comment">128</a></li>
 				</ul>
 			</footer>
@@ -147,7 +147,18 @@
 	</section>
 
 	<script type="text/javascript">
-        alert(${requestScope.nBoard})
+	
+        function addHeart () {
+            var heart = ${requestScope.nBoard.heart}+1;
+            $('#heart').html(${requestScope.nBoard.heart+1 })
+            $.ajax({
+                url : 'noticeheart',
+                data : {
+                    heart : heart
+                },
+                type : get
+            })
+        }
     </script>
 	<!-- Scripts -->
 	<script src="<c:url value="/resources/assets/js/jquery.min.js"/>"></script>

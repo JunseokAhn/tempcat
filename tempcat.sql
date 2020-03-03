@@ -10,7 +10,19 @@ create table tempcat_member (
     logindate date default sysdate
 );
 
---게시판 본문 글 테이블
+--회원 정보 테이블2
+create table tempcat_profile(
+    id			varchar2(20) primary key,	--회원ID
+    mynotice    number,                     --내가 쓴 공지글
+    myfree      number,                     --내가 쓴 자유글
+    noticereply number,                     --내가 쓴 공지리플
+    freereply   number,                     --내가 쓴 자유리플
+    heartnotice number,                     --좋아요 누른 공지글
+    heartfree   number,                     --좋아요 누른 자유글
+    foreign key (id) references tempcat_member (id) on delete cascade 
+);
+
+--공지게시판 테이블
 create table tempcat_notice(
 	noticenum	number primary key,			--글번호
 	id			varchar2(20) not null, 		--작성자ID
@@ -31,3 +43,12 @@ insert into tempcat_notice
 	(noticenum, id, title, contents)
 values
 	(tempcat_notice_seq.nextval, 1, 1, 1);
+
+--공지게시판 댓글 테이블
+create table notice_reply (
+	num         number primary key,
+    id			varchar2(20),            	--회원ID
+	nickname	varchar2(20),				--닉네임
+	contents    varchar2(2000),             --코멘트
+    foreign key (id) references tempcat_member (id) on delete cascade 
+);
