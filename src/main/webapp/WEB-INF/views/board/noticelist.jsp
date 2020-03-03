@@ -95,7 +95,7 @@
 						<input type="button" class="button large" value="Write" onclick="noticewrite()">
 					</c:if>
 					<!-- Search -->
-					<section style="width: 30%; float: right;">
+					<section style="width: 30%;">
 						<form class="search" method="get" action="#">
 							<input type="text" name="query" placeholder="Search" />
 						</form>

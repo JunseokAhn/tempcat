@@ -29,11 +29,16 @@
 		order by noticenum desc
 	</select>
 
-
 	<select id="noticeRead" parameterType="String"
 		resultType="Notice">
 		select * from tempcat_notice join (select id, nickname from
 		tempcat_member) using(id)
 		where noticenum=#{noticenum}
 	</select>
+
+	<update id="noticeHits" parameterType="String">
+		update tempcat_notice
+		set hits = hits+1
+		where noticenum = #{noticenum}
+	</update>
 </mapper>

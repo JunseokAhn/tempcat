@@ -87,14 +87,14 @@
 			<header>
 				<div class="title">
 					<h2>
-						<a href="#">${requestScope.title }</a>
+						<a href="#">${requestScope.nBoard.title }</a>
 					</h2>
 					<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
 				</div>
 				<div class="meta">
-					<time class="published" datetime="2015-11-01">${requestScope.inputdate }</time>
+					<time class="published" datetime="2015-11-01">${requestScope.nBoard.inputdate }</time>
 					<a href="#" class="author">
-						<span class="name">${requestScope.nickname}</span>
+						<span class="name">${requestScope.nBoard.nickname}</span>
 						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 					</a>
 				</div>
@@ -103,11 +103,11 @@
 				<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
 			</span>
 
-			<p>${requestScope.contents }</p>
+			<p>${requestScope.nBoard.contents }</p>
 			<footer>
 				<ul class="stats">
 					<li><a href="#">General</a></li>
-					<li><a href="#" class="icon solid fa-heart">28</a></li>
+					<li><a href="#" class="icon solid fa-heart">${requestScope.nBoard.heart }</a></li>
 					<li><a href="#" class="icon solid fa-comment">128</a></li>
 				</ul>
 			</footer>

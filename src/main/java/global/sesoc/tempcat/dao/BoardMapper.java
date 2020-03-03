@@ -16,4 +16,6 @@ public interface BoardMapper {
 
 	NoticeBoard noticeRead(String noticenum);
 
+	void noticeHits(String noticenum);
+
 }

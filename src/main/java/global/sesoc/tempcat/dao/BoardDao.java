@@ -48,4 +48,10 @@ public class BoardDao {
 		return nBoard;
 	}
 
+	public void noticeHits(String noticenum) {
+		// TODO Auto-generated method stub
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		mapper.noticeHits(noticenum);
+	}
+
 }

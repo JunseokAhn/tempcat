@@ -10,6 +10,7 @@ public class NoticeBoard {
 	private String contents;
 	private String inputdate;
 	private int hits;
+	private int heart;
 	private String originalfile;
 	private String savedfile;
 	private String nickname;
