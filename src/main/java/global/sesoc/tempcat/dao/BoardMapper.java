@@ -23,4 +23,6 @@ public interface BoardMapper {
 
 	ArrayList<NoticeReply> nReplyList(String noticenum);
 
+	void nReplyDelete(String num);
+
 }

@@ -58,4 +58,8 @@
 		select * from notice_reply where noticenum like
 		#{noticenum}
 	</select>
+	
+	<delete id="nReplyDelete" parameterType="String">
+		delete notice_reply where num = #{num}
+	</delete>
 </mapper>

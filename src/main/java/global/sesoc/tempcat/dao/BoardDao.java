@@ -70,4 +70,11 @@ public class BoardDao {
 		return list;
 	}
 
+	public void nReplyDelete(String num) {
+		// TODO Auto-generated method stub
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		System.out.println(num);
+		mapper.nReplyDelete(num);
+	}
+
 }

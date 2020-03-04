@@ -86,7 +86,7 @@ public class BoardController {
 
 		// reply read
 		ArrayList<NoticeReply> list = dao.nReplyList(noticenum);
-		logger.debug(Integer.toString(list.size()));
+		logger.debug("reply size : " + Integer.toString(list.size()));
 		model.addAttribute("replyList", list);
 		return "board/noticeread";
 	}
@@ -104,8 +104,11 @@ public class BoardController {
 	}
 
 	@GetMapping(value = "nreplydelete")
-	public String noticeReplyDelete(String num) {
-		return "";
+	public String noticeReplyDelete(String num, String noticenum) {
+		logger.debug("replynum = " + num);
+		dao.nReplyDelete(num);
+
+		return "redirect:/board/noticeread?noticenum=" + noticenum;
 	}
 
 	/*

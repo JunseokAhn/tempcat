@@ -196,7 +196,7 @@
 	</section>
 	<script type="text/javascript">
         function deletereply (num) {
-            location.href = 'deletereply?num='+num
+            location.href = 'nreplydelete?num=' + num + '&noticenum=${requestScope.nBoard.noticenum}'
         }
         function updatereply () {
             alert('update')
