@@ -117,27 +117,40 @@
 		<article class="post">
 			<h2 style="text-align: center;">Reply</h2>
 			<hr>
-			<header>
-				<div class="title">
-					<h2>
-						<a href="#">${requestScope.nBoard.title }</a>
-					</h2>
-					<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
-				</div>
-				<div class="meta">
-					<time class="published" datetime="2015-11-01">${requestScope.nBoard.inputdate }</time>
-					<a href="#" class="author">
-						<span class="name">${requestScope.nBoard.nickname}</span>
-						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-					</a>
-				</div>
-			</header>
-			<header>
+
+			<c:forEach var="i" items="${requestScope.replyList }">
+				<header>
+					<div class="title">
+						<h2>
+							<a>${i.contents }</a>
+						</h2>
+						<!-- <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p> -->
+						<c:if test="${sessionScope.id==i.id }">
+							<input type="button" class="button small" value="Delete Reply" onclick="deletereply('${i.num}')" style="float: right;" />
+							<input type="button" class="button small" value="Update Reply" onclick="updatereply('${i.num}')" style="float: right;" />
+						</c:if>
+					</div>
+					<div class="meta">
+						<time class="published" datetime="2015-11-01">${i.inputdate }</time>
+						<a href="#" class="author">
+							<span class="name">${i.nickname}</span>
+							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+						</a>
+					</div>
+				</header>
+			</c:forEach>
+
+			<header id="myheader">
 				<div class="title">
 					<h2 class="col-6 col-12-xsmall">
-						<p style="margin-bottom: 0px; display: inline-block;">writing</p>
-						<input type="button" class="button small" value="Send Reply" onclick="sendreply()" style="float: right;" />
-						<input type="text" name="comment" id="comment" placeholder="Comment.." />
+						<form action="nreplywrite" id="myreply" method="post">
+							<p style="margin-bottom: 0px; display: inline-block;">writing</p>
+							<input type="button" class="button small" value="Send Reply" onclick="sendreply()" style="float: right;" />
+							<input type="text" name="contents" id="contents" placeholder="Comment.." />
+							<input type="hidden" id="id" name="id">
+							<input type="hidden" id="nickname" name="nickname">
+							<input type="hidden" id="noticenum" name="noticenum">
+						</form>
 					</h2>
 				</div>
 				<!-- 버튼이랑 글씨가 커지는건 헤더안이기때문. -->
@@ -151,7 +164,6 @@
 			</header>
 
 		</article>
-
 	</div>
 
 	<!-- Footer -->
@@ -183,43 +195,54 @@
 
 	</section>
 	<script type="text/javascript">
+        function deletereply (num) {
+            location.href = 'deletereply?num='+num
+        }
+        function updatereply () {
+            alert('update')
+        }
         function sendreply () {
-            var comment = document.getElementById('comment').value
-            if(comment.length<1 || comment.length>2000){
+            var contents = document.getElementById('contents').value
+            if(contents.length<1 || contents.length>2000){
                 alert('댓글은 1~2000자 사이로 입력해주세요.');
                 return false;
             }
+            //id, nickname, noticenum, contents
+            $('#id').val('${sessionScope.id}');
+            $('#nickname').val('${sessionScope.nickname}');
+            $('#noticenum').val('${requestScope.nBoard.noticenum}');
             
-            $.ajax({
-                url : 'nreplywrite',
-                type : 'POST',
-                data : {
-                    id : '${sessionScope.id}',
-                    nickname : '${sessionScope.nickname}',
-                    noticenum : '${requestScope.nBoard.noticenum}',
-                    contents : comment
-                },
-                success : function () {
-                    //인풋이사라지고 댓글이 입력된것처럼 바꾸기
-                    alert('success');
-                },
-                error : function (e) {
-                    alert(JSON.stringify(e));
-                }
-            });
-            
+            $('#myreply').submit();
+            /*//비동기식 댓글리드 > 실패 $.ajax({
+                 url : 'nreplywrite',
+                 type : 'POST',
+                 data : {
+                     id : '${sessionScope.id}',
+                     nickname : '${sessionScope.nickname}',
+                     noticenum : '${requestScope.nBoard.noticenum}',
+                     contents : comment
+                 },
+                 success : function (list) {
+                     $("#replyList").load(window.location.href + "#replyList");
+                     
+                 },
+                 error : function (e) {
+                     alert(JSON.stringify(e));
+                 }
+             });
+             
+            } */
+            /*   function addHeart () {
+                  var heart = ${requestScope.nBoard.heart}+1;
+                  $('#heart').html(${requestScope.nBoard.heart+1 })
+                  $.ajax({
+                      url : 'noticeheart',
+                      data : {
+                          heart : heart
+                      },
+                      type : get
+                  })*/
         }
-        /*   function addHeart () {
-              var heart = ${requestScope.nBoard.heart}+1;
-              $('#heart').html(${requestScope.nBoard.heart+1 })
-              $.ajax({
-                  url : 'noticeheart',
-                  data : {
-                      heart : heart
-                  },
-                  type : get
-              })
-          } */
     </script>
 	<!-- Scripts -->
 	<script src="<c:url value="/resources/assets/js/jquery.min.js"/>"></script>

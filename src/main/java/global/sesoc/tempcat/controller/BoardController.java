@@ -87,12 +87,12 @@ public class BoardController {
 		// reply read
 		ArrayList<NoticeReply> list = dao.nReplyList(noticenum);
 		logger.debug(Integer.toString(list.size()));
+		model.addAttribute("replyList", list);
 		return "board/noticeread";
 	}
 
-	@ResponseBody
 	@PostMapping(value = "nreplywrite")
-	public void noticeReplyWrite(NoticeReply nReply) {
+	public String noticeReplyWrite(NoticeReply nReply) {
 		logger.debug(nReply.toString());
 		res = dao.replyWrite(nReply);
 		if (res)
@@ -100,5 +100,26 @@ public class BoardController {
 		else {
 			logger.debug("replyWrite : fail");
 		}
+		return "redirect:/board/noticeread?noticenum=" + nReply.getNoticenum();
 	}
+
+	@GetMapping(value = "nreplydelete")
+	public String noticeReplyDelete(String num) {
+		return "";
+	}
+
+	/*
+	 * 에이잭스 댓글리드 > 실패
+	 * 
+	 * @ResponseBody
+	 * 
+	 * @PostMapping(value = "nreplywrite") public ArrayList<NoticeReply>
+	 * noticeReplyWrite(NoticeReply nReply) { logger.debug(nReply.toString());
+	 * res = dao.replyWrite(nReply); if (res)
+	 * logger.debug("replyWrite : success"); else {
+	 * logger.debug("replyWrite : fail"); } ArrayList<NoticeReply> list =
+	 * dao.nReplyList(nReply.getNoticenum());
+	 * 
+	 * return list; }
+	 */
 }
