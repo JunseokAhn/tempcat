@@ -1,6 +1,7 @@
 package global.sesoc.tempcat.dao;
 
 import java.util.ArrayList;
+import java.util.prefs.BackingStoreException;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -59,7 +60,14 @@ public class BoardDao {
 		// TODO Auto-generated method stub
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		intres = mapper.replyWrite(nReply);
-		return intres>0;
+		return intres > 0;
+	}
+
+	public ArrayList<NoticeReply> nReplyList(String noticenum) {
+		// TODO Auto-generated method stub
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		ArrayList<NoticeReply> list = mapper.nReplyList(noticenum);
+		return list;
 	}
 
 }

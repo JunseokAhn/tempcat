@@ -85,8 +85,8 @@ public class BoardController {
 		model.addAttribute("nBoard", nBoard);
 
 		// reply read
-		// dao.nReplyRead();
-
+		ArrayList<NoticeReply> list = dao.nReplyList(noticenum);
+		logger.debug(Integer.toString(list.size()));
 		return "board/noticeread";
 	}
 

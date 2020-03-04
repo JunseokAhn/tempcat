@@ -58,3 +58,9 @@ create table notice_reply (
 
 --공지게시판 댓글 시퀀스
 create sequence notice_reply_seq;
+
+--id 1(관리자ID)으로 회원가입후 사용
+insert into notice_reply
+(num, id, nickname, noticenum, contents)
+values
+(notice_reply_seq.nextval, 1, 1,1,1);

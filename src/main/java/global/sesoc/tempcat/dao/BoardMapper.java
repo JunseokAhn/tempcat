@@ -21,4 +21,6 @@ public interface BoardMapper {
 
 	int replyWrite(NoticeReply nReply);
 
+	ArrayList<NoticeReply> nReplyList(String noticenum);
+
 }
