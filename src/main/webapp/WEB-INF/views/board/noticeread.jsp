@@ -119,7 +119,7 @@
 			<hr>
 
 			<c:forEach var="i" items="${requestScope.replyList }">
-				<header>
+				<header id="header-${i.num }">
 					<div class="title">
 						<h2>
 							<a>${i.contents }</a>
@@ -198,9 +198,7 @@
         function deletereply (num) {
             location.href = 'nreplydelete?num=' + num + '&noticenum=${requestScope.nBoard.noticenum}'
         }
-        function updatereply () {
-            alert('update')
-        }
+
         function sendreply () {
             var contents = document.getElementById('contents').value
             if(contents.length<1 || contents.length>2000){
@@ -242,6 +240,52 @@
                       },
                       type : get
                   })*/
+        }
+
+        var updateflag = 0;
+        //리턴눌러서 원래대로돌리거나, 댓글수정했을때 0
+        var h2;
+        function updatereply (num) {
+            var h = "";
+            h2 = "";
+            if(updateflag == 1){
+                alert('동시에 댓글을 수정할 수 없습니다.')
+                return false;
+            }
+            updateflag = 1;
+            h += "<div class='title'>"
+            h += "<h2 class='col-6 col-12-xsmall'>"
+            h += "<form action='nreplywrite' id='myreply' method='post'>"
+            h += "<p style='margin-bottom: 0px; display: inline-block;'>writing</p>"
+            h += "<input type='button' class='button small' value='Send Reply' onclick='updatereply2(" + num + ")' style='float: right;' />"
+            h += "<input type='button' class='button small' value='Return' onclick='returnreply(" + num + ")' style='float: right;' />"
+            h += "<input type='text' name='contents' id='contents' placeholder='Comment..' />"
+            h += "<input type='hidden' id='id' name='id'>"
+            h += "<input type='hidden' id='nickname' name='nickname'>"
+            h += "<input type='hidden' id='noticenum' name='noticenum'>"
+            h += "</form>"
+            h += "</h2>"
+            h += "</div>"
+            h += "<div class='meta'>"
+            h += "<time class='published' datetime='2015-11-01'>November 1, 2015</time>"
+            h += "<a href='#' class='author'>"
+            h += "<span class='name'>${sessionScope.nickname}</span>"
+            h += "<img src='<c:url value='/resources/images/avatar.jpg'/>' alt='' />"
+            h += "</a>"
+            h += "</div>"
+            h2 = $('#header-' + num).html();
+            $('#header-' + num).html(h);
+            
+        }
+
+        function returnreply (num) {
+            updateflag = 0;
+            $('#header-' + num).html(h2);
+        }
+
+        function updatereply2 (num) {
+            alert(num)
+            updateflag = 0;
         }
     </script>
 	<!-- Scripts -->
