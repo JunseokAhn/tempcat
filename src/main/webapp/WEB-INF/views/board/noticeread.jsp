@@ -196,7 +196,8 @@
                 data : {
                     id : '${sessionScope.id}',
                     nickname : '${sessionScope.nickname}',
-                    comment : comment
+                    noticenum : '${requestScope.nBoard.noticenum}',
+                    contents : comment
                 },
                 success : function () {
                     //인풋이사라지고 댓글이 입력된것처럼 바꾸기

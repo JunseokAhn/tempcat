@@ -84,14 +84,16 @@ public class BoardController {
 		logger.debug(nBoard.toString());
 		model.addAttribute("nBoard", nBoard);
 
+		// reply read
+		// dao.nReplyRead();
+
 		return "board/noticeread";
 	}
 
 	@ResponseBody
 	@PostMapping(value = "nreplywrite")
-	public void noticeReplyWrite(String id, String nickname, String comment) {
-		logger.debug("id : {}, nicnkname : {} comment : {}", id, nickname, comment);
-		nReply = new NoticeReply(id, nickname, comment);
+	public void noticeReplyWrite(NoticeReply nReply) {
+		logger.debug(nReply.toString());
 		res = dao.replyWrite(nReply);
 		if (res)
 			logger.debug("replyWrite : success");

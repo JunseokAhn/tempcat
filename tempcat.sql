@@ -47,11 +47,13 @@ values
 --공지게시판 댓글 테이블
 create table notice_reply (
 	num         number primary key,
-    id			varchar2(20)    not null, 	--회원ID
-	nickname	varchar2(20),               --닉네임
-	contents    varchar2(2000)    not null, --코멘트
-	inputdate	date default sysdate, 		--작성일
-    foreign key (id) references tempcat_member (id) on delete cascade 
+    id			varchar2(20)         not null, 	--회원ID
+	nickname	varchar2(20),                   --닉네임
+    noticenum   number               not null,  --게시글번호
+	contents    varchar2(2000)       not null,  --코멘트
+	inputdate	date default sysdate, 		    --작성일
+    foreign key (id) references tempcat_member (id) on delete cascade,
+    foreign key (noticenum)references tempcat_notice (noticenum) on delete cascade
 );
 
 --공지게시판 댓글 시퀀스

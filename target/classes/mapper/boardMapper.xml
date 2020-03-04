@@ -45,10 +45,11 @@
 
 	<insert id="replyWrite" parameterType="nReply">
 		insert into notice_reply
-		(num, id, nickname, contents)
+		(num, id, nickname, noticenum, contents)
 		values
 		(notice_reply_seq.nextval, #{id},
-		#{nickname}, #{contents}
+		#{nickname}, #{noticenum},
+		#{contents}
 		)
 	</insert>
 </mapper>
