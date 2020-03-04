@@ -143,7 +143,7 @@
 			<header id="myheader">
 				<div class="title">
 					<h2 class="col-6 col-12-xsmall">
-						<form action="nreplywrite" id="myreply" method="post">
+						<form action="nreplywrite" id="myreply" method="post" style="margin-bottom: 0px;">
 							<p style="margin-bottom: 0px; display: inline-block;">writing</p>
 							<input type="button" class="button small" value="Send Reply" onclick="sendreply()" style="float: right;" />
 							<input type="text" name="contents" id="contents" placeholder="Comment.." />
@@ -155,7 +155,7 @@
 				</div>
 				<!-- 버튼이랑 글씨가 커지는건 헤더안이기때문. -->
 				<div class="meta">
-					<time class="published" datetime="2015-11-01">November 1, 2015</time>
+					<time class="published" datetime="2015-11-01">Insert your reply</time>
 					<a href="#" class="author">
 						<span class="name">${sessionScope.nickname}</span>
 						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
@@ -255,11 +255,11 @@
             updateflag = 1;
             h += "<div class='title'>"
             h += "<h2 class='col-6 col-12-xsmall'>"
-            h += "<form action='nreplywrite' id='myreply' method='post'>"
+            h += "<form action='nreplywrite' id='myreply' method='post' style='margin-bottom: 0px;''>"
             h += "<p style='margin-bottom: 0px; display: inline-block;'>writing</p>"
             h += "<input type='button' class='button small' value='Send Reply' onclick='updatereply2(" + num + ")' style='float: right;' />"
             h += "<input type='button' class='button small' value='Return' onclick='returnreply(" + num + ")' style='float: right;' />"
-            h += "<input type='text' name='contents' id='contents' placeholder='Comment..' />"
+            h += "<input type='text' name='contents' id='updatecontents' placeholder='Comment..' />"
             h += "<input type='hidden' id='id' name='id'>"
             h += "<input type='hidden' id='nickname' name='nickname'>"
             h += "<input type='hidden' id='noticenum' name='noticenum'>"
@@ -267,7 +267,7 @@
             h += "</h2>"
             h += "</div>"
             h += "<div class='meta'>"
-            h += "<time class='published' datetime='2015-11-01'>November 1, 2015</time>"
+            h += "<time class='published' datetime='2015-11-01'>Insert your reply</time>"
             h += "<a href='#' class='author'>"
             h += "<span class='name'>${sessionScope.nickname}</span>"
             h += "<img src='<c:url value='/resources/images/avatar.jpg'/>' alt='' />"
@@ -284,8 +284,10 @@
         }
 
         function updatereply2 (num) {
-            alert(num)
             updateflag = 0;
+            //업데이트- 콘텐츠랑 인풋데이트
+            var updatecontents = document.getElementById('updatecontents').value
+            location.href = 'nreplyupdate?num=' + num + 'id=${sessionScope.id}+&noticenum=${requestScope.nBoard.noticenum}&contents=' + updatecontents
         }
     </script>
 	<!-- Scripts -->

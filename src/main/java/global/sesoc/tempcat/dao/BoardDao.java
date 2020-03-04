@@ -73,8 +73,14 @@ public class BoardDao {
 	public void nReplyDelete(String num) {
 		// TODO Auto-generated method stub
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
-		System.out.println(num);
 		mapper.nReplyDelete(num);
+	}
+
+	public void nReplyUpdate(NoticeReply nReply) {
+		// TODO Auto-generated method stub
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		mapper.nReplyUpdate(nReply);
+	
 	}
 
 }

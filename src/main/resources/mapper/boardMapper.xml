@@ -58,8 +58,16 @@
 		select * from notice_reply where noticenum like
 		#{noticenum}
 	</select>
-	
+
 	<delete id="nReplyDelete" parameterType="String">
-		delete notice_reply where num = #{num}
+		delete notice_reply
+		where num = #{num}
 	</delete>
+
+	<update id="nReplyUpdate" parameterType="nReply">
+		update notice_reply
+		set
+		contents = #{contents}, inputdate = default
+		where num = #{num}
+	</update>
 </mapper>

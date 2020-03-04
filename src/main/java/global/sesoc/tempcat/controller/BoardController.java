@@ -111,6 +111,14 @@ public class BoardController {
 		return "redirect:/board/noticeread?noticenum=" + noticenum;
 	}
 
+	@GetMapping(value = "nreplyupdate")
+	public String noticeReplyUpdate(NoticeReply nReply) {
+		logger.debug(nReply.toString());
+		
+		dao.nReplyUpdate(nReply);
+
+		return "redirect:/board/noticeread?noticenum=" + nReply.getNoticenum();
+	}
 	/*
 	 * 에이잭스 댓글리드 > 실패
 	 * 

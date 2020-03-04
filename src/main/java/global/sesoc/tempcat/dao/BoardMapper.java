@@ -25,4 +25,6 @@ public interface BoardMapper {
 
 	void nReplyDelete(String num);
 
+	void nReplyUpdate(NoticeReply nReply);
+
 }
