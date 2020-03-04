@@ -20,6 +20,7 @@ import global.sesoc.tempcat.dao.BoardDao;
 import global.sesoc.tempcat.dao.MemberDao;
 import global.sesoc.tempcat.util.PageNavigator;
 import global.sesoc.tempcat.vo.NoticeBoard;
+import global.sesoc.tempcat.vo.NoticeReply;
 
 @Controller
 @RequestMapping("board")
@@ -31,6 +32,7 @@ public class BoardController {
 	private BoardDao dao;
 
 	NoticeBoard nBoard;
+	NoticeReply nReply;
 	private String id;
 	private String stres;
 	private boolean res;
@@ -81,7 +83,20 @@ public class BoardController {
 		nBoard = dao.noticeRead(noticenum);
 		logger.debug(nBoard.toString());
 		model.addAttribute("nBoard", nBoard);
-		
+
 		return "board/noticeread";
+	}
+
+	@ResponseBody
+	@PostMapping(value = "nreplywrite")
+	public void noticeReplyWrite(String id, String nickname, String comment) {
+		logger.debug("id : {}, nicnkname : {} comment : {}", id, nickname, comment);
+		nReply = new NoticeReply(id, nickname, comment);
+		res = dao.replyWrite(nReply);
+		if (res)
+			logger.debug("replyWrite : success");
+		else {
+			logger.debug("replyWrite : fail");
+		}
 	}
 }

@@ -136,9 +136,8 @@
 				<div class="title">
 					<h2 class="col-6 col-12-xsmall">
 						<p style="margin-bottom: 0px; display: inline-block;">writing</p>
-						<input type="button" class="button small" value="Send Post" onclick="sendpost()" style="float: right;" />
-						<input type="reset" class="button small" value="Reset" onclick="reset()" style="float: right;" />
-						<input type="text" name="title" id="title" placeholder="Title" />
+						<input type="button" class="button small" value="Send Reply" onclick="sendreply()" style="float: right;" />
+						<input type="text" name="comment" id="comment" placeholder="Comment.." />
 					</h2>
 				</div>
 				<!-- 버튼이랑 글씨가 커지는건 헤더안이기때문. -->
@@ -184,19 +183,42 @@
 
 	</section>
 	<script type="text/javascript">
-	
-        function addHeart () {
-            var heart = ${requestScope.nBoard.heart}+1;
-            $('#heart').html(${requestScope.nBoard.heart+1 })
+        function sendreply () {
+            var comment = document.getElementById('comment').value
+            if(comment.length<1 || comment.length>2000){
+                alert('댓글은 1~2000자 사이로 입력해주세요.');
+                return false;
+            }
+            
             $.ajax({
-                url : 'noticeheart',
+                url : 'nreplywrite',
+                type : 'POST',
                 data : {
-                    heart : heart
+                    id : '${sessionScope.id}',
+                    nickname : '${sessionScope.nickname}',
+                    comment : comment
                 },
-                type : get
-            })
+                success : function () {
+                    //인풋이사라지고 댓글이 입력된것처럼 바꾸기
+                    alert('success');
+                },
+                error : function (e) {
+                    alert(JSON.stringify(e));
+                }
+            });
+            
         }
-        
+        /*   function addHeart () {
+              var heart = ${requestScope.nBoard.heart}+1;
+              $('#heart').html(${requestScope.nBoard.heart+1 })
+              $.ajax({
+                  url : 'noticeheart',
+                  data : {
+                      heart : heart
+                  },
+                  type : get
+              })
+          } */
     </script>
 	<!-- Scripts -->
 	<script src="<c:url value="/resources/assets/js/jquery.min.js"/>"></script>

@@ -9,6 +9,7 @@
 			alias="Member" />
 		<typeAlias type="global.sesoc.tempcat.vo.NoticeBoard"
 			alias="Notice" />
+			<typeAlias type="global.sesoc.tempcat.vo.NoticeReply" alias="nReply"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/mapper.xml" />

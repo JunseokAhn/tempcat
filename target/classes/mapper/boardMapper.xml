@@ -38,7 +38,17 @@
 
 	<update id="noticeHits" parameterType="String">
 		update tempcat_notice
-		set hits = hits+1
+		set
+		hits = hits+1
 		where noticenum = #{noticenum}
 	</update>
+
+	<insert id="replyWrite" parameterType="nReply">
+		insert into notice_reply
+		(num, id, nickname, contents)
+		values
+		(notice_reply_seq.nextval, #{id},
+		#{nickname}, #{contents}
+		)
+	</insert>
 </mapper>

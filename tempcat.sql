@@ -38,7 +38,7 @@ create table tempcat_notice(
 --공지게시판 번호에 사용할 시퀀스
 create sequence tempcat_notice_seq;
 
---id 1(관리자ID)으로 회원가입후 사용
+--id 1(관리자ID, notice board작성가능)으로 회원가입후 사용
 insert into tempcat_notice
 	(noticenum, id, title, contents)
 values
@@ -47,9 +47,10 @@ values
 --공지게시판 댓글 테이블
 create table notice_reply (
 	num         number primary key,
-    id			varchar2(20),            	--회원ID
-	nickname	varchar2(20),				--닉네임
-	contents    varchar2(2000),             --코멘트
+    id			varchar2(20)    not null, 	--회원ID
+	nickname	varchar2(20),               --닉네임
+	contents    varchar2(2000)    not null, --코멘트
+	inputdate	date default sysdate, 		--작성일
     foreign key (id) references tempcat_member (id) on delete cascade 
 );
 

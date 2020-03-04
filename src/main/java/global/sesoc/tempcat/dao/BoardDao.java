@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.tempcat.vo.NoticeBoard;
+import global.sesoc.tempcat.vo.NoticeReply;
 
 @Repository
 public class BoardDao {
@@ -36,7 +37,7 @@ public class BoardDao {
 		// TODO Auto-generated method stub
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		RowBounds RB = new RowBounds(startRecord, countPerPage);
-		//스타트레코드부터 카운트퍼페이지에 있는수만큼 셀렉트
+		// 스타트레코드부터 카운트퍼페이지에 있는수만큼 셀렉트
 		ArrayList<NoticeBoard> list = mapper.noticeList2(searchText, RB);
 		return list;
 	}
@@ -52,6 +53,13 @@ public class BoardDao {
 		// TODO Auto-generated method stub
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		mapper.noticeHits(noticenum);
+	}
+
+	public boolean replyWrite(NoticeReply nReply) {
+		// TODO Auto-generated method stub
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		intres = mapper.replyWrite(nReply);
+		return intres>0;
 	}
 
 }
