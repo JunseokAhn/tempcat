@@ -92,7 +92,7 @@
 			<div style="margin-top: 30px; text-align: center;">
 				<h2 style="display: inline;">Free Board</h2>
 				<div>
-					<c:if test="${sessionScope.id=='1'}">
+					<c:if test="${sessionScope.id!=null}">
 						<input type="button" style="display: inline-block; float: right;" class="button large" value="Write" onclick="freewrite()">
 					</c:if>
 					<!-- Search -->

@@ -70,13 +70,9 @@ public class MemberController {
 	@GetMapping(value = "logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/member/index";
+		return "redirect:/";
 	}
 
-	@GetMapping(value = "index")
-	public String index() {
-		return "temp/index";
-	}
 
 	@GetMapping(value = "signup")
 	public String signup() {
