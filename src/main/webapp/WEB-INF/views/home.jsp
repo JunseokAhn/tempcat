@@ -585,7 +585,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 
 			<!-- Intro -->
 			<section id="intro">
-				<a href="#" class="logo">
+				<a href="<c:url value="/"/>" class="logo">
 					<img src="<c:url value="/resources/images/logo.jpg"/>" alt="" />
 				</a>
 				<header>

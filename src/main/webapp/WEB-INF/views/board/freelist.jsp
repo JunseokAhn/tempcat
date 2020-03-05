@@ -306,7 +306,7 @@
 			<!-- About -->
 			<section class="blurb">
 				<h2>About</h2>
-				<p>A space where managers write down programming and everything else freely. If you have any questions or requests, please send them to send request.</p>
+				<p>A space that anyone can freely use whenever they sign up. If you have any questions or requests, please send them to send request.</p>
 				<ul class="actions">
 					<li><a href="#" class="button">Send Request</a></li>
 				</ul>
