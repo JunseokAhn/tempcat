@@ -23,7 +23,7 @@ import global.sesoc.tempcat.vo.NoticeBoard;
 import global.sesoc.tempcat.vo.NoticeReply;
 
 @Controller
-@RequestMapping("board")
+@RequestMapping("notice")
 public class NoticeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
@@ -36,11 +36,6 @@ public class NoticeController {
 	private String id;
 	private String stres;
 	private boolean res;
-
-	@GetMapping(value = "index")
-	public String index() {
-		return "temp/index";
-	}
 
 	@GetMapping(value = "noticelist")
 	public String noticeBoardList(@RequestParam(defaultValue = "") String searchText,
@@ -76,7 +71,7 @@ public class NoticeController {
 
 		// 프로필등록
 		Mdao.addMynotice(nBoard);
-		return "redirect:/board/noticelist";
+		return "redirect:/notice/noticelist";
 	}
 
 	@GetMapping(value = "noticeread")
@@ -109,7 +104,7 @@ public class NoticeController {
 		else {
 			logger.debug("replyWrite : fail");
 		}
-		return "redirect:/board/noticeread?noticenum=" + nReply.getNoticenum();
+		return "redirect:/notice/noticeread?noticenum=" + nReply.getNoticenum();
 	}
 
 	@GetMapping(value = "nreplydelete")
@@ -117,7 +112,7 @@ public class NoticeController {
 		logger.debug("replynum = " + num);
 		Ndao.nReplyDelete(num);
 
-		return "redirect:/board/noticeread?noticenum=" + noticenum;
+		return "redirect:/notice/noticeread?noticenum=" + noticenum;
 	}
 
 	@GetMapping(value = "nreplyupdate")
@@ -126,7 +121,7 @@ public class NoticeController {
 
 		Ndao.nReplyUpdate(nReply);
 
-		return "redirect:/board/noticeread?noticenum=" + nReply.getNoticenum();
+		return "redirect:/notice/noticeread?noticenum=" + nReply.getNoticenum();
 	}
 	/*
 	 * 에이잭스 댓글리드 > 실패

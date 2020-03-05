@@ -21,8 +21,8 @@
 			<nav class="links">
 				<ul>
 					<li><a href="#">Intro</a></li>
-					<li><a href="<c:url value="/board/noticelist"/>">Notice Board</a></li>
-					<li><a href="<c:url value="/board/freelist"/>">Free Board</a></li>
+					<li><a href="<c:url value="/notice/noticelist"/>">Notice Board</a></li>
+					<li><a href="<c:url value="/free/freelist"/>">Free Board</a></li>
 				</ul>
 			</nav>
 			<nav class="main">
@@ -53,11 +53,11 @@
 							<h3>INTRO</h3>
 							<p>Introduction to the Producer</p>
 						</a></li>
-					<li><a href="<c:url value="/board/noticelist"/>">
+					<li><a href="<c:url value="/notice/noticelist"/>">
 							<h3>NOTICE BOARD</h3>
 							<p>Only Admin can write</p>
 						</a></li>
-					<li><a href="<c:url value="/board/freelist"/>">
+					<li><a href="<c:url value="/free/freelist"/>">
 							<h3>FREE BOARD</h3>
 							<p>Everyone can write</p>
 						</a></li>
