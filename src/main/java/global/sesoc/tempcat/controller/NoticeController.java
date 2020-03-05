@@ -49,7 +49,7 @@ public class NoticeController {
 		// 전체글수랑 현재페이지를 가져와야함.
 		ArrayList<NoticeBoard> list = Ndao.noticeList();
 		int totalRecordsCount = list.size();
-		PageNavigator nav = new PageNavigator(currentPage, totalRecordsCount);
+		PageNavigator nav = new PageNavigator(10, currentPage, totalRecordsCount);
 		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
 		int startRecord = nav.getStartRecord();
 		int countPerPage = nav.getCountPerPage();
@@ -89,7 +89,7 @@ public class NoticeController {
 
 		// reply read
 		ArrayList<NoticeReply> list = Ndao.nReplyList(noticenum);
-		PageNavigator nav = new PageNavigator(currentPage, list.size());
+		PageNavigator nav = new PageNavigator(5, currentPage, list.size());
 		logger.debug("total reply count : " + Integer.toString(list.size()));
 		int startRecord = nav.getStartRecord();
 		int countPerPage = nav.getCountPerPage();
