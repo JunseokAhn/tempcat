@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import global.sesoc.tempcat.dao.BoardDao;
+import global.sesoc.tempcat.dao.NoticeDao;
 import global.sesoc.tempcat.dao.MemberDao;
 import global.sesoc.tempcat.util.PageNavigator;
 import global.sesoc.tempcat.vo.NoticeBoard;
@@ -24,12 +24,12 @@ import global.sesoc.tempcat.vo.NoticeReply;
 
 @Controller
 @RequestMapping("board")
-public class BoardController {
+public class NoticeController {
 
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
 
 	@Autowired
-	private BoardDao Bdao;
+	private NoticeDao Ndao;
 	private MemberDao Mdao;
 	NoticeBoard nBoard;
 	NoticeReply nReply;
@@ -47,13 +47,13 @@ public class BoardController {
 			@RequestParam(defaultValue = "1") int currentPage, Model model) {
 
 		// 전체글수랑 현재페이지를 가져와야함.
-		ArrayList<NoticeBoard> list = Bdao.noticeList();
+		ArrayList<NoticeBoard> list = Ndao.noticeList();
 		int totalRecordsCount = list.size();
 		PageNavigator nav = new PageNavigator(currentPage, totalRecordsCount);
 		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
 		int startRecord = nav.getStartRecord();
 		int countPerPage = nav.getCountPerPage();
-		list = Bdao.noticeListPage(searchText, startRecord, countPerPage);
+		list = Ndao.noticeListPage(searchText, startRecord, countPerPage);
 		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
 		model.addAttribute("nav", nav);
 		model.addAttribute("list", list);
@@ -71,7 +71,7 @@ public class BoardController {
 		id = (String) session.getAttribute("id");
 		logger.debug("id : {}, title : {}, contents : {}", id, title, contents);
 		nBoard = new NoticeBoard(id, title, contents);
-		res = Bdao.noticeWrite(nBoard);
+		res = Ndao.noticeWrite(nBoard);
 		logger.debug("noticeWrite : " + res);
 
 		// 프로필등록
@@ -82,19 +82,19 @@ public class BoardController {
 	@GetMapping(value = "noticeread")
 	public String noticeRead(String noticenum, Model model, @RequestParam(defaultValue = "999") int currentPage) {
 		logger.debug("noiceRead - noticenum : " + noticenum);
-		Bdao.noticeHits(noticenum);
-		nBoard = Bdao.noticeRead(noticenum);
+		Ndao.noticeHits(noticenum);
+		nBoard = Ndao.noticeRead(noticenum);
 		logger.debug(nBoard.toString());
 		model.addAttribute("nBoard", nBoard);
 
 		// reply read
-		ArrayList<NoticeReply> list = Bdao.nReplyList(noticenum);
+		ArrayList<NoticeReply> list = Ndao.nReplyList(noticenum);
 		PageNavigator nav = new PageNavigator(currentPage, list.size());
 		logger.debug("total reply count : " + Integer.toString(list.size()));
 		int startRecord = nav.getStartRecord();
 		int countPerPage = nav.getCountPerPage();
 
-		list = Bdao.nReplyListPage(startRecord, countPerPage, noticenum);
+		list = Ndao.nReplyListPage(startRecord, countPerPage, noticenum);
 		model.addAttribute("replyList", list);
 		model.addAttribute("nav", nav);
 		return "board/noticeread";
@@ -103,7 +103,7 @@ public class BoardController {
 	@PostMapping(value = "nreplywrite")
 	public String noticeReplyWrite(NoticeReply nReply) {
 		logger.debug(nReply.toString());
-		res = Bdao.replyWrite(nReply);
+		res = Ndao.replyWrite(nReply);
 		if (res)
 			logger.debug("replyWrite : success");
 		else {
@@ -115,7 +115,7 @@ public class BoardController {
 	@GetMapping(value = "nreplydelete")
 	public String noticeReplyDelete(String num, String noticenum) {
 		logger.debug("replynum = " + num);
-		Bdao.nReplyDelete(num);
+		Ndao.nReplyDelete(num);
 
 		return "redirect:/board/noticeread?noticenum=" + noticenum;
 	}
@@ -124,7 +124,7 @@ public class BoardController {
 	public String noticeReplyUpdate(NoticeReply nReply) {
 		logger.debug(nReply.toString());
 
-		Bdao.nReplyUpdate(nReply);
+		Ndao.nReplyUpdate(nReply);
 
 		return "redirect:/board/noticeread?noticenum=" + nReply.getNoticenum();
 	}

@@ -7,7 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import global.sesoc.tempcat.vo.NoticeBoard;
 import global.sesoc.tempcat.vo.NoticeReply;
 
-public interface BoardMapper {
+public interface NoticeMapper {
 
 	int noticeWrite(NoticeBoard nBoard);
 

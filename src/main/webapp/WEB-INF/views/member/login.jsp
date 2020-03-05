@@ -189,7 +189,7 @@
                         pw.focus();
                     }
                     if(res == 'login success'){
-                        location.href = <c:url value="/"/>'
+                        location.href = <c:url value="/"/>
                     }
                     
                 },
