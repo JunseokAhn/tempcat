@@ -50,16 +50,16 @@
 			<section>
 				<ul class="links">
 					<li><a href="#">
-							<h3>Lorem ipsum</h3>
-							<p>Feugiat tempus veroeros dolor</p>
+							<h3>INTRO</h3>
+							<p>Introduction to the Producer</p>
 						</a></li>
-					<li><a href="#">
-							<h3>Dolor sit amet</h3>
-							<p>Sed vitae justo condimentum</p>
+					<li><a href="<c:url value="/board/noticelist"/>">
+							<h3>NOTICE BOARD</h3>
+							<p>Only Admin can write</p>
 						</a></li>
-					<li><a href="#">
-							<h3>Feugiat veroeros</h3>
-							<p>Phasellus sed ultricies mi congue</p>
+					<li><a href="<c:url value="/board/freelist"/>">
+							<h3>FREE BOARD</h3>
+							<p>Everyone can write</p>
 						</a></li>
 					<li><a href="#">
 							<h3>Send Request</h3>

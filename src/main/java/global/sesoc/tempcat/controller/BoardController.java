@@ -29,8 +29,8 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
 	@Autowired
-	private BoardDao dao;
-
+	private BoardDao Bdao;
+	private MemberDao Mdao;
 	NoticeBoard nBoard;
 	NoticeReply nReply;
 	private String id;
@@ -47,13 +47,13 @@ public class BoardController {
 			@RequestParam(defaultValue = "1") int currentPage, Model model) {
 
 		// 전체글수랑 현재페이지를 가져와야함.
-		ArrayList<NoticeBoard> list = dao.noticeList();
+		ArrayList<NoticeBoard> list = Bdao.noticeList();
 		int totalRecordsCount = list.size();
 		PageNavigator nav = new PageNavigator(currentPage, totalRecordsCount);
 		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
 		int startRecord = nav.getStartRecord();
 		int countPerPage = nav.getCountPerPage();
-		list = dao.noticeListPage(searchText, startRecord, countPerPage);
+		list = Bdao.noticeListPage(searchText, startRecord, countPerPage);
 		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
 		model.addAttribute("nav", nav);
 		model.addAttribute("list", list);
@@ -71,27 +71,30 @@ public class BoardController {
 		id = (String) session.getAttribute("id");
 		logger.debug("id : {}, title : {}, contents : {}", id, title, contents);
 		nBoard = new NoticeBoard(id, title, contents);
-		res = dao.noticeWrite(nBoard);
+		res = Bdao.noticeWrite(nBoard);
 		logger.debug("noticeWrite : " + res);
+
+		// 프로필등록
+		Mdao.addMynotice(nBoard);
 		return "redirect:/board/noticelist";
 	}
 
 	@GetMapping(value = "noticeread")
 	public String noticeRead(String noticenum, Model model, @RequestParam(defaultValue = "999") int currentPage) {
 		logger.debug("noiceRead - noticenum : " + noticenum);
-		dao.noticeHits(noticenum);
-		nBoard = dao.noticeRead(noticenum);
+		Bdao.noticeHits(noticenum);
+		nBoard = Bdao.noticeRead(noticenum);
 		logger.debug(nBoard.toString());
 		model.addAttribute("nBoard", nBoard);
 
 		// reply read
-		ArrayList<NoticeReply> list = dao.nReplyList(noticenum);
+		ArrayList<NoticeReply> list = Bdao.nReplyList(noticenum);
 		PageNavigator nav = new PageNavigator(currentPage, list.size());
 		logger.debug("total reply count : " + Integer.toString(list.size()));
 		int startRecord = nav.getStartRecord();
 		int countPerPage = nav.getCountPerPage();
 
-		list = dao.nReplyListPage(startRecord, countPerPage, noticenum);
+		list = Bdao.nReplyListPage(startRecord, countPerPage, noticenum);
 		model.addAttribute("replyList", list);
 		model.addAttribute("nav", nav);
 		return "board/noticeread";
@@ -100,7 +103,7 @@ public class BoardController {
 	@PostMapping(value = "nreplywrite")
 	public String noticeReplyWrite(NoticeReply nReply) {
 		logger.debug(nReply.toString());
-		res = dao.replyWrite(nReply);
+		res = Bdao.replyWrite(nReply);
 		if (res)
 			logger.debug("replyWrite : success");
 		else {
@@ -112,7 +115,7 @@ public class BoardController {
 	@GetMapping(value = "nreplydelete")
 	public String noticeReplyDelete(String num, String noticenum) {
 		logger.debug("replynum = " + num);
-		dao.nReplyDelete(num);
+		Bdao.nReplyDelete(num);
 
 		return "redirect:/board/noticeread?noticenum=" + noticenum;
 	}
@@ -121,7 +124,7 @@ public class BoardController {
 	public String noticeReplyUpdate(NoticeReply nReply) {
 		logger.debug(nReply.toString());
 
-		dao.nReplyUpdate(nReply);
+		Bdao.nReplyUpdate(nReply);
 
 		return "redirect:/board/noticeread?noticenum=" + nReply.getNoticenum();
 	}

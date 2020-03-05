@@ -139,15 +139,15 @@
 					</div>
 				</header>
 			</c:forEach>
-			<ul class="actions pagination">
-				<li style="margin-left: 20px;"><input id="previous" type="button" class="button large previous" value="Previous Page" onclick="PreviousPage()"></li>
-				<c:forEach var="i" begin="${nav.startPageGroup }" end="${nav.endPageGroup }">
-					<li style="margin-left: 20px;"><input type="button" class="button fit" value="${i }" onclick="paging(${i})"></li>
-				</c:forEach>
-
-				<li style="margin-left: 20px;"><input id="next" type="button" class="disabled button large next" value="Next Page" onclick="NextPage()"></li>
-
-			</ul>
+			<header>
+				<ul class="actions pagination">
+					<li style="margin-left: 20px;"><input id="previous" type="button" class="button large previous" value="Previous Page" onclick="PreviousPage()"></li>
+					<c:forEach var="i" begin="${nav.startPageGroup }" end="${nav.endPageGroup }">
+						<li style="margin-left: 20px;"><input type="button" class="button fit" value="${i }" onclick="paging(${i})"></li>
+					</c:forEach>
+					<li style="margin-left: 20px;"><input id="next" type="button" class="disabled button large next" value="Next Page" onclick="NextPage()"></li>
+				</ul>
+			</header>
 			<header id="myheader">
 				<div class="title">
 					<h2 class="col-6 col-12-xsmall">

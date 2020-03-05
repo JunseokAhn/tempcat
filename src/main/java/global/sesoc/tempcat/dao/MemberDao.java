@@ -65,4 +65,10 @@ public class MemberDao {
 		return stres;
 	}
 
+	public void addMynotice(NoticeBoard nBoard) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		System.out.println("만드는중..");
+	}
+
 }
