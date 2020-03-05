@@ -64,3 +64,47 @@ insert into notice_reply
 (num, id, nickname, noticenum, contents)
 values
 (notice_reply_seq.nextval, 1, 1,1,1);
+
+
+--자유게시판 테이블
+create table tempcat_free(
+	freenum	    number primary key,			--글번호
+	id			varchar2(20) not null, 		--작성자ID
+	title		varchar2(200) not null,		--제목
+	contents	varchar2(2000) not null, 	--내용
+	inputdate	date default sysdate, 		--작성일
+	hits		number default 0,			--조회수
+    heart       number default 0,           --받은 좋아요 수
+	originalfile	varchar2(200),			--첨부파일 원래이름
+	savedfile		varchar2(100),			--첨부파일 저장된 이름
+    foreign key (id) REFERENCES tempcat_member (id) on delete cascade
+);
+--자유게시판 번호에 사용할 시퀀스
+create sequence tempcat_free_seq;
+
+--id 1(아무 id)으로 회원가입후 사용
+insert into tempcat_free
+	(freenum, id, title, contents)
+values
+	(tempcat_free_seq.nextval, 1, 1, 1);
+
+--자유게시판 댓글 테이블
+create table free_reply (
+	num         number primary key,
+    id			varchar2(20)         not null, 	--회원ID
+	nickname	varchar2(20),                   --닉네임
+    freenum     number               not null,  --게시글번호
+	contents    varchar2(2000)       not null,  --코멘트
+	inputdate	date default sysdate, 		    --작성일
+    foreign key (id) references tempcat_member (id) on delete cascade,
+    foreign key (freenum)references tempcat_free (freenum) on delete cascade
+);
+
+--자유게시판 댓글 시퀀스
+create sequence free_reply_seq;
+
+--id 1(아무 id)으로 회원가입후 사용
+insert into free_reply
+(num, id, nickname, freenum, contents)
+values
+(free_reply_seq.nextval, 1, 1,1,1);
