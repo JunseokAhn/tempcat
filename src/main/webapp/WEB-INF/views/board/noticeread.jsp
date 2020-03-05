@@ -255,14 +255,15 @@
             updateflag = 1;
             h += "<div class='title'>"
             h += "<h2 class='col-6 col-12-xsmall'>"
-            h += "<form action='nreplywrite' id='myreply' method='post' style='margin-bottom: 0px;''>"
+            h += "<form action='nreplyupdate' id='myreply2' method='post' style='margin-bottom: 0px;''>"
             h += "<p style='margin-bottom: 0px; display: inline-block;'>writing</p>"
             h += "<input type='button' class='button small' value='Send Reply' onclick='updatereply2(" + num + ")' style='float: right;' />"
             h += "<input type='button' class='button small' value='Return' onclick='returnreply(" + num + ")' style='float: right;' />"
             h += "<input type='text' name='contents' id='updatecontents' placeholder='Comment..' />"
-            h += "<input type='hidden' id='id' name='id'>"
-            h += "<input type='hidden' id='nickname' name='nickname'>"
-            h += "<input type='hidden' id='noticenum' name='noticenum'>"
+            h += "<input type='hidden' id='num2' name='num' value = '"+num+"'>"
+            h += "<input type='hidden' id='id2' name='id'>"
+            h += "<input type='hidden' id='nickname2' name='nickname'>"
+            h += "<input type='hidden' id='noticenum2' name='noticenum'>"
             h += "</form>"
             h += "</h2>"
             h += "</div>"
@@ -286,8 +287,11 @@
         function updatereply2 (num) {
             updateflag = 0;
             //업데이트- 콘텐츠랑 인풋데이트
-            var updatecontents = document.getElementById('updatecontents').value
-            location.href = 'nreplyupdate?num=' + num + 'id=${sessionScope.id}+&noticenum=${requestScope.nBoard.noticenum}&contents=' + updatecontents
+            $('#id2').val('${sessionScope.id}');
+            $('#nickname2').val('${sessionScope.nickname}');
+            $('#noticenum2').val('${requestScope.nBoard.noticenum}');
+            $('#myreply2').submit();
+           
         }
     </script>
 	<!-- Scripts -->

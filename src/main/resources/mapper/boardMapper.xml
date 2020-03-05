@@ -57,6 +57,7 @@
 		resultType="nReply">
 		select * from notice_reply where noticenum like
 		#{noticenum}
+		order by num asc
 	</select>
 
 	<delete id="nReplyDelete" parameterType="String">
