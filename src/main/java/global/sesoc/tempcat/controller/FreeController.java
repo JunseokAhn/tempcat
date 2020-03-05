@@ -80,7 +80,7 @@ public class FreeController {
 		Fdao.freeHits(freenum);
 		fBoard = Fdao.freeRead(freenum);
 		logger.debug(fBoard.toString());
-		model.addAttribute("nBoard", fBoard);
+		model.addAttribute("fBoard", fBoard);
 
 		// reply read
 		ArrayList<FreeReply> list = Fdao.fReplyList(freenum);
