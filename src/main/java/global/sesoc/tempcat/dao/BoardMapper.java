@@ -27,4 +27,6 @@ public interface BoardMapper {
 
 	void nReplyUpdate(NoticeReply nReply);
 
+	ArrayList<NoticeReply> nReplyList(RowBounds rB, String noticenum);
+
 }

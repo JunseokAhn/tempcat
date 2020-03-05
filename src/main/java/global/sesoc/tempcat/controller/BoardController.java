@@ -77,7 +77,7 @@ public class BoardController {
 	}
 
 	@GetMapping(value = "noticeread")
-	public String noticeRead(String noticenum, Model model) {
+	public String noticeRead(String noticenum, Model model, @RequestParam(defaultValue = "999") int currentPage) {
 		logger.debug("noiceRead - noticenum : " + noticenum);
 		dao.noticeHits(noticenum);
 		nBoard = dao.noticeRead(noticenum);
@@ -86,8 +86,14 @@ public class BoardController {
 
 		// reply read
 		ArrayList<NoticeReply> list = dao.nReplyList(noticenum);
-		logger.debug("reply size : " + Integer.toString(list.size()));
+		PageNavigator nav = new PageNavigator(currentPage, list.size());
+		logger.debug("total reply count : " + Integer.toString(list.size()));
+		int startRecord = nav.getStartRecord();
+		int countPerPage = nav.getCountPerPage();
+
+		list = dao.nReplyListPage(startRecord, countPerPage, noticenum);
 		model.addAttribute("replyList", list);
+		model.addAttribute("nav", nav);
 		return "board/noticeread";
 	}
 
@@ -114,7 +120,7 @@ public class BoardController {
 	@GetMapping(value = "nreplyupdate")
 	public String noticeReplyUpdate(NoticeReply nReply) {
 		logger.debug(nReply.toString());
-		
+
 		dao.nReplyUpdate(nReply);
 
 		return "redirect:/board/noticeread?noticenum=" + nReply.getNoticenum();

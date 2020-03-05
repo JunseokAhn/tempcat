@@ -80,7 +80,16 @@ public class BoardDao {
 		// TODO Auto-generated method stub
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		mapper.nReplyUpdate(nReply);
-	
+
+	}
+
+	public ArrayList<NoticeReply> nReplyListPage(int startRecord, int countPerPage, String noticenum) {
+		// TODO Auto-generated method stub
+		RowBounds RB = new RowBounds(startRecord, countPerPage);
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		ArrayList<NoticeReply> list = mapper.nReplyList(RB, noticenum);
+		
+		return list;
 	}
 
 }
