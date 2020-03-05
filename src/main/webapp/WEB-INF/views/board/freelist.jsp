@@ -95,6 +95,9 @@
 					<c:if test="${sessionScope.id!=null}">
 						<input type="button" style="display: inline-block; float: right;" class="button large" value="Write" onclick="freewrite()">
 					</c:if>
+					<c:if test="${sessionScope.id==null}">
+						<input type="button" style="display: inline-block; float: right;" class="button large" value="Log in" onclick="login()">
+					</c:if>
 					<!-- Search -->
 					<section style="width: 30%;">
 						<form class="search" method="get" action="#">
@@ -356,6 +359,10 @@
         else{
             $('#next').attr('class', 'button large next')  
         } 
+        function login(){
+            location.href = '<c:url value="/member/login"/>'
+        }
+        
         function freewrite () {
             location.href = 'freewrite'
         }
