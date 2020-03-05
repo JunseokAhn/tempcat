@@ -17,7 +17,7 @@
 		<!-- Header -->
 		<header id="header">
 			<h1>
-				<a href="index.html">Blog Contents</a>
+				<a href="<c:url value="/"/>">Blog Contents</a>
 			</h1>
 			<nav class="links">
 				<ul>
@@ -51,20 +51,20 @@
 			<section>
 				<ul class="links">
 					<li><a href="#">
-							<h3>Lorem ipsum</h3>
-							<p>Feugiat tempus veroeros dolor</p>
+							<h3>INTRO</h3>
+							<p>Introduction to the Producer</p>
+						</a></li>
+					<li><a href="<c:url value="/board/noticelist"/>">
+							<h3>NOTICE BOARD</h3>
+							<p>Only Admin can write</p>
+						</a></li>
+					<li><a href="<c:url value="/board/freelist"/>">
+							<h3>FREE BOARD</h3>
+							<p>Everyone can write</p>
 						</a></li>
 					<li><a href="#">
-							<h3>Dolor sit amet</h3>
-							<p>Sed vitae justo condimentum</p>
-						</a></li>
-					<li><a href="#">
-							<h3>Feugiat veroeros</h3>
-							<p>Phasellus sed ultricies mi congue</p>
-						</a></li>
-					<li><a href="#">
-							<h3>Etiam sed consequat</h3>
-							<p>Porta lectus amet ultricies</p>
+							<h3>Send Request</h3>
+							<p>About the site or everything else.</p>
 						</a></li>
 				</ul>
 			</section>
@@ -86,6 +86,7 @@
 			</section>
 
 		</section>
+
 	</div>
 
 	<div style="text-align: center">
@@ -128,7 +129,7 @@
 								<option value="@sesoc.global">sesoc.global</option>
 							</select>
 						</div>
-						
+
 						<!-- 
 						<div class="col-4 col-12-small">
 							<input type="radio" id="demo-priority-low" name="demo-priority" checked>
@@ -196,7 +197,7 @@
             nickname = document.getElementById('nickname');
             email1 = document.getElementById('email1').value;
             email2 = document.getElementById('email2').value;
-            email = email1 + ''+ email2;
+            email = email1 + '' + email2;
             $.ajax({
                 url : 'signup',
                 data : {
@@ -217,7 +218,7 @@
                         alert('알 수 없는 에러 발생, 오류유형 1.');
                     }
                     if(res == 'insert success'){
-                        location.href = "../index";
+                        location.href = "<c:url value="/"/>";
                     }
                 },
                 error : function (res) {

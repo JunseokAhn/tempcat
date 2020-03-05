@@ -16,7 +16,7 @@
 		<!-- Header -->
 		<header id="header">
 			<h1>
-				<a href="index.html">Blog Contents</a>
+				<a href="<c:url value="/"/>">Blog Contents</a>
 			</h1>
 			<nav class="links">
 				<ul>
@@ -86,6 +86,7 @@
 
 		</section>
 
+
 		<!-- Main -->
 		<div id="main">
 			<div style="margin-top: 30px; text-align: center;">
@@ -97,7 +98,7 @@
 					<!-- Search -->
 					<section style="width: 30%;">
 						<form class="search" method="get" action="#">
-							<input type="text" name="query"  style="min-width: 200px;" placeholder="Search" />
+							<input type="text" name="query" style="min-width: 200px;" placeholder="Search" />
 						</form>
 					</section>
 				</div>
