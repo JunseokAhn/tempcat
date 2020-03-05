@@ -9,6 +9,7 @@ create table tempcat_member (
 	inputdate date default sysdate, 		--아이디 생성일
     logindate date default sysdate
 );
+
 --회원 정보 테이블2
 create table tempcat_profile(
     id			varchar2(20) primary key,	--회원ID
@@ -19,12 +20,12 @@ create table tempcat_profile(
     heartnotice number  null,               --좋아요 누른 공지글
     heartfree   number  null,               --좋아요 누른 자유글
     foreign key (id) references tempcat_member (id) on delete cascade,
-    foreign key (mynotice) references tempcat_notice (noticenum) on delete set null,
-    foreign key (myfree) references tempcat_free (freenum) on delete set null,
-    foreign key (noticereply) references notice_reply (num) on delete set null,
-    foreign key (freereply) references free_reply (num) on delete set null,
-    foreign key (heartnotice) references tempcat_notice (noticenum) on delete set null,
-    foreign key (heartfree) references tempcat_free (freenum) on delete set null
+    foreign key (mynotice) references tempcat_notice (noticenum) on delete cascade,
+    foreign key (myfree) references tempcat_free (freenum) on delete cascade,
+    foreign key (noticereply) references notice_reply (num) on delete cascade,
+    foreign key (freereply) references free_reply (num) on delete cascade,
+    foreign key (heartnotice) references tempcat_notice (noticenum) on delete cascade,
+    foreign key (heartfree) references tempcat_free (freenum) on delete cascade
 );
 
 --공지게시판 테이블
