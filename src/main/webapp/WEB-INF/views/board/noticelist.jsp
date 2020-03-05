@@ -50,16 +50,16 @@
 			<section>
 				<ul class="links">
 					<li><a href="#">
-							<h3>Lorem ipsum</h3>
-							<p>Feugiat tempus veroeros dolor</p>
+							<h3>INTRO</h3>
+							<p>Introduction to the Producer</p>
 						</a></li>
-					<li><a href="#">
-							<h3>Dolor sit amet</h3>
-							<p>Sed vitae justo condimentum</p>
+					<li><a href="<c:url value="/board/noticelist"/>">
+							<h3>NOTICE BOARD</h3>
+							<p>Only Admin can write</p>
 						</a></li>
-					<li><a href="#">
-							<h3>Feugiat veroeros</h3>
-							<p>Phasellus sed ultricies mi congue</p>
+					<li><a href="<c:url value="/board/freelist"/>">
+							<h3>FREE BOARD</h3>
+							<p>Everyone can write</p>
 						</a></li>
 					<li><a href="#">
 							<h3>Send Request</h3>
@@ -88,16 +88,16 @@
 
 		<!-- Main -->
 		<div id="main">
-			<div style="margin-top: 50px; text-align: center;">
-				<h2>Notice Board</h2>
+			<div style="margin-top: 30px; text-align: center;">
+				<h2 style="display: inline;">Notice Board</h2>
 				<div>
 					<c:if test="${sessionScope.id=='1'}">
-						<input type="button" class="button large" value="Write" onclick="noticewrite()">
+						<input type="button" style="display: inline-block; float: right;" class="button large" value="Write" onclick="noticewrite()">
 					</c:if>
 					<!-- Search -->
 					<section style="width: 30%;">
 						<form class="search" method="get" action="#">
-							<input type="text" name="query" placeholder="Search" />
+							<input type="text" name="query"  style="min-width: 200px;" placeholder="Search" />
 						</form>
 					</section>
 				</div>
@@ -140,44 +140,6 @@
 				</ul>
 
 			</div>
-
-
-			<section>
-				<h3>Buttons</h3>
-				<ul class="actions">
-					<li><a href="#" class="button large">Large</a></li>
-					<li><a href="#" class="button">Default</a></li>
-					<li><a href="#" class="button small">Small</a></li>
-				</ul>
-				<ul class="actions fit">
-					<li><a href="#" class="button fit">Fit</a></li>
-					<li><a href="#" class="button fit">Fit</a></li>
-					<li><a href="#" class="button fit">Fit</a></li>
-				</ul>
-				<ul class="actions fit small">
-					<li><a href="#" class="button fit small">Fit + Small</a></li>
-					<li><a href="#" class="button fit small">Fit + Small</a></li>
-					<li><a href="#" class="button fit small">Fit + Small</a></li>
-				</ul>
-				<ul class="actions">
-					<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-					<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
-					<li><a href="#" class="button icon solid fa-save">Icon</a></li>
-				</ul>
-				<ul class="actions">
-					<li><span class="button disabled">Disabled</span></li>
-					<li><span class="button disabled icon solid fa-download">Disabled</span></li>
-				</ul>
-			</section>
-
-
-
-			<!-- -- -->
-			<!-- Pagination -->
-			<ul class="actions pagination">
-				<li><a href="" class="disabled button large previous">Previous Page</a></li>
-				<li><a href="#" class="button large next">Next Page</a></li>
-			</ul>
 
 		</div>
 
@@ -343,9 +305,9 @@
 			<!-- About -->
 			<section class="blurb">
 				<h2>About</h2>
-				<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+				<p>A space where managers write down programming and everything else freely. If you have any questions or requests, please send them to send request.</p>
 				<ul class="actions">
-					<li><a href="#" class="button">Learn More</a></li>
+					<li><a href="#" class="button">Send Request</a></li>
 				</ul>
 			</section>
 
