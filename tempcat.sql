@@ -29,11 +29,11 @@ create table tempcat_notice(
 --공지게시판 번호에 사용할 시퀀스
 create sequence tempcat_notice_seq;
 
---id 1(관리자ID, notice board작성가능)으로 회원가입후 사용
+--강제로 공지작성하는 쿼리, id 1(관리자ID, notice board작성가능)으로 회원가입후 사용
 insert into tempcat_notice
-	(noticenum, id, title, contents)
+(noticenum, id, title, contents, nickname)
 values
-	(tempcat_notice_seq.nextval, 1, 1, 1);
+(tempcat_notice_seq.nextval, 1, 1, 1, 1);
 
 --공지게시판 댓글 테이블
 create table notice_reply (
@@ -50,12 +50,15 @@ create table notice_reply (
 --공지게시판 댓글 시퀀스
 create sequence notice_reply_seq;
 
---id 1(관리자ID)으로 회원가입후 사용
+--강제로 리플라이 다는 쿼리(가입된id, 작성된noticenum맞춰줄것)으로 회원가입후 사용
 insert into notice_reply
 (num, id, nickname, noticenum, contents)
 values
 (notice_reply_seq.nextval, 1, 1,1,1);
-
+insert into notice_reply
+(num, id, nickname, noticenum, contents)
+values
+(notice_reply_seq.nextval, 2, 2,2,2);
 
 --자유게시판 테이블
 create table tempcat_free(
@@ -75,11 +78,15 @@ create table tempcat_free(
 --자유게시판 번호에 사용할 시퀀스
 create sequence tempcat_free_seq;
 
---id 1(아무 id)으로 회원가입후 사용
+--강제로 게시글작성하는 쿼리, (아무id)로 회원가입후 사용
 insert into tempcat_free
-	(freenum, id, title, contents)
+(freenum, id, title, contents, nickname)
 values
-	(tempcat_free_seq.nextval, 1, 1, 1);
+(tempcat_free_seq.nextval, 1, 1, 1, 1);
+insert into tempcat_free
+(freenum, id, title, contents, nickname)
+values
+(tempcat_free_seq.nextval, 2, 2, 2, 2);
 
 --자유게시판 댓글 테이블
 create table free_reply (
@@ -96,11 +103,16 @@ create table free_reply (
 --자유게시판 댓글 시퀀스
 create sequence free_reply_seq;
 
---id 1(아무 id)으로 회원가입후 사용
+--강제로 리플라이 다는 쿼리(가입된id, 작성된noticenum맞춰줄것)으로 회원가입후 사용
 insert into free_reply
 (num, id, nickname, freenum, contents)
 values
-(free_reply_seq.nextval, 1, 1,1,1);
+(free_reply_seq.nextval, 1, 1, 1, 1);
+insert into free_reply
+(num, id, nickname, freenum, contents)
+values
+(free_reply_seq.nextval, 2, 2, 2 ,2);
+
 
 --회원 정보 테이블2
 create table tempcat_profile(

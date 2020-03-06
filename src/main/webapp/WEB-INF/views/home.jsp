@@ -95,7 +95,7 @@
 					<header>
 						<div class="title">
 							<h2>
-								<a href="single.html">${i.title}</a>
+								<a href="<c:url value="notice/noticeread?noticenum=${i.noticenum }" />">${i.title}</a>
 							</h2>
 							<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
 						</div>
@@ -107,7 +107,7 @@
 							</a>
 						</div>
 					</header>
-					<a href="single.html" class="image featured">
+					<a href="" class="image featured">
 						<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
 					</a>
 					<p>${i.contents }</p>
