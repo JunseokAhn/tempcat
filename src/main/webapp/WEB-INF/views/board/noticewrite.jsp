@@ -127,8 +127,8 @@
 					</ul>
 
 				</div>
-
-			</article>
+	
+		</article>
 		</form>
 	</div>
 

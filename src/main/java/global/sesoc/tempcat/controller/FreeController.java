@@ -37,6 +37,8 @@ public class FreeController {
 	private String stres;
 	private boolean res;
 
+	private String nickname;
+
 	@GetMapping(value = "freelist")
 	public String freeBoardList(@RequestParam(defaultValue = "") String searchText,
 			@RequestParam(defaultValue = "1") int currentPage, Model model) {
@@ -64,13 +66,14 @@ public class FreeController {
 	@PostMapping(value = "freewrite")
 	public String freeWrite2(String title, String contents, HttpSession session) {
 		id = (String) session.getAttribute("id");
-		logger.debug("id : {}, title : {}, contents : {}", id, title, contents);
-		fBoard = new FreeBoard(id, title, contents);
+		nickname = (String) session.getAttribute("nickname");
+		logger.debug("id : {}, title : {}, contents : {} nickname : {}", id, title, contents, nickname);
+		fBoard = new FreeBoard(id, title, contents, nickname);
 		res = Fdao.freeWrite(fBoard);
 		logger.debug("freeWrite : " + res);
 
 		// 프로필등록
-		//Mdao.addMyfree(fBoard);
+		// Mdao.addMyfree(fBoard);
 		return "redirect:/free/freelist";
 	}
 

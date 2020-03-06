@@ -19,11 +19,12 @@ public class FreeBoard {
 	public FreeBoard() {
 	}
 
-	public FreeBoard(String id, String title, String contents) {
+	public FreeBoard(String id, String title, String contents, String nickname) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.contents = contents;
+		this.nickname = nickname;
 	}
 
 }

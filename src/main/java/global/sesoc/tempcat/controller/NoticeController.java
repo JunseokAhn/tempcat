@@ -40,6 +40,8 @@ public class NoticeController {
 
 	private Profile profile;
 
+	private String nickname;
+
 	@GetMapping(value = "noticelist")
 	public String noticeBoardList(@RequestParam(defaultValue = "") String searchText,
 			@RequestParam(defaultValue = "1") int currentPage, Model model) {
@@ -67,8 +69,9 @@ public class NoticeController {
 	@PostMapping(value = "noticewrite")
 	public String noticeWrite2(String title, String contents, HttpSession session) {
 		id = (String) session.getAttribute("id");
-		logger.debug("id : {}, title : {}, contents : {}", id, title, contents);
-		nBoard = new NoticeBoard(id, title, contents);
+		nickname = (String) session.getAttribute("nickname");
+		logger.debug("id : {}, title : {}, contents : {} nickname : {}", id, title, contents, nickname);
+		nBoard = new NoticeBoard(id, title, contents, nickname);
 		int myNoticeNum = Ndao.noticeWrite(nBoard);
 		logger.debug("myNoticeNum : " + myNoticeNum);
 		profile = new Profile();

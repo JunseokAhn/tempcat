@@ -6,10 +6,10 @@
 	<insert id="freeWrite" parameterType="Free">
 		insert into
 		tempcat_free
-		(freenum, id, title, contents)
+		(freenum, id, title, contents, nickname)
 		values
 		(tempcat_free_seq.nextval, #{id},
-		#{title}, #{contents})
+		#{title}, #{contents}, #{nickname})
 	</insert>
 
 	<select id="freeList" resultType="Free">
@@ -22,8 +22,6 @@
 		hits, originalfile,
 		savedfile, nickname
 		from tempcat_free
-		join
-		(select id, nickname from tempcat_member) using(id)
 		<if test="#{_parameter!=null}">
 			where title like '%' || #{_parameter} || '%'
 		</if>

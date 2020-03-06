@@ -6,9 +6,9 @@
 	<insert id="noticeWrite" parameterType="Notice">
 		insert into
 		tempcat_notice
-		(noticenum, id, title, contents)
+		(noticenum, id, title, contents, nickname)
 		values
-		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents})
+		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents}, #{nickname})
 	</insert>
 
 	<select id="noticeList" resultType="Notice">
@@ -22,7 +22,6 @@
 		hits, originalfile,
 		savedfile, nickname
 		from tempcat_notice
-		join (select id, nickname from tempcat_member) using(id)
 		<if test="#{_parameter!=null}">
 			where title like '%' || #{_parameter} || '%'
 		</if>
