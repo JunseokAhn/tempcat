@@ -71,4 +71,15 @@
 		contents = #{contents}, inputdate = default
 		where num = #{num}
 	</update>
+
+	<select id="setNotice" resultType="Notice">
+		select * from tempcat_notice
+		where rownum &lt; 4 order by noticenum desc
+	</select>
+
+	<select id="selectMynoticeNum" parameterType="String"
+		resultType="int">
+		select * from tempcat_notice where noticenum in (select
+		max(noticenum) maxnum from tempcat_notice) and id = #{id}
+	</select>
 </mapper>

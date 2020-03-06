@@ -7,7 +7,7 @@
 		from tempcat_member
 		where id = #{id}
 	</select>
-	
+
 	<insert id="signup" parameterType="Member">
 		insert into tempcat_member
 		(id, pw,
@@ -17,17 +17,25 @@
 		#{nickname},
 		#{email})
 	</insert>
-	
+
 	<select id="login" parameterType="Member" resultType="Member">
 		select *
 		from tempcat_member
 		where id = #{id} and pw = #{pw}
 	</select>
-	
+
 	<select id="logindate" parameterType="Member">
 		update tempcat_member
-		set logindate = sysdate
+		set
+		logindate = sysdate
 		where id=#{id}
 	</select>
 
+	<insert id="addMynotice" parameterType="Profile">
+		insert into
+		tempcat_profile
+		(id, mynotice)
+		values
+		(#{id}, #{mynotice})
+	</insert>
 </mapper>

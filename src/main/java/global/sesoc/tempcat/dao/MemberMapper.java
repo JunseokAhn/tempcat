@@ -1,6 +1,8 @@
 package global.sesoc.tempcat.dao;
 
 import global.sesoc.tempcat.vo.Member;
+import global.sesoc.tempcat.vo.NoticeBoard;
+import global.sesoc.tempcat.vo.Profile;
 
 public interface MemberMapper {
 
@@ -12,6 +14,7 @@ public interface MemberMapper {
 
 	void logindate(Member member);
 
-	
+	int addMynotice(Profile profile);
+
 
 }

@@ -12,15 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.tempcat.dao.NoticeDao;
 import global.sesoc.tempcat.dao.MemberDao;
 import global.sesoc.tempcat.util.PageNavigator;
 import global.sesoc.tempcat.vo.NoticeBoard;
 import global.sesoc.tempcat.vo.NoticeReply;
+import global.sesoc.tempcat.vo.Profile;
 
 @Controller
 @RequestMapping("notice")
@@ -29,13 +28,17 @@ public class NoticeController {
 	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
 
 	@Autowired
-	private NoticeDao Ndao;
 	private MemberDao Mdao;
+	@Autowired
+	private NoticeDao Ndao;
+
 	NoticeBoard nBoard;
 	NoticeReply nReply;
 	private String id;
 	private String stres;
 	private boolean res;
+
+	private Profile profile;
 
 	@GetMapping(value = "noticelist")
 	public String noticeBoardList(@RequestParam(defaultValue = "") String searchText,
@@ -66,11 +69,13 @@ public class NoticeController {
 		id = (String) session.getAttribute("id");
 		logger.debug("id : {}, title : {}, contents : {}", id, title, contents);
 		nBoard = new NoticeBoard(id, title, contents);
-		res = Ndao.noticeWrite(nBoard);
-		logger.debug("noticeWrite : " + res);
+		int myNoticeNum = Ndao.noticeWrite(nBoard);
+		logger.debug("myNoticeNum : " + myNoticeNum);
+		profile = new Profile();
+		profile.setId(id);
+		profile.setMynotice(myNoticeNum);
+		res = Mdao.addMynotice(profile);
 
-		// 프로필등록
-		Mdao.addMynotice(nBoard);
 		return "redirect:/notice/noticelist";
 	}
 

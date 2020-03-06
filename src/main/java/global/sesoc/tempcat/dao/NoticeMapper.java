@@ -29,4 +29,9 @@ public interface NoticeMapper {
 
 	ArrayList<NoticeReply> nReplyList(RowBounds rB, String noticenum);
 
+	ArrayList<NoticeBoard> setNotice();
+
+	int selectMynoticeNum(String id);
+
+
 }

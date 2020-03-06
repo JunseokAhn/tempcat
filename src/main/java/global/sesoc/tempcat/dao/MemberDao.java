@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.tempcat.vo.Member;
-import global.sesoc.tempcat.vo.NoticeBoard;
+import global.sesoc.tempcat.vo.Profile;
 
 /**
  * 개인정보 관련 DB처리를 담당
@@ -65,10 +65,12 @@ public class MemberDao {
 		return stres;
 	}
 
-	public void addMynotice(NoticeBoard nBoard) {
+	public boolean addMynotice(Profile profile) {
 		// TODO Auto-generated method stub
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
-		System.out.println("만드는중..");
+		System.out.println(profile);
+		mapper.addMynotice(profile);
+		return intres > 0;
 	}
 
 }

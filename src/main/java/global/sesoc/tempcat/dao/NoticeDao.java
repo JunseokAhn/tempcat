@@ -19,12 +19,12 @@ public class NoticeDao {
 	private int intres;
 	private NoticeBoard nBoard;
 
-	public boolean noticeWrite(NoticeBoard nBoard) {
+	public int noticeWrite(NoticeBoard nBoard) {
 		// TODO Auto-generated method stub
 		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
 		intres = mapper.noticeWrite(nBoard);
-
-		return intres > 0;
+		int myNoticeNum = mapper.selectMynoticeNum(nBoard.getId());
+		return myNoticeNum;
 	}
 
 	public ArrayList<NoticeBoard> noticeList() {
@@ -88,7 +88,7 @@ public class NoticeDao {
 		RowBounds RB = new RowBounds(startRecord, countPerPage);
 		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
 		ArrayList<NoticeReply> list = mapper.nReplyList(RB, noticenum);
-		
+
 		return list;
 	}
 
