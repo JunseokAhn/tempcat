@@ -106,14 +106,17 @@ public class FreeController {
 	}
 
 	@PostMapping(value = "freplywrite")
-	public String freeReplyWrite(FreeReply fReply) {
+	public String freeReplyWrite(FreeReply fReply, HttpSession session) {
 		logger.debug(fReply.toString());
-		res = Fdao.replyWrite(fReply);
-		if (res)
-			logger.debug("replyWrite : success");
-		else {
-			logger.debug("replyWrite : fail");
-		}
+		int freereply = Fdao.replyWrite(fReply);
+		logger.debug("freereply : " + freereply);
+		id = (String) session.getAttribute("id");
+		profile = new Profile();
+		profile.setId(id);
+		profile.setFreereply(freereply);
+		res = Mdao.addFreereply(profile);
+		logger.debug("addFreereply : {}, Profile : {}", res, profile);
+
 		return "redirect:/free/freeread?freenum=" + fReply.getFreenum();
 	}
 

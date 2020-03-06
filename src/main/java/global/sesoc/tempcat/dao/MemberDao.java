@@ -84,7 +84,13 @@ public class MemberDao {
 		// TODO Auto-generated method stub
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		intres = mapper.addNoticereply(profile);
+		return intres > 0;
+	}
 
+	public boolean addFreereply(Profile profile) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		intres = mapper.addFreereply(profile);
 		return intres > 0;
 	}
 

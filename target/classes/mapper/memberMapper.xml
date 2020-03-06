@@ -54,4 +54,12 @@
 		values
 		(#{id}, #{noticereply})
 	</insert>
+
+	<insert id="addFreereply" parameterType="Profile">
+		insert into
+		tempcat_profile
+		(id, freereply)
+		values
+		(#{id}, #{freereply})
+	</insert>
 </mapper>

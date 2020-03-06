@@ -56,11 +56,12 @@ public class FreeDao {
 		mapper.freeHits(freenum);
 	}
 
-	public boolean replyWrite(FreeReply fReply) {
+	public int replyWrite(FreeReply fReply) {
 		// TODO Auto-generated method stub
 		FreeMapper mapper = session.getMapper(FreeMapper.class);
-		intres = mapper.replyWrite(fReply);
-		return intres > 0;
+		mapper.replyWrite(fReply);
+		int freereply = mapper.selectFreereplyNum(fReply.getId());
+		return freereply;
 	}
 
 	public ArrayList<FreeReply> fReplyList(String freenum) {

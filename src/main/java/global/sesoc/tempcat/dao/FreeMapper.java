@@ -33,4 +33,6 @@ public interface FreeMapper {
 
 	int selectMyfreeNum(String id);
 
+	int selectFreereplyNum(String id);
+
 }

@@ -79,13 +79,15 @@
 
 	<select id="selectMynoticeNum" parameterType="String"
 		resultType="int">
-		select noticenum from tempcat_notice where noticenum in (select
+		select noticenum from tempcat_notice where noticenum in
+		(select
 		max(noticenum) maxnum from tempcat_notice where id = #{id})
 	</select>
 
 	<select id="selectNoticereplyNum" parameterType="String"
 		resultType="int">
-		select num from notice_reply where noticenum in (select
-		max(noticenum) maxnum from notice_reply where id = #{id})
+		select num from notice_reply where num in (select
+		max(num)
+		maxnum from notice_reply where id = #{id})
 	</select>
 </mapper>

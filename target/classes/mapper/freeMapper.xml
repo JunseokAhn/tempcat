@@ -86,6 +86,13 @@
 		resultType="int">
 		select freenum from tempcat_free where freenum in (select
 		max(freenum) maxnum
-		from tempcat_free where id = #{id}) 
+		from tempcat_free where id = #{id})
+	</select>
+
+	<select id="selectFreereplyNum" parameterType="String"
+		resultType="int">
+		select num from free_reply where num in (select
+		max(num)
+		maxnum from free_reply where id = #{id})
 	</select>
 </mapper>

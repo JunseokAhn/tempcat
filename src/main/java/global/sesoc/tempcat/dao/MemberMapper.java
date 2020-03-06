@@ -20,5 +20,7 @@ public interface MemberMapper {
 
 	int addNoticereply(Profile profile);
 
+	int addFreereply(Profile profile);
+
 
 }
