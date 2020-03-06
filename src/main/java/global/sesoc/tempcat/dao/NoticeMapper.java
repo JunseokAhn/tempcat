@@ -33,5 +33,7 @@ public interface NoticeMapper {
 
 	int selectMynoticeNum(String id);
 
+	int selectNoticereplyNum(String id);
+
 
 }

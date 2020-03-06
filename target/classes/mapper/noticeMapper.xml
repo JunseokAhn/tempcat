@@ -8,7 +8,8 @@
 		tempcat_notice
 		(noticenum, id, title, contents, nickname)
 		values
-		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents}, #{nickname})
+		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents},
+		#{nickname})
 	</insert>
 
 	<select id="noticeList" resultType="Notice">
@@ -78,7 +79,13 @@
 
 	<select id="selectMynoticeNum" parameterType="String"
 		resultType="int">
-		select * from tempcat_notice where noticenum in (select
-		max(noticenum) maxnum from tempcat_notice) and id = #{id}
+		select noticenum from tempcat_notice where noticenum in (select
+		max(noticenum) maxnum from tempcat_notice where id = #{id})
+	</select>
+
+	<select id="selectNoticereplyNum" parameterType="String"
+		resultType="int">
+		select num from notice_reply where noticenum in (select
+		max(noticenum) maxnum from notice_reply where id = #{id})
 	</select>
 </mapper>

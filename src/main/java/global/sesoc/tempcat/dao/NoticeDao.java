@@ -56,11 +56,12 @@ public class NoticeDao {
 		mapper.noticeHits(noticenum);
 	}
 
-	public boolean replyWrite(NoticeReply nReply) {
+	public int replyWrite(NoticeReply nReply) {
 		// TODO Auto-generated method stub
 		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
-		intres = mapper.replyWrite(nReply);
-		return intres > 0;
+		mapper.replyWrite(nReply);
+		int noticereply = mapper.selectNoticereplyNum(nReply.getId());
+		return noticereply;
 	}
 
 	public ArrayList<NoticeReply> nReplyList(String noticenum) {

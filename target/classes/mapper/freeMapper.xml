@@ -84,8 +84,8 @@
 
 	<select id="selectMyfreeNum" parameterType="String"
 		resultType="int">
-		select * from tempcat_free where freenum in (select
+		select freenum from tempcat_free where freenum in (select
 		max(freenum) maxnum
-		from tempcat_free) and id = #{id}
+		from tempcat_free where id = #{id}) 
 	</select>
 </mapper>

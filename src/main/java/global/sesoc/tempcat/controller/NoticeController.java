@@ -107,12 +107,8 @@ public class NoticeController {
 	@PostMapping(value = "nreplywrite")
 	public String noticeReplyWrite(NoticeReply nReply) {
 		logger.debug(nReply.toString());
-		res = Ndao.replyWrite(nReply);
-		if (res)
-			logger.debug("replyWrite : success");
-		else {
-			logger.debug("replyWrite : fail");
-		}
+		int noticereply = Ndao.replyWrite(nReply);
+		
 		return "redirect:/notice/noticeread?noticenum=" + nReply.getNoticenum();
 	}
 
