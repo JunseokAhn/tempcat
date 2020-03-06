@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import global.sesoc.tempcat.dao.HomeDao;
+import global.sesoc.tempcat.vo.FreeBoard;
 import global.sesoc.tempcat.vo.NoticeBoard;
 
 @Controller
@@ -26,8 +27,11 @@ public class HomeController {
 
 		logger.info("메인 화면으로 이동");
 		ArrayList<NoticeBoard> noticeList = Hdao.setNotice();
+		ArrayList<FreeBoard>freeList = Hdao.setFree();
 		logger.debug(noticeList.toString());
+		logger.debug(freeList.toString());
 		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("freeList", freeList);
 		return "home";
 	}
 

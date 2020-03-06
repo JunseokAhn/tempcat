@@ -538,69 +538,23 @@ print 'It took ' + i + ' iterations to sort the deck.';</code>
 				<div class="mini-posts">
 
 					<!-- Mini Post -->
-					<article class="mini-post">
-						<header>
-							<h3>
-								<a href="single.html">Vitae sed condimentum</a>
-							</h3>
-							<time class="published" datetime="2015-10-20">October 20, 2015</time>
-							<a href="#" class="author">
-								<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+					<c:forEach var="i" items="${requestScope.freeList }">
+						<article class="mini-post">
+							<header>
+								<h3>
+									<a href="<c:url value="/free/freeread?freenum=${i.freenum }"/>">${i.title }</a>
+								</h3>
+								<time class="published" datetime="2015-10-20">${i.inputdate }</time>
+								<a href="" class="author">
+									<span class="name">${i.nickname }</span>
+									<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+								</a>
+							</header>
+							<a href="<c:url value="/free/freeread?freenum=${i.freenum }"/>" class="image">
+								<img src="<c:url value="/resources/images/pic04.jpg"/>" alt="" />
 							</a>
-						</header>
-						<a href="single.html" class="image">
-							<img src="<c:url value="/resources/images/pic04.jpg"/>" alt="" />
-						</a>
-					</article>
-
-					<!-- Mini Post -->
-					<article class="mini-post">
-						<header>
-							<h3>
-								<a href="single.html">Rutrum neque accumsan</a>
-							</h3>
-							<time class="published" datetime="2015-10-19">October 19, 2015</time>
-							<a href="#" class="author">
-								<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-							</a>
-						</header>
-						<a href="single.html" class="image">
-							<img src="<c:url value="/resources/images/pic05.jpg"/>" alt="" />
-						</a>
-					</article>
-
-					<!-- Mini Post -->
-					<article class="mini-post">
-						<header>
-							<h3>
-								<a href="single.html">Odio congue mattis</a>
-							</h3>
-							<time class="published" datetime="2015-10-18">October 18, 2015</time>
-							<a href="#" class="author">
-								<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-							</a>
-						</header>
-						<a href="single.html" class="image">
-							<img src="<c:url value="/resources/images/pic06.jpg"/>" alt="" />
-						</a>
-					</article>
-
-					<!-- Mini Post -->
-					<article class="mini-post">
-						<header>
-							<h3>
-								<a href="single.html">Enim nisl veroeros</a>
-							</h3>
-							<time class="published" datetime="2015-10-17">October 17, 2015</time>
-							<a href="#" class="author">
-								<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-							</a>
-						</header>
-						<a href="single.html" class="image">
-							<img src="<c:url value="/resources/images/pic07.jpg"/>" alt="" />
-						</a>
-					</article>
-
+						</article>
+					</c:forEach>
 				</div>
 			</section>
 

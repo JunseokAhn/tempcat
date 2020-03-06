@@ -68,7 +68,6 @@ public class MemberDao {
 	public boolean addMynotice(Profile profile) {
 		// TODO Auto-generated method stub
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
-		System.out.println(profile);
 		mapper.addMynotice(profile);
 		return intres > 0;
 	}

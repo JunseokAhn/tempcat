@@ -29,4 +29,6 @@ public interface FreeMapper {
 
 	ArrayList<FreeReply> fReplyList(RowBounds rB, String freenum);
 
+	ArrayList<FreeBoard> setFree();
+
 }

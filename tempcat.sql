@@ -35,6 +35,7 @@ insert into tempcat_notice
 values
 (tempcat_notice_seq.nextval, 1, 1, 1, 1);
 
+
 --공지게시판 댓글 테이블
 create table notice_reply (
 	num         number primary key,
