@@ -75,6 +75,7 @@ public class NoticeController {
 		profile.setId(id);
 		profile.setMynotice(myNoticeNum);
 		res = Mdao.addMynotice(profile);
+		logger.debug("addMynotice : {}, Profile : {}", res, profile);
 
 		return "redirect:/notice/noticelist";
 	}

@@ -14,7 +14,8 @@ public class FreeBoard {
 	private String originalfile;
 	private String savedfile;
 	private String nickname;
-	
+	private int comments;
+
 	public FreeBoard() {
 	}
 
@@ -24,7 +25,5 @@ public class FreeBoard {
 		this.title = title;
 		this.contents = contents;
 	}
-
-
 
 }

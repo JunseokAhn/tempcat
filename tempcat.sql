@@ -20,8 +20,10 @@ create table tempcat_notice(
 	inputdate	date default sysdate, 		--작성일
 	hits		number default 0,			--조회수
     heart       number default 0,           --받은 좋아요 수
-	originalfile	varchar2(200),			--첨부파일 원래이름
+    originalfile	varchar2(200),			--첨부파일 원래이름
 	savedfile		varchar2(200),			--첨부파일 저장된 이름
+    nickname    varchar2(20) not null,      --닉네임   
+    comments    number default 0            --달린 댓글 수
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
 --공지게시판 번호에 사용할 시퀀스
@@ -66,6 +68,8 @@ create table tempcat_free(
     heart       number default 0,           --받은 좋아요 수
 	originalfile	varchar2(200),			--첨부파일 원래이름
 	savedfile		varchar2(200),			--첨부파일 저장된 이름
+    nickname    varchar2(20) not null,      --닉네임   
+    comments    number default 0,            --달린 댓글 수
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
 --자유게시판 번호에 사용할 시퀀스
