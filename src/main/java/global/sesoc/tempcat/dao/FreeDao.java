@@ -19,12 +19,12 @@ public class FreeDao {
 	private int intres;
 	private FreeBoard fBoard;
 
-	public boolean freeWrite(FreeBoard fBoard) {
+	public int freeWrite(FreeBoard fBoard) {
 		// TODO Auto-generated method stub
 		FreeMapper mapper = session.getMapper(FreeMapper.class);
 		intres = mapper.freeWrite(fBoard);
-
-		return intres > 0;
+		int myFreenum = mapper.selectMyfreeNum(fBoard.getId());
+		return myFreenum;
 	}
 
 	public ArrayList<FreeBoard> freeList() {

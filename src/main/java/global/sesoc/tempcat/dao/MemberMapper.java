@@ -16,5 +16,7 @@ public interface MemberMapper {
 
 	int addMynotice(Profile profile);
 
+	int addMyfree(Profile profile);
+
 
 }

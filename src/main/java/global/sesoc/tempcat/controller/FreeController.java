@@ -21,6 +21,7 @@ import global.sesoc.tempcat.dao.MemberDao;
 import global.sesoc.tempcat.util.PageNavigator;
 import global.sesoc.tempcat.vo.FreeBoard;
 import global.sesoc.tempcat.vo.FreeReply;
+import global.sesoc.tempcat.vo.Profile;
 
 @Controller
 @RequestMapping("free")
@@ -30,6 +31,7 @@ public class FreeController {
 
 	@Autowired
 	private FreeDao Fdao;
+	@Autowired
 	private MemberDao Mdao;
 	FreeBoard fBoard;
 	FreeReply fReply;
@@ -38,6 +40,8 @@ public class FreeController {
 	private boolean res;
 
 	private String nickname;
+	private Profile profile;
+	private int myFreeNum;
 
 	@GetMapping(value = "freelist")
 	public String freeBoardList(@RequestParam(defaultValue = "") String searchText,
@@ -69,11 +73,14 @@ public class FreeController {
 		nickname = (String) session.getAttribute("nickname");
 		logger.debug("id : {}, title : {}, contents : {} nickname : {}", id, title, contents, nickname);
 		fBoard = new FreeBoard(id, title, contents, nickname);
-		res = Fdao.freeWrite(fBoard);
-		logger.debug("freeWrite : " + res);
+		int myFreeNum = Fdao.freeWrite(fBoard);
+		logger.debug("myFreeNum : " + myFreeNum);
+		profile = new Profile();
+		profile.setId(id);
+		profile.setMyfree(myFreeNum);
+		res = Mdao.addMyfree(profile);
+		logger.debug("addMyfree : {}, Profile : {}", res, profile);
 
-		// 프로필등록
-		// Mdao.addMyfree(fBoard);
 		return "redirect:/free/freelist";
 	}
 

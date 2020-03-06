@@ -38,4 +38,12 @@
 		values
 		(#{id}, #{mynotice})
 	</insert>
+
+	<insert id="addMyfree" parameterType="Profile">
+		insert into
+		tempcat_profile
+		(id, myfree)
+		values
+		(#{id}, #{myfree})
+	</insert>
 </mapper>

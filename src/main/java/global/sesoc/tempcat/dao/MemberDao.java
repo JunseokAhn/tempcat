@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import global.sesoc.tempcat.vo.FreeBoard;
 import global.sesoc.tempcat.vo.Member;
 import global.sesoc.tempcat.vo.Profile;
 
@@ -68,7 +69,14 @@ public class MemberDao {
 	public boolean addMynotice(Profile profile) {
 		// TODO Auto-generated method stub
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
-		mapper.addMynotice(profile);
+		intres = mapper.addMynotice(profile);
+		return intres > 0;
+	}
+
+	public boolean addMyfree(Profile profile) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		intres = mapper.addMyfree(profile);
 		return intres > 0;
 	}
 

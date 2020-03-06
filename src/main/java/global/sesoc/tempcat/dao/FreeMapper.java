@@ -31,4 +31,6 @@ public interface FreeMapper {
 
 	ArrayList<FreeBoard> setFree();
 
+	int selectMyfreeNum(String id);
+
 }
