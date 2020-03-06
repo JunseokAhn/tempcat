@@ -90,7 +90,7 @@
 
 		<div style="position: relative; float: left;">
 			<!-- Post -->
-			<article class="post" style="position: relative; width: 45%; display: inline-block;">
+			<article class="post" style="position: relative; width: 45%; display: inline-block; margin-bottom: 0px; padding-bottom: 48px;">
 				<header>
 					<div class="title">
 						<h2>
@@ -99,71 +99,97 @@
 						</h2>
 						<p id="context"></p>
 					</div>
-					<div class="meta">
-						<time class="published" datetime="2015-11-01">Sign UP -${requestScope.member.inputdate }</time>
-						<a href="#" class="author">
-							<span class="name">${sessionScope.name}</span>
-							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-						</a>
 
-					</div>
 				</header>
 				<%-- <a href="single.html" class="image featured">
 				<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
 			</a> --%>
 
 				<footer>
-					<ul class="stats">
-						<li><a href="#">NICK NAME</a></li>
-						<li><a href="#">${sessionScope.nickname}</a></li>
-					</ul>
-				</footer>
-				<span class="name">${sessionScope.nickname}</span>
-				<ul class="actions">
-					<li><a href="single.html" class="button large">Change</a></li>
-				</ul>
-				<footer>
-					<ul class="actions">
-						<li><a href="single.html" class="button large">My Information</a></li>
-					</ul>
+					<a href="" class="author">
+						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+					</a>
+					<span class="name" style="margin-left: 30px;">Since</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;">${requestScope.member.inputdate }</h2>
 
+				</footer>
+				<footer style="margin-top: 40px;">
+					<span class="name" style="margin-left: 68px;">My ID</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;">${requestScope.member.id }</h2>
+				</footer>
+				<footer style="margin-top: 40px;">
+					<span class="name" style="margin-left: 68px;">Name</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;">${requestScope.member.name }</h2>
+				</footer>
+				<footer style="margin-top: 40px;">
+					<span class="name" style="margin-left: 68px;">Nickname</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;">${requestScope.member.name }</h2>
+					<a href="single.html" class="button small" style="margin-left: 20px;">Change</a>
+				</footer>
+				<footer style="margin-top: 40px;">
+					<span class="name" style="margin-left: 68px;">E-mail</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;">${requestScope.member.name }</h2>
+					<a href="single.html" class="button small" style="margin-left: 20px;">Change</a>
+				</footer>
+				<footer style="margin-top: 40px;">
+					<a href="single.html" class="button large" style="margin-left: 90px;">Change My Password</a>
 				</footer>
 			</article>
 			<!-- Post -->
-			<article class="post" style="position: relative; float: right; width: 45%;">
+			<article class="post" style="position: relative; float: right; width: 45%; padding-bottom: 48px;">
 				<header>
 					<div class="title">
-						<h2>
-							<a href="single.html">Lately Activity</a>
+						<h2 style="margin-bottom: 24px;">
+							<a href="">Lately Activity</a>
+							<img id="contextBT2" style="width: 4%; min-width: 18px;" src="<c:url value="/resources/images/down.png"/>" onclick="contexting2()">
 						</h2>
-						<p>your lastest 3month activity</p>
-					</div>
-					<div class="meta">
-						<time class="published" datetime="2015-11-01">November 1, 2015</time>
-						<a href="#" class="author">
-							<span class="name">Jane Doe</span>
-							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-						</a>
+						<p id="context2"></p>
 					</div>
 				</header>
-				<p>sdafdsa</p>
-				<p>sadfsda</p>
-				<footer>
-					<ul class="actions">
-						<li><a href="single.html" class="button large">View My Posts</a></li>
-						<li><a href="single.html" class="button large">View My Comments</a></li>
-						<li><a href="single.html" class="button large">Continue Reading</a></li>
-					</ul>
-					<ul class="stats">
-						<li><a href="#">General</a></li>
-						<li><a href="#" class="icon solid fa-heart">28</a></li>
-						<li><a href="#" class="icon solid fa-comment">128</a></li>
-					</ul>
+				<footer style="margin-top: 40px;">
+					<span class="name" style="margin-left: 68px;">NoticeBoard Posts</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;" id="mynotice"></h2>
+					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
 				</footer>
+				<footer style="margin-top: 40px;">
+					<span class="name" style="margin-left: 68px;">FreeBoard Posts</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;" id="myfree"></h2>
+					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+				</footer>
+				<footer style="margin-top: 40px;">
+					<span class="name" style="margin-left: 68px;">NoticeBoard Comments</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;" id="noticereply"></h2>
+					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+				</footer>
+				<footer style="margin-top: 40px;">
+					<span class="name" style="margin-left: 68px;">FreeBoard Posts</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;" id="freereply"></h2>
+					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+				</footer>
+				<footer style="margin-top: 40px;">
+					<span class="name" style="margin-left: 68px;">NoticeBoard Hearts</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;" id="heartnotice"></h2>
+					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+				</footer>
+				<footer style="margin-top: 40px;">
+					<span class="name" style="margin-left: 68px;">FreeBoard Hearts</span>
+					<h2 style="margin-bottom: 0; margin-left: 20px;" id="heartfree"></h2>
+					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+				</footer>
+
+
 			</article>
 		</div>
 	</div>
 	<script type="text/javascript">
+	$('#mynotice').html(${requestScope.mynotice}.length);
+	$('#myfree').html(${requestScope.myfree}.length);
+	$('#noticereply').html(${requestScope.noticereply}.length);
+	$('#freereply').html(${requestScope.freereply}.length);
+	$('#heartnotice').html(${requestScope.heartnotice}.length);
+	$('#heartfree').html(${requestScope.heartfree}.length);
+	
+	
         function contexting () {
             $('#context')
                     .html('비밀번호를 변경하거나 개인정보를 변경할 수 있습니다. 주기적인 비밀번호 변경을 통해 개인정보를 안전하게 보호하세요.');
@@ -176,6 +202,20 @@
             $('#contextBT')
                     .attr('src', '<c:url value="/resources/images/down.png"/>')
                     .attr('onclick', 'contexting()');
+        }
+
+        function contexting2 () {
+            $('#context2')
+                    .html('당신의 최근 3개월간의 활동기록을 볼 수 있습니다. 주기적인 비밀번호 변경을 통해 개인정보를 안전하게 보호하세요.');
+            $('#contextBT2')
+                    .attr('src', '<c:url value="/resources/images/up.png"/>')
+                    .attr('onclick', 'contexted2()');
+        }
+        function contexted2 () {
+            $('#context2').html('');
+            $('#contextBT2')
+                    .attr('src', '<c:url value="/resources/images/down.png"/>')
+                    .attr('onclick', 'contexting2()');
         }
     </script>
 
