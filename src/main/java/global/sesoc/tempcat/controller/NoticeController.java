@@ -105,9 +105,16 @@ public class NoticeController {
 	}
 
 	@PostMapping(value = "nreplywrite")
-	public String noticeReplyWrite(NoticeReply nReply) {
+	public String noticeReplyWrite(NoticeReply nReply, HttpSession session) {
 		logger.debug(nReply.toString());
 		int noticereply = Ndao.replyWrite(nReply);
+		logger.debug("noticereply : " + noticereply);
+		id = (String) session.getAttribute("id");
+		profile = new Profile();
+		profile.setId(id);
+		profile.setNoticereply(noticereply);
+		res = Mdao.addNoticereply(profile);
+		logger.debug("addNoticereply : {}, Profile : {}", res, profile);
 		
 		return "redirect:/notice/noticeread?noticenum=" + nReply.getNoticenum();
 	}

@@ -80,4 +80,12 @@ public class MemberDao {
 		return intres > 0;
 	}
 
+	public boolean addNoticereply(Profile profile) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		intres = mapper.addNoticereply(profile);
+
+		return intres > 0;
+	}
+
 }
