@@ -17,13 +17,13 @@
 		<!-- Header -->
 		<header id="header">
 			<h1>
-				<a href="index.html">Blog Contents</a>
+				<a href="<c:url value="/"/>">Blog Contents</a>
 			</h1>
 			<nav class="links">
 				<ul>
 					<li><a href="#">Intro</a></li>
-
-					<li><a href="#">Board</a></li>
+					<li><a href="<c:url value="/notice/noticelist"/>">Notice Board</a></li>
+					<li><a href="<c:url value="/free/freelist"/>">Free Board</a></li>
 				</ul>
 			</nav>
 			<nav class="main">
@@ -51,109 +51,118 @@
 			<section>
 				<ul class="links">
 					<li><a href="#">
-							<h3>Lorem ipsum</h3>
-							<p>Feugiat tempus veroeros dolor</p>
+							<h3>INTRO</h3>
+							<p>Introduction to the Producer</p>
+						</a></li>
+					<li><a href="<c:url value="/notice/noticelist"/>">
+							<h3>NOTICE BOARD</h3>
+							<p>Only Admin can write</p>
+						</a></li>
+					<li><a href="<c:url value="/free/freelist"/>">
+							<h3>FREE BOARD</h3>
+							<p>Everyone can write</p>
 						</a></li>
 					<li><a href="#">
-							<h3>Dolor sit amet</h3>
-							<p>Sed vitae justo condimentum</p>
-						</a></li>
-					<li><a href="#">
-							<h3>Feugiat veroeros</h3>
-							<p>Phasellus sed ultricies mi congue</p>
-						</a></li>
-					<li><a href="#">
-							<h3>Etiam sed consequat</h3>
-							<p>Porta lectus amet ultricies</p>
+							<h3>Send Request</h3>
+							<p>About the site or everything else.</p>
 						</a></li>
 				</ul>
 			</section>
 
 			<!-- Actions -->
 			<section>
-				<ul class="actions stacked">
-					<li><a href="login" class="button large fit">Log In</a></li>
-
-				</ul>
+				<c:if test="${sessionScope.id==null}">
+					<ul class="actions stacked">
+						<li><a href="<c:url value="/member/login"/>" class="button large fit">Log In</a></li>
+						<li><a href="<c:url value="/member/signup"/>" class="button large fit">Sign Up</a></li>
+					</ul>
+				</c:if>
+				<c:if test="${sessionScope.id!=null}">
+					<ul class="actions stacked">
+						<li><a href="<c:url value="/member/profile"/>" class="button large fit">Profile</a></li>
+						<li><a href="<c:url value="/member/logout"/>" class="button large fit">Log Out</a></li>
+					</ul>
+				</c:if>
 			</section>
 
 		</section>
-	</div>
-	<div style="position: relative; float: left;">
-		<!-- Post -->
-		<article class="post" style="position: relative; width: 45%; display: inline-block;">
-			<header>
-				<div class="title">
-					<h2>
-						<a href=""> My profile </a>
-						<img id="contextBT" style="width: 4%; min-width: 18px;" src="<c:url value="/resources/images/down.png"/>" onclick="contexting()">
-					</h2>
-					<p id="context"></p>
-				</div>
-				<div class="meta">
-					<time class="published" datetime="2015-11-01">Sign UP - 2020. 03. 01.</time>
-					<a href="#" class="author">
-						<span class="name">${sessionScope.name}</span>
-						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-					</a>
 
-				</div>
-			</header>
-			<%-- <a href="single.html" class="image featured">
+
+		<div style="position: relative; float: left;">
+			<!-- Post -->
+			<article class="post" style="position: relative; width: 45%; display: inline-block;">
+				<header>
+					<div class="title">
+						<h2>
+							<a href=""> My profile </a>
+							<img id="contextBT" style="width: 4%; min-width: 18px;" src="<c:url value="/resources/images/down.png"/>" onclick="contexting()">
+						</h2>
+						<p id="context"></p>
+					</div>
+					<div class="meta">
+						<time class="published" datetime="2015-11-01">Sign UP -${requestScope.member.inputdate }</time>
+						<a href="#" class="author">
+							<span class="name">${sessionScope.name}</span>
+							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+						</a>
+
+					</div>
+				</header>
+				<%-- <a href="single.html" class="image featured">
 				<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
 			</a> --%>
 
-			<footer>
-				<ul class="stats">
-					<li><a href="#">NICK NAME</a></li>
-					<li><a href="#">${sessionScope.nickname}</a></li>
-				</ul>
-			</footer>
-			<span class="name">${sessionScope.nickname}</span>
-			<ul class="actions">
-				<li><a href="single.html" class="button large">Change</a></li>
-			</ul>
-			<footer>
+				<footer>
+					<ul class="stats">
+						<li><a href="#">NICK NAME</a></li>
+						<li><a href="#">${sessionScope.nickname}</a></li>
+					</ul>
+				</footer>
+				<span class="name">${sessionScope.nickname}</span>
 				<ul class="actions">
-					<li><a href="single.html" class="button large">My Information</a></li>
+					<li><a href="single.html" class="button large">Change</a></li>
 				</ul>
+				<footer>
+					<ul class="actions">
+						<li><a href="single.html" class="button large">My Information</a></li>
+					</ul>
 
-			</footer>
-		</article>
-		<!-- Post -->
-		<article class="post" style="position: relative; float: right; width: 45%;">
-			<header>
-				<div class="title">
-					<h2>
-						<a href="single.html">Lately Activity</a>
-					</h2>
-					<p>your lastest 3month activity</p>
-				</div>
-				<div class="meta">
-					<time class="published" datetime="2015-11-01">November 1, 2015</time>
-					<a href="#" class="author">
-						<span class="name">Jane Doe</span>
-						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-					</a>
-				</div>
-			</header>
-			<p>sdafdsa</p>
-			<p>sadfsda</p>
-			<footer>
-				<ul class="actions">
-					<li><a href="single.html" class="button large">View My Posts</a></li>
-					<li><a href="single.html" class="button large">View My Comments</a></li>
-					<li><a href="single.html" class="button large">Continue Reading</a></li>
-				</ul>
-				<ul class="stats">
-					<li><a href="#">General</a></li>
-					<li><a href="#" class="icon solid fa-heart">28</a></li>
-					<li><a href="#" class="icon solid fa-comment">128</a></li>
-				</ul>
-			</footer>
-		</article>
+				</footer>
+			</article>
+			<!-- Post -->
+			<article class="post" style="position: relative; float: right; width: 45%;">
+				<header>
+					<div class="title">
+						<h2>
+							<a href="single.html">Lately Activity</a>
+						</h2>
+						<p>your lastest 3month activity</p>
+					</div>
+					<div class="meta">
+						<time class="published" datetime="2015-11-01">November 1, 2015</time>
+						<a href="#" class="author">
+							<span class="name">Jane Doe</span>
+							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+						</a>
+					</div>
+				</header>
+				<p>sdafdsa</p>
+				<p>sadfsda</p>
+				<footer>
+					<ul class="actions">
+						<li><a href="single.html" class="button large">View My Posts</a></li>
+						<li><a href="single.html" class="button large">View My Comments</a></li>
+						<li><a href="single.html" class="button large">Continue Reading</a></li>
+					</ul>
+					<ul class="stats">
+						<li><a href="#">General</a></li>
+						<li><a href="#" class="icon solid fa-heart">28</a></li>
+						<li><a href="#" class="icon solid fa-comment">128</a></li>
+					</ul>
+				</footer>
+			</article>
+		</div>
 	</div>
-
 	<script type="text/javascript">
         function contexting () {
             $('#context')

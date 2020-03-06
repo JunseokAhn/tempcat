@@ -87,50 +87,51 @@
 
 		</section>
 
-	</div>
 
-	<div style="text-align: center">
-		<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 55%; min-height: 430px; min-width: 579px; padding-left: 100px; padding-right: 100px; border: solid 1px rgba(160, 160, 160, 0.3);">
-			<br>
-			<br>
-			<section>
-				<h3>Sign UP</h3>
-				<hr>
+
+
+		<div style="text-align: center">
+			<div style="display: inline-block; background-color: rgba(255, 255, 255, 0.9); width: 55%; min-height: 430px; min-width: 579px; padding-left: 100px; padding-right: 100px; border: solid 1px rgba(160, 160, 160, 0.3);">
 				<br>
+				<br>
+				<section>
+					<h3>Sign UP</h3>
+					<hr>
+					<br>
 
-				<form method="post" action="#">
-					<div class="row gtr-uniform">
-						<div class="col-6 col-12-xsmall">
-							<input type="text" name="id" id="id" value="" placeholder="ID" />
-						</div>
-						<span id="id-check" style="font-size: 75%; color: red;"></span>
-						<div class="col-6 col-12-xsmall">
-							<input type="text" name="nam" id="nam" placeholder="Your name" />
-						</div>
-						<div class="col-6 col-12-xsmall">
-							<input type="text" name="nickname" id="nickname" placeholder="Nickname" />
-						</div>
-						<div class="col-6">
-							<input type="email" name="demo-email" id="pw" placeholder="PASSWORD" />
-							<input type="email" name="demo-email" id="pw2" placeholder="PASSWORD2" />
-						</div>
-						<span id="pw-check" style="font-size: 75%; color: red;"></span>
+					<form method="post" action="#">
+						<div class="row gtr-uniform">
+							<div class="col-6 col-12-xsmall">
+								<input type="text" name="id" id="id" value="" placeholder="ID" />
+							</div>
+							<span id="id-check" style="font-size: 75%; color: red;"></span>
+							<div class="col-6 col-12-xsmall">
+								<input type="text" name="nam" id="nam" placeholder="Your name" />
+							</div>
+							<div class="col-6 col-12-xsmall">
+								<input type="text" name="nickname" id="nickname" placeholder="Nickname" />
+							</div>
+							<div class="col-6">
+								<input type="email" name="demo-email" id="pw" placeholder="PASSWORD" />
+								<input type="email" name="demo-email" id="pw2" placeholder="PASSWORD2" />
+							</div>
+							<span id="pw-check" style="font-size: 75%; color: red;"></span>
 
-						<div class="col-6 col-12-xsmall">
-							<input type="text" name="email1" id="email1" placeholder="E-Mail" />
-						</div>
+							<div class="col-6 col-12-xsmall">
+								<input type="text" name="email1" id="email1" placeholder="E-Mail" />
+							</div>
 
-						<div class="col-6 col-12-xsmall">
-							<select name="demo-category" id="email2">
-								<option value="">- Select -</option>
-								<option value="@naver.com">naver.com</option>
-								<option value="@google.com">google.com</option>
-								<option value="@daum.net">daum.net</option>
-								<option value="@sesoc.global">sesoc.global</option>
-							</select>
-						</div>
+							<div class="col-6 col-12-xsmall">
+								<select name="demo-category" id="email2">
+									<option value="">- Select -</option>
+									<option value="@naver.com">naver.com</option>
+									<option value="@google.com">google.com</option>
+									<option value="@daum.net">daum.net</option>
+									<option value="@sesoc.global">sesoc.global</option>
+								</select>
+							</div>
 
-						<!-- 
+							<!-- 
 						<div class="col-4 col-12-small">
 							<input type="radio" id="demo-priority-low" name="demo-priority" checked>
 							<label for="demo-priority-low">Low</label>
@@ -147,21 +148,22 @@
 							<input type="checkbox" id="demo-copy" name="demo-copy">
 							<label for="demo-copy">Email me a copy</label>
 						</div> -->
-						<div class="col-6 col-12-small">
-							<input type="checkbox" id="robot" name="robot">
-							<label for="robot">Not a robot</label>
+							<div class="col-6 col-12-small">
+								<input type="checkbox" id="robot" name="robot">
+								<label for="robot">Not a robot</label>
+							</div>
+							<div class="col-6">
+								<ul class="actions">
+									<li><input id="signupBT" type="button" value="sign Up" onclick="signup()" /></li>
+									<li><input type="reset" value="Reset" /></li>
+								</ul>
+							</div>
 						</div>
-						<div class="col-6">
-							<ul class="actions">
-								<li><input id="signupBT" type="button" value="sign Up" onclick="signup()" /></li>
-								<li><input type="reset" value="Reset" /></li>
-							</ul>
-						</div>
-					</div>
-				</form>
-			</section>
+					</form>
+				</section>
 
 
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript">

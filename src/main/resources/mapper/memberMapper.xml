@@ -56,10 +56,18 @@
 	</insert>
 
 	<insert id="addFreereply" parameterType="Profile">
-		insert into
-		tempcat_profile
+		insert into tempcat_profile
 		(id, freereply)
 		values
 		(#{id}, #{freereply})
 	</insert>
+
+	<select id="selectMember" parameterType="String" resultType="Member">
+		select id, pw, name, nickname, email, to_char(inputdate, 'MONTH DD, YYYY', 'nls_date_language=english') inputdate, to_char(logindate, 'DL HH24 :MI') logindate
+		from tempcat_member where id = #{id}
+	</select>
+
+	<select id="selectProfile" parameterType="String" resultType="Profile">
+		select * from tempcat_profile where id in #{id}
+	</select>
 </mapper>

@@ -16,8 +16,7 @@
 		select * from tempcat_notice
 	</select>
 
-	<select id="noticeList2" parameterType="String"
-		resultType="Notice">
+	<select id="noticeList2" parameterType="String" resultType="Notice">
 		select noticenum, id, title, contents, to_char(inputdate, 'YY/MM/DD')
 		inputdate,
 		hits, originalfile,
@@ -29,8 +28,7 @@
 		order by noticenum desc
 	</select>
 
-	<select id="noticeRead" parameterType="String"
-		resultType="Notice">
+	<select id="noticeRead" parameterType="String" resultType="Notice">
 		select * from tempcat_notice join (select id, nickname from
 		tempcat_member) using(id)
 		where noticenum=#{noticenum}
@@ -53,8 +51,7 @@
 		)
 	</insert>
 
-	<select id="nReplyList" parameterType="String"
-		resultType="nReply">
+	<select id="nReplyList" parameterType="String" resultType="nReply">
 		select * from notice_reply where noticenum like
 		#{noticenum}
 		order by num asc
@@ -77,15 +74,13 @@
 		where rownum &lt; 4 order by noticenum desc
 	</select>
 
-	<select id="selectMynoticeNum" parameterType="String"
-		resultType="int">
+	<select id="selectMynoticeNum" parameterType="String" resultType="int">
 		select noticenum from tempcat_notice where noticenum in
 		(select
 		max(noticenum) maxnum from tempcat_notice where id = #{id})
 	</select>
 
-	<select id="selectNoticereplyNum" parameterType="String"
-		resultType="int">
+	<select id="selectNoticereplyNum" parameterType="String" resultType="int">
 		select num from notice_reply where num in (select
 		max(num)
 		maxnum from notice_reply where id = #{id})

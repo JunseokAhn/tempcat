@@ -1,5 +1,7 @@
 package global.sesoc.tempcat.dao;
 
+import java.util.ArrayList;
+
 import global.sesoc.tempcat.vo.Member;
 import global.sesoc.tempcat.vo.NoticeBoard;
 import global.sesoc.tempcat.vo.Profile;
@@ -21,6 +23,10 @@ public interface MemberMapper {
 	int addNoticereply(Profile profile);
 
 	int addFreereply(Profile profile);
+
+	Member selectMember(String id);
+
+	ArrayList<Profile> selectProfile(String id);
 
 
 }

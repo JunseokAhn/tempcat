@@ -55,8 +55,7 @@
 		)
 	</insert>
 
-	<select id="fReplyList" parameterType="String"
-		resultType="fReply">
+	<select id="fReplyList" parameterType="String" resultType="fReply">
 		select * from free_reply where freenum like
 		#{freenum}
 		order
@@ -82,15 +81,13 @@
 		rownum &lt; 4 order by freenum desc
 	</select>
 
-	<select id="selectMyfreeNum" parameterType="String"
-		resultType="int">
+	<select id="selectMyfreeNum" parameterType="String" resultType="int">
 		select freenum from tempcat_free where freenum in (select
 		max(freenum) maxnum
 		from tempcat_free where id = #{id})
 	</select>
 
-	<select id="selectFreereplyNum" parameterType="String"
-		resultType="int">
+	<select id="selectFreereplyNum" parameterType="String" resultType="int">
 		select num from free_reply where num in (select
 		max(num)
 		maxnum from free_reply where id = #{id})

@@ -1,5 +1,6 @@
 package global.sesoc.tempcat.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,6 +22,7 @@ public class MemberDao {
 	int intres;
 	String stres;
 	Member member;
+	private Object profile;
 
 	public boolean checkId(Member member) {
 		// TODO Auto-generated method stub
@@ -92,6 +94,20 @@ public class MemberDao {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		intres = mapper.addFreereply(profile);
 		return intres > 0;
+	}
+
+	public Member selectMember(String id) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		member = mapper.selectMember(id);
+		return member;
+	}
+
+	public ArrayList<Profile> selectProfile(String id) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		ArrayList<Profile> profile = mapper.selectProfile(id);
+		return profile;
 	}
 
 }
