@@ -123,14 +123,25 @@
 				</footer>
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">Nickname</span>
-					<h2 style="margin-bottom: 0; margin-left: 20px;">${requestScope.member.name }</h2>
-					<a href="single.html" class="button small" style="margin-left: 20px;">Change</a>
+					<h2 style="margin-bottom: 0; margin-left: 20px;" id="nicknameVar">${requestScope.member.nickname }</h2>
+					<input type="button" class="button small" style="margin-left: 20px;" value="Change" id="changeNicknameBT" onclick="changeNickname()">
+					<input type="button" class="button small" style="margin-left: 20px;" value="Redo" id="nicknameRedoBT" onclick="redoNickname()">
 				</footer>
+				<div id="changeNicknameDiv" style="margin-top: 20px; margin-left: 33px;">
+					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingNickname">
+					<input type="button" class="button small" style="margin-left: 20px;" value="Done" id="nicknameDoneBT" onclick="nicknameDone()">
+				</div>
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">E-mail</span>
-					<h2 style="margin-bottom: 0; margin-left: 20px;">${requestScope.member.name }</h2>
-					<a href="single.html" class="button small" style="margin-left: 20px;">Change</a>
+					<h2 style="margin-bottom: 0; margin-left: 20px;">${requestScope.member.email }</h2>
+					<!-- 글씨크기체 변경필요 -->
+					<input type="button" class="button small" style="margin-left: 20px;" value="Change">
 				</footer>
+				<div id="changeEmail" style="margin-top: 20px">
+					<input type="text" style="margin-left: 20px; max-width: 50%; display: inline-block;">
+					<input type="button" class="button small" style="margin-left: 20px;" value="Redo">
+					<input type="button" class="button small" style="margin-left: 20px;" value="Done">
+				</div>
 				<footer style="margin-top: 40px;">
 					<a href="single.html" class="button large" style="margin-left: 90px;">Change My Password</a>
 				</footer>
@@ -182,12 +193,47 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	$('#changeNicknameDiv').hide();
+	$('#nicknameRedoBT').hide();
+	$('#changeEmail').hide();
+	
 	$('#mynotice').html(${requestScope.mynotice}.length);
 	$('#myfree').html(${requestScope.myfree}.length);
 	$('#noticereply').html(${requestScope.noticereply}.length);
 	$('#freereply').html(${requestScope.freereply}.length);
 	$('#heartnotice').html(${requestScope.heartnotice}.length);
 	$('#heartfree').html(${requestScope.heartfree}.length);
+	
+	function changeNickname (){
+	    $('#changeNicknameBT').hide();
+	    $('#nicknameRedoBT').show();
+	    $('#changeNicknameDiv').slideDown();
+	}
+	function redoNickname(){
+	    $('#nicknameRedoBT').hide();
+	    $('#changeNicknameBT').show();
+	    $('#changeNicknameDiv').slideUp();
+	}
+	function nicknameDone(){
+	   var nickname = document.getElementById('changingNickname');
+	    
+	    $.ajax({
+	       url : 'changeNickname',
+	       data : {
+	           id : ${sessionScope.id},
+	           nickname : nickname.value},
+	       type : 'get',
+	       success : function(){
+	           $('#nicknameVar').html(nickname.value);
+	           redoNickname();
+	       },
+	       error : function(){
+	                  
+	       }
+	        
+	    })
+	}
+	
 	
 	
         function contexting () {

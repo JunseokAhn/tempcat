@@ -72,4 +72,10 @@
 	<select id="selectProfile" parameterType="String" resultType="Profile">
 		select * from tempcat_profile where id in #{id}
 	</select>
+
+	<update id="changeNickname" parameterType="map">
+		update tempcat_member
+		set nickname = #{nickname}
+		where id = #{id}
+	</update>
 </mapper>

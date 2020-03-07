@@ -110,4 +110,14 @@ public class MemberDao {
 		return profile;
 	}
 
+	public boolean changeNickname(String id, String nickname) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("nickname", nickname);
+		intres = mapper.changeNickname(map);
+		return intres>0;
+	}
+
 }

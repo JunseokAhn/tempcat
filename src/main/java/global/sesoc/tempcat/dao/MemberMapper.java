@@ -1,6 +1,7 @@
 package global.sesoc.tempcat.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import global.sesoc.tempcat.vo.Member;
 import global.sesoc.tempcat.vo.NoticeBoard;
@@ -27,6 +28,8 @@ public interface MemberMapper {
 	Member selectMember(String id);
 
 	ArrayList<Profile> selectProfile(String id);
+
+	int changeNickname(HashMap<String, String> map);
 
 
 }

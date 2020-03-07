@@ -140,4 +140,12 @@ public class MemberController {
 
 		return "member/profile";
 	}
+
+	@ResponseBody
+	@GetMapping(value = "changeNickname")
+	public String changeNickname(String id, String nickname) {
+		logger.debug("id : {}, nickname : {}", id, nickname);
+		res = Mdao.changeNickname(id,nickname);
+		return "t";
+	}
 }
