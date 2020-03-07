@@ -1,10 +1,10 @@
 
 --회원 정보 테이블
 create table tempcat_member (
-	id			varchar2(20) primary key,	--회원ID
-	pw      	varchar2(20) not null,		--비밀번호
-	name		varchar2(20) not null,		--이름
-	nickname	varchar2(20),				--닉네임
+	id			varchar2(40) primary key,	--회원ID
+	pw      	varchar2(40) not null,		--비밀번호
+	name		varchar2(40) not null,		--이름
+	nickname	varchar2(40),				--닉네임
 	email		varchar2(100),				--이메일
 	inputdate date default sysdate, 		--아이디 생성일
     logindate date default sysdate
@@ -14,15 +14,15 @@ create table tempcat_member (
 --공지게시판 테이블
 create table tempcat_notice(
 	noticenum	number primary key,			--글번호
-	id			varchar2(20) not null, 		--작성자ID
-	title		varchar2(20) not null,		--제목
+	id			varchar2(40) not null, 		--작성자ID
+	title		varchar2(100) not null,		--제목
 	contents	varchar2(2000) not null, 	--내용
 	inputdate	date default sysdate, 		--작성일
 	hits		number default 0,			--조회수
     heart       number default 0,           --받은 좋아요 수
     originalfile	varchar2(200),			--첨부파일 원래이름
 	savedfile		varchar2(200),			--첨부파일 저장된 이름
-    nickname    varchar2(20) not null,      --닉네임   
+    nickname    varchar2(40) not null,      --닉네임   
     comments    number default 0            --달린 댓글 수
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
@@ -39,10 +39,10 @@ values
 --공지게시판 댓글 테이블
 create table notice_reply (
 	num         number primary key,
-    id			varchar2(20)         not null, 	--회원ID
-	nickname	varchar2(20),                   --닉네임
+    id			varchar2(40)         not null, 	--회원ID
+	nickname	varchar2(40),                   --닉네임
     noticenum   number               not null,  --게시글번호
-	contents    varchar2(2000)       not null,  --코멘트
+	contents    varchar2(1000)       not null,  --코멘트
 	inputdate	date default sysdate, 		    --작성일
     foreign key (id) references tempcat_member (id) on delete cascade,
     foreign key (noticenum)references tempcat_notice (noticenum) on delete cascade
@@ -64,15 +64,15 @@ values
 --자유게시판 테이블
 create table tempcat_free(
 	freenum	    number primary key,			--글번호
-	id			varchar2(20) not null, 		--작성자ID
-	title		varchar2(20) not null,		--제목
+	id			varchar2(40) not null, 		--작성자ID
+	title		varchar2(100) not null,		--제목
 	contents	varchar2(2000) not null, 	--내용
 	inputdate	date default sysdate, 		--작성일
 	hits		number default 0,			--조회수
     heart       number default 0,           --받은 좋아요 수
 	originalfile	varchar2(200),			--첨부파일 원래이름
 	savedfile		varchar2(200),			--첨부파일 저장된 이름
-    nickname    varchar2(20) not null,      --닉네임   
+    nickname    varchar2(40) not null,      --닉네임   
     comments    number default 0,            --달린 댓글 수
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
@@ -92,10 +92,10 @@ values
 --자유게시판 댓글 테이블
 create table free_reply (
 	num         number primary key,
-    id			varchar2(20)         not null, 	--회원ID
-	nickname	varchar2(20),                   --닉네임
+    id			varchar2(40)         not null, 	--회원ID
+	nickname	varchar2(40),                   --닉네임
     freenum     number               not null,  --게시글번호
-	contents    varchar2(2000)       not null,  --코멘트
+	contents    varchar2(1000)       not null,  --코멘트
 	inputdate	date default sysdate, 		    --작성일
     foreign key (id) references tempcat_member (id) on delete cascade,
     foreign key (freenum)references tempcat_free (freenum) on delete cascade
@@ -117,7 +117,7 @@ values
 
 --회원 정보 테이블2
 create table tempcat_profile(
-    id			varchar2(20) not null,  	--회원ID
+    id			varchar2(40) not null,  	--회원ID
     mynotice    number  null,               --내가 쓴 공지글
     myfree      number  null,               --내가 쓴 자유글
     noticereply number  null,               --내가 쓴 공지리플
