@@ -92,12 +92,17 @@
 		<!-- Post -->
 		<form id="sendpost" action="noticewrite" method="post">
 			<article class="post">
-
 				<header>
 					<div class="title">
 						<h2 class="col-6 col-12-xsmall">
 							<p style="margin-bottom: 0px;">writing</p>
-							<input type="text" name="title" id="title" placeholder="Title" />
+
+							<c:if test="${nBoard!=null }">
+								<input type="text" name="title" id="title" placeholder="Title" value="${requestScope.nBoard.title }" />
+							</c:if>
+							<c:if test="${nBoard==null }">
+								<input type="text" name="title" id="title" placeholder="Title" />
+							</c:if>
 						</h2>
 					</div>
 					<div class="meta">
@@ -109,7 +114,13 @@
 					</div>
 				</header>
 				<div class="col-12">
-					<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;"></textarea>
+					<c:if test="${nBoard!=null }">
+						<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;">${nBoard.contents }</textarea>
+					</c:if>
+					<c:if test="${nBoard==null }">
+						<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;"></textarea>
+					</c:if>
+
 				</div>
 				<footer>
 					<ul class="stats">

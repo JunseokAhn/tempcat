@@ -147,9 +147,11 @@ public class NoticeController {
 		return "redirect:/notice/noticelist";
 	}
 
-	public String noticeBoardUpdate(NoticeBoard nBoard, HttpSession session, Model model) {
+	@GetMapping(value = "nboardupdate")
+	public String noticeBoardUpdate(String noticenum, String id, HttpSession session, Model model) {
 		id2 = (String) session.getAttribute("id");
-		if (nBoard.getId().equals(id2)) {
+		if (id.equals(id2)) {
+			nBoard = Ndao.noticeRead(noticenum);
 			model.addAttribute("nBoard", nBoard);
 			return "board/noticewrite";
 		} else {
