@@ -1,4 +1,3 @@
-
 --회원 정보 테이블
 drop table tempcat_member;
 create table tempcat_member (
@@ -8,7 +7,7 @@ create table tempcat_member (
 	nickname	varchar2(40),				--닉네임
 	email		varchar2(100),				--이메일
 	inputdate date default sysdate, 		--아이디 생성일
-    logindate date default sysdate
+    logindate date default sysdate          --최근 로그인
 );
 
 
@@ -25,7 +24,7 @@ create table tempcat_notice(
     originalfile	varchar2(200),			--첨부파일 원래이름
 	savedfile		varchar2(200),			--첨부파일 저장된 이름
     nickname    varchar2(40) not null,      --닉네임   
-    comments    number default 0            --달린 댓글 수
+    comments    number default 0,           --달린 댓글 수
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
 --공지게시판 번호에 사용할 시퀀스
@@ -33,11 +32,11 @@ drop sequence tempcat_notice_seq;
 create sequence tempcat_notice_seq;
 
 --강제로 공지작성하는 쿼리, id 1(관리자ID, notice board작성가능)으로 회원가입후 사용
---단, 이렇게 글작성하면 프로필에 등록안됩니다.
+--단, 이렇게 글작성하면 프로필에 등록안됩니다. 페이징처리 확인용으로만 써주세요.
 insert into tempcat_notice
 (noticenum, id, title, contents, nickname)
 values
-(tempcat_notice_seq.nextval, 1, 1, 1, 1);
+(tempcat_notice_seq.nextval, 1, 'ICT MASTER 38', 'SC IT MASTER 만세!!', '안준석');
 
 
 --공지게시판 댓글 테이블
@@ -58,15 +57,12 @@ drop sequence notice_reply_seq;
 create sequence notice_reply_seq;
 
 --강제로 리플라이 다는 쿼리(가입된id, 작성된noticenum맞춰줄것)으로 회원가입후 사용
---단, 이렇게 리플라이달면 프로필에 등록안됩니다.
+--단, 이렇게 리플라이달면 프로필에 등록안됩니다. 페이징처리 확인용으로만 써주세요.
 insert into notice_reply
 (num, id, nickname, noticenum, contents)
 values
-(notice_reply_seq.nextval, 1, 1,1,1);
-insert into notice_reply
-(num, id, nickname, noticenum, contents)
-values
-(notice_reply_seq.nextval, 2, 2,2,2);
+(notice_reply_seq.nextval, 1, '안준석', 1, 'SC IT MASTER 만세!!');
+
 
 --자유게시판 테이블
 drop table tempcat_free;
@@ -81,7 +77,7 @@ create table tempcat_free(
 	originalfile	varchar2(200),			--첨부파일 원래이름
 	savedfile		varchar2(200),			--첨부파일 저장된 이름
     nickname    varchar2(40) not null,      --닉네임   
-    comments    number default 0,            --달린 댓글 수
+    comments    number default 0,           --달린 댓글 수
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
 --자유게시판 번호에 사용할 시퀀스
@@ -89,15 +85,15 @@ drop sequence tempcat_free_seq;
 create sequence tempcat_free_seq;
 
 --강제로 게시글작성하는 쿼리, (아무id)로 회원가입후 사용
---단, 이렇게 글작성하면 프로필에 등록안됩니다.
+--단, 이렇게 글작성하면 프로필에 등록안됩니다. 페이징처리 확인용으로만 써주세요.
 insert into tempcat_free
 (freenum, id, title, contents, nickname)
 values
-(tempcat_free_seq.nextval, 1, 1, 1, 1);
+(tempcat_free_seq.nextval, 1, 'ICT MASTER 38', 'SC IT MASTER 만세!!', '안준석');
 insert into tempcat_free
 (freenum, id, title, contents, nickname)
 values
-(tempcat_free_seq.nextval, 2, 2, 2, 2);
+(tempcat_free_seq.nextval, 2, 'ICT MASTER 38', 'SC IT MASTER 万歳!!', 'ジュンソク案');
 
 --자유게시판 댓글 테이블
 drop table free_reply;
@@ -117,15 +113,15 @@ drop sequence free_reply_seq;
 create sequence free_reply_seq;
 
 --강제로 리플라이 다는 쿼리(가입된id, 작성된noticenum맞춰줄것)으로 회원가입후 사용
---단, 이렇게 리플라이달면 프로필에 등록안됩니다.
+--단, 이렇게 리플라이달면 프로필에 등록안됩니다. 페이징처리 확인용으로만 써주세요.
 insert into free_reply
 (num, id, nickname, freenum, contents)
 values
-(free_reply_seq.nextval, 1, 1, 1, 1);
+(free_reply_seq.nextval, 1, '안준석', 1, 'SC IT MASTER 만세!!');
 insert into free_reply
 (num, id, nickname, freenum, contents)
 values
-(free_reply_seq.nextval, 2, 2, 2 ,2);
+(free_reply_seq.nextval, 'ジュンソク案', 1, 'SC IT MASTER 万歳!!');
 
 
 --회원 정보 테이블2
