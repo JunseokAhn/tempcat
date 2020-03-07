@@ -3,13 +3,16 @@ package global.sesoc.tempcat.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.tempcat.vo.FreeBoard;
 import global.sesoc.tempcat.vo.Member;
+import global.sesoc.tempcat.vo.NoticeBoard;
 import global.sesoc.tempcat.vo.Profile;
+import global.sesoc.tempcat.vo.SearchBoard;
 
 /**
  * 개인정보 관련 DB처리를 담당
@@ -139,6 +142,15 @@ public class MemberDao {
 		map.put("pw", pw);
 		intres = mapper.changePw(map);
 		return intres > 0;
+	}
+
+	public ArrayList<SearchBoard> searchListPage(String searchText, int startRecord, int countPerPage) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		RowBounds RB = new RowBounds(startRecord, countPerPage);
+		// 스타트레코드부터 카운트퍼페이지에 있는수만큼 셀렉트
+		ArrayList<SearchBoard> list = mapper.noticeList2(searchText, RB);
+		return list;
 	}
 
 }

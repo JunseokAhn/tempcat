@@ -159,32 +159,32 @@
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">NoticeBoard Posts</span>
 					<h2 style="margin-bottom: 0; margin-left: 20px;" id="mynotice"></h2>
-					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+					<input type="button" class=" button small" style="margin-left: 20px;" value="Go" onclick="go_mynotice(this)" />
 				</footer>
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">FreeBoard Posts</span>
 					<h2 style="margin-bottom: 0; margin-left: 20px;" id="myfree"></h2>
-					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+					<input type="button" class=" button small" style="margin-left: 20px;" value="Go" onclick="go_myfree(this)" />
 				</footer>
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">NoticeBoard Comments</span>
 					<h2 style="margin-bottom: 0; margin-left: 20px;" id="noticereply"></h2>
-					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+					<input type="button" class=" button small" style="margin-left: 20px;" value="Go" onclick="go_noticereply(this)" />
 				</footer>
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">FreeBoard Posts</span>
 					<h2 style="margin-bottom: 0; margin-left: 20px;" id="freereply"></h2>
-					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+					<input type="button" class=" button small" style="margin-left: 20px;" value="Go" onclick="go_freereply(this)" />
 				</footer>
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">NoticeBoard Hearts</span>
 					<h2 style="margin-bottom: 0; margin-left: 20px;" id="heartnotice"></h2>
-					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+					<input type="button" class=" button small" style="margin-left: 20px;" value="Go">
 				</footer>
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">FreeBoard Hearts</span>
 					<h2 style="margin-bottom: 0; margin-left: 20px;" id="heartfree"></h2>
-					<a href="single.html" class="button small" style="margin-left: 20px;">Go</a>
+					<input type="button" class=" button small" style="margin-left: 20px;" value="Go">
 				</footer>
 
 
@@ -288,6 +288,20 @@
                     .attr('src', '<c:url value="/resources/images/down.png"/>')
                     .attr('onclick', 'contexting2()');
         }
+        function go_mynotice(e){
+			location.href = 'go-mynotice?searchText=${sessionScope.id}';
+            
+        }
+        function go_myfree(e){
+            location.href = 'go-myfree?searchText=${sessionScope.id}';
+        }
+        
+        function go_noticereply(e){
+            location.href = 'go-noticereply?searchText=${sessionScope.id}';
+        }
+     	function go_freereply(e){
+     	   location.href = 'go-freereply?searchText=${sessionScope.id}';
+     	}
     </script>
 
 	<!-- Scripts -->

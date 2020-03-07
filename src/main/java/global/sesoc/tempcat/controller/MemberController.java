@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.tempcat.dao.MemberDao;
+import global.sesoc.tempcat.util.PageNavigator;
 import global.sesoc.tempcat.vo.Member;
+import global.sesoc.tempcat.vo.NoticeBoard;
 import global.sesoc.tempcat.vo.Profile;
+import global.sesoc.tempcat.vo.SearchBoard;
 
 @Controller
 @RequestMapping("member")
@@ -30,6 +34,12 @@ public class MemberController {
 	String stres;
 	HashMap<String, String> map;
 	String nickname;
+	ArrayList<Integer> mynotice = new ArrayList<>();
+	ArrayList<Integer> myfree = new ArrayList<>();
+	ArrayList<Integer> noticereply = new ArrayList<>();
+	ArrayList<Integer> freereply = new ArrayList<>();
+	ArrayList<Integer> heartnotice = new ArrayList<>();
+	ArrayList<Integer> heartfree = new ArrayList<>();
 
 	@Autowired
 	private MemberDao Mdao;
@@ -102,14 +112,12 @@ public class MemberController {
 		Member member = Mdao.selectMember(id);
 
 		ArrayList<Profile> profile = Mdao.selectProfile(id);
-
-		ArrayList<Integer> mynotice = new ArrayList<>();
-		ArrayList<Integer> myfree = new ArrayList<>();
-		ArrayList<Integer> noticereply = new ArrayList<>();
-		ArrayList<Integer> freereply = new ArrayList<>();
-		ArrayList<Integer> heartnotice = new ArrayList<>();
-		ArrayList<Integer> heartfree = new ArrayList<>();
-
+		mynotice.clear();
+		myfree.clear();
+		noticereply.clear();
+		freereply.clear();
+		heartnotice.clear();
+		heartfree.clear();
 		for (Profile i : profile) {
 			if (i.getMynotice() != 0) {
 				mynotice.add(i.getMynotice());
@@ -167,5 +175,24 @@ public class MemberController {
 		logger.debug("id : {}, current_pw : {}, pw : {}", id, current_pw, pw);
 		res = Mdao.changePw(id, current_pw, pw);
 		return res;
+	}
+
+	@GetMapping(value = "go-mynotice")
+	public String go_mynotice(@RequestParam(defaultValue = "") String searchText,
+			@RequestParam(defaultValue = "0") int currentPage, Model model) {
+		// 전체글수랑 현재페이지를 가져와야함.
+
+		int totalRecordsCount = mynotice.size();
+		PageNavigator nav = new PageNavigator(10, currentPage, totalRecordsCount);
+		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
+		int startRecord = nav.getStartRecord();
+		int countPerPage = nav.getCountPerPage();
+		ArrayList<SearchBoard> list = Mdao.searchListPage(searchText, startRecord, countPerPage);
+		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
+		model.addAttribute("nav", nav);
+		model.addAttribute("list", list);
+		model.addAttribute("searchText", searchText);
+
+		return "board/searchlist";
 	}
 }

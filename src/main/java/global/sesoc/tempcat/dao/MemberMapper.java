@@ -3,9 +3,12 @@ package global.sesoc.tempcat.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.ibatis.session.RowBounds;
+
 import global.sesoc.tempcat.vo.Member;
 import global.sesoc.tempcat.vo.NoticeBoard;
 import global.sesoc.tempcat.vo.Profile;
+import global.sesoc.tempcat.vo.SearchBoard;
 
 public interface MemberMapper {
 
@@ -34,5 +37,7 @@ public interface MemberMapper {
 	int changeEmail(HashMap<String, String> map);
 
 	int changePw(HashMap<String, String> map);
+
+	ArrayList<SearchBoard> noticeList2(String searchText, RowBounds rB);
 
 }

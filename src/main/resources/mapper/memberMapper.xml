@@ -90,4 +90,16 @@
 		set pw = #{pw}
 		where id=#{id} and pw=#{current_pw}
 	</update>
+
+	<select id="noticeList2" parameterType="String" resultType="Search">
+		select noticenum, null as freenum, id, title, contents, to_char(inputdate, 'YY/MM/DD')
+		inputdate,
+		hits, originalfile,
+		savedfile, nickname
+		from tempcat_notice
+		<if test="#{_parameter!=null}">
+			where id like '%' || #{_parameter} || '%'
+		</if>
+		order by noticenum desc
+	</select>
 </mapper>
