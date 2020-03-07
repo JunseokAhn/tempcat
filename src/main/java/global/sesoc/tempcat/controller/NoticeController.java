@@ -49,7 +49,7 @@ public class NoticeController {
 			@RequestParam(defaultValue = "1") int currentPage, Model model) {
 
 		// 전체글수랑 현재페이지를 가져와야함.
-		ArrayList<NoticeBoard> list = Ndao.noticeList();
+		ArrayList<NoticeBoard> list = Ndao.noticeList(searchText);
 		int totalRecordsCount = list.size();
 		PageNavigator nav = new PageNavigator(10, currentPage, totalRecordsCount);
 		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
@@ -59,6 +59,7 @@ public class NoticeController {
 		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
 		model.addAttribute("nav", nav);
 		model.addAttribute("list", list);
+		model.addAttribute("searchText", searchText);
 
 		return "board/noticelist";
 	}

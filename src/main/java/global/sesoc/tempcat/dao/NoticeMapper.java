@@ -12,7 +12,7 @@ public interface NoticeMapper {
 
 	int noticeWrite(NoticeBoard nBoard);
 
-	ArrayList<NoticeBoard> noticeList();
+	ArrayList<NoticeBoard> noticeList(String searchText);
 
 	ArrayList<NoticeBoard> noticeList2(String searchText, RowBounds rB);
 

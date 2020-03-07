@@ -14,6 +14,9 @@
 
 	<select id="freeList" resultType="Free">
 		select * from tempcat_free
+		<if test="#{_parameter!=null}">
+			where title like '%' || #{_parameter} || '%'
+		</if>
 	</select>
 
 	<select id="freeList2" parameterType="String" resultType="Free">

@@ -32,10 +32,10 @@ public class HomeDao {
 		return list;
 	}
 
-	public ArrayList<SearchBoard> searchList() {
+	public ArrayList<SearchBoard> searchList(String searchText) {
 		// TODO Auto-generated method stub
 		Mapper mapper = session.getMapper(Mapper.class);
-		ArrayList<SearchBoard> list = mapper.searchList();
+		ArrayList<SearchBoard> list = mapper.searchList(searchText);
 		return list;
 	}
 

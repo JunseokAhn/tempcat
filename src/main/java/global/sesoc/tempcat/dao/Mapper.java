@@ -8,7 +8,7 @@ import global.sesoc.tempcat.vo.SearchBoard;
 
 public interface Mapper {
 
-	ArrayList<SearchBoard> searchList();
+	ArrayList<SearchBoard> searchList(String searchText);
 
 	ArrayList<SearchBoard> searchList2(String searchText, RowBounds rB);
 

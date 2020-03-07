@@ -28,10 +28,10 @@ public class NoticeDao {
 		return myNoticeNum;
 	}
 
-	public ArrayList<NoticeBoard> noticeList() {
+	public ArrayList<NoticeBoard> noticeList(String searchText) {
 		// TODO Auto-generated method stub
 		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
-		ArrayList<NoticeBoard> list = mapper.noticeList();
+		ArrayList<NoticeBoard> list = mapper.noticeList(searchText);
 		return list;
 	}
 

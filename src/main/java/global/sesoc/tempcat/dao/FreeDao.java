@@ -28,10 +28,10 @@ public class FreeDao {
 		return myFreenum;
 	}
 
-	public ArrayList<FreeBoard> freeList() {
+	public ArrayList<FreeBoard> freeList(String searchText) {
 		// TODO Auto-generated method stub
 		FreeMapper mapper = session.getMapper(FreeMapper.class);
-		ArrayList<FreeBoard> list = mapper.freeList();
+		ArrayList<FreeBoard> list = mapper.freeList(searchText);
 		return list;
 	}
 

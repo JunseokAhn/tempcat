@@ -12,7 +12,7 @@ public interface FreeMapper {
 
 	int freeWrite(FreeBoard fBoard);
 
-	ArrayList<FreeBoard> freeList();
+	ArrayList<FreeBoard> freeList(String searchText);
 
 	ArrayList<FreeBoard> freeList2(String searchText, RowBounds rB);
 
