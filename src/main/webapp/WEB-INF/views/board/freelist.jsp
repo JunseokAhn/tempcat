@@ -100,8 +100,8 @@
 					</c:if>
 					<!-- Search -->
 					<section style="width: 30%;">
-						<form class="search" method="get" action="#">
-							<input type="text" name="query" style="min-width: 200px;" placeholder="Search" />
+						<form class="search" method="get" action="freelist">
+							<input type="text" name="searchText" style="min-width: 200px;" placeholder="Search" />
 						</form>
 					</section>
 				</div>
