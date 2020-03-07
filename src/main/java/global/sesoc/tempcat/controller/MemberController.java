@@ -154,4 +154,10 @@ public class MemberController {
 		logger.debug("id : {}, email : {}", id, email);
 		res = Mdao.changeEmail(id, email);
 	}
+
+	@GetMapping(value = "changepw")
+	public String changePW() {
+
+		return "member/changepw";
+	}
 }

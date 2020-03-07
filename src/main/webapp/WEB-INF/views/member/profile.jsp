@@ -128,7 +128,7 @@
 					<input type="button" class="button small" style="margin-left: 20px;" value="Redo" id="nicknameRedoBT" onclick="redoNickname()">
 				</footer>
 				<div id="changeNicknameDiv" style="margin-top: 20px; margin-left: 33px;">
-					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingNickname">
+					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingNickname" value="${requestScope.member.nickname }">
 					<input type="button" class="button small" style="margin-left: 20px;" value="Done" id="nicknameDoneBT" onclick="nicknameDone()">
 				</div>
 				<footer style="margin-top: 40px;">
@@ -138,7 +138,7 @@
 					<input type="button" class="button small" style="margin-left: 20px;" value="Redo" id="emailRedoBT" onclick="redoEmail()">
 				</footer>
 				<div id="changeEmailDiv" style="margin-top: 20px; margin-left: 33px;">
-					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingEmail">
+					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingEmail" value="${requestScope.member.email }">
 					<input type="button" class="button small" style="margin-left: 20px;" value="Done" id="emailDoneBT" onclick="emailDone()">
 				</div>
 				<footer style="margin-top: 40px;">
