@@ -115,7 +115,7 @@ public class NoticeController {
 		profile.setNoticereply(noticereply);
 		res = Mdao.addNoticereply(profile);
 		logger.debug("addNoticereply : {}, Profile : {}", res, profile);
-		
+
 		return "redirect:/notice/noticeread?noticenum=" + nReply.getNoticenum();
 	}
 
@@ -134,6 +134,15 @@ public class NoticeController {
 		Ndao.nReplyUpdate(nReply);
 
 		return "redirect:/notice/noticeread?noticenum=" + nReply.getNoticenum();
+	}
+
+	@GetMapping(value = "nboarddelete")
+	public String noticeBoardDelete(String noticenum, HttpSession session) {
+		id = (String) session.getAttribute("id");
+		res = Ndao.noticeBoardDelete(noticenum, id);
+		logger.debug("id : {}, noticenum : {}, NoticeBoardDelete : {}", id, noticenum, res);
+
+		return "redirect:/notice/noticelist";
 	}
 	/*
 	 * 에이잭스 댓글리드 > 실패

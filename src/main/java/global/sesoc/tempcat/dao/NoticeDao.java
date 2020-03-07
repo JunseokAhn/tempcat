@@ -1,6 +1,7 @@
 package global.sesoc.tempcat.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.prefs.BackingStoreException;
 
 import org.apache.ibatis.session.RowBounds;
@@ -91,6 +92,16 @@ public class NoticeDao {
 		ArrayList<NoticeReply> list = mapper.nReplyList(RB, noticenum);
 
 		return list;
+	}
+
+	public boolean noticeBoardDelete(String noticenum, String id) {
+		// TODO Auto-generated method stub
+		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("noticenum", noticenum);
+		map.put("id", id);
+		intres = mapper.noticeBoardDelete(map);
+		return intres>0;
 	}
 
 }

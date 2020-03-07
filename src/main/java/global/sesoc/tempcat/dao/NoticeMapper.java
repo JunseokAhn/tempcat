@@ -1,6 +1,7 @@
 package global.sesoc.tempcat.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 
@@ -34,6 +35,8 @@ public interface NoticeMapper {
 	int selectMynoticeNum(String id);
 
 	int selectNoticereplyNum(String id);
+
+	int noticeBoardDelete(HashMap<String, String> map);
 
 
 }

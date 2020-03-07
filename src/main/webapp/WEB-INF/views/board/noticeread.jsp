@@ -118,7 +118,12 @@
 					<li><a id="heart" class="icon solid fa-heart" onclick="addHeart()">${requestScope.nBoard.heart }</a></li>
 					<li><a href="#" class="icon solid fa-comment">128</a></li>
 				</ul>
+				<c:if test="${sessionScope.id==requestScope.nBoard.id }">
+					<input type="button" class="button small" value="Delete Writing" onclick="deletewriting()" style="position: absolute; right: 50px;" />
+					<input type="button" class="button small" value="Update Writing" onclick="updatewriting()" style="position: absolute; right: 223px;" />
+				</c:if>
 			</footer>
+
 		</article>
 
 		<!--Reply -->
@@ -337,6 +342,19 @@
             $('#myreply2').submit();
            
         }
+        function deletewriting(){
+            if(confirm('정말 삭제하시겠습니까?')==true){
+            	location.href='nboarddelete?noticenum=${requestScope.nBoard.noticenum}';   
+            }
+            
+        }
+        
+        function updatewriting(){
+            alert('up')
+            
+        }
+        
+        
     </script>
 	<!-- Scripts -->
 	<script src="<c:url value="/resources/assets/js/jquery.min.js"/>"></script>

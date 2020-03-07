@@ -1,5 +1,6 @@
 package global.sesoc.tempcat.vo;
 
+
 import lombok.Data;
 
 @Data
@@ -15,7 +16,7 @@ public class NoticeBoard {
 	private String savedfile;
 	private String nickname;
 	private int comments;
-	
+
 	public NoticeBoard() {
 	}
 

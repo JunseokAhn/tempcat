@@ -85,4 +85,8 @@
 		max(num)
 		maxnum from notice_reply where id = #{id})
 	</select>
+
+	<delete id="noticeBoardDelete" parameterType="map">
+		delete tempcat_notice where id=#{id} and noticenum = #{noticenum}
+	</delete>
 </mapper>
