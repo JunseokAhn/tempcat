@@ -101,7 +101,14 @@ public class NoticeDao {
 		map.put("noticenum", noticenum);
 		map.put("id", id);
 		intres = mapper.noticeBoardDelete(map);
-		return intres>0;
+		return intres > 0;
+	}
+
+	public void noticeUpdate(NoticeBoard nBoard) {
+		// TODO Auto-generated method stub
+		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+		mapper.noticeUpdate(nBoard);
+
 	}
 
 }

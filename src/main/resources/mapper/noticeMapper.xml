@@ -89,4 +89,11 @@
 	<delete id="noticeBoardDelete" parameterType="map">
 		delete tempcat_notice where id=#{id} and noticenum = #{noticenum}
 	</delete>
+
+	<update id="noticeUpdate" parameterType="Notice">
+		update tempcat_notice
+		set title = #{title}, contents = #{contents}
+		where id=#{id} and noticenum=#{noticenum}
+
+	</update>
 </mapper>

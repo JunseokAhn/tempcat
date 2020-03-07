@@ -161,21 +161,16 @@ public class NoticeController {
 	}
 
 	@PostMapping(value = "noticeupdate")
-	public String noticeUpdate(String title, String contents, HttpSession session) {
-		/*
-		 * id = (String) session.getAttribute("id"); nickname = (String)
-		 * session.getAttribute("nickname");
-		 * logger.debug("id : {}, title : {}, contents : {} nickname : {}", id,
-		 * title, contents, nickname); nBoard = new NoticeBoard(id, title,
-		 * contents, nickname); int myNoticeNum = Ndao.noticeWrite(nBoard);
-		 * logger.debug("myNoticeNum : " + myNoticeNum); profile = new
-		 * Profile(); profile.setId(id); profile.setMynotice(myNoticeNum); res =
-		 * Mdao.addMynotice(profile);
-		 * logger.debug("addMynotice : {}, Profile : {}", res, profile);
-		 * 
-		 * return "redirect:/notice/noticelist";
-		 */
-		return null;
+	public String noticeUpdate(String title, String contents, int noticenum, HttpSession session) {
+
+		id = (String) session.getAttribute("id");
+		nickname = (String) session.getAttribute("nickname");
+		logger.debug("noticenum : {}, id : {}, title : {}, contents : {} nickname : {}", noticenum, id, title, contents,
+				nickname);
+		nBoard = new NoticeBoard(noticenum, id, title, contents, nickname);
+		Ndao.noticeUpdate(nBoard);
+
+		return "redirect:/notice/noticeread?noticenum=" + noticenum;
 	}
 	/*
 	 * 에이잭스 댓글리드 > 실패

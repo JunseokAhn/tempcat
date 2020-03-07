@@ -38,5 +38,7 @@ public interface NoticeMapper {
 
 	int noticeBoardDelete(HashMap<String, String> map);
 
+	void noticeUpdate(NoticeBoard nBoard);
+
 
 }

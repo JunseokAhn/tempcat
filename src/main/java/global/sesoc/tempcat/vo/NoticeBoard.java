@@ -34,4 +34,13 @@ public class NoticeBoard {
 		this.title = title;
 	}
 
+	public NoticeBoard(int noticenum, String id, String title, String contents, String nickname) {
+		super();
+		this.noticenum = noticenum;
+		this.id = id;
+		this.title = title;
+		this.contents = contents;
+		this.nickname = nickname;
+	}
+
 }

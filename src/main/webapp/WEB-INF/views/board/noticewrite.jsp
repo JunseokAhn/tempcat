@@ -125,7 +125,7 @@
 				<c:if test="${nBoard==null }">
 					<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;"></textarea>
 				</c:if>
-
+				<input type="hidden" name="noticenum" value="${nBoard.noticenum }">
 			</div>
 			<footer>
 				<ul class="stats">
@@ -148,9 +148,6 @@
 					<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
 					<li><a href="#" class="button icon solid fa-save">Icon</a></li>
 				</ul>
-
-
-
 
 			</div>
 
