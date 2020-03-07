@@ -1,6 +1,5 @@
 package global.sesoc.tempcat.vo;
 
-
 import lombok.Data;
 
 @Data
@@ -28,6 +27,11 @@ public class NoticeBoard {
 		this.nickname = nickname;
 	}
 
-
+	public NoticeBoard(int noticenum, String id, String title) {
+		super();
+		this.noticenum = noticenum;
+		this.id = id;
+		this.title = title;
+	}
 
 }

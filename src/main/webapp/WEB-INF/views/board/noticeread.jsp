@@ -350,7 +350,7 @@
         }
         
         function updatewriting(){
-            alert('up')
+            location.href='nboardupdate?noticenum=${requestScope.nBoard.noticenum}&id=${sessionScope.id}&title=${requestScope.nBoard.title}';
             
         }
         

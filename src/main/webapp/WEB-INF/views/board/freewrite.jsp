@@ -8,6 +8,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css"/>" />
+<script src="<c:url value="/resources/js/jquery-3.4.1.js/"/>"></script>
 </head>
 <body class="single is-preload">
 
@@ -100,7 +101,7 @@
 						</h2>
 					</div>
 					<div class="meta">
-						<time class="published" datetime="2015-11-01">November 1, 2015</time>
+						<time class="published" datetime="2015-11-01" id="time"></time>
 						<a href="#" class="author">
 							<span class="name">${sessionScope.nickname}</span>
 							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
@@ -161,6 +162,13 @@
 	<script type="text/javascript">
         var title = document.getElementById('title');
         var contents = document.getElementById('contents');
+        var today = new Date();
+        var year = today.getFullYear(); // 년도
+        var month = today.getMonth() + 1; // 월
+        var date = today.getDate(); // 날짜
+        var day = today.getDay(); // 요일
+        
+        $('#thistime').html(year + '/' + month + '/' + date);
         
         function resize (obj) {
             obj.style.height = "1px";

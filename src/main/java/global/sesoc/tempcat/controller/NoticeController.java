@@ -42,6 +42,8 @@ public class NoticeController {
 
 	private String nickname;
 
+	private String id2;
+
 	@GetMapping(value = "noticelist")
 	public String noticeBoardList(@RequestParam(defaultValue = "") String searchText,
 			@RequestParam(defaultValue = "1") int currentPage, Model model) {
@@ -143,6 +145,17 @@ public class NoticeController {
 		logger.debug("id : {}, noticenum : {}, NoticeBoardDelete : {}", id, noticenum, res);
 
 		return "redirect:/notice/noticelist";
+	}
+
+	public String noticeBoardUpdate(NoticeBoard nBoard, HttpSession session, Model model) {
+		id2 = (String) session.getAttribute("id");
+		if (nBoard.getId().equals(id2)) {
+			model.addAttribute("nBoard", nBoard);
+			return "board/noticewrite";
+		} else {
+			logger.debug("noticeBoardUpdate : 해킹시도");
+			return "redirect:/";
+		}
 	}
 	/*
 	 * 에이잭스 댓글리드 > 실패
