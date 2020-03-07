@@ -4,19 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="global.sesoc.tempcat.vo.VO" alias="VO" />
-		<typeAlias type="global.sesoc.tempcat.vo.Member"
-			alias="Member" />
-		<typeAlias type="global.sesoc.tempcat.vo.NoticeBoard"
-			alias="Notice" />
-		<typeAlias type="global.sesoc.tempcat.vo.NoticeReply"
-			alias="nReply" />
-		<typeAlias type="global.sesoc.tempcat.vo.FreeBoard"
-			alias="Free" />
-		<typeAlias type="global.sesoc.tempcat.vo.FreeReply"
-			alias="fReply" />
-		<typeAlias type="global.sesoc.tempcat.vo.Profile"
-			alias="Profile" />
+		<typeAlias type="global.sesoc.tempcat.vo.SearchBoard" alias="Search" />
+		<typeAlias type="global.sesoc.tempcat.vo.Member" alias="Member" />
+		<typeAlias type="global.sesoc.tempcat.vo.NoticeBoard" alias="Notice" />
+		<typeAlias type="global.sesoc.tempcat.vo.NoticeReply" alias="nReply" />
+		<typeAlias type="global.sesoc.tempcat.vo.FreeBoard" alias="Free" />
+		<typeAlias type="global.sesoc.tempcat.vo.FreeReply" alias="fReply" />
+		<typeAlias type="global.sesoc.tempcat.vo.Profile" alias="Profile" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/mapper.xml" />
