@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import global.sesoc.tempcat.dao.HomeDao;
+import global.sesoc.tempcat.util.PageNavigator;
 import global.sesoc.tempcat.vo.FreeBoard;
 import global.sesoc.tempcat.vo.NoticeBoard;
+import global.sesoc.tempcat.vo.SearchBoard;
 
 @Controller
 public class HomeController {
@@ -42,6 +44,18 @@ public class HomeController {
 			@RequestParam(defaultValue = "0") int currentPage, Model model) {
 		// ArrayList<NoticeBoard> list = Hdao.search(text);
 		logger.debug(searchText);
+
+		// 전체글수랑 현재페이지를 가져와야함.
+		ArrayList<SearchBoard> list = Hdao.searchList();
+		int totalRecordsCount = list.size();
+		PageNavigator nav = new PageNavigator(10, currentPage, totalRecordsCount);
+		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
+		int startRecord = nav.getStartRecord();
+		int countPerPage = nav.getCountPerPage();
+		list = Hdao.searchListPage(searchText, startRecord, countPerPage);
+		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
+		model.addAttribute("nav", nav);
+		model.addAttribute("list", list);
 
 		return "board/searchlist";
 	}
