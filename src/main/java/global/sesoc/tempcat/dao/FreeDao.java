@@ -1,6 +1,7 @@
 package global.sesoc.tempcat.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.prefs.BackingStoreException;
 
 import org.apache.ibatis.session.RowBounds;
@@ -91,6 +92,16 @@ public class FreeDao {
 		ArrayList<FreeReply> list = mapper.fReplyList(RB, freenum);
 
 		return list;
+	}
+
+	public boolean freeBoardDelete(String freenum, String id) {
+		// TODO Auto-generated method stub
+		FreeMapper mapper = session.getMapper(FreeMapper.class);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("freenum", freenum);
+		map.put("id", id);
+		intres = mapper.freeBoardDelete(map);
+		return intres > 0;
 	}
 
 }

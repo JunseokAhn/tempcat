@@ -43,6 +43,8 @@ public class FreeController {
 	private Profile profile;
 	private int myFreeNum;
 
+	private String id2;
+
 	@GetMapping(value = "freelist")
 	public String freeBoardList(@RequestParam(defaultValue = "") String searchText,
 			@RequestParam(defaultValue = "1") int currentPage, Model model) {
@@ -136,6 +138,29 @@ public class FreeController {
 
 		return "redirect:/free/freeread?freenum=" + fReply.getFreenum();
 	}
+
+	@GetMapping(value = "fboarddelete")
+	public String freeBoardDelete(String freenum, HttpSession session) {
+		id = (String) session.getAttribute("id");
+		res = Fdao.freeBoardDelete(freenum, id);
+		logger.debug("id : {}, freenum : {}, FreeBoardDelete : {}", id, freenum, res);
+
+		return "redirect:/free/freelist";
+	}
+
+	@GetMapping(value = "fboardupdate")
+	public String freeBoardUpdate(String freenum, String id, HttpSession session, Model model) {
+		id2 = (String) session.getAttribute("id");
+		if (id.equals(id2)) {
+			fBoard = Fdao.freeRead(freenum);
+			model.addAttribute("fBoard", fBoard);
+			return "board/freewrite";
+		} else {
+			logger.debug("freeBoardUpdate : 해킹시도");
+			return "redirect:/";
+		}
+	}
+
 	/*
 	 * 에이잭스 댓글리드 > 실패
 	 * 

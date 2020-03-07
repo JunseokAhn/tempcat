@@ -90,57 +90,71 @@
 
 
 		<!-- Post -->
-		<form id="sendpost" action="noticewrite" method="post">
-			<article class="post">
-				<header>
-					<div class="title">
-						<h2 class="col-6 col-12-xsmall">
-							<p style="margin-bottom: 0px;">writing</p>
+		<c:if test="${nBoard!=null }">
+			<form id="sendpost" action="noticeupdate" method="post">
+		</c:if>
+		<c:if test="${nBoard==null }">
+			<form id="sendpost" action="noticewrite" method="post">
+		</c:if>
+		<article class="post">
+			<header>
+				<div class="title">
+					<h2 class="col-6 col-12-xsmall">
+						<p style="margin-bottom: 0px;">writing</p>
 
-							<c:if test="${nBoard!=null }">
-								<input type="text" name="title" id="title" placeholder="Title" value="${requestScope.nBoard.title }" />
-							</c:if>
-							<c:if test="${nBoard==null }">
-								<input type="text" name="title" id="title" placeholder="Title" />
-							</c:if>
-						</h2>
-					</div>
-					<div class="meta">
-						<time class="published" datetime="2015-11-01" id="thistime"></time>
-						<a href="#" class="author">
-							<span class="name">${sessionScope.nickname}</span>
-							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-						</a>
-					</div>
-				</header>
-				<div class="col-12">
+						<c:if test="${nBoard!=null }">
+							<input type="text" name="title" id="title" placeholder="Title" value="${requestScope.nBoard.title }" />
+						</c:if>
+						<c:if test="${nBoard==null }">
+							<input type="text" name="title" id="title" placeholder="Title" />
+						</c:if>
+					</h2>
+				</div>
+				<div class="meta">
+					<time class="published" datetime="2015-11-01" id="thistime"></time>
+					<a href="#" class="author">
+						<span class="name">${sessionScope.nickname}</span>
+						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+					</a>
+				</div>
+			</header>
+			<div class="col-12">
+				<c:if test="${nBoard!=null }">
+					<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;">${nBoard.contents }</textarea>
+				</c:if>
+				<c:if test="${nBoard==null }">
+					<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;"></textarea>
+				</c:if>
+
+			</div>
+			<footer>
+				<ul class="stats">
+					<li><a href="#">General</a></li>
+					<li><a href="#" class="icon solid fa-heart">28</a></li>
+					<li><a href="#" class="icon solid fa-comment">128</a></li>
+				</ul>
+			</footer>
+			<div class="col-12">
+
+				<ul class="actions">
 					<c:if test="${nBoard!=null }">
-						<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;">${nBoard.contents }</textarea>
+						<li><input type="button" value="Update Post" onclick="sendpost()" /></li>
 					</c:if>
 					<c:if test="${nBoard==null }">
-						<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;"></textarea>
-					</c:if>
-
-				</div>
-				<footer>
-					<ul class="stats">
-						<li><a href="#">General</a></li>
-						<li><a href="#" class="icon solid fa-heart">28</a></li>
-						<li><a href="#" class="icon solid fa-comment">128</a></li>
-					</ul>
-				</footer>
-				<div class="col-12">
-					<ul class="actions">
 						<li><input type="button" value="Send Post" onclick="sendpost()" /></li>
-						<li><input type="reset" value="Reset" onclick="reset()" /></li>
-						<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-						<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
-						<li><a href="#" class="button icon solid fa-save">Icon</a></li>
-					</ul>
+					</c:if>
+					<li><input type="reset" value="Reset" onclick="reset()" /></li>
+					<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+					<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
+					<li><a href="#" class="button icon solid fa-save">Icon</a></li>
+				</ul>
 
-				</div>
 
-			</article>
+
+
+			</div>
+
+		</article>
 		</form>
 	</div>
 
@@ -207,6 +221,7 @@
             }
             $('#sendpost').submit();
         }
+
         function reset () {
             title.value = '';
             contents.value = '';

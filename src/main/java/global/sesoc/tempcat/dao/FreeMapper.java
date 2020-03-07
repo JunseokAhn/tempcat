@@ -1,6 +1,7 @@
 package global.sesoc.tempcat.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 
@@ -34,5 +35,7 @@ public interface FreeMapper {
 	int selectMyfreeNum(String id);
 
 	int selectFreereplyNum(String id);
+
+	int freeBoardDelete(HashMap<String, String> map);
 
 }

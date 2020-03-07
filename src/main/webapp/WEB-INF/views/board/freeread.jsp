@@ -118,6 +118,10 @@
 					<li><a id="heart" class="icon solid fa-heart" onclick="addHeart()">${requestScope.fBoard.heart }</a></li>
 					<li><a href="#" class="icon solid fa-comment">128</a></li>
 				</ul>
+				<c:if test="${sessionScope.id==requestScope.fBoard.id }">
+					<input type="button" class="button small" value="Delete Writing" onclick="deletewriting()" style="position: absolute; right: 50px;" />
+					<input type="button" class="button small" value="Update Writing" onclick="updatewriting()" style="position: absolute; right: 223px;" />
+				</c:if>
 			</footer>
 		</article>
 
@@ -336,6 +340,17 @@
             $('#freenum2').val('${requestScope.fBoard.freenum}');
             $('#myreply2').submit();
            
+        }
+        function deletewriting(){
+            if(confirm('정말 삭제하시겠습니까?')==true){
+            	location.href='fboarddelete?freenum=${requestScope.fBoard.freenum}';   
+            }
+            
+        }
+        
+        function updatewriting(){
+            location.href='fboardupdate?freenum=${requestScope.fBoard.freenum}&id=${sessionScope.id}';
+            
         }
     </script>
 	<!-- Scripts -->

@@ -92,4 +92,8 @@
 		max(num)
 		maxnum from free_reply where id = #{id})
 	</select>
+
+	<delete id="freeBoardDelete" parameterType="map">
+		delete tempcat_free where id=#{id} and freenum = #{freenum}
+	</delete>
 </mapper>
