@@ -100,37 +100,18 @@
 				<form id="loginform" method="post" action="login">
 					<div class="row gtr-uniform" style="text-align: left;">
 						<div class="col-6 col-12-xsmall">
-							<input type="text" name="id" id="id" value="" placeholder="Current Password" />
+							<input type="text" name="current_pw" id="current_pw" placeholder="Current Password" />
 						</div>
 
 						<div class="col-6">
-							<input type="email" name="demo-email" id="pw" placeholder="Password to Change" />
+							<input type="email" name="pw" id="pw" placeholder="Password to Change" />
 
 						</div>
 						<span id="pw-check" style="font-size: 75%; color: red;"></span>
 
-						<!-- 
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-							<label for="demo-priority-low">Low</label>
-						</div>
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-normal" name="demo-priority">
-							<label for="demo-priority-normal">Normal</label>
-						</div>
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-high" name="demo-priority">
-							<label for="demo-priority-high">High</label>
-						</div>
-						<div class="col-6 col-12-small">
-							<input type="checkbox" id="demo-copy" name="demo-copy">
-							<label for="demo-copy">Email me a copy</label>
-						</div> -->
-
-
 						<div style="margin-top: 10px; padding-right: 16px; width: 999px;">
 							<center>
-								<input id="loginBT" type="button" class="button large" value="Change" onclick="login()" />
+								<input id="loginBT" type="button" class="button large" value="Change" onclick="change()" />
 							</center>
 						</div>
 
@@ -144,58 +125,41 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-        function login () {
-            var flag = true;
-            var id = document.getElementById('id')
+        function change () {
+            
+            var current_pw = document.getElementById('current_pw')
             var pw = document.getElementById('pw')
 
-            //체크박스
-            if(!$('#robot').is(':checked')){
-                alert('로봇은 로그인할 수 없습니다.');
+            //current pw입력했는지
+            if(!current_pw.value.length > 0){
+                $('#error').html('현재 비밀번호를 입력해주세요');
+                current_pw.focus();
                 return false;
             }
-            //아이디입력했는지
-            if(!id.value.length > 0){
-                alert('아이디를 입력해주세요')
-                id.focus();
-                return false;
-            }
-            //비밀번호입력했는지
+            //pw입력했는지
             if(!pw.value.length > 0){
-                alert('비밀번호를 입력해주세요')
+                $('#error').html('바꿀 비밀번호를 입력해주세요');
                 pw.focus();
                 return false;
             }
+            
             $.ajax({
-                url : 'login',
+                url : 'changepw',
                 data : {
-                    id : id.value,
+                    id : ${sessionScope.id},
+                    current_pw : current_pw.value,
                     pw : pw.value
                 },
                 type : 'post',
-                success : function (res) {
-                    if(res == 'checkId error'){
-                        $('#error').html('존재하지 않는 아이디입니다.')
-                        id.focus();
+                success : function (e) {
+                    if(e == true){
+                        location.href = '<c:url value="/"/>';
                     }
-                    if(res == 'login error'){
-                        $('#error').html('비밀번호가 올바르지 않습니다.')
-                        pw.focus();
+                    else{
+                        $('#error').html('비밀번호가 틀립니다');
                     }
-                    if(res == 'login success'){
-                        location.href = <c:url value="/"/>
-                    }
-                    
-                },
-                error : function (res) {
-                    alert('알 수 없는 오류발생 : 유형2')
                 }
             })
-        }
-
-        //document.getElementById('loginform').submit();
-        function signup () {
-            location.href = 'signup';
         }
     </script>
 

@@ -130,4 +130,15 @@ public class MemberDao {
 		return intres > 0;
 	}
 
+	public boolean changePw(String id, String current_pw, String pw) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("current_pw", current_pw);
+		map.put("pw", pw);
+		intres = mapper.changePw(map);
+		return intres > 0;
+	}
+
 }

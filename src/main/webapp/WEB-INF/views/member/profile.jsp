@@ -142,7 +142,7 @@
 					<input type="button" class="button small" style="margin-left: 20px;" value="Done" id="emailDoneBT" onclick="emailDone()">
 				</div>
 				<footer style="margin-top: 40px;">
-					<a href="single.html" class="button large" style="margin-left: 90px;">Change My Password</a>
+					<a href="<c:url value="/member/changepw"/>" class="button large" style="margin-left: 90px;">Change My Password</a>
 				</footer>
 			</article>
 			<!-- Post -->

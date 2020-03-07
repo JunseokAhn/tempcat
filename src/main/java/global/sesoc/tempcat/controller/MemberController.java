@@ -160,4 +160,12 @@ public class MemberController {
 
 		return "member/changepw";
 	}
+
+	@ResponseBody
+	@PostMapping(value = "changepw")
+	public boolean checkPW(String id, String current_pw, String pw) {
+		logger.debug("id : {}, current_pw : {}, pw : {}", id, current_pw, pw);
+		res = Mdao.changePw(id, current_pw, pw);
+		return res;
+	}
 }

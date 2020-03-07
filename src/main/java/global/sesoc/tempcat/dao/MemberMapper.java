@@ -33,5 +33,6 @@ public interface MemberMapper {
 
 	int changeEmail(HashMap<String, String> map);
 
+	int changePw(HashMap<String, String> map);
 
 }

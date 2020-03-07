@@ -84,4 +84,10 @@
 		set email = #{email}
 		where id = #{id}
 	</update>
+
+	<update id="changePw" parameterType="map">
+		update tempcat_member
+		set pw = #{pw}
+		where id=#{id} and pw=#{current_pw}
+	</update>
 </mapper>
