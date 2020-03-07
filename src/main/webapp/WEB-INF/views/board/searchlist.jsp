@@ -118,11 +118,11 @@
 							<tr>
 								<td>${i.nickname }</td>
 								<c:if test="${i.freenum !=0}">
-									<td style="text-align: left;"><a href="freeread?freenum=${i.freenum }">${i.title }</a></td>
+									<td style="text-align: left;"><a href="<c:url value="free/freeread?freenum=${i.freenum }"/>">${i.title }</a></td>
 								</c:if>
 
 								<c:if test="${i.noticenum !=0}">
-									<td style="text-align: left;"><a href="noticeread?noticenum=${i.noticenum }">${i.title }</a></td>
+									<td style="text-align: left;"><a href="<c:url value="notice/noticeread?noticenum=${i.noticenum }"/>">${i.title }</a></td>
 								</c:if>
 								<td>${i.hits }</td>
 								<td>${i.inputdate }</td>
