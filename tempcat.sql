@@ -1,5 +1,6 @@
 
 --회원 정보 테이블
+drop table tempcat_member;
 create table tempcat_member (
 	id			varchar2(40) primary key,	--회원ID
 	pw      	varchar2(40) not null,		--비밀번호
@@ -12,6 +13,7 @@ create table tempcat_member (
 
 
 --공지게시판 테이블
+drop table tempcat_notice;
 create table tempcat_notice(
 	noticenum	number primary key,			--글번호
 	id			varchar2(40) not null, 		--작성자ID
@@ -27,9 +29,11 @@ create table tempcat_notice(
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
 --공지게시판 번호에 사용할 시퀀스
+drop sequence tempcat_notice_seq;
 create sequence tempcat_notice_seq;
 
 --강제로 공지작성하는 쿼리, id 1(관리자ID, notice board작성가능)으로 회원가입후 사용
+--단, 이렇게 글작성하면 프로필에 등록안됩니다.
 insert into tempcat_notice
 (noticenum, id, title, contents, nickname)
 values
@@ -37,6 +41,7 @@ values
 
 
 --공지게시판 댓글 테이블
+drop table notice_reply;
 create table notice_reply (
 	num         number primary key,
     id			varchar2(40)         not null, 	--회원ID
@@ -49,9 +54,11 @@ create table notice_reply (
 );
 
 --공지게시판 댓글 시퀀스
+drop sequence notice_reply_seq;
 create sequence notice_reply_seq;
 
 --강제로 리플라이 다는 쿼리(가입된id, 작성된noticenum맞춰줄것)으로 회원가입후 사용
+--단, 이렇게 리플라이달면 프로필에 등록안됩니다.
 insert into notice_reply
 (num, id, nickname, noticenum, contents)
 values
@@ -62,6 +69,7 @@ values
 (notice_reply_seq.nextval, 2, 2,2,2);
 
 --자유게시판 테이블
+drop table tempcat_free;
 create table tempcat_free(
 	freenum	    number primary key,			--글번호
 	id			varchar2(40) not null, 		--작성자ID
@@ -77,9 +85,11 @@ create table tempcat_free(
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
 --자유게시판 번호에 사용할 시퀀스
+drop sequence tempcat_free_seq;
 create sequence tempcat_free_seq;
 
 --강제로 게시글작성하는 쿼리, (아무id)로 회원가입후 사용
+--단, 이렇게 글작성하면 프로필에 등록안됩니다.
 insert into tempcat_free
 (freenum, id, title, contents, nickname)
 values
@@ -90,6 +100,7 @@ values
 (tempcat_free_seq.nextval, 2, 2, 2, 2);
 
 --자유게시판 댓글 테이블
+drop table free_reply;
 create table free_reply (
 	num         number primary key,
     id			varchar2(40)         not null, 	--회원ID
@@ -102,9 +113,11 @@ create table free_reply (
 );
 
 --자유게시판 댓글 시퀀스
+drop sequence free_reply_seq;
 create sequence free_reply_seq;
 
 --강제로 리플라이 다는 쿼리(가입된id, 작성된noticenum맞춰줄것)으로 회원가입후 사용
+--단, 이렇게 리플라이달면 프로필에 등록안됩니다.
 insert into free_reply
 (num, id, nickname, freenum, contents)
 values
@@ -116,6 +129,7 @@ values
 
 
 --회원 정보 테이블2
+drop table tempcat_profile;
 create table tempcat_profile(
     id			varchar2(40) not null,  	--회원ID
     mynotice    number  null,               --내가 쓴 공지글
@@ -131,3 +145,44 @@ create table tempcat_profile(
     foreign key (freereply) references free_reply (num) on delete cascade,
     foreign key (heartnotice) references tempcat_notice (noticenum) on delete cascade,
     foreign key (heartfree) references tempcat_free (freenum) on delete cascade
+   );
+   
+   
+--업데이트 캐스캐이딩 트리거
+drop trigger tempcat_notice_tr;
+create or replace trigger tempcat_notice_tr
+after update of nickname on tempcat_member for each row
+begin
+    update tempcat_notice
+    set nickname = :new.nickname where nickname = :old.nickname;
+end;
+/
+
+drop trigger tempcat_free_tr;
+create or replace trigger tempcat_free_tr
+after update of nickname on tempcat_member for each row
+begin
+    update tempcat_free
+    set nickname = :new.nickname where nickname = :old.nickname;
+end;
+/
+
+drop trigger notice_reply_tr;
+create or replace trigger notice_reply_tr
+after update of nickname on tempcat_member for each row
+begin
+    update notice_reply
+    set nickname = :new.nickname where nickname = :old.nickname;
+end;
+/
+
+drop trigger free_reply_tr;
+create or replace trigger free_reply_tr
+after update of nickname on tempcat_member for each row
+begin
+    update free_reply
+    set nickname = :new.nickname where nickname = :old.nickname;
+end;
+/
+
+commit;
