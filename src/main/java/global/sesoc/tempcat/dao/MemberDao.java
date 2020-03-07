@@ -117,7 +117,17 @@ public class MemberDao {
 		map.put("id", id);
 		map.put("nickname", nickname);
 		intres = mapper.changeNickname(map);
-		return intres>0;
+		return intres > 0;
+	}
+
+	public boolean changeEmail(String id, String email) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("email", email);
+		intres = mapper.changeEmail(map);
+		return intres > 0;
 	}
 
 }

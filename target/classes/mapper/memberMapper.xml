@@ -78,4 +78,10 @@
 		set nickname = #{nickname}
 		where id = #{id}
 	</update>
+
+	<update id="changeEmail" parameterType="map">
+		update tempcat_member
+		set email = #{email}
+		where id = #{id}
+	</update>
 </mapper>

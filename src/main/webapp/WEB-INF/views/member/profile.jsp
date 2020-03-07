@@ -133,14 +133,13 @@
 				</div>
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">E-mail</span>
-					<h2 style="margin-bottom: 0; margin-left: 20px;">${requestScope.member.email }</h2>
-					<!-- 글씨크기체 변경필요 -->
-					<input type="button" class="button small" style="margin-left: 20px;" value="Change">
+					<p style="margin-bottom: 0; margin-left: 20px;" id="emailVar">${requestScope.member.email }</p>
+					<input type="button" class="button small" style="margin-left: 20px;" value="Change" id="changeEmailBT" onclick="changeEmail()">
+					<input type="button" class="button small" style="margin-left: 20px;" value="Redo" id="emailRedoBT" onclick="redoEmail()">
 				</footer>
-				<div id="changeEmail" style="margin-top: 20px">
-					<input type="text" style="margin-left: 20px; max-width: 50%; display: inline-block;">
-					<input type="button" class="button small" style="margin-left: 20px;" value="Redo">
-					<input type="button" class="button small" style="margin-left: 20px;" value="Done">
+				<div id="changeEmailDiv" style="margin-top: 20px; margin-left: 33px;">
+					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingEmail">
+					<input type="button" class="button small" style="margin-left: 20px;" value="Done" id="emailDoneBT" onclick="emailDone()">
 				</div>
 				<footer style="margin-top: 40px;">
 					<a href="single.html" class="button large" style="margin-left: 90px;">Change My Password</a>
@@ -195,7 +194,11 @@
 	<script type="text/javascript">
 	$('#changeNicknameDiv').hide();
 	$('#nicknameRedoBT').hide();
-	$('#changeEmail').hide();
+	
+	$('#changeEmailDiv').hide();
+	$('#emailRedoBT').hide();
+	
+	
 	
 	$('#mynotice').html(${requestScope.mynotice}.length);
 	$('#myfree').html(${requestScope.myfree}.length);
@@ -226,14 +229,36 @@
 	       success : function(){
 	           $('#nicknameVar').html(nickname.value);
 	           redoNickname();
-	       },
-	       error : function(){
-	                  
 	       }
 	        
 	    })
 	}
 	
+	function changeEmail (){
+	    $('#changeEmailBT').hide();
+	    $('#emailRedoBT').show();
+	    $('#changeEmailDiv').slideDown();
+	}
+	function redoEmail(){
+	    $('#emailRedoBT').hide();
+	    $('#changeEmailBT').show();
+	    $('#changeEmailDiv').slideUp();
+	}
+	function emailDone(){
+	   var email = document.getElementById('changingEmail');
+	    
+	    $.ajax({
+	       url : 'changeEmail',
+	       data : {
+	           id : ${sessionScope.id},
+	           email : email.value},
+	       type : 'get',
+	       success : function(){
+	           $('#emailVar').html(email.value);
+	           redoEmail();
+	       }
+	    })
+	}
 	
 	
         function contexting () {

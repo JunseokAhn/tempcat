@@ -143,9 +143,15 @@ public class MemberController {
 
 	@ResponseBody
 	@GetMapping(value = "changeNickname")
-	public String changeNickname(String id, String nickname) {
+	public void changeNickname(String id, String nickname) {
 		logger.debug("id : {}, nickname : {}", id, nickname);
-		res = Mdao.changeNickname(id,nickname);
-		return "t";
+		res = Mdao.changeNickname(id, nickname);
+	}
+
+	@ResponseBody
+	@GetMapping(value = "changeEmail")
+	public void changeEmail(String id, String email) {
+		logger.debug("id : {}, email : {}", id, email);
+		res = Mdao.changeEmail(id, email);
 	}
 }

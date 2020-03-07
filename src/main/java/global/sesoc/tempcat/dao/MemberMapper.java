@@ -31,5 +31,7 @@ public interface MemberMapper {
 
 	int changeNickname(HashMap<String, String> map);
 
+	int changeEmail(HashMap<String, String> map);
+
 
 }
