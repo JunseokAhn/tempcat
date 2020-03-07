@@ -38,4 +38,6 @@ public interface FreeMapper {
 
 	int freeBoardDelete(HashMap<String, String> map);
 
+	void freeUpdate(FreeBoard fBoard);
+
 }

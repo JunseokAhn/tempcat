@@ -128,7 +128,7 @@
 				<c:if test="${fBoard==null }">
 					<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;"></textarea>
 				</c:if>
-
+				<input type="hidden" name="freenum" value="${fBoard.freenum }">
 			</div>
 			<footer>
 				<ul class="stats">

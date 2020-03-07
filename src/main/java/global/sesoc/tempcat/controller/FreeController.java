@@ -21,6 +21,7 @@ import global.sesoc.tempcat.dao.MemberDao;
 import global.sesoc.tempcat.util.PageNavigator;
 import global.sesoc.tempcat.vo.FreeBoard;
 import global.sesoc.tempcat.vo.FreeReply;
+import global.sesoc.tempcat.vo.NoticeBoard;
 import global.sesoc.tempcat.vo.Profile;
 
 @Controller
@@ -161,6 +162,18 @@ public class FreeController {
 		}
 	}
 
+	@PostMapping(value = "freeupdate")
+	public String noticeUpdate(String title, String contents, int freenum, HttpSession session) {
+
+		id = (String) session.getAttribute("id");
+		nickname = (String) session.getAttribute("nickname");
+		logger.debug("noticenum : {}, id : {}, title : {}, contents : {} nickname : {}", freenum, id, title, contents,
+				nickname);
+		fBoard = new FreeBoard(freenum, id, title, contents, nickname);
+		Fdao.freeUpdate(fBoard);
+
+		return "redirect:/free/freeread?freenum=" + freenum;
+	}
 	/*
 	 * 에이잭스 댓글리드 > 실패
 	 * 

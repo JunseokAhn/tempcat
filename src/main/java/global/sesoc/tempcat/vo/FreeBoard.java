@@ -27,4 +27,13 @@ public class FreeBoard {
 		this.nickname = nickname;
 	}
 
+	public FreeBoard(int freenum, String id, String title, String contents, String nickname) {
+		super();
+		this.freenum = freenum;
+		this.id = id;
+		this.title = title;
+		this.contents = contents;
+		this.nickname = nickname;
+	}
+
 }

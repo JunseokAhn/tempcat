@@ -104,4 +104,10 @@ public class FreeDao {
 		return intres > 0;
 	}
 
+	public void freeUpdate(FreeBoard fBoard) {
+		// TODO Auto-generated method stub
+		FreeMapper mapper = session.getMapper(FreeMapper.class);
+		mapper.freeUpdate(fBoard);
+	}
+
 }
