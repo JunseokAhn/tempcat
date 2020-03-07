@@ -56,7 +56,7 @@ public class HomeController {
 		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
 		model.addAttribute("nav", nav);
 		model.addAttribute("list", list);
-
+		System.out.println(list);
 		return "board/searchlist";
 	}
 
