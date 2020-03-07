@@ -90,17 +90,12 @@
 		<!-- Main -->
 		<div id="main">
 			<div style="margin-top: 30px; text-align: center;">
-				<h2 style="display: inline;">Free Board</h2>
+				<h2 style="display: inline;">Search Result</h2>
 				<div>
-					<c:if test="${sessionScope.id!=null}">
-						<input type="button" style="display: inline-block; float: right;" class="button large" value="Write" onclick="freewrite()">
-					</c:if>
-					<c:if test="${sessionScope.id==null}">
-						<input type="button" style="display: inline-block; float: right;" class="button large" value="Log in" onclick="login()">
-					</c:if>
+
 					<!-- Search -->
 					<section style="width: 30%;">
-						<form class="search" method="get" action="freelist">
+						<form class="search" method="get" action="searchlist">
 							<input type="text" name="searchText" style="min-width: 200px;" placeholder="Search" />
 						</form>
 					</section>
@@ -112,7 +107,6 @@
 				<table class="alt" style="text-align: center;">
 					<thead>
 						<tr>
-							<th style="width: 2px;">Num</th>
 							<th style="padding-left: 30px; padding-right: 30px; width: 10px;">Nickname</th>
 							<th style="text-align: left;">Title</th>
 							<th style="width: 2px;">Hits</th>
@@ -122,9 +116,14 @@
 					<tbody id="line">
 						<c:forEach var="i" items="${requestScope.list }">
 							<tr>
-								<td>${i.freenum}</td>
 								<td>${i.nickname }</td>
-								<td style="text-align: left;"><a href="freeread?freenum=${i.freenum }">${i.title }</a></td>
+								<c:if test="${i.freenum !=null}">
+									<td style="text-align: left;"><a href="freeread?freenum=${i.freenum }">${i.title }</a></td>
+								</c:if>
+
+								<c:if test="${i.noticenum !=null}">
+									<td style="text-align: left;"><a href="noticeread?noticenum=${i.noticenum }">${i.title }</a></td>
+								</c:if>
 								<td>${i.hits }</td>
 								<td>${i.inputdate }</td>
 							</tr>
@@ -359,26 +358,20 @@
         else{
             $('#next').attr('class', 'button large next')  
         } 
-        function login(){
-            location.href = '<c:url value="/member/login"/>'
-        }
-        
-        function freewrite () {
-            location.href = 'freewrite'
-        }
+     
         function paging (e) {
             var currentPage = e;
             //커런트페이지를 넘겨주면 그에따라 리스트를 열개 재선정하여 셀렉트를 해와야된다
-            location.href = 'freelist?currentPage=' + currentPage;
+            location.href = 'searchlist?currentPage=' + currentPage;
         }
 
         function NextPage () {
             
-            location.href = 'freelist?currentPage=' + ${nav.currentPage + 5};
+            location.href = 'searchlist?currentPage=' + ${nav.currentPage + 5};
         }
         function PreviousPage (e) {
             
-            location.href = 'freelist?currentPage=' + ${nav.currentPage - 5};
+            location.href = 'searchlist?currentPage=' + ${nav.currentPage - 5};
         }
     </script>
 

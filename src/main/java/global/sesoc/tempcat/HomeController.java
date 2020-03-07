@@ -40,7 +40,7 @@ public class HomeController {
 	public String search(String searchText) {
 		// ArrayList<NoticeBoard> list = Hdao.search(text);
 		logger.debug(searchText);
-		return null;
+		return "board/searchlist";
 	}
 
 }
