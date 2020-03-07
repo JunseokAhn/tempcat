@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import global.sesoc.tempcat.dao.HomeDao;
 import global.sesoc.tempcat.vo.FreeBoard;
@@ -36,10 +37,12 @@ public class HomeController {
 		return "home";
 	}
 
-	@GetMapping(value = "search")
-	public String search(String searchText) {
+	@GetMapping(value = "searchlist")
+	public String searchList(@RequestParam(defaultValue = "") String searchText,
+			@RequestParam(defaultValue = "0") int currentPage, Model model) {
 		// ArrayList<NoticeBoard> list = Hdao.search(text);
 		logger.debug(searchText);
+
 		return "board/searchlist";
 	}
 

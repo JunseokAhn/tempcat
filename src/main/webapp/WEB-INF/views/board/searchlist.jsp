@@ -28,7 +28,7 @@
 			<nav class="main">
 				<ul>
 					<li class="search"><a class="fa-search" href="#search">Search</a>
-						<form id="search" method="get" action="<c:url value="/search"/>">
+						<form id="search" method="get" action="<c:url value="/searchlist"/>">
 							<input type="text" name="searchText" placeholder="Search" />
 						</form></li>
 					<li class="menu"><a class="fa-bars" href="#menu">Menu</a></li>
@@ -41,7 +41,7 @@
 
 			<!-- Search -->
 			<section>
-				<form id="search" method="get" action="<c:url value="/search"/>">
+				<form id="search" method="get" action="<c:url value="/searchlist"/>">
 					<input type="text" name="searchText" placeholder="Search" />
 				</form>
 			</section>
