@@ -194,12 +194,46 @@
             location.href = 'searchlist?currentPage=' + currentPage+'&searchText=${requestScope.searchText}';
         }
         function NextPage () {
+            var devided =  ${nav.currentPage % 5}
             
-            location.href = 'searchlist?currentPage=' + ${nav.currentPage + 5}+'&searchText=${requestScope.searchText}';
+            switch(devided){
+                case 1:
+                    location.href = 'searchlist?currentPage=' + ${nav.currentPage + 5}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 2:
+                    location.href = 'searchlist?currentPage=' + ${nav.currentPage + 4}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 3:
+                    location.href = 'searchlist?currentPage=' + ${nav.currentPage + 3}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 4:
+                    location.href = 'searchlist?currentPage=' + ${nav.currentPage + 2}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 0:
+                    location.href = 'searchlist?currentPage=' + ${nav.currentPage + 1}+'&searchText=${requestScope.searchText}';
+                    break;
+            }
         }
         function PreviousPage (e) {
+            var devided = ${nav.currentPage % 5}
             
-            location.href = 'searchlist?currentPage=' + ${nav.currentPage - 5}+'&searchText=${requestScope.searchText}';
+            switch(devided){
+                case 1:
+                    location.href = 'searchlist?currentPage=' + ${nav.currentPage - 1}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 2:
+                    location.href = 'searchlist?currentPage=' + ${nav.currentPage - 2}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 3:
+                    location.href = 'searchlist?currentPage=' + ${nav.currentPage - 3}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 4:
+                    location.href = 'searchlist?currentPage=' + ${nav.currentPage - 4}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 0:
+                    location.href = 'searchlist?currentPage=' + ${nav.currentPage - 5}+'&searchText=${requestScope.searchText}';
+               		break;
+            }
         }
     </script>
 

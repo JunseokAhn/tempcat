@@ -218,12 +218,47 @@
         }
 
         function NextPage () {
+            var devided =  ${nav.currentPage % 5}
+           
+            switch(devided){
+                case 1:
+                    location.href = 'noticelist?currentPage=' + ${nav.currentPage + 5}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 2:
+                    location.href = 'noticelist?currentPage=' + ${nav.currentPage + 4}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 3:
+                    location.href = 'noticelist?currentPage=' + ${nav.currentPage + 3}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 4:
+                    location.href = 'noticelist?currentPage=' + ${nav.currentPage + 2}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 0:
+                    location.href = 'noticelist?currentPage=' + ${nav.currentPage + 1}+'&searchText=${requestScope.searchText}';
+                    break;
+            }
             
-            location.href = 'noticelist?currentPage=' + ${nav.currentPage + 5}+'&searchText=${requestScope.searchText}';
         }
         function PreviousPage (e) {
+            var devided =  ${nav.currentPage % 5}
             
-            location.href = 'noticelist?currentPage=' + ${nav.currentPage - 5}+'&searchText=${requestScope.searchText}';
+            switch(devided){
+                case 1:
+                    location.href = 'noticelist?currentPage=' + ${nav.currentPage - 1}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 2:
+                    location.href = 'noticelist?currentPage=' + ${nav.currentPage - 2}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 3:
+                    location.href = 'noticelist?currentPage=' + ${nav.currentPage - 3}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 4:
+                    location.href = 'noticelist?currentPage=' + ${nav.currentPage - 4}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 0:
+                    location.href = 'noticelist?currentPage=' + ${nav.currentPage - 5}+'&searchText=${requestScope.searchText}';
+               		break;
+            }
         }
     </script>
 
