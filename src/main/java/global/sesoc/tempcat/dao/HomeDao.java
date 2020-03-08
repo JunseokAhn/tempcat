@@ -1,6 +1,7 @@
 package global.sesoc.tempcat.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -46,5 +47,16 @@ public class HomeDao {
 		// 스타트레코드부터 카운트퍼페이지에 있는수만큼 셀렉트
 		ArrayList<SearchBoard> list = mapper.searchList2(searchText, RB);
 		return list;
+	}
+
+	public void request(String name, String email, String category, String message) {
+		// TODO Auto-generated method stub
+		Mapper mapper = session.getMapper(Mapper.class);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("name", name);
+		map.put("email", email);
+		map.put("category", category);
+		map.put("message", message);
+		mapper.request(map);
 	}
 }

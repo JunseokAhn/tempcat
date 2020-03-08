@@ -95,66 +95,35 @@
 				<br>
 				<br>
 				<section>
-					<h3>Sign UP</h3>
+					<h3>Send Request</h3>
 					<hr>
 					<br>
 
-					<form method="post" action="#">
+					<form method="post" action="request" onsubmit="return sendrequest()">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-xsmall">
-								<input type="text" name="id" id="id" value="" placeholder="ID" />
-							</div>
-							<span id="id-check" style="font-size: 75%; color: red;"></span>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="nam" id="nam" placeholder="Your name" />
+								<input type="text" name="name" id="name" value="" placeholder="Name" />
 							</div>
 							<div class="col-6 col-12-xsmall">
-								<input type="text" name="nickname" id="nickname" placeholder="Nickname" />
+								<input type="email" name="email" id="email" value="" placeholder="Email" />
 							</div>
-							<div class="col-6">
-								<input type="email" name="demo-email" id="pw" placeholder="PASSWORD" />
-								<input type="email" name="demo-email" id="pw2" placeholder="PASSWORD2" />
-							</div>
-							<span id="pw-check" style="font-size: 75%; color: red;"></span>
-
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="email1" id="email1" placeholder="E-Mail" />
-							</div>
-
-							<div class="col-6 col-12-xsmall">
-								<select name="demo-category" id="email2">
-									<option value="">- Select -</option>
-									<option value="@naver.com">naver.com</option>
-									<option value="@google.com">google.com</option>
-									<option value="@daum.net">daum.net</option>
-									<option value="@sesoc.global">sesoc.global</option>
+							<div class="col-12">
+								<select name="category" id="category">
+									<option value="select">- Category -</option>
+									<option value="function">Function</option>
+									<option value="profile">Profile</option>
+									<option value="request">Request</option>
+									<option value="question">Question</option>
 								</select>
 							</div>
 
-							<!-- 
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-							<label for="demo-priority-low">Low</label>
-						</div>
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-normal" name="demo-priority">
-							<label for="demo-priority-normal">Normal</label>
-						</div>
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-high" name="demo-priority">
-							<label for="demo-priority-high">High</label>
-						</div>
-						<div class="col-6 col-12-small">
-							<input type="checkbox" id="demo-copy" name="demo-copy">
-							<label for="demo-copy">Email me a copy</label>
-						</div> -->
-							<div class="col-6 col-12-small">
-								<input type="checkbox" id="robot" name="robot">
-								<label for="robot">Not a robot</label>
+							<div class="col-12">
+								<textarea name="message" id="message" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 200px; resize: none;" placeholder="Enter your message"></textarea>
+
 							</div>
-							<div class="col-6">
+							<div class="col-12">
 								<ul class="actions">
-									<li><input id="signupBT" type="button" value="sign Up" onclick="signup()" /></li>
+									<li><input type="button" value="Send Message" onclick="sendrequest()" /></li>
 									<li><input type="reset" value="Reset" /></li>
 								</ul>
 							</div>
@@ -167,67 +136,56 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-        var flag = true;
-        var id, pw, pw2, nam, nickname;
-        
-        $('#id').on('keyup', function () {
-            //유효성검사
-            id = document.getElementById('id')
-            if(id.value.length > 15){
-                $('#id-check').html('아이디는 15자리 이하여야입니다.')
-                flag = false;
-            }
-            
-        })
-        $('#id').on('keydown', function () {
-            //유효성검사
-            id = document.getElementById('id')
-            if(id.value.length < 16){
-                $('#id-check').html('');
-                flag = true;
-            }
-            
-        })
+        function resize (obj) {
+            obj.style.height = "1px";
+            obj.style.height = ( 12 + obj.scrollHeight ) + "px";
+        }
+        function sendrequest () {
+            var name = document.getElementById('name')
+            var email = document.getElementById('email')
+            var category = document.getElementById('category')
+            var message = document.getElementById('message')
 
-        function signup () {
-            id = document.getElementById('id');
-            pw = document.getElementById('pw');
-            pw2 = document.getElementById('pw2');
-            //pw2유효성
-            nam = document.getElementById('nam');
-            console.log(nam.value)
-            nickname = document.getElementById('nickname');
-            email1 = document.getElementById('email1').value;
-            email2 = document.getElementById('email2').value;
-            email = email1 + '' + email2;
-            $.ajax({
-                url : 'signup',
-                data : {
-                    id : id.value,
-                    pw : pw.value,
-                    name : nam.value,
-                    nickname : nickname.value,
-                    email : email
-                },
-                type : 'post',
-                success : function (res) {
-                    alert(res)
-                    if(res == 'exist id'){
-                        alert('이미 아이디가 존재합니다.');
-                        id.focus();
-                    }
-                    if(res == 'insert error'){
-                        alert('알 수 없는 에러 발생, 오류유형 1.');
-                    }
-                    if(res == 'insert success'){
-                        location.href = "<c:url value="/"/>";
-                    }
-                },
-                error : function (res) {
-                    alert('알 수 없는 에러 발생, 오류유형 2.');
-                    //alert(JSON.stringify(res));
-                }
-            })
+            if(name.value.length < 1){
+                alert('이름을 입력해주세요')
+                name.focus();
+                return false;
+            }
+            
+            if(name.value.length > 13){
+                alert('이름은 13자 이하여야입니다.')
+                name.focus();
+                return false;
+            }
+            if(email.value.length < 1){
+                alert('이메일을 입력해주세요')
+                email.focus();
+                return false;
+            }
+            
+            if(email.value.length > 30){
+                alert('이메일은 30자 이하여야입니다.')
+                email.focus();
+                return false;
+            }
+            if(category.value == 'select'){
+                alert('카테고리를 선택해주세요')
+                category.focus();
+                return false;
+            }
+            if(message.value.length < 1){
+                alert('메세지를 입력해주세요')
+                message.focus();
+                return false;
+            }
+            
+            if(message.value.length > 600){
+                alert('메세지는 600자 이하여야입니다.')
+                message.focus();
+                return false;
+            }
+            
+            return true;
         }
     </script>
 

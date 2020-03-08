@@ -120,12 +120,12 @@
 
 						<ul class="actions" style="display: inline-block; margin-top: 20px;">
 							<li><input type="checkbox" id="robot" name="robot"> <label for="robot">Not a robot</label></li>
-							<li><input type="checkbox" id="save" name="save"> <label for="save">save id</label></li>
+							<!-- <li><input type="checkbox" id="saved-id" name="saved-id"> <label for="saved-id">save id</label></li> -->
 						</ul>
 
 					</div>
 					<hr style="margin-top: 0px;">
-					<div id="error" style="font-size: 75%; color: red; margin-bottom: 72px;"></div>
+					<div id="error" style="font-size: 75%; color: red;"></div>
 				</form>
 			</section>
 
@@ -134,7 +134,7 @@
 	</div>
 	<script type="text/javascript">
         function login () {
-            var flag = true;
+            
             var id = document.getElementById('id')
             var pw = document.getElementById('pw')
 
@@ -144,30 +144,33 @@
                 return false;
             }
             //아이디입력했는지
-            if(!id.value.length > 0){
-                alert('아이디를 입력해주세요')
+            if(id.value.length < 1){
+                $('#error').html('아이디를 입력해주세요')
                 id.focus();
                 return false;
             }
             //아이디 글자수제한
-            if(!id.value.length < 13){
-                alert('아이디는 13자리 이하여야입니다.')
+            if(id.value.length > 13){
+                $('#error').html('아이디는 13자리 이하여야입니다.')
                 id.focus();
                 return false;
             }
             //비밀번호입력했는지
-            if(!pw.value.length > 0){
-                alert('비밀번호를 입력해주세요')
+            if(pw.value.length < 1){
+                $('#error').html('비밀번호를 입력해주세요')
                 pw.focus();
                 return false;
             }
             //비밀번호입력했는지
-            if(!pw.value.length < 13){
-                alert('비밀번호는 13자리 이하여야입니다.')
+            if(pw.value.length > 13){
+                $('#error').html('비밀번호는 13자리 이하여야입니다.')
                 pw.focus();
                 return false;
             }
-            
+            if($('#saved-id').is(':checked')){
+                alert('로봇은 로그인할 수 없습니다.');
+                return false;
+            }
             $.ajax({
                 url : 'login',
                 data : {
@@ -190,14 +193,10 @@
                     
                 },
                 error : function (res) {
-                    alert('알 수 없는 오류발생 : 유형2')
+                    $('#error').html('비밀번호가 올바르지 않습니다.')
+                    pw.focus();
                 }
             })
-        }
-
-        //document.getElementById('loginform').submit();
-        function signup () {
-            location.href = 'signup';
         }
     </script>
 

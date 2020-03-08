@@ -44,7 +44,7 @@ public class MemberDao {
 		member = mapper.login(member);
 		HashMap<String, String> map = new HashMap<>();
 
-		if (member == null)
+		if (member.getId() == null)
 			stres = "login error";
 		else {
 			stres = "login success";

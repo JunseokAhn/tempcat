@@ -3,7 +3,7 @@
 
 <mapper namespace="global.sesoc.tempcat.dao.Mapper">
 	<select id="searchList" parameterType="String" resultType="Search">
-		select * 
+		select *
 		from(
 		select null as noticenum, freenum, id, title, contents, inputdate, hits, heart, originalfile, savedfile, nickname, comments
 		from tempcat_free
@@ -20,14 +20,20 @@
 		select noticenum, freenum, id, title, contents, to_char(inputdate, 'YY/MM/DD')
 		inputdate, hits, originalfile, savedfile, nickname
 		from ( select null as noticenum, freenum, id, title, contents, inputdate, hits, heart, originalfile, savedfile, nickname, comments
-				from tempcat_free
-				union
-				select noticenum,null as freenum, id, title, contents, inputdate, hits, heart, originalfile, savedfile, nickname, comments
-				from tempcat_notice)
+		from tempcat_free
+		union
+		select noticenum,null as freenum, id, title, contents, inputdate, hits, heart, originalfile, savedfile, nickname, comments
+		from tempcat_notice)
 		<if test="#{_parameter!=null}">
 			where title like '%' || #{_parameter} || '%'
 		</if>
 		order by inputdate desc
 	</select>
 
+	<insert id="request" parameterType="map">
+		insert into request
+		(name, email, category, message)
+		values
+		(#{id}, #{email}, #{category}, #{message})
+	</insert>
 </mapper>
