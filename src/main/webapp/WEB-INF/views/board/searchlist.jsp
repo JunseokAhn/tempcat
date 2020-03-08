@@ -155,7 +155,7 @@
 					<img src="<c:url value="/resources/images/logo.jpg"/>" alt="" />
 				</a>
 				<header>
-					<h2>Welcom to Tempcat</h2>
+					<h2>Welcome to Tempcat</h2>
 					<p>
 						Multipurpose responsive site created by
 						<a href="https://github.com/JunseokAhn">アンジュンソク</a>

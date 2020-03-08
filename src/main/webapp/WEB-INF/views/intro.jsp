@@ -110,7 +110,7 @@
 						<p>Multipurpose responsive site created by アンジュンソク</p>
 					</div>
 					<div class="meta">
-						<time class="published" datetime="2015-11-01">August 03, 2020</time>
+						<time class="published" datetime="2015-11-01">March 08, 2020</time>
 						<a href="#" class="author">
 							<span class="name">案ジュンソク</span>
 							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
@@ -146,7 +146,7 @@
 					<img src="<c:url value="/resources/images/logo.jpg"/>" alt="" />
 				</a>
 				<header>
-					<h2>Welcom to Tempcat</h2>
+					<h2>Welcome to Tempcat</h2>
 					<p>
 						Multipurpose responsive site created by
 						<a href="https://github.com/JunseokAhn">アンジュンソク</a>
