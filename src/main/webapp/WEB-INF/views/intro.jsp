@@ -105,14 +105,14 @@
 				<header>
 					<div class="title">
 						<h2>
-							<a href="">採用をさせてもらいたい。</a>
+							<a href="">採用されたい。</a>
 						</h2>
 						<p>Multipurpose responsive site created by アンジュンソク</p>
 					</div>
 					<div class="meta">
 						<time class="published" datetime="2015-11-01">August 03, 2020</time>
 						<a href="#" class="author">
-							<span class="name">ジュンソク案</span>
+							<span class="name">案ジュンソク</span>
 							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 						</a>
 					</div>

@@ -109,23 +109,6 @@
 						</div>
 						<span id="pw-check" style="font-size: 75%; color: red;"></span>
 
-						<!-- 
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-							<label for="demo-priority-low">Low</label>
-						</div>
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-normal" name="demo-priority">
-							<label for="demo-priority-normal">Normal</label>
-						</div>
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-high" name="demo-priority">
-							<label for="demo-priority-high">High</label>
-						</div>
-						<div class="col-6 col-12-small">
-							<input type="checkbox" id="demo-copy" name="demo-copy">
-							<label for="demo-copy">Email me a copy</label>
-						</div> -->
 
 
 						<div class="col-6" style="margin-top: 30px;">
@@ -166,12 +149,25 @@
                 id.focus();
                 return false;
             }
+            //아이디 글자수제한
+            if(!id.value.length < 13){
+                alert('아이디는 13자리 이하여야입니다.')
+                id.focus();
+                return false;
+            }
             //비밀번호입력했는지
             if(!pw.value.length > 0){
                 alert('비밀번호를 입력해주세요')
                 pw.focus();
                 return false;
             }
+            //비밀번호입력했는지
+            if(!pw.value.length < 13){
+                alert('비밀번호는 13자리 이하여야입니다.')
+                pw.focus();
+                return false;
+            }
+            
             $.ajax({
                 url : 'login',
                 data : {

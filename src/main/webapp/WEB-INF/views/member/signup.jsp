@@ -98,6 +98,11 @@
 					<h3>Sign UP</h3>
 					<hr>
 					<br>
+					<span id="id-error" style="font-size: 75%; color: red; position: absolute; background-color: white; width: 20%;"></span>
+					<span id="pw-error" style="font-size: 75%; color: red; position: absolute; background-color: white; width: 20%;"></span>
+					<span id="nam-error" style="font-size: 75%; color: red; position: absolute; background-color: white; width: 20%;"></span>
+					<span id="nick-error" style="font-size: 75%; color: red; position: absolute; background-color: white; width: 20%;"></span>
+					<span id="email-error" style="font-size: 75%; color: red; position: absolute; background-color: white; width: 20%;"></span>
 
 					<form method="post" action="#">
 						<div class="row gtr-uniform">
@@ -112,18 +117,18 @@
 								<input type="text" name="nickname" id="nickname" placeholder="Nickname" />
 							</div>
 							<div class="col-6">
-								<input type="email" name="demo-email" id="pw" placeholder="PASSWORD" />
-								<input type="email" name="demo-email" id="pw2" placeholder="PASSWORD2" />
+								<input type="password" name="pw" id="pw" placeholder="PASSWORD" />
 							</div>
-							<span id="pw-check" style="font-size: 75%; color: red;"></span>
-
+							<div class="col-6">
+								<input type="password" name="pw2" id="pw2" placeholder="PASSWORD2" />
+							</div>
 							<div class="col-6 col-12-xsmall">
 								<input type="text" name="email1" id="email1" placeholder="E-Mail" />
 							</div>
 
 							<div class="col-6 col-12-xsmall">
-								<select name="demo-category" id="email2">
-									<option value="">- Select -</option>
+								<select name="email2" id="email2">
+									<option value="select">- Select -</option>
 									<option value="@naver.com">naver.com</option>
 									<option value="@google.com">google.com</option>
 									<option value="@daum.net">daum.net</option>
@@ -131,23 +136,6 @@
 								</select>
 							</div>
 
-							<!-- 
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-							<label for="demo-priority-low">Low</label>
-						</div>
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-normal" name="demo-priority">
-							<label for="demo-priority-normal">Normal</label>
-						</div>
-						<div class="col-4 col-12-small">
-							<input type="radio" id="demo-priority-high" name="demo-priority">
-							<label for="demo-priority-high">High</label>
-						</div>
-						<div class="col-6 col-12-small">
-							<input type="checkbox" id="demo-copy" name="demo-copy">
-							<label for="demo-copy">Email me a copy</label>
-						</div> -->
 							<div class="col-6 col-12-small">
 								<input type="checkbox" id="robot" name="robot">
 								<label for="robot">Not a robot</label>
@@ -159,6 +147,8 @@
 								</ul>
 							</div>
 						</div>
+						<hr style="margin-top: 40px;">
+						<div id="error" style="font-size: 75%; color: red; margin-bottom: 72px;"></div>
 					</form>
 				</section>
 
@@ -167,39 +157,136 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-        var flag = true;
-        var id, pw, pw2, nam, nickname;
+        var idFlag = false;
+        var pwFlag = false;
+        var nameFlag = false;
+        var nickFlag = false;
+        var emailFlag = false;
+        
+        var id = document.getElementById('id');
+        var pw = document.getElementById('pw');
+        var pw2 = document.getElementById('pw2');
+        var nam = document.getElementById('nam');
+        var nickname = document.getElementById('nickname');
+        var email1 = document.getElementById('email1');
+        var email2 = document.getElementById('email2');
+        var email = email1.value + '' + email2.value;
         
         $('#id').on('keyup', function () {
-            //유효성검사
-            id = document.getElementById('id')
-            if(id.value.length > 15){
-                $('#id-check').html('아이디는 15자리 이하여야입니다.')
-                flag = false;
+            if(id.value.length > 13){
+                $('#id-error').html('아이디는 13자리 이하여야입니다.');
+                idFlag = false;
             }
             
         })
         $('#id').on('keydown', function () {
+            if(id.value.length < 14){
+                $('#id-error').html('');
+                idFlag = true;
+            }
+        })
+        $('#pw').on('keyup', function () {
             //유효성검사
-            id = document.getElementById('id')
-            if(id.value.length < 16){
-                $('#id-check').html('');
-                flag = true;
+            if(pw.value.length > 13){
+                $('#pw-error').html('비밀번호는 13자리 이하여야입니다.');
+                pwFlag = false;
+            }
+        })
+
+        $('#pw').on('keydown', function () {
+            if(pw.value.length < 14){
+                $('#pw-error').html('');
+                pwFlag = true;
+            }
+        })
+        $('#nam').on('keyup', function () {
+            //유효성검사
+            if(nam.value.length > 13){
+                $('#nam-error').html('이름은 13자리 이하여야입니다.');
+                nameFlag = false;
+            }
+        })
+
+        $('#nam').on('keydown', function () {
+            if(nam.value.length < 14){
+                $('#nam-error').html('');
+                nameFlag = true;
+            }
+        })
+        $('#email1').on('keyup', function () {
+            if(email1.value.length > 13){
+                $('#email-error').html('이메일은 13자리 이하여야입니다.');
+                emailFlag = false;
             }
             
         })
+        $('#email1').on('keydown', function () {
+            if(email1.value.length < 14){
+                $('#email-error').html('');
+                emailFlag = true;
+            }
+        })
+
+        $('#nickname').on('keyup', function () {
+            if(nickname.value.length > 13){
+                $('#nick-error').html('이메일은 13자리 이하여야입니다.');
+                nickFlag = false;
+            }
+            
+        })
+        $('#nickname').on('keydown', function () {
+            if(nickname.value.length < 14){
+                $('#nick-error').html('');
+                nickFlag = true;
+            }
+        })
 
         function signup () {
-            id = document.getElementById('id');
-            pw = document.getElementById('pw');
-            pw2 = document.getElementById('pw2');
-            //pw2유효성
-            nam = document.getElementById('nam');
-            console.log(nam.value)
-            nickname = document.getElementById('nickname');
-            email1 = document.getElementById('email1').value;
-            email2 = document.getElementById('email2').value;
-            email = email1 + '' + email2;
+            if(!$('#robot').is(':checked')){
+                alert('로봇은 가입할 수 없습니다.');
+                return false;
+            }
+            if(idFlag == false || pwFlag == false || nameFlag == false || nickFlag == false || emailFlag == false){
+                return false;
+            }
+            
+            if(!id.value.length > 0){
+                $('#error').html('아이디를 입력해주세요');
+                id.focus();
+                return false;
+            }
+            
+            if(!pw.value.length > 0){
+                $('#error').html('비밀번호를 입력해주세요');
+                pw.focus();
+                return false;
+            }
+            if(!nam.value.length > 0){
+                $('#error').html('이름을 입력해주세요');
+                nam.focus();
+                return false;
+            }
+            if(!nickname.value.length > 0){
+                $('#error').html('닉네임을 입력해주세요');
+                nickname.focus();
+                return false;
+            }
+            if(!email1.value.length > 0){
+                $('#error').html('이메일을 입력해주세요');
+                email1.focus();
+                return false;
+            }
+            if(email2.value == 'select'){
+                $('#error').html('이메일 주소를 입력해주세요');
+                email2.focus();
+                return false;
+            }
+            if(!pw.value == pw2.value){
+                $('#error').html('비밀번호를 확인해주세요');
+                pw2.focus();
+                return false;
+            }
+            
             $.ajax({
                 url : 'signup',
                 data : {
