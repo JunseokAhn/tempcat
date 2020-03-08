@@ -177,19 +177,16 @@
 			<!-- Footer -->
 			<section id="footer">
 				<ul class="icons">
-					<li><a href="#" class="icon brands fa-twitter">
+					<li><a href="https://twitter.com/?lang=ko" class="icon brands fa-twitter">
 							<span class="label">Twitter</span>
 						</a></li>
-					<li><a href="#" class="icon brands fa-facebook-f">
+					<li><a href="https://www.facebook.com/" class="icon brands fa-facebook-f">
 							<span class="label">Facebook</span>
 						</a></li>
-					<li><a href="#" class="icon brands fa-instagram">
+					<li><a href="https://www.instagram.com/?hl=ko" class="icon brands fa-instagram">
 							<span class="label">Instagram</span>
 						</a></li>
-					<li><a href="#" class="icon solid fa-rss">
-							<span class="label">RSS</span>
-						</a></li>
-					<li><a href="#" class="icon solid fa-envelope">
+					<li><a href="<c:url value="/request"/>" class="icon solid fa-envelope">
 							<span class="label">Email</span>
 						</a></li>
 				</ul>
@@ -227,11 +224,48 @@
 
         function NextPage () {
             
-            location.href = 'freelist?currentPage=' + ${nav.currentPage + 5}+'&searchText=${requestScope.searchText}';
+            var devided =  ${nav.currentPage % 5}
+          
+            switch(devided){
+                case 1:
+                    location.href = 'freelist?currentPage=' + ${nav.currentPage + 5}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 2:
+                    location.href = 'freelist?currentPage=' + ${nav.currentPage + 4}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 3:
+                    location.href = 'freelist?currentPage=' + ${nav.currentPage + 3}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 4:
+                    location.href = 'freelist?currentPage=' + ${nav.currentPage + 2}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 0:
+                    location.href = 'freelist?currentPage=' + ${nav.currentPage + 1}+'&searchText=${requestScope.searchText}';
+                    break;
+            }
+            
         }
         function PreviousPage (e) {
-            
-            location.href = 'freelist?currentPage=' + ${nav.currentPage - 5}+'&searchText=${requestScope.searchText}';
+            var devided = ${nav.currentPage % 5}
+ 
+            switch(devided){
+                case 1:
+                    location.href = 'freelist?currentPage=' + ${nav.currentPage - 1}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 2:
+                    location.href = 'freelist?currentPage=' + ${nav.currentPage - 2}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 3:
+                    location.href = 'freelist?currentPage=' + ${nav.currentPage - 3}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 4:
+                    location.href = 'freelist?currentPage=' + ${nav.currentPage - 4}+'&searchText=${requestScope.searchText}';
+                    break;
+                case 0:
+                    location.href = 'freelist?currentPage=' + ${nav.currentPage - 5}+'&searchText=${requestScope.searchText}';
+               		break;
+            }
+           
         }
     </script>
 
