@@ -100,18 +100,17 @@
 				<form id="loginform" method="post" action="login">
 					<div class="row gtr-uniform" style="text-align: left;">
 						<div class="col-6 col-12-xsmall">
-							<input type="text" name="current_pw" id="current_pw" placeholder="Current Password" />
+							<center>
+								<input type="password" name="current_pw" id="current_pw" placeholder="Insert Password" />
+							</center>
 						</div>
 
-						<div class="col-6">
-							<input type="email" name="pw" id="pw" placeholder="Password to Change" />
 
-						</div>
 						<span id="pw-check" style="font-size: 75%; color: red;"></span>
 
 						<div style="margin-top: 10px; padding-right: 16px; width: 999px;">
 							<center>
-								<input id="loginBT" type="button" class="button large" value="Change" onclick="change()" />
+								<input id="loginBT" type="button" class="button large" value="Delete" onclick="change()" />
 							</center>
 						</div>
 
@@ -131,24 +130,18 @@
             var pw = document.getElementById('pw')
 
             //current pw입력했는지
-            if(current_pw.value.length< 1){
-                $('#error').html('현재 비밀번호를 입력해주세요');
+            if(current_pw.value.length < 1){
+                $('#error').html('비밀번호를 입력해주세요');
                 current_pw.focus();
                 return false;
             }
-            //pw입력했는지
-            if(pw.value.length <1){
-                $('#error').html('바꿀 비밀번호를 입력해주세요');
-                pw.focus();
-                return false;
-            }
+        
             
             $.ajax({
-                url : 'changepw',
+                url : 'deleteac',
                 data : {
                     id : ${sessionScope.id},
-                    current_pw : current_pw.value,
-                    pw : pw.value
+                    current_pw : current_pw.value
                 },
                 type : 'post',
                 success : function (e) {

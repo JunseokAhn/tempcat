@@ -252,4 +252,21 @@ public class MemberController {
 
 		return "board/searchlist";
 	}
+
+	@GetMapping(value = "deleteac")
+	public String deleteAc() {
+
+		return "member/deleteac";
+	}
+
+	@ResponseBody
+	@PostMapping(value = "deleteac")
+	public boolean deleteAc(String id, String current_pw, HttpSession session) {
+		logger.debug("id : {}, pw : {}", id, current_pw);
+		res = Mdao.deleteAc(id, current_pw);
+		if (res) {
+			session.invalidate();
+		}
+		return res;
+	}
 }

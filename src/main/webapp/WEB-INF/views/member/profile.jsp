@@ -139,7 +139,9 @@
 					<input type="button" class="button small" style="margin-left: 20px;" value="Done" id="emailDoneBT" onclick="emailDone()">
 				</div>
 				<footer style="margin-top: 40px;">
-					<a href="<c:url value="/member/changepw"/>" class="button large" style="margin-left: 90px;">Change My Password</a>
+					<a href="<c:url value="/member/changepw"/>" class="button">Change My Password</a>
+
+					<a href="<c:url value="/member/deleteac"/>" class="button" style="margin-left: 10px;">Delete My Account</a>
 				</footer>
 			</article>
 			<!-- Post -->

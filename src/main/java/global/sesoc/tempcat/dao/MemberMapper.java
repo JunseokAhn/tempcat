@@ -46,5 +46,7 @@ public interface MemberMapper {
 
 	ArrayList<SearchBoard> freereplyList2(String searchText, RowBounds rB);
 
+	int deleteAc(HashMap<String, String> map);
+
 
 }

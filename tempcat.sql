@@ -10,7 +10,13 @@ create table tempcat_member (
     logindate date default sysdate          --최근 로그인
 );
 
-
+--리퀘스트 전용 테이블
+create table request(
+name		varchar2(40) not null,		--이름
+email		varchar2(100), not null,		--이메일
+category    varchar2(40) not null,      --카테고리
+message     varchar2(2000) not null     --내용
+)
 --공지게시판 테이블
 drop table tempcat_notice;
 create table tempcat_notice(

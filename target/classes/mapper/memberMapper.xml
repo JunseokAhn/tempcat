@@ -126,4 +126,9 @@
 		(select freenum from free_reply where id = #{id})
 		order by inputdate desc
 	</select>
+
+	<delete id="deleteAc" parameterType="map">
+		delete tempcat_member
+		where id=#{id} and pw=#{pw}
+	</delete>
 </mapper>

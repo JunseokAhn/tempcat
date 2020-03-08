@@ -181,4 +181,14 @@ public class MemberDao {
 		return list;
 	}
 
+	public boolean deleteAc(String id, String pw) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("pw", pw);
+		intres = mapper.deleteAc(map);
+		return intres>0;
+	}
+
 }
