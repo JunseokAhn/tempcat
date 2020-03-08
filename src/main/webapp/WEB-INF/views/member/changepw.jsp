@@ -158,7 +158,11 @@
                     else{
                         $('#error').html('비밀번호가 틀립니다');
                     }
+                },
+             	error : function(){
+             	   $('#error').html('비밀번호가 틀립니다');
                 }
+                
             })
         }
     </script>

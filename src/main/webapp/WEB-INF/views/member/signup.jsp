@@ -98,12 +98,13 @@
 					<h3>Sign UP</h3>
 					<hr>
 					<br>
-					<span id="id-error" style="font-size: 75%; color: red; position: absolute; background-color: white; width: 20%;"></span>
-					<span id="pw-error" style="font-size: 75%; color: red; position: absolute; background-color: white; width: 20%;"></span>
-					<span id="nam-error" style="font-size: 75%; color: red; position: absolute; background-color: white; width: 20%;"></span>
-					<span id="nick-error" style="font-size: 75%; color: red; position: absolute; background-color: white; width: 20%;"></span>
-					<span id="email-error" style="font-size: 75%; color: red; position: absolute; background-color: white; width: 20%;"></span>
-
+					<div>
+						<span id="id-error" style="font-size: 75%; color: red; position: absolute; background-color: white;"></span>
+						<span id="pw-error" style="font-size: 75%; color: red; position: absolute; background-color: white;"></span>
+						<span id="nam-error" style="font-size: 75%; color: red; position: absolute; background-color: white;"></span>
+						<span id="nick-error" style="font-size: 75%; color: red; position: absolute; background-color: white;"></span>
+						<span id="email-error" style="font-size: 75%; color: red; position: absolute; background-color: white;"></span>
+					</div>
 					<form method="post" action="#">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-xsmall">
@@ -143,7 +144,7 @@
 							<div class="col-6">
 								<ul class="actions">
 									<li><input id="signupBT" type="button" value="sign Up" onclick="signup()" /></li>
-									<li><input type="reset" value="Reset" /></li>
+									<li><input type="reset" value="Reset" onclick="reset()" /></li>
 								</ul>
 							</div>
 						</div>
@@ -172,75 +173,62 @@
         var email2 = document.getElementById('email2');
         var email = email1.value + '' + email2.value;
         
-        $('#id').on('keyup', function () {
-            if(id.value.length > 13){
+        setInterval(function () {
+            
+            if($('#id').val().length > 13){
                 $('#id-error').html('아이디는 13자리 이하여야입니다.');
                 idFlag = false;
             }
-            
-        })
-        $('#id').on('keydown', function () {
-            if(id.value.length < 14){
+            if($('#id').val().length < 14){
                 $('#id-error').html('');
                 idFlag = true;
             }
-        })
-        $('#pw').on('keyup', function () {
-            //유효성검사
-            if(pw.value.length > 13){
-                $('#pw-error').html('비밀번호는 13자리 이하여야입니다.');
+            if($('#pw').val().length > 13){
+                $('#pw-error').html('비밀번호는 13자리 이하여야입니다');
                 pwFlag = false;
             }
-        })
-
-        $('#pw').on('keydown', function () {
-            if(pw.value.length < 14){
+            if($('#pw').val().length < 14){
                 $('#pw-error').html('');
                 pwFlag = true;
             }
-        })
-        $('#nam').on('keyup', function () {
-            //유효성검사
-            if(nam.value.length > 13){
-                $('#nam-error').html('이름은 13자리 이하여야입니다.');
+            if($('#nam').val().length > 13){
+                $('#nam-error').html('이름은 13자리 이하여야입니다');
                 nameFlag = false;
             }
-        })
-
-        $('#nam').on('keydown', function () {
-            if(nam.value.length < 14){
+            if($('#nam').val().length < 14){
                 $('#nam-error').html('');
                 nameFlag = true;
             }
-        })
-        $('#email1').on('keyup', function () {
-            if(email1.value.length > 13){
-                $('#email-error').html('이메일은 13자리 이하여야입니다.');
+            if($('#email1').val().length > 13){
+                $('#email-error').html('이메일은 13자리 이하여야입니다');
                 emailFlag = false;
             }
-            
-        })
-        $('#email1').on('keydown', function () {
-            if(email1.value.length < 14){
+            if($('#email1').val().length < 14){
                 $('#email-error').html('');
                 emailFlag = true;
             }
-        })
-
-        $('#nickname').on('keyup', function () {
-            if(nickname.value.length > 13){
-                $('#nick-error').html('닉네임은 13자리 이하여야입니다.');
+            if($('#nickname').val().length > 13){
+                $('#nick-error').html('닉네임은 13자리 이하여야입니다');
                 nickFlag = false;
             }
-            
-        })
-        $('#nickname').on('keydown', function () {
-            if(nickname.value.length < 14){
+            if($('#nickname').val().length < 14){
                 $('#nick-error').html('');
                 nickFlag = true;
             }
-        })
-
+        }, 500);
+        
+        function reset () {
+            idFlag = false;
+            pwFlag = false;
+            nameFlag = false;
+            nickFlag = false;
+            emailFlag = false;
+            $('#id-error').html('');
+            $('#pw-error').html('');
+            $('#nam-error').html('');
+            $('#email-error').html('');
+            $('#nick-error').html('');
+        }
         function signup () {
             if(!$('#robot').is(':checked')){
                 alert('로봇은 가입할 수 없습니다.');
