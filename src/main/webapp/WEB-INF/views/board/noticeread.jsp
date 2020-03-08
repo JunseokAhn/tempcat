@@ -31,7 +31,7 @@
 				<ul>
 					<li class="search"><a class="fa-search" href="#search">Search</a>
 						<form id="search" method="get" action="<c:url value="/searchlist"/>">
-							<input type="text" name="searchText" placeholder="Search" />
+							<input type="text" name="searchText" placeholder="Title" />
 						</form></li>
 					<li class="menu"><a class="fa-bars" href="#menu">Menu</a></li>
 				</ul>
@@ -44,7 +44,7 @@
 			<!-- Search -->
 			<section>
 				<form id="search" method="get" action="<c:url value="/searchlist"/>">
-					<input type="text" name="searchText" placeholder="Search" />
+					<input type="text" name="searchText" placeholder="Title" />
 				</form>
 			</section>
 
@@ -113,14 +113,14 @@
 
 			<p>${requestScope.nBoard.contents }</p>
 			<footer>
-				<ul class="stats">
+				<%-- <ul class="stats">
 					<li><a href="#">General</a></li>
 					<li><a id="heart" class="icon solid fa-heart" onclick="addHeart()">${requestScope.nBoard.heart }</a></li>
 					<li><a href="#" class="icon solid fa-comment">128</a></li>
-				</ul>
+				</ul> --%>
 				<c:if test="${sessionScope.id==requestScope.nBoard.id }">
-					<input type="button" class="button small" value="Delete Writing" onclick="deletewriting()" style="position: absolute; right: 50px;" />
-					<input type="button" class="button small" value="Update Writing" onclick="updatewriting()" style="position: absolute; right: 223px;" />
+					<input type="button" class="button small" value="Delete Writing" onclick="deletewriting()" />
+					<input type="button" class="button small" value="Update Writing" onclick="updatewriting()" />
 				</c:if>
 			</footer>
 
@@ -187,30 +187,27 @@
 			</header>
 
 		</article>
+		<!-- Footer -->
+		<section id="footer">
+			<ul class="icons">
+				<li><a href="https://twitter.com/?lang=ko" class="icon brands fa-twitter">
+						<span class="label">Twitter</span>
+					</a></li>
+				<li><a href="https://www.facebook.com/" class="icon brands fa-facebook-f">
+						<span class="label">Facebook</span>
+					</a></li>
+				<li><a href="https://www.instagram.com/?hl=ko" class="icon brands fa-instagram">
+						<span class="label">Instagram</span>
+					</a></li>
+				<li><a href="<c:url value="/request"/>" class="icon solid fa-envelope">
+						<span class="label">Email</span>
+					</a></li>
+			</ul>
+
+		</section>
 	</div>
 
-	<!-- Footer -->
-	<section id="footer">
-		<ul class="icons">
-			<li><a href="#" class="icon brands fa-twitter">
-					<span class="label">Twitter</span>
-				</a></li>
-			<li><a href="#" class="icon brands fa-facebook-f">
-					<span class="label">Facebook</span>
-				</a></li>
-			<li><a href="#" class="icon brands fa-instagram">
-					<span class="label">Instagram</span>
-				</a></li>
-			<li><a href="#" class="icon solid fa-rss">
-					<span class="label">RSS</span>
-				</a></li>
-			<li><a href="#" class="icon solid fa-envelope">
-					<span class="label">Email</span>
-				</a></li>
-		</ul>
 
-
-	</section>
 	<script type="text/javascript">
     if(${nav.currentGroup>0}){
     	$('#previous').attr('class', 'button large previous')  

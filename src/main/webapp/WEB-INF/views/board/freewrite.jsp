@@ -31,7 +31,7 @@
 				<ul>
 					<li class="search"><a class="fa-search" href="#search">Search</a>
 						<form id="search" method="get" action="<c:url value="/searchlist"/>">
-							<input type="text" name="searchText" placeholder="Search" />
+							<input type="text" name="searchText" placeholder="Title" />
 						</form></li>
 					<li class="menu"><a class="fa-bars" href="#menu">Menu</a></li>
 				</ul>
@@ -44,7 +44,7 @@
 			<!-- Search -->
 			<section>
 				<form id="search" method="get" action="<c:url value="/searchlist"/>">
-					<input type="text" name="searchText" placeholder="Search" />
+					<input type="text" name="searchText" placeholder="Title" />
 				</form>
 			</section>
 
@@ -130,13 +130,14 @@
 				</c:if>
 				<input type="hidden" name="freenum" value="${fBoard.freenum }">
 			</div>
+			<!-- 
 			<footer>
 				<ul class="stats">
 					<li><a href="#">General</a></li>
 					<li><a href="#" class="icon solid fa-heart">28</a></li>
 					<li><a href="#" class="icon solid fa-comment">128</a></li>
 				</ul>
-			</footer>
+			</footer> -->
 			<div class="col-12">
 
 
@@ -148,37 +149,36 @@
 						<li><input type="button" value="Send Post" onclick="sendpost()" /></li>
 					</c:if>
 					<li><input type="reset" value="Reset" onclick="reset()" /></li>
+					<!-- 
 					<li><a href="#" class="button icon solid fa-download">Icon</a></li>
 					<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
-					<li><a href="#" class="button icon solid fa-save">Icon</a></li>
+					<li><a href="#" class="button icon solid fa-save">Icon</a></li> -->
 				</ul>
 
 			</div>
 		</article>
 		</form>
+		<!-- Footer -->
+		<section id="footer">
+			<ul class="icons">
+				<li><a href="https://twitter.com/?lang=ko" class="icon brands fa-twitter">
+						<span class="label">Twitter</span>
+					</a></li>
+				<li><a href="https://www.facebook.com/" class="icon brands fa-facebook-f">
+						<span class="label">Facebook</span>
+					</a></li>
+				<li><a href="https://www.instagram.com/?hl=ko" class="icon brands fa-instagram">
+						<span class="label">Instagram</span>
+					</a></li>
+				<li><a href="<c:url value="/request"/>" class="icon solid fa-envelope">
+						<span class="label">Email</span>
+					</a></li>
+			</ul>
+
+		</section>
 	</div>
 
-	<!-- Footer -->
-	<section id="footer">
-		<ul class="icons">
-			<li><a href="#" class="icon brands fa-twitter">
-					<span class="label">Twitter</span>
-				</a></li>
-			<li><a href="#" class="icon brands fa-facebook-f">
-					<span class="label">Facebook</span>
-				</a></li>
-			<li><a href="#" class="icon brands fa-instagram">
-					<span class="label">Instagram</span>
-				</a></li>
-			<li><a href="#" class="icon solid fa-rss">
-					<span class="label">RSS</span>
-				</a></li>
-			<li><a href="#" class="icon solid fa-envelope">
-					<span class="label">Email</span>
-				</a></li>
-		</ul>
 
-	</section>
 	<script type="text/javascript">
         var title = document.getElementById('title');
         var contents = document.getElementById('contents');
@@ -196,21 +196,20 @@
         }
         function sendpost () {
             
-            //제목x 혹은 20자이상, 컨텐츠2000자이상 혹은 내용x
             if(title.value.length < 1){
                 alert('제목을 입력하세요')
                 return false;
             }
-            if(title.value.length > 20){
-                alert('제목의 최대길이는 20자입니다')
+            if(title.value.length > 30){
+                alert('제목의 최대길이는 30자입니다')
                 return false;
             }
             if(contents.value.length < 1){
                 alert('내용을 입력해주세요')
                 return false;
             }
-            if(contents.value.length > 2000){
-                alert('본문은 최대 2000자를 넘지 못합니다.');
+            if(contents.value.length > 600){
+                alert('본문은 최대 600자를 넘지 못합니다.');
                 return false;
             }
             $('#sendpost').submit();

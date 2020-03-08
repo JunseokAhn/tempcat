@@ -29,7 +29,7 @@
 				<ul>
 					<li class="search"><a class="fa-search" href="#search">Search</a>
 						<form id="search" method="get" action="<c:url value="/searchlist"/>">
-							<input type="text" name="searchText" placeholder="Search" />
+							<input type="text" name="searchText" placeholder="Title" />
 						</form></li>
 					<li class="menu"><a class="fa-bars" href="#menu">Menu</a></li>
 				</ul>
@@ -42,7 +42,7 @@
 			<!-- Search -->
 			<section>
 				<form id="search" method="get" action="<c:url value="/searchlist"/>">
-					<input type="text" name="searchText" placeholder="Search" />
+					<input type="text" name="searchText" placeholder="Title" />
 				</form>
 			</section>
 
@@ -179,26 +179,25 @@
 			</section>
 
 			<!-- Footer -->
+			<!-- Footer -->
 			<section id="footer">
 				<ul class="icons">
-					<li><a href="#" class="icon brands fa-twitter">
+					<li><a href="https://twitter.com/?lang=ko" class="icon brands fa-twitter">
 							<span class="label">Twitter</span>
 						</a></li>
-					<li><a href="#" class="icon brands fa-facebook-f">
+					<li><a href="https://www.facebook.com/" class="icon brands fa-facebook-f">
 							<span class="label">Facebook</span>
 						</a></li>
-					<li><a href="#" class="icon brands fa-instagram">
+					<li><a href="https://www.instagram.com/?hl=ko" class="icon brands fa-instagram">
 							<span class="label">Instagram</span>
 						</a></li>
-					<li><a href="#" class="icon solid fa-rss">
-							<span class="label">RSS</span>
-						</a></li>
-					<li><a href="#" class="icon solid fa-envelope">
+					<li><a href="<c:url value="/request"/>" class="icon solid fa-envelope">
 							<span class="label">Email</span>
 						</a></li>
 				</ul>
 
 			</section>
+
 
 		</section>
 

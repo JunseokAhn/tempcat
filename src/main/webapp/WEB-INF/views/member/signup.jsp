@@ -30,7 +30,7 @@
 				<ul>
 					<li class="search"><a class="fa-search" href="#search">Search</a>
 						<form id="search" method="get" action="<c:url value="/searchlist"/>">
-							<input type="text" name="searchText" placeholder="Search" />
+							<input type="text" name="searchText" placeholder="Title" />
 						</form></li>
 					<li class="menu"><a class="fa-bars" href="#menu">Menu</a></li>
 				</ul>
@@ -43,7 +43,7 @@
 			<!-- Search -->
 			<section>
 				<form id="search" method="get" action="<c:url value="/searchlist"/>">
-					<input type="text" name="searchText" placeholder="Search" />
+					<input type="text" name="searchText" placeholder="Title" />
 				</form>
 			</section>
 
@@ -229,7 +229,7 @@
 
         $('#nickname').on('keyup', function () {
             if(nickname.value.length > 13){
-                $('#nick-error').html('이메일은 13자리 이하여야입니다.');
+                $('#nick-error').html('닉네임은 13자리 이하여야입니다.');
                 nickFlag = false;
             }
             
@@ -250,28 +250,28 @@
                 return false;
             }
             
-            if(!id.value.length > 0){
+            if(id.value.length < 1){
                 $('#error').html('아이디를 입력해주세요');
                 id.focus();
                 return false;
             }
             
-            if(!pw.value.length > 0){
+            if(pw.value.length < 1){
                 $('#error').html('비밀번호를 입력해주세요');
                 pw.focus();
                 return false;
             }
-            if(!nam.value.length > 0){
+            if(nam.value.length < 1){
                 $('#error').html('이름을 입력해주세요');
                 nam.focus();
                 return false;
             }
-            if(!nickname.value.length > 0){
+            if(nickname.value.length < 1){
                 $('#error').html('닉네임을 입력해주세요');
                 nickname.focus();
                 return false;
             }
-            if(!email1.value.length > 0){
+            if(email1.value.length < 1){
                 $('#error').html('이메일을 입력해주세요');
                 email1.focus();
                 return false;
@@ -281,7 +281,7 @@
                 email2.focus();
                 return false;
             }
-            if(!pw.value == pw2.value){
+            if(pw.value != pw2.value){
                 $('#error').html('비밀번호를 확인해주세요');
                 pw2.focus();
                 return false;
@@ -298,7 +298,7 @@
                 },
                 type : 'post',
                 success : function (res) {
-                    alert(res)
+                    
                     if(res == 'exist id'){
                         alert('이미 아이디가 존재합니다.');
                         id.focus();
@@ -312,7 +312,6 @@
                 },
                 error : function (res) {
                     alert('알 수 없는 에러 발생, 오류유형 2.');
-                    //alert(JSON.stringify(res));
                 }
             })
         }

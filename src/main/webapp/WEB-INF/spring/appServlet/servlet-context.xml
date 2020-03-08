@@ -30,6 +30,7 @@
 			<mvc:mapping path="/member/changeNickname" />
 			<mvc:mapping path="/member/changeEmail" />
 			<mvc:mapping path="/member/changepw" />
+			<mvc:mapping path="/member/deleteac" />
 			
 			<mvc:mapping path="/member/go-mynotice" />
 			<mvc:mapping path="/member/go-myfree" />
