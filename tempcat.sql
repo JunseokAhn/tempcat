@@ -12,14 +12,22 @@ create table tempcat_member (
     logindate date default sysdate          --최근 로그인
 );
 
+
 --리퀘스트 전용 테이블
 drop table request;
 create table request(
+request_num number       primary key,   
 name		varchar2(40) not null,		--이름
 email		varchar2(100) not null,		--이메일
 category    varchar2(40) not null,      --카테고리
 message     varchar2(2000) not null     --내용
 );
+
+--리퀘스트 번호에 사용할 시퀀스
+drop sequence request_seq;
+create sequence request_seq;
+
+
 --공지게시판 테이블
 drop table tempcat_notice;
 create table tempcat_notice(

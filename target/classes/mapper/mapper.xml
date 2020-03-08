@@ -32,8 +32,8 @@
 
 	<insert id="request" parameterType="map">
 		insert into request
-		(name, email, category, message)
+		(request_num, name, email, category, message)
 		values
-		(#{name}, #{email}, #{category}, #{message})
+		(request_seq.nextval, #{name}, #{email}, #{category}, #{message})
 	</insert>
 </mapper>
