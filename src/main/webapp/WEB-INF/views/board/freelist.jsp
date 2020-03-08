@@ -193,7 +193,7 @@
 							<span class="label">Email</span>
 						</a></li>
 				</ul>
-			
+
 			</section>
 
 		</section>

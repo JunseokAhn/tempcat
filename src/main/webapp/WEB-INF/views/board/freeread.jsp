@@ -97,7 +97,7 @@
 					<h2>
 						<a href="#">${requestScope.fBoard.title }</a>
 					</h2>
-					<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+					<p>Multipurpose responsive site created by アンジュンソク</p>
 				</div>
 				<div class="meta">
 					<time class="published" datetime="2015-11-01">${requestScope.fBoard.inputdate }</time>
@@ -136,7 +136,7 @@
 						<h2>
 							<a>${i.contents }</a>
 						</h2>
-						<!-- <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p> -->
+
 						<c:if test="${sessionScope.id==i.id }">
 							<input type="button" class="button small" value="Delete Reply" onclick="deletereply('${i.num}')" style="float: right;" />
 							<input type="button" class="button small" value="Update Reply" onclick="updatereply('${i.num}')" style="float: right;" />
@@ -207,7 +207,7 @@
 					<span class="label">Email</span>
 				</a></li>
 		</ul>
-		
+
 
 	</section>
 	<script type="text/javascript">

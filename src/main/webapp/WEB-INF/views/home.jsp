@@ -97,7 +97,7 @@
 							<h2>
 								<a href="<c:url value="notice/noticeread?noticenum=${i.noticenum }" />">${i.title}</a>
 							</h2>
-							<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+							<p>Multipurpose responsive site created by アンジュンソク</p>
 						</div>
 						<div class="meta">
 							<time class="published" datetime="2015-11-01">${i.inputdate }</time>
@@ -144,7 +144,6 @@
 					</p>
 				</header>
 			</section>
-
 			<!-- Mini Posts -->
 			<section>
 				<div class="mini-posts">
@@ -173,9 +172,9 @@
 			<!-- About -->
 			<section class="blurb">
 				<h2>About</h2>
-				<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+				<p>私は Korea International Trade Academy SMART Cloud SC IT MASTERの 38期 所属の教育生です. このサイトは外部のフリーウェアデザインテンプレートを借りて作りました。 どうぞよろしくお願いします。</p>
 				<ul class="actions">
-					<li><a href="#" class="button">Learn More</a></li>
+					<li><a href="<c:url value="/intro"/>" class="button">Learn More</a></li>
 				</ul>
 			</section>
 
