@@ -228,12 +228,46 @@
         location.href = 'noticeread?noticenum=${requestScope.nBoard.noticenum}&currentPage=' + currentPage;
     }
     function NextPage () {
+        var devided =  ${nav.currentPage % 5}
         
-        location.href = 'noticeread?noticenum=${requestScope.nBoard.noticenum}&currentPage=' + ${nav.currentPage + 5};
+        switch(devided){
+            case 1:
+                location.href = 'noticeread?currentPage=' + ${nav.currentPage + 5}+'&noticenum=${requestScope.nBoard.noticenum}';
+                break;
+            case 2:
+                location.href = 'noticeread?currentPage=' + ${nav.currentPage + 4}+'&noticenum=${requestScope.nBoard.noticenum}';
+                break;
+            case 3:
+                location.href = 'noticeread?currentPage=' + ${nav.currentPage + 3}+'&noticenum=${requestScope.nBoard.noticenum}';
+                break;
+            case 4:
+                location.href = 'noticeread?currentPage=' + ${nav.currentPage + 2}+'&noticenum=${requestScope.nBoard.noticenum}';
+                break;
+            case 0:
+                location.href = 'noticeread?currentPage=' + ${nav.currentPage + 1}+'&noticenum=${requestScope.nBoard.noticenum}';
+                break;
+        }
     }
     function PreviousPage (e) {
+        var devided = ${nav.currentPage % 5}
         
-        location.href = 'noticeread?noticenum=${requestScope.nBoard.noticenum}&currentPage=' + ${nav.currentPage - 5};
+        switch(devided){
+            case 1:
+                location.href = 'noticeread?currentPage=' + ${nav.currentPage - 1}+'&noticenum=${requestScope.nBoard.noticenum}';
+                break;
+            case 2:
+                location.href = 'noticeread?currentPage=' + ${nav.currentPage - 2}+'&noticenum=${requestScope.nBoard.noticenum}';
+                break;
+            case 3:
+                location.href = 'noticeread?currentPage=' + ${nav.currentPage - 3}+'&noticenum=${requestScope.nBoard.noticenum}';
+                break;
+            case 4:
+                location.href = 'noticeread?currentPage=' + ${nav.currentPage - 4}+'&noticenum=${requestScope.nBoard.noticenum}';
+                break;
+            case 0:
+                location.href = 'noticeread?currentPage=' + ${nav.currentPage - 5}+'&noticenum=${requestScope.nBoard.noticenum}';
+           		break;
+        }
     }
         function deletereply (num) {
             location.href = 'nreplydelete?num=' + num + '&noticenum=${requestScope.nBoard.noticenum}'

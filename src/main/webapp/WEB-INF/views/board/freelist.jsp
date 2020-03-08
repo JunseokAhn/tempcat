@@ -223,7 +223,6 @@
         }
 
         function NextPage () {
-            
             var devided =  ${nav.currentPage % 5}
           
             switch(devided){

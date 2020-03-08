@@ -228,12 +228,46 @@
         location.href = 'freeread?freenum=${requestScope.fBoard.freenum}&currentPage=' + currentPage;
     }
     function NextPage () {
+        var devided =  ${nav.currentPage % 5}
         
-        location.href = 'freeread?freenum=${requestScope.fBoard.freenum}&currentPage=' + ${nav.currentPage + 5};
+        switch(devided){
+            case 1:
+                location.href = 'freeread?currentPage=' + ${nav.currentPage + 5}+'&freenum=${requestScope.fBoard.freenum}';
+                break;
+            case 2:
+                location.href = 'freeread?currentPage=' + ${nav.currentPage + 4}+'&freenum=${requestScope.fBoard.freenum}';
+                break;
+            case 3:
+                location.href = 'freeread?currentPage=' + ${nav.currentPage + 3}+'&freenum=${requestScope.fBoard.freenum}';
+                break;
+            case 4:
+                location.href = 'freeread?currentPage=' + ${nav.currentPage + 2}+'&freenum=${requestScope.fBoard.freenum}';
+                break;
+            case 0:
+                location.href = 'freeread?currentPage=' + ${nav.currentPage + 1}+'&freenum=${requestScope.fBoard.freenum}';
+                break;
+        }
     }
     function PreviousPage (e) {
+        var devided = ${nav.currentPage % 5}
         
-        location.href = 'freeread?freenum=${requestScope.fBoard.freenum}&currentPage=' + ${nav.currentPage - 5};
+        switch(devided){
+            case 1:
+                location.href = 'freeread?currentPage=' + ${nav.currentPage - 1}+'&freenum=${requestScope.fBoard.freenum}';
+                break;
+            case 2:
+                location.href = 'freeread?currentPage=' + ${nav.currentPage - 2}+'&freenum=${requestScope.fBoard.freenum}';
+                break;
+            case 3:
+                location.href = 'freeread?currentPage=' + ${nav.currentPage - 3}+'&freenum=${requestScope.fBoard.freenum}';
+                break;
+            case 4:
+                location.href = 'freeread?currentPage=' + ${nav.currentPage - 4}+'&freenum=${requestScope.fBoard.freenum}';
+                break;
+            case 0:
+                location.href = 'freeread?currentPage=' + ${nav.currentPage - 5}+'&freenum=${requestScope.fBoard.freenum}';
+           		break;
+        }
     }
         function deletereply (num) {
             location.href = 'freplydelete?num=' + num + '&freenum=${requestScope.fBoard.freenum}'
