@@ -10,6 +10,7 @@ create table tempcat_member (
     logindate date default sysdate          --최근 로그인
 );
 
+
 --공지게시판 테이블
 drop table tempcat_notice;
 create table tempcat_notice(
@@ -26,7 +27,6 @@ create table tempcat_notice(
     comments    number default 0,           --달린 댓글 수
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
-
 --공지게시판 번호에 사용할 시퀀스
 drop sequence tempcat_notice_seq;
 create sequence tempcat_notice_seq;
@@ -66,10 +66,10 @@ create table tempcat_free(
     comments    number default 0,           --달린 댓글 수
     foreign key (id) REFERENCES tempcat_member (id) on delete cascade
 );
-
 --자유게시판 번호에 사용할 시퀀스
 drop sequence tempcat_free_seq;
 create sequence tempcat_free_seq;
+
 
 --자유게시판 댓글 테이블
 drop table free_reply;
@@ -148,64 +148,43 @@ end;
 
 commit;
 
-
 --강제로 noticeboard작성하는 쿼리, id 1(관리자ID, notice board작성가능)으로 회원가입후 사용
+--단, 이렇게 작성할 시 프로필에 카운트되지않습니다. 페이징처리용으로만 써주세요.
 insert into tempcat_notice
 (noticenum, id, title, contents, nickname)
 values
 (tempcat_notice_seq.nextval, 1, 'ICT MASTER 38', 'SC IT MASTER 만세!!', '안준석');
 
---프로필 등록쿼리, id, 게시글number(noticenum)
-insert into tempcat_profile
-(id, mynotice)	 
-values
-(1, 1);
 
-
---강제로 notice리플라이 다는 쿼리(가입된id로, 작성된noticenum맞춰줄것)으로 회원가입후 사용
-insert into notice_reply
-(num, id, nickname, noticenum, contents)
-values
-(notice_reply_seq.nextval, 1, '안준석', 1, 'SC IT MASTER 만세!!');
-
---프로필 등록쿼리, id, 댓글number(noticereply)
-insert into tempcat_profile
-(id, noticereply)	
-values
-(1, 1);
-
-
---강제로 freeboard작성하는 쿼리, (아무id)로 회원가입후 사용
+--강제로 freeboard작성하는 쿼리(가입된id 맞춰줄것)으로 회원가입후 사용
+--단, 이렇게 작성할 시 프로필에 카운트되지않습니다. 페이징처리용으로만 써주세요.
 insert into tempcat_free
 (freenum, id, title, contents, nickname)
 values
 (tempcat_free_seq.nextval, 1, 'ICT MASTER 38', 'SC IT MASTER 만세!!', '안준석');
+
 insert into tempcat_free
 (freenum, id, title, contents, nickname)
 values
 (tempcat_free_seq.nextval, 2, 'ICT MASTER 38', 'SC IT MASTER 万歳!!', 'ジュンソク案');
 
---프로필 등록쿼리, id, 게시글number(freenum)
-insert into tempcat_profile
-(id, myfree)	
+--강제로 notice리플라이 다는 쿼리(가입된id로, 작성된noticenum맞춰줄것)으로 회원가입후 사용
+--단, 이렇게 작성할 시 프로필에 카운트되지않습니다. 페이징처리용으로만 써주세요.
+insert into notice_reply
+(num, id, nickname, noticenum, contents)
 values
-(1, 1);
+(1, 2, '안준석', 1, 'SC IT MASTER 만세!!');
 
-
---강제로 free리플라이 다는 쿼리(가입된id로, 작성된noticenum맞춰줄것)으로 회원가입후 사용
+select * from tempcat_notice;
+--강제로 free리플라이 다는 쿼리(가입된id로, 작성된freenum맞춰줄것)으로 회원가입후 사용
+--단, 이렇게 작성할 시 프로필에 카운트되지않습니다. 페이징처리용으로만 써주세요.
 insert into free_reply
 (num, id, nickname, freenum, contents)
 values
-(free_reply_seq.nextval, 1, '안준석', 1, 'SC IT MASTER 만세!!');
+(1, 1, '안준석', 1, 'SC IT MASTER 만세!!');
 insert into free_reply
 (num, id, nickname, freenum, contents)
 values
-(free_reply_seq.nextval, 'ジュンソク案', 1, 'SC IT MASTER 万歳!!');
-
---프로필 등록쿼리, id, 댓글number(freereply)
-insert into tempcat_profile
-(id, freereply)	
-values
-(1, 1);
+(1, 2, 'ジュンソク案', 1, 'SC IT MASTER 万歳!!');
 
 commit;
