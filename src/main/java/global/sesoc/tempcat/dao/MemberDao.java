@@ -144,12 +144,40 @@ public class MemberDao {
 		return intres > 0;
 	}
 
-	public ArrayList<SearchBoard> searchListPage(String searchText, int startRecord, int countPerPage) {
+	public ArrayList<SearchBoard> mynoticeListPage(String searchText, int startRecord, int countPerPage) {
 		// TODO Auto-generated method stub
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		RowBounds RB = new RowBounds(startRecord, countPerPage);
 		// 스타트레코드부터 카운트퍼페이지에 있는수만큼 셀렉트
 		ArrayList<SearchBoard> list = mapper.noticeList2(searchText, RB);
+		return list;
+	}
+
+	public ArrayList<SearchBoard> myfreeListPage(String searchText, int startRecord, int countPerPage) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		RowBounds RB = new RowBounds(startRecord, countPerPage);
+		// 스타트레코드부터 카운트퍼페이지에 있는수만큼 셀렉트
+		ArrayList<SearchBoard> list = mapper.myfreeList2(searchText, RB);
+		return list;
+	}
+
+	public ArrayList<SearchBoard> noticereplyListPage(String searchText, int startRecord, int countPerPage) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		RowBounds RB = new RowBounds(startRecord, countPerPage);
+		// 스타트레코드부터 카운트퍼페이지에 있는수만큼 셀렉트
+		ArrayList<SearchBoard> list = mapper.noticereplyList2(searchText, RB);
+		// 노티스리플라이에서 해당넘을 가진 리스트를 셀렉트해서 거기서 노티스넘으로 조인해야됨.
+		return list;
+	}
+
+	public ArrayList<SearchBoard> freereplyListPage(String searchText, int startRecord, int countPerPage) {
+		// TODO Auto-generated method stub
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		RowBounds RB = new RowBounds(startRecord, countPerPage);
+		// 스타트레코드부터 카운트퍼페이지에 있는수만큼 셀렉트
+		ArrayList<SearchBoard> list = mapper.freereplyList2(searchText, RB);
 		return list;
 	}
 

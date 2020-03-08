@@ -118,11 +118,11 @@
 							<tr>
 								<td>${i.nickname }</td>
 								<c:if test="${i.freenum !=0}">
-									<td style="text-align: left;"><a href="<c:url value="free/freeread?freenum=${i.freenum }"/>">${i.title }</a></td>
+									<td style="text-align: left;"><a href="<c:url value="/free/freeread?freenum=${i.freenum }"/>">${i.title }</a></td>
 								</c:if>
 
 								<c:if test="${i.noticenum !=0}">
-									<td style="text-align: left;"><a href="<c:url value="notice/noticeread?noticenum=${i.noticenum }"/>">${i.title }</a></td>
+									<td style="text-align: left;"><a href="<c:url value="/notice/noticeread?noticenum=${i.noticenum }"/>">${i.title }</a></td>
 								</c:if>
 								<td>${i.hits }</td>
 								<td>${i.inputdate }</td>
@@ -221,7 +221,6 @@
             //커런트페이지를 넘겨주면 그에따라 리스트를 열개 재선정하여 셀렉트를 해와야된다
             location.href = 'searchlist?currentPage=' + currentPage+'&searchText=${requestScope.searchText}';
         }
-
         function NextPage () {
             
             location.href = 'searchlist?currentPage=' + ${nav.currentPage + 5}+'&searchText=${requestScope.searchText}';

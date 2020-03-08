@@ -40,4 +40,11 @@ public interface MemberMapper {
 
 	ArrayList<SearchBoard> noticeList2(String searchText, RowBounds rB);
 
+	ArrayList<SearchBoard> myfreeList2(String searchText, RowBounds rB);
+
+	ArrayList<SearchBoard> noticereplyList2(String searchText, RowBounds rB);
+
+	ArrayList<SearchBoard> freereplyList2(String searchText, RowBounds rB);
+
+
 }

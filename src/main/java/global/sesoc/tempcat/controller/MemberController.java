@@ -187,7 +187,64 @@ public class MemberController {
 		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
 		int startRecord = nav.getStartRecord();
 		int countPerPage = nav.getCountPerPage();
-		ArrayList<SearchBoard> list = Mdao.searchListPage(searchText, startRecord, countPerPage);
+		ArrayList<SearchBoard> list = Mdao.mynoticeListPage(searchText, startRecord, countPerPage);
+		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
+		model.addAttribute("nav", nav);
+		model.addAttribute("list", list);
+		model.addAttribute("searchText", searchText);
+
+		return "board/searchlist";
+	}
+
+	@GetMapping(value = "go-myfree")
+	public String go_myfree(@RequestParam(defaultValue = "") String searchText,
+			@RequestParam(defaultValue = "0") int currentPage, Model model) {
+		// 전체글수랑 현재페이지를 가져와야함.
+
+		int totalRecordsCount = myfree.size();
+		PageNavigator nav = new PageNavigator(10, currentPage, totalRecordsCount);
+		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
+		int startRecord = nav.getStartRecord();
+		int countPerPage = nav.getCountPerPage();
+		ArrayList<SearchBoard> list = Mdao.myfreeListPage(searchText, startRecord, countPerPage);
+		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
+		model.addAttribute("nav", nav);
+		model.addAttribute("list", list);
+		model.addAttribute("searchText", searchText);
+
+		return "board/searchlist";
+	}
+
+	@GetMapping(value = "go-noticereply")
+	public String go_noticereply(@RequestParam(defaultValue = "") String searchText,
+			@RequestParam(defaultValue = "0") int currentPage, Model model) {
+		// 전체글수랑 현재페이지를 가져와야함.
+
+		int totalRecordsCount = noticereply.size();
+		PageNavigator nav = new PageNavigator(5, currentPage, totalRecordsCount);
+		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
+		int startRecord = nav.getStartRecord();
+		int countPerPage = nav.getCountPerPage();
+		ArrayList<SearchBoard> list = Mdao.noticereplyListPage(searchText, startRecord, countPerPage);
+		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
+		model.addAttribute("nav", nav);
+		model.addAttribute("list", list);
+		model.addAttribute("searchText", searchText);
+
+		return "board/searchlist";
+	}
+
+	@GetMapping(value = "go-freereply")
+	public String go_freereply(@RequestParam(defaultValue = "") String searchText,
+			@RequestParam(defaultValue = "0") int currentPage, Model model) {
+		// 전체글수랑 현재페이지를 가져와야함.
+
+		int totalRecordsCount = freereply.size();
+		PageNavigator nav = new PageNavigator(5, currentPage, totalRecordsCount);
+		// RowBounds에 보내줄 스타트레코드, 카운트퍼페이지
+		int startRecord = nav.getStartRecord();
+		int countPerPage = nav.getCountPerPage();
+		ArrayList<SearchBoard> list = Mdao.freereplyListPage(searchText, startRecord, countPerPage);
 		// 카운트퍼페이지 수만큼담긴 list랑, 커런트페이지 변경시켜줘야되니까 nav보냄
 		model.addAttribute("nav", nav);
 		model.addAttribute("list", list);

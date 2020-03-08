@@ -97,9 +97,33 @@
 		hits, originalfile,
 		savedfile, nickname
 		from tempcat_notice
-		<if test="#{_parameter!=null}">
-			where id like '%' || #{_parameter} || '%'
-		</if>
+		where id = #{id}
 		order by noticenum desc
+	</select>
+
+	<select id="myfreeList2" parameterType="String" resultType="Search">
+		select null as noticenum, freenum, id, title, contents, to_char(inputdate, 'YY/MM/DD') inputdate,
+		hits, originalfile, savedfile, nickname
+		from tempcat_free
+		where id = #{id}
+		order by freenum desc
+	</select>
+
+	<select id="noticereplyList2" parameterType="String" resultType="Search">
+		select noticenum, null as freenum, id, title, contents, to_char(inputdate, 'YY/MM/DD') inputdate,
+		hits, heart, originalfile, savedfile, nickname, comments
+		from tempcat_notice
+		where noticenum in
+		(select noticenum from notice_reply where id = #{id})
+		order by inputdate desc
+	</select>
+
+	<select id="freereplyList2" parameterType="String" resultType="Search">
+		select null as noticenum, freenum, id, title, contents, to_char(inputdate, 'YY/MM/DD') inputdate,
+		hits, heart, originalfile, savedfile, nickname, comments
+		from tempcat_free
+		where freenum in
+		(select freenum from free_reply where id = #{id})
+		order by inputdate desc
 	</select>
 </mapper>
