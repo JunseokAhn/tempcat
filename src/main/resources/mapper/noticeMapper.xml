@@ -15,7 +15,7 @@
 	<select id="noticeList" resultType="Notice">
 		select * from tempcat_notice
 		<if test="#{_parameter!=null}">
-			where title like '%' || #{_parameter} || '%'
+			where upper(title) like '%' || upper(#{_parameter}) || '%'
 		</if>
 	</select>
 
@@ -26,7 +26,7 @@
 		savedfile, nickname
 		from tempcat_notice
 		<if test="#{_parameter!=null}">
-			where title like '%' || #{_parameter} || '%'
+			where upper(title) like '%' || upper(#{_parameter}) || '%'
 		</if>
 		order by noticenum desc
 	</select>
