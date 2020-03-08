@@ -99,7 +99,7 @@
 					<hr>
 					<br>
 
-					<form method="post" action="request" onsubmit="return sendrequest()">
+					<form method="post" action="request" id="requestform">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-xsmall">
 								<input type="text" name="name" id="name" value="" placeholder="Name" />
@@ -184,8 +184,8 @@
                 message.focus();
                 return false;
             }
-            
-            return true;
+            alert('sendrequest')
+            $('#requestform').submit();
         }
     </script>
 

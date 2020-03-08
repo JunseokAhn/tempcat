@@ -57,6 +57,7 @@ public class HomeDao {
 		map.put("email", email);
 		map.put("category", category);
 		map.put("message", message);
+		System.out.println(map.toString());
 		mapper.request(map);
 	}
 }

@@ -34,6 +34,6 @@
 		insert into request
 		(name, email, category, message)
 		values
-		(#{id}, #{email}, #{category}, #{message})
+		(#{name}, #{email}, #{category}, #{message})
 	</insert>
 </mapper>
