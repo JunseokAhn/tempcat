@@ -105,7 +105,7 @@
 				<header>
 					<div class="title">
 						<h2>
-							<a href="<c:url value="notice/noticeread?noticenum=${i.noticenum }" />">타이틀</a>
+							<a href="">採用をさせてもらいたい。</a>
 						</h2>
 						<p>Multipurpose responsive site created by アンジュンソク</p>
 					</div>
@@ -117,13 +117,13 @@
 						</a>
 					</div>
 				</header>
-				<div style="width: 50%; margin: 0 auto; display: inline-block;">こんにちは! 日本で働くように勉強中のアンジュンソクです. 私が日本でプログラマーになりたい理由はインフラ構築者になりたいからです。 私がIT分野に初めて関心を持つようになったのは、韓国で軍隊に服務した時でした。 同僚の電算兵たちがコーディングするのを見て、関心を持つようになりました。 また、その当時、非効率的な業務処理方式を改善して、作業スピードを10倍以上向上させた経験があります。このような過程を通して多くのやりがいを感じ、作業の効率性と便利さについて悩んでみるきっかけになりました。 服務を終えてからIT分野に対する関心が続いてさまざまなITと関わる授業を受けるようになりました。卒業後、IT業界で私のこのような経験を活かしながら働きたくて日本就職を決心するようになりました. 日本は現在に安住せず絶えずインフラが発展している国です。私はこれからこのような日本の発展に役立ち、新しい時代を切り開く主役になりたいです。</div>
+				<div style="width: 50%; margin: 0 auto; display: inline-block;">初めまして! 日本で働くように勉強中のアンジュンソクです. 私が日本で働きたい理由はインフラ構築者になりたいからです。 私は軍隊に服務した時 、同僚の電算兵たちがコーディングするのを見て、関心を持つようになりました。 また、その当時、コーディングじゃなかったんですけど、非効率的な業務処理方式を改善して、作業スピードを10倍以上向上させた経験があります。このような過程を通して多くのやりがいを感じ、作業の効率性と便利さについて悩んでみるきっかけになりました。卒業後、IT業界で私のこのような経験を活かしながら働きたくて日本就職を決心するようになりました. 日本は現在に安住せず絶えずインフラが発展している国です。私はこれからこのような日本の発展に役立ち、新しい時代を切り開く主役になりたいです。</div>
 				<div id="map_ma" style="position: relative; display: inline-block;"></div>
 				<p>${i.contents }</p>
 				<footer>
 					<ul class="actions">
-						<li> <input type="button" >당장 취업시키기</li>
-						<li></li>
+						<li><input type="button" value="당장 취업시키기" onclick="syuusyoku()"></li>
+						<li id="mattene"><h2 style="margin-top: 10px;">ソウルペアで会いましょう！</h2></li>
 					</ul>
 					<ul class="stats">
 						<li><a href="#">General</a></li>
@@ -153,30 +153,7 @@
 					</p>
 				</header>
 			</section>
-			<!-- Mini Posts -->
-			<section>
-				<div class="mini-posts">
 
-					<!-- Mini Post -->
-					<c:forEach var="i" items="${requestScope.freeList }">
-						<article class="mini-post">
-							<header>
-								<h3>
-									<a href="<c:url value="/free/freeread?freenum=${i.freenum }"/>">${i.title }</a>
-								</h3>
-								<time class="published" datetime="2015-10-20">${i.inputdate }</time>
-								<a href="" class="author">
-									<span class="name">${i.nickname }</span>
-									<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-								</a>
-							</header>
-							<a href="<c:url value="/free/freeread?freenum=${i.freenum }"/>" class="image">
-								<img src="<c:url value="/resources/images/pic04.jpg"/>" alt="" />
-							</a>
-						</article>
-					</c:forEach>
-				</div>
-			</section>
 
 			<!-- About -->
 			<section class="blurb">
@@ -211,6 +188,11 @@
 	</div>
 
 	<script type="text/javascript">
+        $('#mattene').hide();
+        function syuusyoku () {
+            $('#mattene').slideDown();
+        }
+
         $(document)
                 .ready(function () {
                     var myLatlng = new google.maps.LatLng(37.511683, 127.061255); // 위치값 위도 경도
@@ -221,7 +203,7 @@
                     var markerMaxWidth = 300; // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
                     
                     // 말풍선 내용
-                    var contentString = '<div>' + '<h2>SC IT MASTER</h2>' + '<p> Korea International Trade Academy in COEX</p>' +
+                    var contentString = '<div>' + '<h2>SC IT MASTER</h2>' + '<p> Korea International Trade Academy in COEX 4F</p>' +
 
                     '</div>';
                     var myLatlng = new google.maps.LatLng(Y_point, X_point);
