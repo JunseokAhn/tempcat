@@ -173,18 +173,23 @@ values
 insert into notice_reply
 (num, id, nickname, noticenum, contents)
 values
-(1, 2, '안준석', 1, 'SC IT MASTER 만세!!');
+(NOTICE_REPLY_SEQ.nextval, 2, '안준석', 1, 'SC IT MASTER 만세!!');
 
-select * from tempcat_notice;
 --강제로 free리플라이 다는 쿼리(가입된id로, 작성된freenum맞춰줄것)으로 회원가입후 사용
 --단, 이렇게 작성할 시 프로필에 카운트되지않습니다. 페이징처리용으로만 써주세요.
 insert into free_reply
 (num, id, nickname, freenum, contents)
 values
-(1, 1, '안준석', 1, 'SC IT MASTER 만세!!');
+(FREE_REPLY_SEQ.nextval, 1, '안준석', 1, 'SC IT MASTER 만세!!');
 insert into free_reply
 (num, id, nickname, freenum, contents)
 values
-(1, 2, 'ジュンソク案', 1, 'SC IT MASTER 万歳!!');
+(FREE_REPLY_SEQ.nextval, 2, 'ジュンソク案', 1, 'SC IT MASTER 万歳!!');
+
 
 commit;
+
+select * from tempcat_notice;   --notice게시판 테이블
+select * from tempcat_free;     --free게시판 테이블
+select * from notice_reply;     --notice게시판 댓글테이블
+select * from free_reply;       --free게시판 댓글테이블

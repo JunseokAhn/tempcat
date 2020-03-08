@@ -22,7 +22,7 @@
 			</h1>
 			<nav class="links">
 				<ul>
-					<li><a href="#">Intro</a></li>
+					<li><a href="<c:url value="/intro"/>">Intro</a></li>
 					<li><a href="<c:url value="/notice/noticelist"/>">Notice Board</a></li>
 					<li><a href="<c:url value="/free/freelist"/>">Free Board</a></li>
 				</ul>
@@ -51,7 +51,7 @@
 			<!-- Links -->
 			<section>
 				<ul class="links">
-					<li><a href="#">
+					<li><a href="<c:url value="/intro"/>">
 							<h3>INTRO</h3>
 							<p>Introduction to the Producer</p>
 						</a></li>
@@ -174,7 +174,7 @@
 					<span class="label">Email</span>
 				</a></li>
 		</ul>
-		
+
 	</section>
 	<script type="text/javascript">
         var title = document.getElementById('title');

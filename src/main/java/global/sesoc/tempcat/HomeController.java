@@ -42,7 +42,7 @@ public class HomeController {
 	@GetMapping(value = "searchlist")
 	public String searchList(@RequestParam(defaultValue = "") String searchText,
 			@RequestParam(defaultValue = "0") int currentPage, Model model) {
-		
+
 		logger.debug(searchText);
 
 		// 전체글수랑 현재페이지를 가져와야함.
@@ -61,4 +61,9 @@ public class HomeController {
 		return "board/searchlist";
 	}
 
+	@GetMapping("intro")
+	public String intro() {
+
+		return "intro";
+	}
 }

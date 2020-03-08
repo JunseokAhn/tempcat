@@ -20,7 +20,7 @@
 			</h1>
 			<nav class="links">
 				<ul>
-					<li><a href="#">Intro</a></li>
+					<li><a href="<c:url value="/intro"/>">Intro</a></li>
 					<li><a href="<c:url value="/notice/noticelist"/>">Notice Board</a></li>
 					<li><a href="<c:url value="/free/freelist"/>">Free Board</a></li>
 				</ul>
@@ -49,7 +49,7 @@
 			<!-- Links -->
 			<section>
 				<ul class="links">
-					<li><a href="#">
+					<li><a href="<c:url value="/intro"/>">
 							<h3>INTRO</h3>
 							<p>Introduction to the Producer</p>
 						</a></li>
@@ -113,7 +113,7 @@
 					<thead>
 						<tr>
 							<th style="width: 2px;">Num</th>
-							<th style="padding-left: 30px; padding-right: 30px; width: 10px;">Nickname</th>
+							<th style="padding-left: 30px; padding-right: 30px; width: 12px;">Nickname</th>
 							<th style="text-align: left;">Title</th>
 							<th style="width: 2px;">Hits</th>
 							<th style="width: 8px;">Date</th>

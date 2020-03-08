@@ -7,6 +7,16 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css"/>" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDkQ00U2AUBQSS1CJF5YveL-1YWsTjaRGA"></script>
+<style>
+#map_ma {
+	width: 45%;
+	height: 400px;
+	clear: both;
+	border: solid 1px red;
+}
+</style>
 </head>
 <body class="is-preload">
 
@@ -90,40 +100,39 @@
 		<div id="main">
 
 			<!-- Post -->
-			<c:forEach var="i" items="${noticeList }">
-				<article class="post">
-					<header>
-						<div class="title">
-							<h2>
-								<a href="<c:url value="notice/noticeread?noticenum=${i.noticenum }" />">${i.title}</a>
-							</h2>
-							<p>Multipurpose responsive site created by アンジュンソク</p>
-						</div>
-						<div class="meta">
-							<time class="published" datetime="2015-11-01">${i.inputdate }</time>
-							<a href="#" class="author">
-								<span class="name">${i.nickname }</span>
-								<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
-							</a>
-						</div>
-					</header>
-					<a href="" class="image featured">
-						<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
-					</a>
-					<p>${i.contents }</p>
-					<footer>
-						<ul class="actions">
-							<li><a href="
-						<c:url value="notice/noticeread?noticenum=${i.noticenum }" />" class="button large">Continue Reading</a></li>
-						</ul>
-						<ul class="stats">
-							<li><a href="#">General</a></li>
-							<li><a href="#" class="icon solid fa-heart">${i.heart }</a></li>
-							<li><a href="#" class="icon solid fa-comment">${i.comments }</a></li>
-						</ul>
-					</footer>
-				</article>
-			</c:forEach>
+
+			<article class="post">
+				<header>
+					<div class="title">
+						<h2>
+							<a href="<c:url value="notice/noticeread?noticenum=${i.noticenum }" />">타이틀</a>
+						</h2>
+						<p>Multipurpose responsive site created by アンジュンソク</p>
+					</div>
+					<div class="meta">
+						<time class="published" datetime="2015-11-01">August 03, 2020</time>
+						<a href="#" class="author">
+							<span class="name">ジュンソク案</span>
+							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+						</a>
+					</div>
+				</header>
+				<div style="width: 50%; margin: 0 auto; display: inline-block;">こんにちは! 日本で働くように勉強中のアンジュンソクです. 私が日本でプログラマーになりたい理由はインフラ構築者になりたいからです。 私がIT分野に初めて関心を持つようになったのは、韓国で軍隊に服務した時でした。 同僚の電算兵たちがコーディングするのを見て、関心を持つようになりました。 また、その当時、非効率的な業務処理方式を改善して、作業スピードを10倍以上向上させた経験があります。このような過程を通して多くのやりがいを感じ、作業の効率性と便利さについて悩んでみるきっかけになりました。 服務を終えてからIT分野に対する関心が続いてさまざまなITと関わる授業を受けるようになりました。卒業後、IT業界で私のこのような経験を活かしながら働きたくて日本就職を決心するようになりました. 日本は現在に安住せず絶えずインフラが発展している国です。私はこれからこのような日本の発展に役立ち、新しい時代を切り開く主役になりたいです。</div>
+				<div id="map_ma" style="position: relative; display: inline-block;"></div>
+				<p>${i.contents }</p>
+				<footer>
+					<ul class="actions">
+						<li> <input type="button" >당장 취업시키기</li>
+						<li></li>
+					</ul>
+					<ul class="stats">
+						<li><a href="#">General</a></li>
+						<li><a href="#" class="icon solid fa-heart">${i.heart }</a></li>
+						<li><a href="#" class="icon solid fa-comment">${i.comments }</a></li>
+					</ul>
+				</footer>
+			</article>
+
 			<!-- Post -->
 
 		</div>
@@ -173,9 +182,6 @@
 			<section class="blurb">
 				<h2>About</h2>
 				<p>私は Korea International Trade Academy SMART Cloud SC IT MASTERの 38期 所属の教育生です. このサイトは外部のフリーウェアデザインテンプレートを借りて作りました。 どうぞよろしくお願いします。</p>
-				<ul class="actions">
-					<li><a href="<c:url value="/intro"/>" class="button">Learn More</a></li>
-				</ul>
 			</section>
 
 			<!-- Footer -->
@@ -204,6 +210,42 @@
 
 	</div>
 
+	<script type="text/javascript">
+        $(document)
+                .ready(function () {
+                    var myLatlng = new google.maps.LatLng(37.511683, 127.061255); // 위치값 위도 경도
+                    var Y_point = 37.511683; // Y 좌표
+                    var X_point = 127.061255; // X 좌표
+                    var zoomLevel = 15; // 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
+                    var markerTitle = "한국무역협회"; // 현재 위치 마커에 마우스를 오버을때 나타나는 정보
+                    var markerMaxWidth = 300; // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
+                    
+                    // 말풍선 내용
+                    var contentString = '<div>' + '<h2>SC IT MASTER</h2>' + '<p> Korea International Trade Academy in COEX</p>' +
+
+                    '</div>';
+                    var myLatlng = new google.maps.LatLng(Y_point, X_point);
+                    var mapOptions = {
+                        zoom : zoomLevel,
+                        center : myLatlng,
+                        mapTypeId : google.maps.MapTypeId.ROADMAP
+                    }
+                    var map = new google.maps.Map(document
+                            .getElementById('map_ma'), mapOptions);
+                    var marker = new google.maps.Marker({
+                        position : myLatlng,
+                        map : map,
+                        title : markerTitle
+                    });
+                    var infowindow = new google.maps.InfoWindow({
+                        content : contentString,
+                        maxWizzzdth : markerMaxWidth
+                    });
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.open(map, marker);
+                    });
+                });
+    </script>
 	<!-- Scripts -->
 	<script src="<c:url value="/resources/assets/js/jquery.min.js"/>"></script>
 	<script src="<c:url value="/resources/assets/js/browser.min.js"/>"></script>
