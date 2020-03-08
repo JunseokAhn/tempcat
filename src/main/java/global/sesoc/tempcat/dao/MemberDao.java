@@ -168,7 +168,7 @@ public class MemberDao {
 		RowBounds RB = new RowBounds(startRecord, countPerPage);
 		// 스타트레코드부터 카운트퍼페이지에 있는수만큼 셀렉트
 		ArrayList<SearchBoard> list = mapper.noticereplyList2(searchText, RB);
-		// 노티스리플라이에서 해당id를 가진 리스트를 셀렉트해서 거기서 노티스넘으로 조인해야됨.
+		// 노티스리플라이에서 해당넘을 가진 리스트를 셀렉트해서 거기서 노티스넘으로 조인해야됨.
 		return list;
 	}
 
