@@ -124,7 +124,7 @@
 					</footer>
 				</article>
 			</c:forEach>
-			<c:if test="${noticeList==null }">
+			<c:if test="${noticeList[0].noticenum==null }">
 				<c:forEach var="i" begin="0" end="2">
 					<article class="post">
 						<header>
@@ -202,7 +202,7 @@
 							</a>
 						</article>
 					</c:forEach>
-					<c:if test="${requestScope.freeList==null }">
+					<c:if test="${requestScope.freeList[0].freenum==null }">
 						<c:forEach var="i" begin="0" end="2">
 							<article class="mini-post">
 								<header>
