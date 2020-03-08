@@ -124,6 +124,42 @@
 					</footer>
 				</article>
 			</c:forEach>
+			<c:if test="${noticeList==null }">
+				<c:forEach var="i" begin="0" end="2">
+					<article class="post">
+						<header>
+							<div class="title">
+								<h2>
+									<a href="<c:url value="notice/noticeread?noticenum=" />">Default Data</a>
+								</h2>
+								<p>Multipurpose responsive site created by アンジュンソク</p>
+							</div>
+							<div class="meta">
+								<time class="published" datetime="2015-11-01">Default Data</time>
+								<a href="#" class="author">
+									<span class="name">Default Data</span>
+									<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+								</a>
+							</div>
+						</header>
+						<a href="" class="image featured">
+							<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
+						</a>
+						<p>Default Data</p>
+						<footer>
+							<ul class="actions">
+								<li><a href="
+						<c:url value="notice/noticeread?noticenum=" />" class="button large">Continue Reading</a></li>
+							</ul>
+							<ul class="stats">
+								<li><a href="#">General</a></li>
+								<li><a href="#" class="icon solid fa-heart">0</a></li>
+								<li><a href="#" class="icon solid fa-comment">0</a></li>
+							</ul>
+						</footer>
+					</article>
+				</c:forEach>
+			</c:if>
 			<!-- Post -->
 
 		</div>
@@ -166,6 +202,25 @@
 							</a>
 						</article>
 					</c:forEach>
+					<c:if test="${requestScope.freeList==null }">
+						<c:forEach var="i" begin="0" end="2">
+							<article class="mini-post">
+								<header>
+									<h3>
+										<a href="<c:url value="/free/freeread?freenum="/>">Default Data</a>
+									</h3>
+									<time class="published" datetime="2015-10-20">Default Data</time>
+									<a href="" class="author">
+										<span class="name">Default Data</span>
+										<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+									</a>
+								</header>
+								<a href="<c:url value="/free/freeread?freenum="/>" class="image">
+									<img src="<c:url value="/resources/images/pic04.jpg"/>" alt="" />
+								</a>
+							</article>
+						</c:forEach>
+					</c:if>
 				</div>
 			</section>
 
