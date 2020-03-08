@@ -63,7 +63,7 @@
 							<h3>FREE BOARD</h3>
 							<p>Everyone can write</p>
 						</a></li>
-					<li><a href="#">
+					<li><a href="<c:url value="/request"/>">
 							<h3>Send Request</h3>
 							<p>About the site or everything else.</p>
 						</a></li>

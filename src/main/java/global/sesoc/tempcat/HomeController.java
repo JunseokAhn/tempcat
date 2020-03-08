@@ -66,4 +66,10 @@ public class HomeController {
 
 		return "intro";
 	}
+
+	@GetMapping("request")
+	public String request() {
+
+		return "request";
+	}
 }

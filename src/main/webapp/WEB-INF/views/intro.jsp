@@ -71,7 +71,7 @@
 							<h3>FREE BOARD</h3>
 							<p>Everyone can write</p>
 						</a></li>
-					<li><a href="#">
+					<li><a href="<c:url value="/request"/>">
 							<h3>Send Request</h3>
 							<p>About the site or everything else.</p>
 						</a></li>
@@ -122,7 +122,7 @@
 				<p>${i.contents }</p>
 				<footer>
 					<ul class="actions">
-						<li><input type="button" value="당장 취업시키기" onclick="syuusyoku()"></li>
+						<li><input type="button" value="당장채용하기" onclick="syuusyoku()"></li>
 						<li id="mattene"><h2 style="margin-top: 10px;">ソウルペアで会いましょう！</h2></li>
 					</ul>
 					<ul class="stats">
@@ -188,9 +188,19 @@
 	</div>
 
 	<script type="text/javascript">
+        var flag = false;
         $('#mattene').hide();
         function syuusyoku () {
-            $('#mattene').slideDown();
+            if(!flag){
+                $('#mattene').slideDown();
+                flag = true;
+                return;
+            }
+            if(flag){
+                $('#mattene').slideUp();
+                flag = false;
+                return;
+            }
         }
 
         $(document)

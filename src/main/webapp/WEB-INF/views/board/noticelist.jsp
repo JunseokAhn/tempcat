@@ -61,7 +61,7 @@
 							<h3>FREE BOARD</h3>
 							<p>Everyone can write</p>
 						</a></li>
-					<li><a href="#">
+					<li><a href="<c:url value="/request"/>">
 							<h3>Send Request</h3>
 							<p>About the site or everything else.</p>
 						</a></li>
@@ -166,7 +166,7 @@
 				<h2>About</h2>
 				<p>A space where managers write down programming and everything else freely. If you have any questions or requests, please send them to send request.</p>
 				<ul class="actions">
-					<li><a href="#" class="button">Send Request</a></li>
+					<li><a href="<c:url value="/request"/>" class="button">Send Request</a></li>
 				</ul>
 			</section>
 
@@ -189,7 +189,7 @@
 							<span class="label">Email</span>
 						</a></li>
 				</ul>
-		
+
 			</section>
 
 		</section>
