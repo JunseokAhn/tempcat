@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import global.sesoc.tempcat.dao.NoticeDao;
 import global.sesoc.tempcat.dao.MemberDao;
+import global.sesoc.tempcat.util.FileService;
 import global.sesoc.tempcat.util.PageNavigator;
 import global.sesoc.tempcat.vo.NoticeBoard;
 import global.sesoc.tempcat.vo.NoticeReply;
@@ -26,6 +28,7 @@ import global.sesoc.tempcat.vo.Profile;
 public class NoticeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
+	final String uploadPath = "/tempcat";
 
 	@Autowired
 	private MemberDao Mdao;
@@ -70,11 +73,20 @@ public class NoticeController {
 	}
 
 	@PostMapping(value = "noticewrite")
-	public String noticeWrite2(String title, String contents, HttpSession session) {
+	public String noticeWrite2(String title, String contents, HttpSession session,
+			@RequestParam("upload") MultipartFile upload) {
 		id = (String) session.getAttribute("id");
 		nickname = (String) session.getAttribute("nickname");
 		logger.debug("id : {}, title : {}, contents : {} nickname : {}", id, title, contents, nickname);
+
 		nBoard = new NoticeBoard(id, title, contents, nickname);
+		if (upload != null) {
+			logger.debug("upload name {}, size {}, contentType {}", upload.getName(), upload.getSize(),
+					upload.getContentType());
+			String savedfile = FileService.saveFile(upload, uploadPath);
+			nBoard.setOriginalfile(upload.getOriginalFilename());
+			nBoard.setSavedfile(savedfile);
+		}
 		int myNoticeNum = Ndao.noticeWrite(nBoard);
 		logger.debug("myNoticeNum : " + myNoticeNum);
 		profile = new Profile();
