@@ -6,13 +6,10 @@
 	<insert id="noticeWrite" parameterType="Notice">
 		insert into
 		tempcat_notice
-		(noticenum, id, title, contents, nickname, originalfile, savedfile)
+		(noticenum, id, title, contents, nickname)
 		values
 		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents},
-		#{nickname},
-		<if test="#{originalfile==null}">null, null</if>
-		<if test="#{originalfile!=null}">#{originalfile}, #{savedfile}</if>
-		)
+		#{nickname})
 	</insert>
 
 	<select id="noticeList" resultType="Notice">
