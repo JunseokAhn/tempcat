@@ -91,10 +91,10 @@
 
 		<!-- Post -->
 		<c:if test="${nBoard!=null }">
-			<form id="sendpost" action="noticeupdate" method="post" enctype="multipart/form-data">
+			<form id="sendpost" action="noticeupdate" method="post">
 		</c:if>
 		<c:if test="${nBoard==null }">
-			<form id="sendpost" action="noticewrite" method="post" enctype="multipart/form-data">
+			<form id="sendpost" action="noticewrite" method="post">
 		</c:if>
 		<article class="post">
 			<header>
@@ -145,10 +145,10 @@
 						<li><input type="button" value="Send Post" onclick="sendpost()" /></li>
 					</c:if>
 					<li><input type="reset" value="Reset" onclick="reset()" /></li>
+					<!-- 
 					<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-					<li><input id="upload" type="file" name="upload" class="button icon solid fa-upload" value="파일 선택"></li>
 					<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
-					<li><a href="#" class="button icon solid fa-save">Icon</a></li>
+					<li><a href="#" class="button icon solid fa-save">Icon</a></li> -->
 				</ul>
 
 			</div>
