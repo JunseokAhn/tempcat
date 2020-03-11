@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.tempcat.dao.Mapper">
+	<select id="searchList" parameterType="String" resultType="Search">
+		select *
+		from(
+		select null as noticenum, freenum, id, title, contents, inputdate, hits, heart, originalfile, savedfile, nickname, comments
+		from tempcat_free
+		union
+		select noticenum,null as freenum, id, title, contents, inputdate, hits, heart, originalfile, savedfile, nickname, comments
+		from tempcat_notice)
+		<if test="#{_parameter!=null}">
+			where upper(title) like '%' || upper(#{_parameter}) || '%'
+		</if>
+		order by inputdate desc
+	</select>
+
+	<select id="searchList2" parameterType="String" resultType="Search">
+		select noticenum, freenum, id, title, contents, to_char(inputdate, 'YY/MM/DD')
+		inputdate, hits, originalfile, savedfile, nickname
+		from ( select null as noticenum, freenum, id, title, contents, inputdate, hits, heart, originalfile, savedfile, nickname, comments
+		from tempcat_free
+		union
+		select noticenum,null as freenum, id, title, contents, inputdate, hits, heart, originalfile, savedfile, nickname, comments
+		from tempcat_notice)
+		<if test="#{_parameter!=null}">
+			where upper(title) like '%' || upper(#{_parameter}) || '%'
+		</if>
+		order by inputdate desc
+	</select>
+
+	<insert id="request" parameterType="map">
+		insert into request
+		(request_num, name, email, category, message)
+		values
+		(request_seq.nextval, #{name}, #{email}, #{category}, #{message})
+	</insert>
+</mapper>

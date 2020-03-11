@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.tempcat.dao.NoticeMapper">
+
+	<insert id="noticeWrite" parameterType="Notice">
+		insert into
+		tempcat_notice
+		(noticenum, id, title, contents, originalfile, savedfile, nickname)
+		values
+		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents}, null, null, #{nickname})
+	</insert>
+
+	<select id="noticeList" parameterType="String" resultType="Notice">
+		select * from tempcat_notice
+		<if test="#{_parameter!=null}">
+			where upper(title) like '%' || upper(#{_parameter}) || '%'
+		</if>
+	</select>
+
+	<select id="noticeList2" parameterType="String" resultType="Notice">
+		select noticenum, id, title, contents, to_char(inputdate, 'YY/MM/DD')
+		inputdate,
+		hits, originalfile,
+		savedfile, nickname
+		from tempcat_notice
+		<if test="#{_parameter!=null}">
+			where upper(title) like '%' || upper(#{_parameter}) || '%'
+		</if>
+		order by noticenum desc
+	</select>
+
+	<select id="noticeRead" parameterType="String" resultType="Notice">
+		select * from tempcat_notice join (select id, nickname from
+		tempcat_member) using(id)
+		where noticenum=#{noticenum}
+	</select>
+
+	<update id="noticeHits" parameterType="String">
+		update tempcat_notice
+		set
+		hits = hits+1
+		where noticenum = #{noticenum}
+	</update>
+
+	<insert id="replyWrite" parameterType="nReply">
+		insert into notice_reply
+		(num, id, nickname, noticenum, contents)
+		values
+		(notice_reply_seq.nextval, #{id},
+		#{nickname}, #{noticenum},
+		#{contents}
+		)
+	</insert>
+
+	<select id="nReplyList" parameterType="String" resultType="nReply">
+		select * from notice_reply where noticenum like
+		#{noticenum}
+		order by num asc
+	</select>
+
+	<delete id="nReplyDelete" parameterType="String">
+		delete notice_reply
+		where num = #{num}
+	</delete>
+
+	<update id="nReplyUpdate" parameterType="nReply">
+		update notice_reply
+		set
+		contents = #{contents}, inputdate = default
+		where num = #{num}
+	</update>
+
+	<select id="setNotice" resultType="Notice">
+		select * from
+		(select * from tempcat_notice
+		order by noticenum desc) where rownum &lt; 4
+	</select>
+
+	<select id="selectMynoticeNum" parameterType="String" resultType="int">
+		select noticenum from tempcat_notice where noticenum in
+		(select
+		max(noticenum) maxnum from tempcat_notice where id = #{id})
+	</select>
+
+	<select id="selectNoticereplyNum" parameterType="String" resultType="int">
+		select num from notice_reply where num in (select
+		max(num)
+		maxnum from notice_reply where id = #{id})
+	</select>
+
+	<delete id="noticeBoardDelete" parameterType="map">
+		delete tempcat_notice where id=#{id} and noticenum = #{noticenum}
+	</delete>
+
+	<update id="noticeUpdate" parameterType="Notice">
+		update tempcat_notice
+		set title = #{title}, contents = #{contents}
+		where id=#{id} and noticenum=#{noticenum}
+
+	</update>
+
+	<insert id="noticeWrite2" parameterType="Notice">
+		insert into tempcat_notice
+		(noticenum, id, title, contents, originalfile, savedfile, nickname)
+		values
+		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents}, #{originalfile}, #{savedfile},#{nickname})
+	</insert>
+</mapper>
