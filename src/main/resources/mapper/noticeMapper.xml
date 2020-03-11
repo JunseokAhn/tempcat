@@ -76,8 +76,9 @@
 	</update>
 
 	<select id="setNotice" resultType="Notice">
-		select * from tempcat_notice
-		where rownum &lt; 4 order by noticenum desc
+		select * from 
+		(select * from tempcat_notice
+		order by noticenum desc) where rownum &lt; 4
 	</select>
 
 	<select id="selectMynoticeNum" parameterType="String" resultType="int">

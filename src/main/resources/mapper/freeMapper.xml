@@ -79,9 +79,9 @@
 	</update>
 
 	<select id="setFree" resultType="Free">
-		select * from tempcat_free
-		where
-		rownum &lt; 4 order by freenum desc
+		select * from 
+		(select * from tempcat_free order by freenum desc)
+		where rownum &lt; 4
 	</select>
 
 	<select id="selectMyfreeNum" parameterType="String" resultType="int">
