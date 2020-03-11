@@ -40,5 +40,6 @@ public interface NoticeMapper {
 
 	void noticeUpdate(NoticeBoard nBoard);
 
+	int noticeWrite2(NoticeBoard nBoard);
 
 }

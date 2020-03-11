@@ -43,4 +43,15 @@ public class NoticeBoard {
 		this.nickname = nickname;
 	}
 
+	public NoticeBoard(String id, String title, String contents, String originalfile, String savedfile,
+			String nickname) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.contents = contents;
+		this.originalfile = originalfile;
+		this.savedfile = savedfile;
+		this.nickname = nickname;
+	}
+
 }

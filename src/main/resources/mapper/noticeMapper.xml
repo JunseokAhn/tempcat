@@ -6,13 +6,12 @@
 	<insert id="noticeWrite" parameterType="Notice">
 		insert into
 		tempcat_notice
-		(noticenum, id, title, contents, nickname)
+		(noticenum, id, title, contents, originalfile, savedfile, nickname)
 		values
-		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents},
-		#{nickname})
+		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents}, null, null, #{nickname})
 	</insert>
 
-	<select id="noticeList" resultType="Notice">
+	<select id="noticeList" parameterType="String" resultType="Notice">
 		select * from tempcat_notice
 		<if test="#{_parameter!=null}">
 			where upper(title) like '%' || upper(#{_parameter}) || '%'
@@ -73,7 +72,7 @@
 	</update>
 
 	<select id="setNotice" resultType="Notice">
-		select * from 
+		select * from
 		(select * from tempcat_notice
 		order by noticenum desc) where rownum &lt; 4
 	</select>
@@ -100,4 +99,11 @@
 		where id=#{id} and noticenum=#{noticenum}
 
 	</update>
+
+	<insert id="noticeWrite2" parameterType="Notice">
+		insert into tempcat_notice
+		(noticenum, id, title, contents, originalfile, savedfile, nickname)
+		values
+		(tempcat_notice_seq.nextval, #{id}, #{title}, #{contents}, #{originalfile}, #{savedfile},#{nickname})
+	</insert>
 </mapper>

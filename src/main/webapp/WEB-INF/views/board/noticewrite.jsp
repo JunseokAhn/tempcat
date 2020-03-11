@@ -91,10 +91,10 @@
 
 		<!-- Post -->
 		<c:if test="${nBoard!=null }">
-			<form id="sendpost" action="noticeupdate" method="post">
+			<form id="sendpost" action="noticeupdate" method="post" enctype="multipart/form-data">
 		</c:if>
 		<c:if test="${nBoard==null }">
-			<form id="sendpost" action="noticewrite" method="post">
+			<form id="sendpost" action="noticewrite" method="post" enctype="multipart/form-data">
 		</c:if>
 		<article class="post">
 			<header>
@@ -127,6 +127,7 @@
 				</c:if>
 				<input type="hidden" name="noticenum" value="${nBoard.noticenum }">
 			</div>
+
 			<!-- 
 			<footer>
 				<ul class="stats">
@@ -145,6 +146,7 @@
 						<li><input type="button" value="Send Post" onclick="sendpost()" /></li>
 					</c:if>
 					<li><input type="reset" value="Reset" onclick="reset()" /></li>
+					<li><input type="file" name="upload" class="icon solid fa-upload"></li>
 					<!-- 
 					<li><a href="#" class="button icon solid fa-download">Icon</a></li>
 					<li><a href="#" class="button icon solid fa-upload">Icon</a></li>

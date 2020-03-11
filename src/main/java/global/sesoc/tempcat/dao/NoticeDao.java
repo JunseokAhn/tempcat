@@ -23,7 +23,17 @@ public class NoticeDao {
 	public int noticeWrite(NoticeBoard nBoard) {
 		// TODO Auto-generated method stub
 		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+
 		intres = mapper.noticeWrite(nBoard);
+		int myNoticeNum = mapper.selectMynoticeNum(nBoard.getId());
+		return myNoticeNum;
+	}
+
+	public int noticeWrite2(NoticeBoard nBoard) {
+		// TODO Auto-generated method stub
+		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+
+		intres = mapper.noticeWrite2(nBoard);
 		int myNoticeNum = mapper.selectMynoticeNum(nBoard.getId());
 		return myNoticeNum;
 	}
