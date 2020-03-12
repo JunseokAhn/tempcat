@@ -49,7 +49,6 @@ public class NoticeController {
 	@GetMapping(value = "noticelist")
 	public String noticeBoardList(@RequestParam(defaultValue = "") String searchText,
 			@RequestParam(defaultValue = "1") int currentPage, Model model) {
-
 		// 전체글수랑 현재페이지를 가져와야함.
 		ArrayList<NoticeBoard> list = Ndao.noticeList(searchText);
 		int totalRecordsCount = list.size();
