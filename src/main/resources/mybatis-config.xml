@@ -4,9 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-
-		<typeAlias type="global.sesoc.tempcat.vo.Member" alias="Member" />
 		<typeAlias type="global.sesoc.tempcat.vo.SearchBoard" alias="Search" />
+		<typeAlias type="global.sesoc.tempcat.vo.Member" alias="Member" />
 		<typeAlias type="global.sesoc.tempcat.vo.NoticeBoard" alias="Notice" />
 		<typeAlias type="global.sesoc.tempcat.vo.NoticeReply" alias="nReply" />
 		<typeAlias type="global.sesoc.tempcat.vo.FreeBoard" alias="Free" />
