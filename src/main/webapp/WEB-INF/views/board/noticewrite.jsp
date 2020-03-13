@@ -54,19 +54,19 @@
 					<li><a href="<c:url value="/intro"/>">
 							<h3>INTRO</h3>
 							<p>Introduction to the Producer</p>
-						</a></li>
+					</a></li>
 					<li><a href="<c:url value="/notice/noticelist"/>">
 							<h3>NOTICE BOARD</h3>
 							<p>Only Admin can write</p>
-						</a></li>
+					</a></li>
 					<li><a href="<c:url value="/free/freelist"/>">
 							<h3>FREE BOARD</h3>
 							<p>Everyone can write</p>
-						</a></li>
+					</a></li>
 					<li><a href="<c:url value="/request"/>">
 							<h3>Send Request</h3>
 							<p>About the site or everything else.</p>
-						</a></li>
+					</a></li>
 				</ul>
 			</section>
 
@@ -112,13 +112,12 @@
 				</div>
 				<div class="meta">
 					<time class="published" datetime="2015-11-01" id="thistime"></time>
-					<a href="#" class="author">
-						<span class="name">${sessionScope.nickname}</span>
-						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+					<a href="#" class="author"> <span class="name">${sessionScope.nickname}</span> <img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 					</a>
 				</div>
 			</header>
 			<div class="col-12">
+				<span id="holder" class="image featured"> </span>
 				<c:if test="${nBoard!=null }">
 					<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;">${nBoard.contents }</textarea>
 				</c:if>
@@ -146,7 +145,8 @@
 						<li><input type="button" value="Send Post" onclick="sendpost()" /></li>
 					</c:if>
 					<li><input type="reset" value="Reset" onclick="reset()" /></li>
-					<li><input type="file" name="upload" class="icon solid fa-upload"></li>
+					<li><input type="file" id="uploadimg" name="upload-img" class="icon solid fa-upload"></li>
+					<li><input type="file" name="upload" class="icon solid fa-save"></li>
 					<!-- 
 					<li><a href="#" class="button icon solid fa-download">Icon</a></li>
 					<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
@@ -156,22 +156,41 @@
 			</div>
 
 		</article>
+
 		</form>
+		<script type="text/javascript">
+			var uploadimg = document.getElementById('uploadimg');
+			var holder = document.getElementById('holoder');
+
+			uploadimg.onchange = function(e) {
+				e.preventDefault();
+
+				var file = uploadimg.files[0];
+				var reader = new FileReader();
+				reader.onload = function(event) {
+					var img = new Image();
+					img.src = event.target.result;
+					/* if(img.width>560){
+						img.width=560px;
+					} */
+					holder.innerHTML = ' ';
+					holder.appendChild(img);
+				}
+				reader.readAsDataURL(file);
+				return false;
+			}
+		</script>
 		<!-- Footer -->
 		<section id="footer">
 			<ul class="icons">
-				<li><a href="https://twitter.com/?lang=ko" class="icon brands fa-twitter">
-						<span class="label">Twitter</span>
-					</a></li>
-				<li><a href="https://www.facebook.com/" class="icon brands fa-facebook-f">
-						<span class="label">Facebook</span>
-					</a></li>
-				<li><a href="https://www.instagram.com/?hl=ko" class="icon brands fa-instagram">
-						<span class="label">Instagram</span>
-					</a></li>
-				<li><a href="<c:url value="/request"/>" class="icon solid fa-envelope">
-						<span class="label">Email</span>
-					</a></li>
+				<li><a href="https://twitter.com/?lang=ko" class="icon brands fa-twitter"> <span class="label">Twitter</span>
+				</a></li>
+				<li><a href="https://www.facebook.com/" class="icon brands fa-facebook-f"> <span class="label">Facebook</span>
+				</a></li>
+				<li><a href="https://www.instagram.com/?hl=ko" class="icon brands fa-instagram"> <span class="label">Instagram</span>
+				</a></li>
+				<li><a href="<c:url value="/request"/>" class="icon solid fa-envelope"> <span class="label">Email</span>
+				</a></li>
 			</ul>
 
 		</section>
@@ -181,46 +200,46 @@
 
 	</section>
 	<script type="text/javascript">
-        var title = document.getElementById('title');
-        var contents = document.getElementById('contents');
-        var today = new Date();
-        var year = today.getFullYear(); // 년도
-        var month = today.getMonth() + 1; // 월
-        var date = today.getDate(); // 날짜
-        var day = today.getDay(); // 요일
-        
-        $('#thistime').html(year + '/' + month + '/' + date);
-        
-        function resize (obj) {
-            obj.style.height = "1px";
-            obj.style.height = ( 12 + obj.scrollHeight ) + "px";
-        }
-        function sendpost () {
-            
-            if(title.value.length < 1){
-                alert('제목을 입력하세요')
-                return false;
-            }
-            if(title.value.length > 30){
-                alert('제목의 최대길이는 30자입니다')
-                return false;
-            }
-            if(contents.value.length < 1){
-                alert('내용을 입력해주세요')
-                return false;
-            }
-            if(contents.value.length > 600){
-                alert('본문은 최대 600자를 넘지 못합니다.');
-                return false;
-            }
-            $('#sendpost').submit();
-        }
+		var title = document.getElementById('title');
+		var contents = document.getElementById('contents');
+		var today = new Date();
+		var year = today.getFullYear(); // 년도
+		var month = today.getMonth() + 1; // 월
+		var date = today.getDate(); // 날짜
+		var day = today.getDay(); // 요일
 
-        function reset () {
-            title.value = '';
-            contents.value = '';
-        }
-    </script>
+		$('#thistime').html(year + '/' + month + '/' + date);
+
+		function resize(obj) {
+			obj.style.height = "1px";
+			obj.style.height = (12 + obj.scrollHeight) + "px";
+		}
+		function sendpost() {
+
+			if (title.value.length < 1) {
+				alert('제목을 입력하세요')
+				return false;
+			}
+			if (title.value.length > 30) {
+				alert('제목의 최대길이는 30자입니다')
+				return false;
+			}
+			if (contents.value.length < 1) {
+				alert('내용을 입력해주세요')
+				return false;
+			}
+			if (contents.value.length > 600) {
+				alert('본문은 최대 600자를 넘지 못합니다.');
+				return false;
+			}
+			$('#sendpost').submit();
+		}
+
+		function reset() {
+			title.value = '';
+			contents.value = '';
+		}
+	</script>
 
 	<!-- Scripts -->
 	<script src="<c:url value="/resources/assets/js/jquery.min.js"/>"></script>

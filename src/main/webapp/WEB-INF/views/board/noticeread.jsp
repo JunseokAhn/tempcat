@@ -54,19 +54,19 @@
 					<li><a href="<c:url value="/intro"/>">
 							<h3>INTRO</h3>
 							<p>Introduction to the Producer</p>
-						</a></li>
+					</a></li>
 					<li><a href="<c:url value="/notice/noticelist"/>">
 							<h3>NOTICE BOARD</h3>
 							<p>Only Admin can write</p>
-						</a></li>
+					</a></li>
 					<li><a href="<c:url value="/free/freelist"/>">
 							<h3>FREE BOARD</h3>
 							<p>Everyone can write</p>
-						</a></li>
+					</a></li>
 					<li><a href="<c:url value="/request"/>">
 							<h3>Send Request</h3>
 							<p>About the site or everything else.</p>
-						</a></li>
+					</a></li>
 				</ul>
 			</section>
 
@@ -101,16 +101,14 @@
 				</div>
 				<div class="meta">
 					<time class="published" datetime="2015-11-01">${requestScope.nBoard.inputdate }</time>
-					<a href="#" class="author">
-						<span class="name">${requestScope.nBoard.nickname}</span>
-						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+					<a href="#" class="author"> <span class="name">${requestScope.nBoard.nickname}</span> <img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 					</a>
 				</div>
 			</header>
-			<span class="image featured">
-				<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
-			</span>
-
+			<c:if test="${savedfile!=null }">
+				<span class="image featured"> <img src="C:\tempcat\${savedfile }" alt="" />
+				</span>
+			</c:if>
 			<p>${requestScope.nBoard.contents }</p>
 			<footer>
 				<%-- <ul class="stats">
@@ -145,9 +143,7 @@
 					</div>
 					<div class="meta">
 						<time class="published" datetime="2015-11-01">${i.inputdate }</time>
-						<a href="#" class="author">
-							<span class="name">${i.nickname}</span>
-							<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+						<a href="#" class="author"> <span class="name">${i.nickname}</span> <img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 						</a>
 					</div>
 				</header>
@@ -168,20 +164,14 @@
 					<h2 class="col-6 col-12-xsmall">
 						<form action="nreplywrite" id="myreply" method="post" style="margin-bottom: 0px;">
 							<p style="margin-bottom: 0px; display: inline-block;">writing</p>
-							<input type="button" class="button small" value="Send Reply" onclick="sendreply()" style="float: right;" />
-							<input type="text" name="contents" id="contents" placeholder="Comment.." />
-							<input type="hidden" id="id" name="id">
-							<input type="hidden" id="nickname" name="nickname">
-							<input type="hidden" id="noticenum" name="noticenum">
+							<input type="button" class="button small" value="Send Reply" onclick="sendreply()" style="float: right;" /> <input type="text" name="contents" id="contents" placeholder="Comment.." /> <input type="hidden" id="id" name="id"> <input type="hidden" id="nickname" name="nickname"> <input type="hidden" id="noticenum" name="noticenum">
 						</form>
 					</h2>
 				</div>
 				<!-- 버튼이랑 글씨가 커지는건 헤더안이기때문. -->
 				<div class="meta">
 					<time class="published" datetime="2015-11-01">Insert your reply</time>
-					<a href="#" class="author">
-						<span class="name">${sessionScope.nickname}</span>
-						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+					<a href="#" class="author"> <span class="name">${sessionScope.nickname}</span> <img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 					</a>
 				</div>
 			</header>
@@ -190,18 +180,14 @@
 		<!-- Footer -->
 		<section id="footer">
 			<ul class="icons">
-				<li><a href="https://twitter.com/?lang=ko" class="icon brands fa-twitter">
-						<span class="label">Twitter</span>
-					</a></li>
-				<li><a href="https://www.facebook.com/" class="icon brands fa-facebook-f">
-						<span class="label">Facebook</span>
-					</a></li>
-				<li><a href="https://www.instagram.com/?hl=ko" class="icon brands fa-instagram">
-						<span class="label">Instagram</span>
-					</a></li>
-				<li><a href="<c:url value="/request"/>" class="icon solid fa-envelope">
-						<span class="label">Email</span>
-					</a></li>
+				<li><a href="https://twitter.com/?lang=ko" class="icon brands fa-twitter"> <span class="label">Twitter</span>
+				</a></li>
+				<li><a href="https://www.facebook.com/" class="icon brands fa-facebook-f"> <span class="label">Facebook</span>
+				</a></li>
+				<li><a href="https://www.instagram.com/?hl=ko" class="icon brands fa-instagram"> <span class="label">Instagram</span>
+				</a></li>
+				<li><a href="<c:url value="/request"/>" class="icon solid fa-envelope"> <span class="label">Email</span>
+				</a></li>
 			</ul>
 
 		</section>
