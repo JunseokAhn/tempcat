@@ -117,7 +117,7 @@
 				</div>
 			</header>
 			<div class="col-12">
-				<span id="holder" class="image featured"> </span>
+				<span id="holder" class="image featured" style="width: fit-content;"> </span>
 				<c:if test="${nBoard!=null }">
 					<textarea name="contents" id="contents" onkeydown="resize(this)" onkeyup="resize(this)" style="min-height: 300px; resize: none;">${nBoard.contents }</textarea>
 				</c:if>
@@ -160,7 +160,7 @@
 		</form>
 		<script type="text/javascript">
 			var uploadimg = document.getElementById('uploadimg');
-			var holder = document.getElementById('holoder');
+			var holder = document.getElementById('holder');
 
 			uploadimg.onchange = function(e) {
 				e.preventDefault();
@@ -170,10 +170,10 @@
 				reader.onload = function(event) {
 					var img = new Image();
 					img.src = event.target.result;
-					/* if(img.width>560){
-						img.width=560px;
-					} */
-					holder.innerHTML = ' ';
+					if (img.width > 560) {
+						img.width = 560;
+					}
+					holder.innerHTML = '';
 					holder.appendChild(img);
 				}
 				reader.readAsDataURL(file);
