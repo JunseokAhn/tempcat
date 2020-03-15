@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css"/>" />
 <script src="<c:url value="/resources/js/jquery-3.4.1.js/"/>"></script>
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body class="single is-preload">
 
@@ -145,8 +147,7 @@
 						<li><input type="button" value="Send Post" onclick="sendpost()" /></li>
 					</c:if>
 					<li><input type="reset" value="Reset" onclick="reset()" /></li>
-					<li><input type="file" id="uploadimg" name="upload-img" class="icon solid fa-upload"></li>
-					<li><input type="file" name="upload" class="icon solid fa-save"></li>
+					<li><input type="file" id="upload" name="upload" class="icon solid fa-upload"></li>
 					<!-- 
 					<li><a href="#" class="button icon solid fa-download">Icon</a></li>
 					<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
@@ -159,13 +160,14 @@
 
 		</form>
 		<script type="text/javascript">
-			var uploadimg = document.getElementById('uploadimg');
+			var upload = document.getElementById('upload');
 			var holder = document.getElementById('holder');
 
-			uploadimg.onchange = function(e) {
+			$('img').resizable();			
+			upload.onchange = function(e) {
 				e.preventDefault();
-
-				var file = uploadimg.files[0];
+				
+				var file = upload.files[0];
 				var reader = new FileReader();
 				reader.onload = function(event) {
 					var img = new Image();
@@ -177,6 +179,8 @@
 					holder.appendChild(img);
 				}
 				reader.readAsDataURL(file);
+				
+				
 				return false;
 			}
 		</script>

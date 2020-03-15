@@ -28,7 +28,7 @@ import global.sesoc.tempcat.vo.Profile;
 public class NoticeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
-	private static final String uploadPath = "/tempcat";
+	private static final String uploadPath = "/workspace/tempcat/src/main/webapp/resources/img";
 	@Autowired
 	private MemberDao Mdao;
 	@Autowired
