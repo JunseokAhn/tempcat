@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import global.sesoc.tempcat.dao.NoticeDao;
 import global.sesoc.tempcat.dao.MemberDao;
@@ -28,7 +30,7 @@ import global.sesoc.tempcat.vo.Profile;
 public class NoticeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
-	private static final String uploadPath = "/workspace/tempcat/src/main/webapp/resources/img";
+	private static final String uploadPath = "/tempcat";
 	@Autowired
 	private MemberDao Mdao;
 	@Autowired
@@ -105,6 +107,24 @@ public class NoticeController {
 		logger.debug("noiceRead - noticenum : " + noticenum);
 		Ndao.noticeHits(noticenum);
 		nBoard = Ndao.noticeRead(noticenum);
+		if(nBoard.getSavedfile()!=null) {
+			//파일을 불러와서 적재시켜줘야함
+			
+			/*
+			 * RestTemplate restTemplate = new RestTemplate(); URI uri =
+			 * UriComponentsBuilder.fromHttpUrl(
+			 * "https://maps.googleapis.com/maps/api/directions/json?origin=41.43206,-81.38992&destination=41.43206,-81.38992&key=AIzaSyDkQ00U2AUBQSS1CJF5YveL-1YWsTjaRGA")
+			 * .queryParam("key", "value").build().toUri();
+			 * restTemplate.getForObject(uri, String.class); 또는
+			 */
+			/*
+			 * ResponseEntity<String> responseEntity =
+			 * restTemplate.getForEntity(uri, String.class);
+			 * System.out.println(responseEntity);
+			 * model.addAttribute("directions", responseEntity);
+			 */
+			 
+		}
 		logger.debug(nBoard.toString());
 		model.addAttribute("nBoard", nBoard);
 

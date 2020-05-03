@@ -106,9 +106,20 @@
 					</a>
 				</div>
 			</header>
-
-			<span class="image featured" id="holder"><img src="<c:url value="/resources/img/${nBoard.savedfile }"/>"> </span>
-
+			<script type="text/javascript">
+			function fetchTodo() {
+			      var url = 'C:\tempcat\${nBoard.savedfile }';
+			      return fetch(url).then(function(response) {
+			        return response.json();
+			      });
+			}
+			async function logTodoTitle() {
+			    var todo = await fetchTodo();
+			    $("holder").val(todo);
+			}
+			</script>
+			<span class="image featured" id="holder"> </span>
+			
 			<p>${requestScope.nBoard.contents }</p>
 			<footer>
 				<%-- <ul class="stats">

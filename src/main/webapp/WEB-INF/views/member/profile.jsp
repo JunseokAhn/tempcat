@@ -122,7 +122,7 @@
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">Nickname</span>
 					<h2 style="margin-bottom: 0; margin-left: 20px;" id="nicknameVar">${requestScope.member.nickname }</h2>
-					<input type="button" class="button small" style="margin-left: 20px;" value="Change" id="changeNicknameBT" onclick="changeNickname()"> <input type="button" class="button small disnon" style="margin-left: 20px;" value="Redo" id="nicknameRedoBT" onclick="redoNickname()">
+					<input type="button" class="button small" style="margin-left: 20px;" value="Change" id="changeNicknameBT" onclick="changeNickname()"> <input type="button" class="disnon button small" style="margin-left: 20px;" value="Redo" id="nicknameRedoBT" onclick="redoNickname()">
 				</footer>
 				<div id="changeNicknameDiv" class="disnon" style="margin-top: 20px; margin-left: 33px;">
 					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingNickname" value="${requestScope.member.nickname }"> <input type="button" class="button small" style="margin-left: 20px;" value="Done" id="nicknameDoneBT" onclick="nicknameDone()">
@@ -130,7 +130,7 @@
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">E-mail</span>
 					<p style="margin-bottom: 0; margin-left: 20px;" id="emailVar">${requestScope.member.email }</p>
-					<input type="button" class="button small" style="margin-left: 20px;" value="Change" id="changeEmailBT" onclick="changeEmail()"> <input type="button" class="button small" style="margin-left: 20px;" value="Redo" id="emailRedoBT" class="disnon" onclick="redoEmail()">
+					<input type="button" class="button small" style="margin-left: 20px;" value="Change" id="changeEmailBT" onclick="changeEmail()"> <input type="button" class="disnon button small" style="margin-left: 20px;" value="Redo" id="emailRedoBT" onclick="redoEmail()">
 				</footer>
 				<div id="changeEmailDiv" class="disnon" style="margin-top: 20px; margin-left: 33px;">
 					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingEmail" value="${requestScope.member.email }"> <input type="button" class="button small" style="margin-left: 20px;" value="Done" id="emailDoneBT" onclick="emailDone()">
