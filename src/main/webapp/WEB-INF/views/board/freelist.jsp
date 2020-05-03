@@ -113,7 +113,7 @@
 					<thead>
 						<tr>
 							<th style="width: 2px;">Num</th>
-							<th style="padding-left: 30px; padding-right: 30px; width: 12px;">Nickname</th>
+							<th style="padding-left: 2.5rem; width: 10rem;">Nickname</th>
 							<th style="text-align: left;">Title</th>
 							<th style="width: 2px;">Hits</th>
 							<th style="width: 8px;">Date</th>

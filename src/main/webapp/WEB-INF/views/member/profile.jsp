@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <script src="<c:url value="/resources/js/jquery-3.4.1.js/"/>"></script>
 <link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/assets/css/style.css"/>" />
 </head>
 <body class="is-preload">
 
@@ -121,22 +122,18 @@
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">Nickname</span>
 					<h2 style="margin-bottom: 0; margin-left: 20px;" id="nicknameVar">${requestScope.member.nickname }</h2>
-					<input type="button" class="button small" style="margin-left: 20px;" value="Change" id="changeNicknameBT" onclick="changeNickname()">
-					<input type="button" class="button small" style="margin-left: 20px;" value="Redo" id="nicknameRedoBT" onclick="redoNickname()">
+					<input type="button" class="button small" style="margin-left: 20px;" value="Change" id="changeNicknameBT" onclick="changeNickname()"> <input type="button" class="button small disnon" style="margin-left: 20px;" value="Redo" id="nicknameRedoBT" onclick="redoNickname()">
 				</footer>
-				<div id="changeNicknameDiv" style="margin-top: 20px; margin-left: 33px;">
-					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingNickname" value="${requestScope.member.nickname }">
-					<input type="button" class="button small" style="margin-left: 20px;" value="Done" id="nicknameDoneBT" onclick="nicknameDone()">
+				<div id="changeNicknameDiv" class="disnon" style="margin-top: 20px; margin-left: 33px;">
+					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingNickname" value="${requestScope.member.nickname }"> <input type="button" class="button small" style="margin-left: 20px;" value="Done" id="nicknameDoneBT" onclick="nicknameDone()">
 				</div>
 				<footer style="margin-top: 40px;">
 					<span class="name" style="margin-left: 68px;">E-mail</span>
 					<p style="margin-bottom: 0; margin-left: 20px;" id="emailVar">${requestScope.member.email }</p>
-					<input type="button" class="button small" style="margin-left: 20px;" value="Change" id="changeEmailBT" onclick="changeEmail()">
-					<input type="button" class="button small" style="margin-left: 20px;" value="Redo" id="emailRedoBT" onclick="redoEmail()">
+					<input type="button" class="button small" style="margin-left: 20px;" value="Change" id="changeEmailBT" onclick="changeEmail()"> <input type="button" class="button small" style="margin-left: 20px;" value="Redo" id="emailRedoBT" class="disnon" onclick="redoEmail()">
 				</footer>
-				<div id="changeEmailDiv" style="margin-top: 20px; margin-left: 33px;">
-					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingEmail" value="${requestScope.member.email }">
-					<input type="button" class="button small" style="margin-left: 20px;" value="Done" id="emailDoneBT" onclick="emailDone()">
+				<div id="changeEmailDiv" class="disnon" style="margin-top: 20px; margin-left: 33px;">
+					<input type="text" style="margin-left: 20px; max-width: 60%; display: inline-block;" id="changingEmail" value="${requestScope.member.email }"> <input type="button" class="button small" style="margin-left: 20px;" value="Done" id="emailDoneBT" onclick="emailDone()">
 				</div>
 				<footer style="margin-top: 40px;">
 					<a href="<c:url value="/member/changepw"/>" class="button">Change My Password</a>
@@ -191,14 +188,6 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	$('#changeNicknameDiv').hide();
-	$('#nicknameRedoBT').hide();
-	
-	$('#changeEmailDiv').hide();
-	$('#emailRedoBT').hide();
-	
-	
-	
 	$('#mynotice').html(${requestScope.mynotice}.length);
 	$('#myfree').html(${requestScope.myfree}.length);
 	$('#noticereply').html(${requestScope.noticereply}.length);
