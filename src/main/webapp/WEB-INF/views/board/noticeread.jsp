@@ -85,11 +85,7 @@
 					</ul>
 				</c:if>
 			</section>
-
 		</section>
-
-
-
 		<!-- Post -->
 		<article class="post">
 			<header>
@@ -106,19 +102,7 @@
 					</a>
 				</div>
 			</header>
-			<script type="text/javascript">
-			function fetchTodo() {
-			      var url = 'C:\tempcat\${nBoard.savedfile }';
-			      return fetch(url).then(function(response) {
-			        return response.json();
-			      });
-			}
-			async function logTodoTitle() {
-			    var todo = await fetchTodo();
-			    $("holder").val(todo);
-			}
-			</script>
-			<span class="image featured" id="holder"> </span>
+			<span class="image featured" id="holder">${image}</span>
 			
 			<p>${requestScope.nBoard.contents }</p>
 			<footer>
