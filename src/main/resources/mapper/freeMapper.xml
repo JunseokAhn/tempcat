@@ -105,4 +105,11 @@
 		set title = #{title}, contents = #{contents}
 		where id=#{id} and freenum=#{freenum}
 	</update>
+	
+	<insert id="freeWrite2" parameterType="Free">
+		insert into tempcat_free
+		(freenum, id, title, contents, originalfile, savedfile, nickname)
+		values
+		(tempcat_free_seq.nextval, #{id}, #{title}, #{contents}, #{originalfile}, #{savedfile},#{nickname})
+	</insert>
 </mapper>

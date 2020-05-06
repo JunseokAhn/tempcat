@@ -91,10 +91,10 @@
 
 		<!-- Post -->
 		<c:if test="${fBoard!=null }">
-			<form id="sendpost" action="freeupdate" method="post">
+			<form id="sendpost" action="freeupdate" method="post" enctype="multipart/form-data">
 		</c:if>
 		<c:if test="${fBoard==null }">
-			<form id="sendpost" action="freewrite" method="post">
+			<form id="sendpost" action="freewrite" method="post" enctype="multipart/form-data">
 		</c:if>
 
 		<article class="post">
@@ -116,8 +116,7 @@
 				<div class="meta">
 					<time class="published" datetime="2015-11-01" id="time"></time>
 					<a href="#" class="author">
-						<span class="name">${sessionScope.nickname}</span>
-						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+						<span class="name">${sessionScope.nickname}</span> <img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 					</a>
 				</div>
 			</header>
@@ -149,6 +148,7 @@
 						<li><input type="button" value="Send Post" onclick="sendpost()" /></li>
 					</c:if>
 					<li><input type="reset" value="Reset" onclick="reset()" /></li>
+					<li><input type="file" id="upload" name="upload" class="icon solid fa-upload"></li>
 					<!-- 
 					<li><a href="#" class="button icon solid fa-download">Icon</a></li>
 					<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
@@ -158,6 +158,30 @@
 			</div>
 		</article>
 		</form>
+		<script type="text/javascript">
+            var upload = document.getElementById('upload');
+            var holder = document.getElementById('holder');
+            
+            $('img').resizable();
+            upload.onchange = function (e) {
+                e.preventDefault();
+                
+                var file = upload.files[0];
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    var img = new Image();
+                    img.src = event.target.result;
+                    if(img.width > 560){
+                        img.width = 560;
+                    }
+                    holder.innerHTML = '';
+                    holder.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+                
+                return false;
+            }
+        </script>
 		<!-- Footer -->
 		<section id="footer">
 			<ul class="icons">

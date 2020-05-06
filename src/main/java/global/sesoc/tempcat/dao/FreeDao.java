@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import global.sesoc.tempcat.vo.FreeBoard;
 import global.sesoc.tempcat.vo.FreeReply;
+import global.sesoc.tempcat.vo.NoticeBoard;
 
 @Repository
 public class FreeDao {
@@ -26,6 +27,15 @@ public class FreeDao {
 		intres = mapper.freeWrite(fBoard);
 		int myFreenum = mapper.selectMyfreeNum(fBoard.getId());
 		return myFreenum;
+	}
+	
+	public int freeWrite2(FreeBoard fBoard) {
+		// TODO Auto-generated method stub
+		FreeMapper mapper = session.getMapper(FreeMapper.class);
+
+		intres = mapper.freeWrite2(fBoard);
+		int myFreeNum = mapper.selectMyfreeNum(fBoard.getId());
+		return myFreeNum;
 	}
 
 	public ArrayList<FreeBoard> freeList(String searchText) {

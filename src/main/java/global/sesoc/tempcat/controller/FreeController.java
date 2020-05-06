@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import global.sesoc.tempcat.dao.FreeDao;
 import global.sesoc.tempcat.dao.MemberDao;
+import global.sesoc.tempcat.util.FileService;
 import global.sesoc.tempcat.util.PageNavigator;
 import global.sesoc.tempcat.vo.FreeBoard;
 import global.sesoc.tempcat.vo.FreeReply;
@@ -29,6 +31,7 @@ import global.sesoc.tempcat.vo.Profile;
 public class FreeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(FreeController.class);
+	private static final String uploadPath = "/tempcat";
 
 	@Autowired
 	private FreeDao Fdao;
@@ -72,13 +75,25 @@ public class FreeController {
 	}
 
 	@PostMapping(value = "freewrite")
-	public String freeWrite2(String title, String contents, HttpSession session) {
+	public String freeWrite2(String title, String contents, HttpSession session, MultipartFile upload) {
 		id = (String) session.getAttribute("id");
 		nickname = (String) session.getAttribute("nickname");
 		logger.debug("id : {}, title : {}, contents : {} nickname : {}", id, title, contents, nickname);
-		fBoard = new FreeBoard(id, title, contents, nickname);
-		int myFreeNum = Fdao.freeWrite(fBoard);
-		logger.debug("myFreeNum : " + myFreeNum);
+		logger.debug(upload.toString());
+		int myFreeNum = 0;
+		if (upload.getSize() != 0) {
+			FileService file = new FileService();
+			String originalfile = upload.getOriginalFilename();
+			String savedfile = file.saveFile(upload, uploadPath);
+			logger.debug("originalfile : {}, savedfile : {}", originalfile, savedfile);
+			fBoard = new FreeBoard(id, title, contents, originalfile, savedfile, nickname);
+			logger.debug(fBoard.toString());
+			myFreeNum = Fdao.freeWrite2(fBoard);
+		} else {
+			fBoard = new FreeBoard(id, title, contents, nickname);
+			myFreeNum = Fdao.freeWrite(fBoard);
+			logger.debug("myFreeNum : " + myFreeNum);
+		}
 		profile = new Profile();
 		profile.setId(id);
 		profile.setMyfree(myFreeNum);

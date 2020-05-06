@@ -26,7 +26,6 @@ public class FreeBoard {
 		this.contents = contents;
 		this.nickname = nickname;
 	}
-
 	public FreeBoard(int freenum, String id, String title, String contents, String nickname) {
 		super();
 		this.freenum = freenum;
@@ -36,4 +35,14 @@ public class FreeBoard {
 		this.nickname = nickname;
 	}
 
+	public FreeBoard(String id, String title, String contents, String originalfile, String savedfile, String nickname) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.contents = contents;
+		this.originalfile = originalfile;
+		this.savedfile = savedfile;
+		this.nickname = nickname;
+	}
+	
 }

@@ -40,4 +40,6 @@ public interface FreeMapper {
 
 	void freeUpdate(FreeBoard fBoard);
 
+	int freeWrite2(FreeBoard fBoard);
+
 }
