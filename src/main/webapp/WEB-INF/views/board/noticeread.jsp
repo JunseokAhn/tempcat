@@ -102,8 +102,8 @@
 					</a>
 				</div>
 			</header>
-			<span class="image featured" id="holder">${image}</span>
-			
+			<span class="image featured" id="holder"><img src="<c:url value='/img/${nBoard.savedfile }' />"></span>
+
 			<p>${requestScope.nBoard.contents }</p>
 			<footer>
 				<%-- <ul class="stats">
@@ -139,7 +139,8 @@
 					<div class="meta">
 						<time class="published" datetime="2015-11-01">${i.inputdate }</time>
 						<a href="#" class="author">
-							<span class="name">${i.nickname}</span> <img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+							<span class="name">${i.nickname}</span> <img
+								src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 						</a>
 					</div>
 				</header>

@@ -3,7 +3,10 @@ package global.sesoc.tempcat.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -114,28 +117,6 @@ public class NoticeController {
 		logger.debug("noiceRead - noticenum : " + noticenum);
 		Ndao.noticeHits(noticenum);
 		nBoard = Ndao.noticeRead(noticenum);
-		if (nBoard.getSavedfile() != null) {
-			// 파일을 불러와서 적재시켜줘야함
-			HttpServletResponse response = null;
-			response.setContentType("image/jpeg");
-			byte[] image = null;
-			try {
-				image = IOUtils.toByteArray(new FileInputStream(new File(uploadPath + '/' + nBoard.getSavedfile())));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				response.getOutputStream().write(image);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		model.addAttribute("image", image);
-		}
 		logger.debug(nBoard.toString());
 		model.addAttribute("nBoard", nBoard);
 
