@@ -103,12 +103,12 @@
 					<time class="published" datetime="2015-11-01">${requestScope.fBoard.inputdate }</time>
 					<a href="#" class="author">
 						<span class="name">${requestScope.fBoard.nickname}</span>
-						<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+						<img src="<c:url value="/img/images/avatar.jpg"/>" alt="" />
 					</a>
 				</div>
 			</header>
 			<span class="image featured">
-				<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
+				<img src="<c:url value="/img/${fBoard.savedfile }"/>" alt="" />
 			</span>
 
 			<p>${requestScope.fBoard.contents }</p>
