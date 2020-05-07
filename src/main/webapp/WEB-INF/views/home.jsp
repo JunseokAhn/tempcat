@@ -102,13 +102,17 @@
 						<div class="meta">
 							<time class="published" datetime="2015-11-01">${i.inputdate }</time>
 							<a href="#" class="author">
-								<span class="name">${i.nickname }</span>
-								<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+								<span class="name">${i.nickname }</span> <img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 							</a>
 						</div>
 					</header>
 					<a href="" class="image featured">
-						<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
+						<c:if test="${nBoard.savedfile!=null}">
+							<img src="<c:url value="/img/${nBoard.savedfile }"/>" alt="" />
+						</c:if>
+						<c:if test="${nBoard.savedfile==null}">
+							<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
+						</c:if>
 					</a>
 					<p>${i.contents }</p>
 					<footer>
@@ -137,8 +141,7 @@
 							<div class="meta">
 								<time class="published" datetime="2015-11-01">Default Data</time>
 								<a href="#" class="author">
-									<span class="name">Default Data</span>
-									<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+									<span class="name">Default Data</span> <img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 								</a>
 							</div>
 						</header>
@@ -193,8 +196,7 @@
 								</h3>
 								<time class="published" datetime="2015-10-20">${i.inputdate }</time>
 								<a href="" class="author">
-									<span class="name">${i.nickname }</span>
-									<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+									<span class="name">${i.nickname }</span> <img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 								</a>
 							</header>
 							<a href="<c:url value="/free/freeread?freenum=${i.freenum }"/>" class="image">
@@ -211,8 +213,7 @@
 									</h3>
 									<time class="published" datetime="2015-10-20">Default Data</time>
 									<a href="" class="author">
-										<span class="name">Default Data</span>
-										<img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
+										<span class="name">Default Data</span> <img src="<c:url value="/resources/images/avatar.jpg"/>" alt="" />
 									</a>
 								</header>
 								<a href="<c:url value="/free/freeread?freenum="/>" class="image">
