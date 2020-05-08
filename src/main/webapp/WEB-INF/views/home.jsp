@@ -107,10 +107,10 @@
 						</div>
 					</header>
 					<a href="" class="image featured">
-						<c:if test="${nBoard.savedfile!=null}">
-							<img src="<c:url value="/img/${nBoard.savedfile }"/>" alt="" />
+						<c:if test="${i.savedfile!=null}">
+							<img src="<c:url value="/img/${i.savedfile }"/>" alt="" />
 						</c:if>
-						<c:if test="${nBoard.savedfile==null}">
+						<c:if test="${i.savedfile==null}">
 							<img src="<c:url value="/resources/images/pic01.jpg"/>" alt="" />
 						</c:if>
 					</a>
@@ -200,7 +200,12 @@
 								</a>
 							</header>
 							<a href="<c:url value="/free/freeread?freenum=${i.freenum }"/>" class="image">
-								<img src="<c:url value="/resources/images/pic04.jpg"/>" alt="" />
+								<c:if test="${i.savedfile==null }">
+									<img src="<c:url value="/resources/images/pic04.jpg"/>" alt="" />
+								</c:if>
+								<c:if test="${i.savedfile!=null }">
+									<img src="<c:url value="/img/${i.savedfile }"/>" alt="" />
+								</c:if>
 							</a>
 						</article>
 					</c:forEach>

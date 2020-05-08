@@ -122,7 +122,7 @@
 				<p>${i.contents }</p>
 				<footer>
 					<ul class="actions">
-						<li><input type="button" value="당장채용하기" onclick="syuusyoku()"></li>
+						<li><input type="button" value="채용하기" onclick="syuusyoku()"></li>
 						<li id="mattene"><h2 style="margin-top: 10px;">ソウルペアで会いましょう！</h2></li>
 					</ul>
 					<ul class="stats">
